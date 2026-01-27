@@ -3,29 +3,41 @@ import {
   SolarHeader,
   HeroSectionPotato,
   VideoSection,
-  ProductShowcase,
-  FinalSections,
+  AudienceSection,
+  SystemSection,
   TestimonialsSection,
-  AuthoritySection,
+  ImpactSection,
+  ReviewsSection,
+  ComparisonSection,
+  DeliverablesSection,
+  ModulesSection,
   MarketContextSection,
+  AuthoritySection,
   LeadMagnetSection,
   FAQSection,
+  PricingSection,
   Footer,
 } from './components'
 
 function App() {
   return (
-    <div className="min-h-screen bg-bg-primary">
+    <div className="min-h-screen bg-navy-950 font-body">
       <SolarHeader />
       <HeroSectionPotato />
       <VideoSection />
-      <ProductShowcase />
-      <FinalSections />
+      <AudienceSection />
+      <SystemSection />
       <TestimonialsSection />
-      <AuthoritySection />
+      <ImpactSection />
+      <ReviewsSection />
+      <ComparisonSection />
+      <DeliverablesSection />
+      <ModulesSection />
       <MarketContextSection />
+      <AuthoritySection />
       <LeadMagnetSection />
       <FAQSection />
+      <PricingSection />
       <Footer />
     </div>
   )

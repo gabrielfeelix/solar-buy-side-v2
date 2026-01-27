@@ -1,66 +1,28 @@
 /** @type {import('tailwindcss').Config} */
 export default {
   content: [
-    "./index.html",
-    "./src/**/*.{js,ts,jsx,tsx}",
+    './index.html',
+    './src/**/*.{js,ts,jsx,tsx}',
   ],
   theme: {
     extend: {
       colors: {
-        // Backgrounds - Potato Agency Style
-        'bg-primary': '#0a1527',        // Deep navy blue (like Potato)
-        'bg-secondary': '#0f1f35',      // Lighter navy
-        'bg-light': '#FFFFFF',          // Clean white sections
-        'bg-gray': '#F8F9FA',           // Light gray sections
-        'bg-card': 'rgba(15, 31, 53, 0.6)',
-
-        // Accents - Premium mint/orange
-        'accent-mint': '#7DE5D4',       // Mint turquoise (Potato style)
-        'accent-blue': '#4A90E2',       // Soft blue
-        'accent-orange': '#FF6B35',     // Warm orange for CTAs
-        'accent-teal': '#2DD4BF',       // Teal accent
-        'accent-light-mint': '#B4F5E8', // Light mint for subtle highlights
-
-        // Legacy colors (mantém compatibilidade)
-        'neon-green': '#7DE5D4',
-        'electric-cyan': '#4A90E2',
-        'warning-orange': '#FF6B35',
-        'danger-red': '#EF4444',
-
-        // Texts
-        'text-primary': '#1a1a1a',      // Dark for light backgrounds
-        'text-secondary': '#64748B',
-        'text-muted': '#94A3B8',
-        'text-light': '#FFFFFF',        // White for dark backgrounds
-        'text-dark-secondary': '#94A3B8', // For dark backgrounds
+        'navy-950': '#0b1224',
+        'navy-900': '#0f172a',
+        'navy-800': '#141f38',
+        'navy-700': '#1e293b',
+        'orange-500': '#ff7a1a',
+        'orange-600': '#f97316',
+        'slate-200': '#e2e8f0',
+        'slate-300': '#cbd5f5',
       },
       fontFamily: {
-        display: ['Inter', 'SF Pro Display', 'system-ui', 'sans-serif'],
-        body: ['Inter', 'system-ui', 'sans-serif'],
-      },
-      fontSize: {
-        'xs': '0.75rem',
-        'sm': '0.875rem',
-        'base': '1rem',
-        'lg': '1.125rem',
-        'xl': '1.25rem',
-        '2xl': '1.5rem',
-        '3xl': '1.875rem',
-        '4xl': '2.25rem',
-        '5xl': '3rem',
-      },
-      backgroundImage: {
-        'gradient-primary': 'linear-gradient(135deg, #00FF94 0%, #00D9FF 100%)',
-        'gradient-danger': 'linear-gradient(135deg, #FF6B2C 0%, #FF3B3B 100%)',
-        'gradient-dark': 'linear-gradient(180deg, #0A0E1A 0%, #111827 100%)',
+        display: ['Sora', 'system-ui', 'sans-serif'],
+        body: ['Manrope', 'system-ui', 'sans-serif'],
       },
       boxShadow: {
-        'neon-green': '0 0 20px rgba(0, 255, 148, 0.3), 0 0 40px rgba(0, 255, 148, 0.1), inset 0 0 20px rgba(0, 255, 148, 0.05)',
-        'neon-cyan': '0 0 20px rgba(0, 217, 255, 0.3), 0 0 40px rgba(0, 217, 255, 0.1)',
-        'glass': '0 4px 30px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.05)',
-      },
-      backdropBlur: {
-        'glass': '20px',
+        soft: '0 20px 45px rgba(15, 23, 42, 0.15)',
+        deep: '0 30px 60px rgba(15, 23, 42, 0.25)',
       },
     },
   },
