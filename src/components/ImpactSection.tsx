@@ -6,7 +6,7 @@ export const ImpactSection: React.FC = () => {
     <section className="bg-navy-950 py-24 text-white">
       <div className="mx-auto max-w-6xl px-4">
         <h2 className="text-center text-2xl font-semibold sm:text-4xl">
-          Impacto na Rotina: O Que Você Domina?
+          Impacto na Rotina: O Que VocÃª Domina?
         </h2>
 
         <div className="mt-12 grid gap-6 lg:grid-cols-2">
@@ -15,7 +15,7 @@ export const ImpactSection: React.FC = () => {
               <div className="flex h-9 w-9 items-center justify-center rounded-full bg-purple-500/15 text-purple-400">
                 <Brain className="h-5 w-5" />
               </div>
-              Domínio Psicológico
+              DomÃ­nio PsicolÃ³gico
             </div>
 
             <ul className="mt-6 space-y-4 text-sm text-slate-200">
@@ -24,7 +24,7 @@ export const ImpactSection: React.FC = () => {
                 <div>
                   <div className="font-semibold">Dores Reais</div>
                   <div className="text-xs text-slate-400">
-                    Compreender profundamente, não as que você imagina.
+                    Compreender profundamente, nÃ£o as que vocÃª imagina.
                   </div>
                 </div>
               </li>
@@ -54,17 +54,17 @@ export const ImpactSection: React.FC = () => {
               <li className="flex items-start gap-3">
                 <Sparkle className="mt-1 h-4 w-4 text-sky-400" />
                 <div>
-                  <div className="font-semibold">Apresentações Persuasivas</div>
+                  <div className="font-semibold">ApresentaÃ§Ãµes Persuasivas</div>
                   <div className="text-xs text-slate-400">
-                    Use dados do PRÓPRIO cliente para personalizar.
+                    Use dados do PRÃ“PRIO cliente para personalizar.
                   </div>
                 </div>
               </li>
               <li className="flex items-start gap-3">
                 <Sparkle className="mt-1 h-4 w-4 text-sky-400" />
                 <div>
-                  <div className="font-semibold">Confiança Instantânea</div>
-                  <div className="text-xs text-slate-400">O cliente sente que você SABE o que diz.</div>
+                  <div className="font-semibold">ConfianÃ§a InstantÃ¢nea</div>
+                  <div className="text-xs text-slate-400">O cliente sente que vocÃª SABE o que diz.</div>
                 </div>
               </li>
             </ul>

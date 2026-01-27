@@ -23,16 +23,16 @@ export const TestimonialsSection: React.FC = () => {
 
           <div className="glass-light rounded-3xl border border-slate-200 bg-white p-8 shadow-soft">
             <h3 className="text-2xl font-semibold leading-tight text-slate-900">
-              "Eu n„o fechei apenas uma venda.
-              <span className="block text-orange-500 italic">Eu mudei meu modelo de negÛcio."</span>
+              "Eu n√£o fechei apenas uma venda.
+              <span className="block text-orange-500 italic">Eu mudei meu modelo de neg√≥cio."</span>
             </h3>
             <p className="mt-6 text-sm text-slate-500">
               "Antes eu perdia tempo explicando datasheet e brigando por centavos. O Manual Buy-Side
-              me ensinou a sentar na mesa do cliente como um consultor, n„o como um vendedor."
+              me ensinou a sentar na mesa do cliente como um consultor, n√£o como um vendedor."
             </p>
             <p className="mt-4 text-sm text-slate-500">
-              "Quando mostrei o c·lculo de inflaÁ„o energÈtica que aprendi no mÛdulo 3, o cliente
-              parou de cotar com os outros na hora. A percepÁ„o de valor foi imediata."
+              "Quando mostrei o c√°lculo de infla√ß√£o energ√©tica que aprendi no m√≥dulo 3, o cliente
+              parou de cotar com os outros na hora. A percep√ß√£o de valor foi imediata."
             </p>
 
             <div className="mt-6 flex items-start gap-3 rounded-xl border-l-2 border-orange-500 bg-orange-50/60 p-4 text-xs text-slate-600">
@@ -40,8 +40,8 @@ export const TestimonialsSection: React.FC = () => {
               <div>
                 <div className="font-semibold uppercase text-orange-500">Reality Check</div>
                 <div className="mt-1">
-                  VocÍ acha que os concorrentes que perderam essa venda sabiam que o Rodrigo estava
-                  usando tÈcnicas de valuation financeiro? Eles nunca tiveram chance.
+                  Voc√™ acha que os concorrentes que perderam essa venda sabiam que o Rodrigo estava
+                  usando t√©cnicas de valuation financeiro? Eles nunca tiveram chance.
                 </div>
               </div>
             </div>

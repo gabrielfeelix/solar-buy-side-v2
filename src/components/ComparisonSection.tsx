@@ -2,24 +2,24 @@ import React from 'react'
 import { Check, X } from 'lucide-react'
 
 const commonPoints = [
-  'Foca em preço/Wp e desconto.',
-  '"Garantia de 25 anos" (genérico).',
-  'Envia proposta padrão em PDF.',
-  'Reclama da concorrência "prostituída".',
+  'Foca em preÃ§o/Wp e desconto.',
+  '"Garantia de 25 anos" (genÃ©rico).',
+  'Envia proposta padrÃ£o em PDF.',
+  'Reclama da concorrÃªncia "prostituÃ­da".',
 ]
 
 const expertPoints = [
   'Vende LCOE, TIR e Payback Ajustado.',
   'Explica riscos ocultos de garantia.',
-  'Constrói o cenário financeiro com o cliente.',
-  'Usa a concorrência fraca como escada.',
+  'ConstrÃ³i o cenÃ¡rio financeiro com o cliente.',
+  'Usa a concorrÃªncia fraca como escada.',
 ]
 
 export const ComparisonSection: React.FC = () => {
   return (
     <section className="bg-navy-950 py-24 text-white">
       <div className="mx-auto max-w-5xl px-4 text-center">
-        <h2 className="text-2xl font-semibold sm:text-4xl">Por que eles ganham e você perde?</h2>
+        <h2 className="text-2xl font-semibold sm:text-4xl">Por que eles ganham e vocÃª perde?</h2>
 
         <div className="relative mt-12 grid gap-6 lg:grid-cols-2">
           <div className="rounded-2xl border border-white/10 bg-[#0f172a] p-6 text-left text-slate-400">
@@ -38,7 +38,7 @@ export const ComparisonSection: React.FC = () => {
 
           <div className="relative rounded-2xl border border-orange-500/70 bg-[#0f172a] p-6 text-left">
             <div className="absolute right-4 top-4 rounded-md bg-orange-500 px-2 py-1 text-[10px] font-semibold uppercase">
-              Você Hoje
+              VocÃª Hoje
             </div>
             <div className="text-xs font-semibold uppercase tracking-[0.2em] text-orange-400">
               Especialista Buy-Side

@@ -1,98 +1,106 @@
 import React, { useState } from 'react'
-import { BarChart3, Cpu, UserRound, Check } from 'lucide-react'
+import { BarChart3, Cpu, Users, Check } from 'lucide-react'
 
 const tabs = [
   {
     key: 'integradores',
     label: 'Para Integradores',
-    kicker: 'O TÉCNICO ESTRATEGISTA',
-    quote:
-      '"Aprenda a vender VALOR, fuja da briga por preço, feche mais projetos e preserve sua margem."',
-    chips: ['+30% Conversão', 'Autoridade Técnica'],
+    role: 'O TÃ©cnico Estrategista',
+    content: 'Aprenda a vender VALOR, fuja da briga por preÃ§o, feche mais projetos e preserve sua margem.',
+    stats: ['+30% ConversÃ£o', 'Autoridade TÃ©cnica'],
     Icon: Cpu,
-    accent: 'text-sky-400',
-    iconBg: 'bg-sky-500/10',
+    color: 'text-blue-400',
+    bg: 'bg-blue-400',
   },
   {
     key: 'empreendedores',
     label: 'Para Empreendedores',
-    kicker: 'O DONO DO NEGÓCIO',
-    quote:
-      '"Evite erros de iniciante, posicione-se com autoridade desde o dia 1 e aprenda em semanas o que veteranos levaram anos."',
-    chips: ['Escala de Vendas', 'Retenção'],
+    role: 'O Dono do NegÃ³cio',
+    content:
+      'Evite erros de iniciante, posicione-se com autoridade desde o dia 1 e aprenda em semanas o que veteranos levaram anos.',
+    stats: ['Escala de Vendas', 'RetenÃ§Ã£o'],
     Icon: BarChart3,
-    accent: 'text-purple-400',
-    iconBg: 'bg-purple-500/10',
+    color: 'text-purple-400',
+    bg: 'bg-purple-400',
   },
   {
     key: 'representantes',
     label: 'Para Representantes',
-    kicker: 'O LOBO SOLITÁRIO',
-    quote:
-      '"Aumente sua taxa de conversão sem queimar comissão. Use argumentos técnicos para blindar sua oferta."',
-    chips: ['Comissão Preservada', 'Mais Fechamentos'],
-    Icon: UserRound,
-    accent: 'text-emerald-400',
-    iconBg: 'bg-emerald-500/10',
+    role: 'O Lobo SolitÃ¡rio',
+    content: 'Aumente sua taxa de conversÃ£o sem queimar comissÃ£o. Use argumentos tÃ©cnicos para blindar sua oferta.',
+    stats: ['ComissÃ£o Preservada', 'Mais Fechamentos'],
+    Icon: Users,
+    color: 'text-emerald-400',
+    bg: 'bg-emerald-400',
   },
 ]
 
 export const AudienceSection: React.FC = () => {
-  const [activeKey, setActiveKey] = useState(tabs[0].key)
-  const activeTab = tabs.find((tab) => tab.key === activeKey) ?? tabs[0]
-  const ActiveIcon = activeTab.Icon
+  const [activeTab, setActiveTab] = useState('integradores')
+  const activeData = tabs.find((tab) => tab.key === activeTab) ?? tabs[0]
 
   return (
-    <section className="bg-navy-950 py-24 text-white">
-      <div className="mx-auto max-w-5xl px-4 text-center">
-        <h2 className="text-2xl font-semibold sm:text-4xl">
-          Quem REALMENTE Precisa Desse Conhecimento?
-        </h2>
-        <p className="mt-3 text-sm text-slate-300">
-          Veja para quem o Manual Buy-Side é essencial:
-        </p>
-
-        <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
-          {tabs.map((tab) => (
-            <button
-              key={tab.key}
-              type="button"
-              onClick={() => setActiveKey(tab.key)}
-              className={`rounded-md px-4 py-2 text-xs font-semibold transition ${
-                tab.key === activeKey
-                  ? 'border border-white/30 bg-white/10 text-white'
-                  : 'border border-white/10 text-slate-400 hover:text-white'
-              }`}
-            >
-              {tab.label}
-            </button>
-          ))}
+    <section className="py-24 px-6 bg-[#0B1120] border-y border-white/5">
+      <div className="max-w-6xl mx-auto">
+        <div className="text-center mb-12 md:mb-20">
+          <h2 className="text-3xl md:text-5xl font-bold mb-6 tracking-tight leading-[1.1] text-white">
+            Quem REALMENTE Precisa Desse Conhecimento?
+          </h2>
+          <p className="text-lg md:text-xl max-w-3xl leading-relaxed mx-auto font-light text-slate-400">
+            Veja para quem o Manual Buy-Side Ã© essencial:
+          </p>
         </div>
 
-        <div className="mt-12 rounded-2xl border border-white/10 bg-gradient-to-br from-[#0f1b32] to-[#121a30] p-8 text-left shadow-deep">
-          <div className="flex flex-col gap-8 md:flex-row md:items-center md:justify-between">
-            <div className="max-w-2xl">
-              <div className={`flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em] ${activeTab.accent}`}>
-                <ActiveIcon className="h-4 w-4" />
-                {activeTab.kicker}
+        <div className="flex justify-center mb-12">
+          <div className="inline-flex bg-slate-900/50 p-1 rounded-lg border border-slate-800">
+            {tabs.map((tab) => (
+              <button
+                key={tab.key}
+                onClick={() => setActiveTab(tab.key)}
+                className={`px-6 py-2 rounded-md text-sm font-bold transition-all ${
+                  activeTab === tab.key ? 'bg-slate-700 text-white shadow-md' : 'text-slate-400 hover:text-white'
+                }`}
+              >
+                {tab.label}
+              </button>
+            ))}
+          </div>
+        </div>
+
+        <div className="bg-slate-900 border border-slate-800 rounded-2xl p-8 md:p-12 relative overflow-hidden">
+          <div
+            className={`absolute top-0 right-0 w-[500px] h-[500px] opacity-10 blur-[100px] rounded-full transition-colors duration-500 ${
+              activeTab === 'integradores'
+                ? 'bg-blue-500'
+                : activeTab === 'empreendedores'
+                  ? 'bg-purple-500'
+                  : 'bg-emerald-500'
+            }`}
+          ></div>
+          <div className="relative z-10 grid md:grid-cols-12 gap-12 items-center">
+            <div className="md:col-span-8">
+              <div className={`inline-flex items-center gap-2 mb-6 ${activeData.color}`}>
+                <activeData.Icon className="w-6 h-6" />
+                <span className="font-mono text-sm font-bold uppercase tracking-widest">{activeData.role}</span>
               </div>
-              <p className="mt-4 text-lg font-semibold text-white sm:text-2xl">
-                {activeTab.quote}
-              </p>
-              <div className="mt-6 flex flex-wrap gap-3">
-                {activeTab.chips.map((chip) => (
+              <h3 className="text-2xl md:text-3xl text-white leading-relaxed mb-8">"{activeData.content}"</h3>
+              <div className="flex flex-wrap gap-4">
+                {activeData.stats.map((stat, i) => (
                   <span
-                    key={chip}
-                    className="inline-flex items-center gap-2 rounded-md border border-white/10 bg-black/20 px-3 py-1 text-xs text-slate-200"
+                    key={i}
+                    className="px-4 py-2 bg-black/40 border border-white/10 rounded text-sm text-slate-300 flex items-center gap-2"
                   >
-                    <Check className="h-3.5 w-3.5 text-orange-400" />
-                    {chip}
+                    <Check className="w-3 h-3 text-[#F97316]" /> {stat}
                   </span>
                 ))}
               </div>
             </div>
-            <div className={`flex h-24 w-24 items-center justify-center rounded-2xl border border-white/10 ${activeTab.iconBg}`}>
-              <ActiveIcon className={`h-10 w-10 ${activeTab.accent}`} />
+            <div className="md:col-span-4 flex justify-center">
+              <div
+                className={`w-32 h-32 rounded-2xl bg-black/50 border border-white/10 flex items-center justify-center ${activeData.color} shadow-2xl`}
+              >
+                <activeData.Icon className="w-16 h-16 opacity-80" />
+              </div>
             </div>
           </div>
         </div>

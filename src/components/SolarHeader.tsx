@@ -1,6 +1,6 @@
 import React from 'react'
 
-const navItems = ['BenefÌcios', 'Conte˙do', 'Mentor']
+const navItems = ['Benef√≠cios', 'Conte√∫do', 'Mentor']
 
 export const SolarHeader: React.FC = () => {
   return (
@@ -39,7 +39,7 @@ export const SolarHeader: React.FC = () => {
           className="rounded-md border border-white/20 px-4 py-2 text-xs font-semibold uppercase tracking-widest text-white transition hover:border-white/50"
           type="button"
         >
-          ¡rea do Aluno
+          √Årea do Aluno
         </button>
       </div>
     </header>

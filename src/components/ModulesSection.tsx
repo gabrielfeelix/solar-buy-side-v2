@@ -2,9 +2,9 @@ import React from 'react'
 import { Hourglass, BadgeCheck } from 'lucide-react'
 
 const modules = [
-  'Módulo 1: A Mente do Comprador',
-  'Módulo 2: Finanças Solares Avançadas',
-  'Módulo 3: Técnica Anti-Objeção',
+  'MÃ³dulo 1: A Mente do Comprador',
+  'MÃ³dulo 2: FinanÃ§as Solares AvanÃ§adas',
+  'MÃ³dulo 3: TÃ©cnica Anti-ObjeÃ§Ã£o',
 ]
 
 export const ModulesSection: React.FC = () => {
@@ -17,10 +17,10 @@ export const ModulesSection: React.FC = () => {
             Tempo Limitado
           </div>
           <h3 className="mt-3 text-lg font-semibold text-slate-900">
-            O Mercado não espera. <span className="text-orange-500">Sua vantagem é agora.</span>
+            O Mercado nÃ£o espera. <span className="text-orange-500">Sua vantagem Ã© agora.</span>
           </h3>
           <p className="mt-2 text-xs text-slate-500">
-            Não espere até que seus clientes saibam mais que você. Manual Completo + Bônus = Vantagem
+            NÃ£o espere atÃ© que seus clientes saibam mais que vocÃª. Manual Completo + BÃ´nus = Vantagem
             Imediata.
           </p>
           <div className="mt-4 flex flex-wrap items-center justify-center gap-4 text-xs font-semibold text-slate-700">
@@ -30,7 +30,7 @@ export const ModulesSection: React.FC = () => {
             </span>
             <span className="flex items-center gap-2">
               <span className="h-2 w-2 rounded-full bg-orange-500" />
-              Bônus Esgotando
+              BÃ´nus Esgotando
             </span>
           </div>
         </div>
@@ -40,10 +40,10 @@ export const ModulesSection: React.FC = () => {
         <div className="mx-auto grid max-w-6xl items-center gap-10 px-4 lg:grid-cols-[1.1fr_0.9fr]">
           <div>
             <h2 className="text-2xl font-semibold text-slate-900 sm:text-4xl">
-              Não é Teoria. É Campo de Batalha.
+              NÃ£o Ã© Teoria. Ã‰ Campo de Batalha.
             </h2>
             <p className="mt-3 text-sm text-slate-500">
-              Estruturado para consulta rápida durante a negociação.
+              Estruturado para consulta rÃ¡pida durante a negociaÃ§Ã£o.
             </p>
 
             <div className="mt-6 space-y-4">

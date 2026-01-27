@@ -4,7 +4,7 @@ import { TrendingUp } from 'lucide-react'
 const stats = [
   { label: 'Custo Equip', value: '+35%' },
   { label: 'Juros Finc', value: '+22%' },
-  { label: 'Concorrência', value: '+58%' },
+  { label: 'ConcorrÃªncia', value: '+58%' },
 ]
 
 export const MarketContextSection: React.FC = () => {
@@ -26,7 +26,7 @@ export const MarketContextSection: React.FC = () => {
         </div>
 
         <p className="mt-6 text-xs text-slate-400">
-          Margem pressionada = Vender VALOR é a única saída.
+          Margem pressionada = Vender VALOR Ã© a Ãºnica saÃ­da.
         </p>
       </div>
     </section>

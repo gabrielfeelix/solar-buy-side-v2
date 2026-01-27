@@ -1,49 +1,49 @@
 import React from 'react'
 import { Star, BadgeCheck } from 'lucide-react'
 
-const filters = ['Todos', 'Residencial', 'Comercial', 'Indústria', 'Investidor']
+const filters = ['Todos', 'Residencial', 'Comercial', 'IndÃºstria', 'Investidor']
 
 const reviews = [
   {
-    label: 'Indústria',
+    label: 'IndÃºstria',
     quote:
       '"Economizei R$ 40k evitando um inversor subdimensionado. O manual se pagou na primeira leitura."',
-    name: 'Rogério M.',
+    name: 'RogÃ©rio M.',
     initial: 'R',
   },
   {
     label: 'Gestor Predial',
     quote:
-      '"Fica claro quem é vendedor de kit e quem é engenheiro depois de ler o primeiro capítulo."',
+      '"Fica claro quem Ã© vendedor de kit e quem Ã© engenheiro depois de ler o primeiro capÃ­tulo."',
     name: 'Carlos J.',
     initial: 'C',
   },
   {
     label: 'Investidor',
     quote:
-      '"Não assine nada sem ler isso. Imprescindível para quem vai investir alto."',
+      '"NÃ£o assine nada sem ler isso. ImprescindÃ­vel para quem vai investir alto."',
     name: 'Ricardo T.',
     initial: 'R',
   },
   {
     label: 'Residencial',
     quote:
-      '"Comparei 7 propostas. Escolhi com confiança e economizei 15% na proposta final."',
+      '"Comparei 7 propostas. Escolhi com confianÃ§a e economizei 15% na proposta final."',
     name: 'Mariana',
     initial: 'M',
   },
   {
     label: 'Comerciante',
     quote:
-      '"O checklist de contrato salvou minha pele. Tinha uma pegadinha na garantia que eu não vi."',
+      '"O checklist de contrato salvou minha pele. Tinha uma pegadinha na garantia que eu nÃ£o vi."',
     name: 'Felipe S.',
     initial: 'F',
   },
   {
     label: 'Fundo Solar',
     quote:
-      '"Uso os critérios do Francis para homologar integradores no meu fundo."',
-    name: 'André L.',
+      '"Uso os critÃ©rios do Francis para homologar integradores no meu fundo."',
+    name: 'AndrÃ© L.',
     initial: 'A',
   },
 ]
@@ -54,10 +54,10 @@ export const ReviewsSection: React.FC = () => {
       <div className="mx-auto max-w-6xl px-4">
         <div className="text-center">
           <h2 className="text-2xl font-semibold text-slate-900 sm:text-4xl">
-            Quem Já Usou Para Escolher Melhor
+            Quem JÃ¡ Usou Para Escolher Melhor
           </h2>
           <p className="mt-3 text-sm text-slate-500">
-            Filtre por perfil e veja como o manual impacta diferentes negociações:
+            Filtre por perfil e veja como o manual impacta diferentes negociaÃ§Ãµes:
           </p>
         </div>
 

@@ -7,10 +7,10 @@ export const DeliverablesSection: React.FC = () => {
       <div className="mx-auto max-w-6xl px-4">
         <div className="text-center">
           <h2 className="text-2xl font-semibold text-slate-900 sm:text-4xl">
-            EspecificaÁıes & Entreg·veis
+            Especifica√ß√µes & Entreg√°veis
           </h2>
           <p className="mt-3 text-sm text-slate-500">
-            Conte˙do tÈcnico denso, estruturado para aplicaÁ„o imediata.
+            Conte√∫do t√©cnico denso, estruturado para aplica√ß√£o imediata.
           </p>
         </div>
 
@@ -19,7 +19,7 @@ export const DeliverablesSection: React.FC = () => {
             <div className="glass-light flex flex-col items-center gap-4 rounded-2xl border border-slate-200 bg-white p-6 text-center shadow-soft">
               <BookOpen className="h-7 w-7 text-orange-500" />
               <div>
-                <div className="text-sm font-semibold">130+ P·ginas</div>
+                <div className="text-sm font-semibold">130+ P√°ginas</div>
                 <div className="text-xs text-slate-500">Densidade Profissional</div>
               </div>
             </div>
@@ -38,14 +38,14 @@ export const DeliverablesSection: React.FC = () => {
                 <Layers className="h-5 w-5" />
               </div>
               <span className="rounded-full bg-orange-100 px-3 py-1 text-[10px] font-semibold uppercase text-orange-500">
-                Apenas PrÈ-venda
+                Apenas Pr√©-venda
               </span>
             </div>
             <p className="mt-5 text-sm text-slate-500">
-              Scripts reais de negociaÁ„o, checklists de "Red Flags" e como conduzir compradores
-              iludidos pelo menor preÁo.
+              Scripts reais de negocia√ß√£o, checklists de "Red Flags" e como conduzir compradores
+              iludidos pelo menor pre√ßo.
             </p>
-            <div className="mt-4 text-xs font-semibold text-orange-500">Vale o preÁo do manual.</div>
+            <div className="mt-4 text-xs font-semibold text-orange-500">Vale o pre√ßo do manual.</div>
 
             <div className="mt-10 h-1.5 w-full rounded-full bg-slate-200">
               <div className="h-1.5 w-3/5 rounded-full bg-orange-500" />
@@ -57,8 +57,8 @@ export const DeliverablesSection: React.FC = () => {
             <div className="glass-light flex flex-col items-center gap-4 rounded-2xl border border-slate-200 bg-white p-6 text-center shadow-soft">
               <Layers className="h-7 w-7 text-orange-500" />
               <div>
-                <div className="text-sm font-semibold">160 TÛpicos</div>
-                <div className="text-xs text-slate-500">Õndice Interativo</div>
+                <div className="text-sm font-semibold">160 T√≥picos</div>
+                <div className="text-xs text-slate-500">√çndice Interativo</div>
               </div>
             </div>
             <div className="glass-light flex flex-col items-center gap-4 rounded-2xl border border-slate-200 bg-white p-6 text-center shadow-soft">

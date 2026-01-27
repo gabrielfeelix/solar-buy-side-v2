@@ -12,7 +12,7 @@ export const LeadMagnetSection: React.FC = () => {
             </div>
             <h3 className="mt-6 text-xl font-semibold">Prefere testar antes?</h3>
             <p className="mt-2 text-sm text-slate-300">
-              Baixe o Capítulo Zero gratuitamente. Entenda as 4 Fases da Maturidade do Comprador.
+              Baixe o CapÃ­tulo Zero gratuitamente. Entenda as 4 Fases da Maturidade do Comprador.
             </p>
             <button type="button" className="cta-green mt-8 w-full rounded-xl px-6 py-4 text-sm font-semibold uppercase">
               Baixar no Whatsapp
@@ -20,9 +20,9 @@ export const LeadMagnetSection: React.FC = () => {
           </div>
 
           <div className="p-8">
-            <h4 className="text-sm font-semibold text-slate-900">O que você recebe grátis:</h4>
+            <h4 className="text-sm font-semibold text-slate-900">O que vocÃª recebe grÃ¡tis:</h4>
             <ul className="mt-4 space-y-3 text-sm text-slate-600">
-              {['Os 3 Riscos Ocultos da Compra', 'As 4 Fases da Decisão', 'Checklist de Avaliação'].map(
+              {['Os 3 Riscos Ocultos da Compra', 'As 4 Fases da DecisÃ£o', 'Checklist de AvaliaÃ§Ã£o'].map(
                 (item) => (
                   <li key={item} className="flex items-center gap-2">
                     <Check className="h-4 w-4 text-orange-500" />
@@ -32,7 +32,7 @@ export const LeadMagnetSection: React.FC = () => {
               )}
             </ul>
             <p className="mt-6 text-xs italic text-slate-400">
-              "Se você ler isso e achar que não muda o jogo, não compre o manual."
+              "Se vocÃª ler isso e achar que nÃ£o muda o jogo, nÃ£o compre o manual."
             </p>
           </div>
         </div>

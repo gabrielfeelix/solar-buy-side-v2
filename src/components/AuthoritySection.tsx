@@ -14,7 +14,7 @@ export const AuthoritySection: React.FC = () => {
           </div>
           <div className="absolute -bottom-6 right-6 rounded-2xl bg-orange-500 px-4 py-3 text-xs font-semibold uppercase tracking-wide text-white shadow-deep">
             7+ Anos
-            <div className="text-[10px] font-medium">de ExperiÍncia Dual</div>
+            <div className="text-[10px] font-medium">de Experi√™ncia Dual</div>
           </div>
         </div>
 
@@ -24,8 +24,8 @@ export const AuthoritySection: React.FC = () => {
             <span className="block text-orange-500">Os Dois Lados da Mesa.</span>
           </h2>
           <p className="mt-4 text-sm text-slate-300">
-            Francis n„o apenas ensina vendas; ele viveu a compra. Assessorando ind˙strias e fundos,
-            ele decodificou exatamente o que faz um comprador fechar negÛcio.
+            Francis n√£o apenas ensina vendas; ele viveu a compra. Assessorando ind√∫strias e fundos,
+            ele decodificou exatamente o que faz um comprador fechar neg√≥cio.
           </p>
 
           <div className="mt-6 grid gap-4">
@@ -34,10 +34,10 @@ export const AuthoritySection: React.FC = () => {
                 <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-sky-500/15 text-sky-400">
                   <Search className="h-5 w-5" />
                 </span>
-                Vis„o Buy-Side (Comprador)
+                Vis√£o Buy-Side (Comprador)
               </div>
               <p className="mt-2 text-xs text-slate-400">
-                Due diligence, an·lise de contratos e validaÁ„o tÈcnica.
+                Due diligence, an√°lise de contratos e valida√ß√£o t√©cnica.
               </p>
             </div>
             <div className="rounded-xl border border-white/10 bg-[#0f172a] p-4">
@@ -45,10 +45,10 @@ export const AuthoritySection: React.FC = () => {
                 <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-orange-500/15 text-orange-400">
                   <Briefcase className="h-5 w-5" />
                 </span>
-                Vis„o Sell-Side (Vendedor)
+                Vis√£o Sell-Side (Vendedor)
               </div>
               <p className="mt-2 text-xs text-slate-400">
-                EstruturaÁ„o de times comerciais e funis de alta convers„o.
+                Estrutura√ß√£o de times comerciais e funis de alta convers√£o.
               </p>
             </div>
           </div>

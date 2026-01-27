@@ -8,10 +8,10 @@ export const PricingSection: React.FC = () => {
         <div className="rounded-3xl border border-white/10 bg-[#0f172a] p-8 shadow-deep">
           <div className="h-1 w-full rounded-full bg-gradient-to-r from-orange-500 via-purple-500 to-sky-400" />
           <div className="mt-8 text-center">
-            <h2 className="text-2xl font-semibold">Plano Vitalício</h2>
-            <p className="mt-2 text-sm text-slate-300">Acesso Imediato + Atualizações 2026</p>
-            <div className="mt-6 text-4xl font-semibold">R$ 47,25<span className="text-base font-normal text-slate-400">/mês</span></div>
-            <div className="mt-1 text-xs text-slate-400">ou R$ 567,00 à vista</div>
+            <h2 className="text-2xl font-semibold">Plano VitalÃ­cio</h2>
+            <p className="mt-2 text-sm text-slate-300">Acesso Imediato + AtualizaÃ§Ãµes 2026</p>
+            <div className="mt-6 text-4xl font-semibold">R$ 47,25<span className="text-base font-normal text-slate-400">/mÃªs</span></div>
+            <div className="mt-1 text-xs text-slate-400">ou R$ 567,00 Ã  vista</div>
           </div>
 
           <button

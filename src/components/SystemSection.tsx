@@ -11,7 +11,7 @@ export const SystemSection: React.FC = () => {
             <span className="block">Vendedor de Alta Performance.</span>
           </h2>
           <p className="mt-3 text-sm text-slate-500">
-            O Manual Buy-Side n„o È um livro de dicas. … uma arquitetura de decis„o.
+            O Manual Buy-Side n√£o √© um livro de dicas. √â uma arquitetura de decis√£o.
           </p>
         </div>
 
@@ -22,12 +22,12 @@ export const SystemSection: React.FC = () => {
                 <Eye className="h-5 w-5" />
               </div>
               <p className="mt-4 text-sm text-slate-500">
-                Imers„o na jornada de compra SOB A ”TICA DO COMPRADOR. Compreens„o estratÈgica dos
-                critÈrios de decis„o e objeÁıes.
+                Imers√£o na jornada de compra SOB A √ìTICA DO COMPRADOR. Compreens√£o estrat√©gica dos
+                crit√©rios de decis√£o e obje√ß√µes.
               </p>
             </div>
             <div className="mt-8 text-xs font-semibold uppercase tracking-[0.2em] text-orange-500">
-              InteligÍncia Pura
+              Intelig√™ncia Pura
             </div>
           </div>
 
@@ -37,9 +37,9 @@ export const SystemSection: React.FC = () => {
                 <Target className="h-5 w-5" />
               </div>
               <div>
-                <h3 className="text-sm font-semibold">O Resultado Pr·tico</h3>
+                <h3 className="text-sm font-semibold">O Resultado Pr√°tico</h3>
                 <p className="mt-1 text-xs text-slate-500">
-                  Ao dominar o conceito Buy-Side, vocÍ estar· apto a lapidar sua abordagem, entregar
+                  Ao dominar o conceito Buy-Side, voc√™ estar√° apto a lapidar sua abordagem, entregar
                   valor real e elevar sua credibilidade.
                 </p>
               </div>
@@ -52,7 +52,7 @@ export const SystemSection: React.FC = () => {
                 </div>
                 <h4 className="mt-4 text-sm font-semibold">O Tabuleiro</h4>
                 <p className="mt-2 text-xs text-slate-500">
-                  "Se vender È xadrez, este manual ensina a pensar como seu oponente."
+                  "Se vender √© xadrez, este manual ensina a pensar como seu oponente."
                 </p>
               </div>
 
