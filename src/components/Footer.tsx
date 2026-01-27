@@ -7,13 +7,13 @@ export const Footer: React.FC = () => {
       {/* Último CTA */}
       <div className="py-20 border-b border-gray-800">
         <div className="max-w-4xl mx-auto px-4 text-center">
-          <p className="text-2xl text-text-secondary mb-4">
+          <p className="text-2xl text-text-dark-secondary mb-4">
             🚀 Ainda está lendo?
           </p>
-          <p className="text-xl text-text-primary mb-6">
+          <p className="text-xl text-text-light mb-6">
             Isso significa que você sabe que precisa disso.
           </p>
-          <p className="text-lg text-text-secondary mb-8">
+          <p className="text-lg text-text-dark-secondary mb-8">
             A pergunta é: você vai agir agora ou esperar seus concorrentes agirem primeiro?
           </p>
 
@@ -27,7 +27,7 @@ export const Footer: React.FC = () => {
       {/* Informações Legais */}
       <div className="py-12 border-b border-gray-800">
         <div className="max-w-6xl mx-auto px-4 text-center">
-          <p className="text-text-secondary mb-2">
+          <p className="text-text-dark-secondary mb-2">
             Buy-Side Soluções | CNPJ: 55.463.06/0001-80
           </p>
           <p className="text-text-muted text-sm">
