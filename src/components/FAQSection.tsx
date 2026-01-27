@@ -48,10 +48,10 @@ Para Pix e boleto, o valor será devolvido via transferência bancária (informe
       <div className="max-w-4xl mx-auto px-4">
         {/* Headline + CTA Topo */}
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-text-primary mb-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-text-light mb-4">
             Ficou com dúvidas?
           </h2>
-          <p className="text-lg text-text-secondary mb-8">
+          <p className="text-lg text-text-dark-secondary mb-8">
             Fale com a equipe Buy-Side.
           </p>
           <a
@@ -67,17 +67,17 @@ Para Pix e boleto, o valor será devolvido via transferência bancária (informe
           {faqs.map((faq, index) => (
             <div
               key={index}
-              className="glass-card border border-electric-cyan/15 hover:border-electric-cyan/30 transition-all duration-300 rounded-2xl overflow-hidden"
+              className="glass-card-dark border border-accent-mint/15 hover:border-accent-mint/30 transition-all duration-300 rounded-2xl overflow-hidden"
             >
               <button
                 onClick={() => setOpenIndex(openIndex === index ? null : index)}
-                className="w-full p-6 text-left flex items-center justify-between gap-4 hover:bg-electric-cyan/5 transition-colors"
+                className="w-full p-6 text-left flex items-center justify-between gap-4 hover:bg-accent-mint/5 transition-colors"
               >
-                <span className="text-lg font-semibold text-text-primary pr-4">
+                <span className="text-lg font-semibold text-text-light pr-4">
                   {faq.question}
                 </span>
                 <ChevronDown
-                  className={`w-6 h-6 text-electric-cyan flex-shrink-0 transition-transform duration-300 ${
+                  className={`w-6 h-6 text-accent-mint flex-shrink-0 transition-transform duration-300 ${
                     openIndex === index ? 'rotate-180' : ''
                   }`}
                 />
@@ -89,7 +89,7 @@ Para Pix e boleto, o valor será devolvido via transferência bancária (informe
                 }`}
               >
                 <div className="p-6 pt-0">
-                  <div className="text-base text-text-secondary leading-relaxed whitespace-pre-line">
+                  <div className="text-base text-text-dark-secondary leading-relaxed whitespace-pre-line">
                     {faq.answer}
                   </div>
                 </div>

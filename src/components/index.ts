@@ -1,5 +1,6 @@
 export { SolarHeader } from './SolarHeader';
 export { HeroSection } from './HeroSection';
+export { HeroSectionPotato } from './HeroSectionPotato';
 export { VideoSection } from './VideoSection';
 export { ProductShowcase } from './ProductShowcase';
 export { FinalSections } from './FinalSections';

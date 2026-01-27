@@ -1,7 +1,7 @@
 import './App.css'
 import {
   SolarHeader,
-  HeroSection,
+  HeroSectionPotato,
   VideoSection,
   ProductShowcase,
   FinalSections,
@@ -17,7 +17,7 @@ function App() {
   return (
     <div className="min-h-screen bg-bg-primary">
       <SolarHeader />
-      <HeroSection />
+      <HeroSectionPotato />
       <VideoSection />
       <ProductShowcase />
       <FinalSections />
