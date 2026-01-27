@@ -7,21 +7,32 @@ export default {
   theme: {
     extend: {
       colors: {
-        // Backgrounds
-        'bg-primary': '#0A0E1A',
-        'bg-secondary': '#111827',
-        'bg-card': 'rgba(17, 24, 39, 0.6)',
+        // Backgrounds - Potato Agency Style
+        'bg-primary': '#0a1527',        // Deep navy blue (like Potato)
+        'bg-secondary': '#0f1f35',      // Lighter navy
+        'bg-light': '#FFFFFF',          // Clean white sections
+        'bg-gray': '#F8F9FA',           // Light gray sections
+        'bg-card': 'rgba(15, 31, 53, 0.6)',
 
-        // Accents
-        'neon-green': '#00FF94',
-        'electric-cyan': '#00D9FF',
-        'warning-orange': '#FF6B2C',
-        'danger-red': '#FF3B3B',
+        // Accents - Premium mint/orange
+        'accent-mint': '#7DE5D4',       // Mint turquoise (Potato style)
+        'accent-blue': '#4A90E2',       // Soft blue
+        'accent-orange': '#FF6B35',     // Warm orange for CTAs
+        'accent-teal': '#2DD4BF',       // Teal accent
+        'accent-light-mint': '#B4F5E8', // Light mint for subtle highlights
+
+        // Legacy colors (mantém compatibilidade)
+        'neon-green': '#7DE5D4',
+        'electric-cyan': '#4A90E2',
+        'warning-orange': '#FF6B35',
+        'danger-red': '#EF4444',
 
         // Texts
-        'text-primary': '#F8FAFC',
-        'text-secondary': '#94A3B8',
-        'text-muted': '#64748B',
+        'text-primary': '#1a1a1a',      // Dark for light backgrounds
+        'text-secondary': '#64748B',
+        'text-muted': '#94A3B8',
+        'text-light': '#FFFFFF',        // White for dark backgrounds
+        'text-dark-secondary': '#94A3B8', // For dark backgrounds
       },
       fontFamily: {
         display: ['Inter', 'SF Pro Display', 'system-ui', 'sans-serif'],

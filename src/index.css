@@ -14,21 +14,26 @@ body {
   font-family: 'Inter', system-ui, -apple-system, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #0A0E1A;
-  color: #F8FAFC;
+  background-color: #0a1527;
+  color: #1a1a1a;
   overflow-x: hidden;
 }
 
 /* Glassmorphism Card */
 @layer components {
   .glass-card {
-    background: rgba(17, 24, 39, 0.4);
+    background: rgba(255, 255, 255, 0.95);
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    border-radius: 16px;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+  }
+
+  .glass-card-dark {
+    background: rgba(15, 31, 53, 0.6);
     backdrop-filter: blur(20px);
-    border: 1px solid rgba(255, 255, 255, 0.06);
-    border-radius: 24px;
-    box-shadow:
-      0 4px 30px rgba(0, 0, 0, 0.3),
-      inset 0 1px 0 rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.3);
   }
 
   .neon-glow {
@@ -44,20 +49,16 @@ body {
       0 0 40px rgba(0, 217, 255, 0.1);
   }
 
-  /* Button Primary */
+  /* Button Primary - Potato Agency Style */
   .btn-primary {
-    background: linear-gradient(135deg, #00FF94 0%, #00D9FF 100%);
-    color: #0A0E1A;
-    padding: 18px 36px;
-    border-radius: 12px;
+    background: #7DE5D4;
+    color: #0a1527;
+    padding: 16px 32px;
+    border-radius: 8px;
     font-weight: 600;
-    font-size: 1rem;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
+    font-size: 0.95rem;
     transition: all 0.3s ease;
-    box-shadow:
-      0 8px 24px rgba(0, 255, 148, 0.3),
-      0 2px 8px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 2px 8px rgba(125, 229, 212, 0.2);
     border: none;
     cursor: pointer;
     display: inline-flex;
@@ -68,9 +69,31 @@ body {
 
   .btn-primary:hover {
     transform: translateY(-2px);
-    box-shadow:
-      0 12px 32px rgba(0, 255, 148, 0.4),
-      0 4px 12px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 8px 20px rgba(125, 229, 212, 0.3);
+    background: #6DD5C4;
+  }
+
+  .btn-orange {
+    background: #FF6B35;
+    color: #FFFFFF;
+    padding: 16px 32px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(255, 107, 53, 0.2);
+    border: none;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+  }
+
+  .btn-orange:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(255, 107, 53, 0.3);
+    background: #FF5722;
   }
 
   /* Button Secondary (Urgência) */
@@ -109,19 +132,23 @@ body {
     padding: 120px 1rem;
   }
 
-  /* Gradient Text */
+  /* Gradient Text - Potato Style */
   .gradient-text {
-    background: linear-gradient(135deg, #00D9FF 0%, #00FF94 100%);
+    background: linear-gradient(135deg, #4A90E2 0%, #7DE5D4 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
 
   .gradient-text-danger {
-    background: linear-gradient(135deg, #FF6B2C 0%, #FF3B3B 100%);
+    background: linear-gradient(135deg, #FF6B35 0%, #EF4444 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+  }
+
+  .gradient-text-mint {
+    color: #7DE5D4;
   }
 
   /* Pulse Animation */
