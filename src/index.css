@@ -1,0 +1,154 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #0A0E1A;
+  color: #F8FAFC;
+  overflow-x: hidden;
+}
+
+/* Glassmorphism Card */
+@layer components {
+  .glass-card {
+    background: rgba(17, 24, 39, 0.4);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 24px;
+    box-shadow:
+      0 4px 30px rgba(0, 0, 0, 0.3),
+      inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  }
+
+  .neon-glow {
+    box-shadow:
+      0 0 20px rgba(0, 255, 148, 0.3),
+      0 0 40px rgba(0, 255, 148, 0.1),
+      inset 0 0 20px rgba(0, 255, 148, 0.05);
+  }
+
+  .neon-glow-cyan {
+    box-shadow:
+      0 0 20px rgba(0, 217, 255, 0.3),
+      0 0 40px rgba(0, 217, 255, 0.1);
+  }
+
+  /* Button Primary */
+  .btn-primary {
+    background: linear-gradient(135deg, #00FF94 0%, #00D9FF 100%);
+    color: #0A0E1A;
+    padding: 18px 36px;
+    border-radius: 12px;
+    font-weight: 600;
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    transition: all 0.3s ease;
+    box-shadow:
+      0 8px 24px rgba(0, 255, 148, 0.3),
+      0 2px 8px rgba(0, 0, 0, 0.4);
+    border: none;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+  }
+
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow:
+      0 12px 32px rgba(0, 255, 148, 0.4),
+      0 4px 12px rgba(0, 0, 0, 0.5);
+  }
+
+  /* Button Secondary (Urgência) */
+  .btn-secondary {
+    background: linear-gradient(135deg, #FF6B2C 0%, #FF3B3B 100%);
+    color: #FFFFFF;
+    padding: 18px 36px;
+    border-radius: 12px;
+    font-weight: 600;
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    transition: all 0.3s ease;
+    box-shadow:
+      0 8px 24px rgba(255, 59, 59, 0.3),
+      0 2px 8px rgba(0, 0, 0, 0.4);
+    border: none;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+  }
+
+  .btn-secondary:hover {
+    transform: translateY(-2px);
+    box-shadow:
+      0 12px 32px rgba(255, 59, 59, 0.4),
+      0 4px 12px rgba(0, 0, 0, 0.5);
+  }
+
+  /* Section Container */
+  .section-container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 120px 1rem;
+  }
+
+  /* Gradient Text */
+  .gradient-text {
+    background: linear-gradient(135deg, #00D9FF 0%, #00FF94 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .gradient-text-danger {
+    background: linear-gradient(135deg, #FF6B2C 0%, #FF3B3B 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Pulse Animation */
+  @keyframes pulse-glow {
+    0%, 100% {
+      box-shadow: 0 0 20px rgba(255, 59, 59, 0.5);
+    }
+    50% {
+      box-shadow: 0 0 40px rgba(255, 59, 59, 0.8);
+    }
+  }
+
+  .pulse-glow {
+    animation: pulse-glow 2s ease-in-out infinite;
+  }
+
+  /* Bounce Animation */
+  @keyframes bounce-vertical {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+
+  .bounce-vertical {
+    animation: bounce-vertical 2s ease-in-out infinite;
+  }
+}

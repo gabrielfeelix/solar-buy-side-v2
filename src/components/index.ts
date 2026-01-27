@@ -1,0 +1,11 @@
+export { SolarHeader } from './SolarHeader';
+export { HeroSection } from './HeroSection';
+export { VideoSection } from './VideoSection';
+export { ProductShowcase } from './ProductShowcase';
+export { FinalSections } from './FinalSections';
+export { TestimonialsSection } from './TestimonialsSection';
+export { AuthoritySection } from './AuthoritySection';
+export { MarketContextSection } from './MarketContextSection';
+export { LeadMagnetSection } from './LeadMagnetSection';
+export { FAQSection } from './FAQSection';
+export { Footer } from './Footer';
