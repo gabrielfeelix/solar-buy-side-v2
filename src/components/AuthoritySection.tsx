@@ -1,7 +1,7 @@
 ﻿import React from 'react'
 import { Briefcase, Search } from 'lucide-react'
 
-const francisImage = '/assets/francis-poloni.png'
+const francisImage = '/assets/Francis Poloni LP PRO.jpg.jpeg'
 
 export const AuthoritySection: React.FC = () => {
   return (
@@ -24,7 +24,7 @@ export const AuthoritySection: React.FC = () => {
 
       <div className="relative z-10 max-w-6xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
         <div className="relative">
-          <div className="aspect-[4/5] bg-slate-800 rounded-2xl overflow-hidden relative grayscale hover:grayscale-0 transition-all duration-700 group">
+          <div className="aspect-[4/5] bg-slate-800 rounded-2xl overflow-hidden relative transition-all duration-700 group">
             <img src={francisImage} alt="Francis Poloni" className="absolute inset-0 h-full w-full object-cover" loading="lazy" />
             <div className="absolute inset-0 bg-gradient-to-t from-[#020617] via-transparent to-[#020617]/50"></div>
             <div className="absolute bottom-8 left-8 text-white z-10">

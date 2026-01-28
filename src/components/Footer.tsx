@@ -1,16 +1,34 @@
 ﻿import React from 'react'
+import { Mail, MapPin } from 'lucide-react'
 
 export const Footer: React.FC = () => {
   return (
-    <footer className="py-10 bg-black text-center text-slate-500 text-sm border-t border-slate-900">
-      <div className="max-w-5xl mx-auto space-y-2">
-        <p>Buy-Side Soluções | CNPJ: 55.463.06/0001-80</p>
-        <p>Torre Norte - Av. Bento Munhoz da Rocha Neto, 632 - 19º Andar, Salas 1905 a 1908 - Zona 7, Maringá - PR, 87030-010</p>
-        <p>E-mail: contato@buyside.com.br</p>
-        <div className="mt-4 flex flex-wrap justify-center gap-6 text-xs text-slate-600">
-          <span>Política de Privacidade</span>
-          <span>Termos de Uso</span>
-          <span>Proteção Antipirataria</span>
+    <footer className="bg-[#001529] text-white py-4 px-8 border-t border-white/5 font-sans">
+      <div className="max-w-[1400px] mx-auto flex flex-col xl:flex-row items-center justify-between gap-4">
+        <div className="flex items-center gap-4">
+          <img src="/assets/logotipo-solar.png" alt="Solar Buy-Side" className="h-6 w-auto" />
+          <div className="h-3 w-px bg-white/10 hidden sm:block" />
+          <span className="text-[10px] font-medium text-white/30 uppercase tracking-[0.15em]">
+            CNPJ: 55.463.06/0001-80
+          </span>
+        </div>
+
+        <div className="flex items-center gap-2 text-white/50">
+          <MapPin size={12} className="text-orange-500/70" />
+          <span className="text-[11px] font-light tracking-wide text-center">
+            Torre Norte - Av. Bento Munhoz da Rocha Neto, 632 - 19º Andar, Salas 1905 a 1908 - Maringá - PR
+          </span>
+        </div>
+
+        <div className="flex items-center gap-6">
+          <a
+            href="mailto:contato@buyside.com.br"
+            className="flex items-center gap-2 text-[11px] font-semibold hover:text-orange-500 transition-colors"
+          >
+            <Mail size={12} className="text-orange-500" />
+            contato@buyside.com.br
+          </a>
+          <span className="text-[10px] text-white/20 hidden lg:block">© 2025</span>
         </div>
       </div>
     </footer>

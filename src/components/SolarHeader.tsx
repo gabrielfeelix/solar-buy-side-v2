@@ -1,15 +1,12 @@
 ﻿import React from 'react'
-import { ArrowRight, Menu, Sun } from 'lucide-react'
+import { ArrowRight, Menu } from 'lucide-react'
 
 export const SolarHeader: React.FC = () => {
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-[#020617]/80 backdrop-blur-md border-b border-white/10 py-4">
       <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
         <a href="#hero" className="flex items-center gap-3">
-          <div className="w-8 h-8 bg-[#F97316] rounded-md flex items-center justify-center shadow-lg">
-            <Sun className="w-5 h-5 text-white fill-white" />
-          </div>
-          <span className="text-white font-bold tracking-tight text-base sm:text-lg">SOLAR BUY-SIDE</span>
+          <img src="/assets/logotipo-solar.png" alt="Solar Buy-Side" className="h-8 w-auto" />
         </a>
 
         <div className="hidden md:flex items-center gap-8">
