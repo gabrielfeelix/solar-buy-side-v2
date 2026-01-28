@@ -10,7 +10,6 @@ import {
   StoryBridgeSection,
   PricingSection,
   BuyerWaveSection,
-  ReviewsSection,
   AuthoritySection,
   LeadMagnetSection,
   FAQSection,
@@ -30,7 +29,6 @@ function App() {
       <StoryBridgeSection />
       <PricingSection id="oferta" />
       <BuyerWaveSection />
-      <ReviewsSection />
       <AuthoritySection />
       <PricingSection id="oferta-final" />
       <LeadMagnetSection />

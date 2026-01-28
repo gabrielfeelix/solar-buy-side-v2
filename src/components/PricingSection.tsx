@@ -1,4 +1,4 @@
-﻿import React, { useEffect, useState } from 'react'
+﻿import React from 'react'
 import {
   ArrowRight,
   BookOpen,
@@ -50,20 +50,9 @@ const features = [
 ]
 
 export const PricingSection: React.FC<PricingSectionProps> = ({ id }) => {
-  const [timeLeft, setTimeLeft] = useState<Countdown>({ min: 11, sec: 42 })
+  const timeLeft: Countdown = { min: 11, sec: 42 }
   const stockLimit = 1000
   const stockCurrent = 847
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setTimeLeft((prev) => {
-        if (prev.sec > 0) return { ...prev, sec: prev.sec - 1 }
-        if (prev.min > 0) return { min: prev.min - 1, sec: 59 }
-        return prev
-      })
-    }, 1000)
-    return () => clearInterval(timer)
-  }, [])
 
   return (
     <section id={id} className="relative overflow-hidden bg-[#010413] text-white font-sans selection:bg-orange-500/30">
@@ -117,7 +106,7 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ id }) => {
                       {item.icon}
                     </div>
                     <div className="space-y-1">
-                      <span className="text-[10px] font-black text-blue-500 tracking-widest">{item.tag}</span>
+                      <span className="text-[10px] font-black text-slate-200/90 tracking-widest">{item.tag}</span>
                       <h4 className="font-bold text-lg leading-tight">{item.title}</h4>
                       <p className="text-sm text-slate-500 leading-relaxed">{item.desc}</p>
                     </div>
@@ -180,7 +169,10 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ id }) => {
                 </div>
 
                 <div className="space-y-4">
-                  <button className="relative w-full group overflow-hidden bg-orange-600 hover:bg-orange-500 text-white font-black py-6 rounded-2xl shadow-xl shadow-orange-600/30 transition-all duration-300 active:scale-[0.98] flex items-center justify-center" type="button">
+                  <button
+                    className="relative w-full group overflow-hidden bg-orange-600 hover:bg-orange-500 text-white font-black py-6 rounded-2xl shadow-xl shadow-orange-600/30 transition-all duration-300 active:scale-[0.98] flex items-center justify-center"
+                    type="button"
+                  >
                     <div className="relative z-10 flex items-center gap-3">
                       <span className="text-lg uppercase tracking-tight">GARANTIR MINHA UNIDADE</span>
                       <ArrowRight size={22} className="group-hover:translate-x-1 transition-transform" />
@@ -223,20 +215,6 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ id }) => {
           </div>
         </div>
       </div>
-
-      <style
-        dangerouslySetInnerHTML={{
-          __html: `
-        @keyframes spin-slow {
-          from { transform: rotate(0deg); }
-          to { transform: rotate(360deg); }
-        }
-        .animate-spin-slow {
-          animation: spin-slow 12s linear infinite;
-        }
-      `,
-        }}
-      />
     </section>
   )
 }
