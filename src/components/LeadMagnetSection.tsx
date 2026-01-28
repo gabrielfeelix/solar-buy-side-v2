@@ -1,28 +1,34 @@
 ﻿import React, { useState } from 'react'
 import {
+  AlertTriangle,
   CheckCircle2,
   Download,
-  Lock,
-  Target,
-  TrendingUp,
+  Layers,
+  ListChecks,
+  Scale,
   Zap,
 } from 'lucide-react'
 
 const features = [
   {
-    title: 'Riscos Ocultos',
-    desc: 'O que ninguém te conta sobre a segurança de sistemas solares.',
-    icon: <Lock className="text-orange-500" size={20} />,
+    title: 'Os 3 riscos na compra de sistemas solares',
+    desc: '',
+    icon: <AlertTriangle className="text-orange-500" size={20} />,
   },
   {
-    title: 'Psicologia de Compra',
-    desc: "As 4 fases mentais do seu cliente antes do 'sim'.",
-    icon: <Target className="text-orange-500" size={20} />,
+    title: 'As 4 fases que seu cliente seguirá antes de comprar',
+    desc: '',
+    icon: <Layers className="text-orange-500" size={20} />,
   },
   {
-    title: 'Análise Buy-Side',
-    desc: 'Como as grandes propostas são realmente comparadas.',
-    icon: <TrendingUp className="text-orange-500" size={20} />,
+    title: 'Como sua proposta será avaliada e comparada',
+    desc: '',
+    icon: <Scale className="text-orange-500" size={20} />,
+  },
+  {
+    title: 'O índice detalhado do Manual Solar Buy-Side',
+    desc: '',
+    icon: <ListChecks className="text-orange-500" size={20} />,
   },
 ]
 
@@ -65,7 +71,7 @@ export const LeadMagnetSection: React.FC = () => {
                     <h3 className="text-lg font-bold text-[#1d1d1f] group-hover:text-orange-600 transition-colors">
                       {feature.title}
                     </h3>
-                    <p className="text-[#86868b] text-sm leading-snug">{feature.desc}</p>
+                    {feature.desc ? <p className="text-[#86868b] text-sm leading-snug">{feature.desc}</p> : null}
                   </div>
                 </div>
               ))}
