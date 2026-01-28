@@ -78,7 +78,11 @@ export const LeadMagnetSection: React.FC = () => {
             </div>
 
             <div className="pt-6">
-              <button className="group relative inline-flex items-center justify-center px-10 py-5 font-bold text-white transition-all duration-200 bg-[#1d1d1f] rounded-2xl hover:bg-orange-600 active:scale-95 shadow-[0_20px_40px_-15px_rgba(0,0,0,0.3)] hover:shadow-orange-500/20" type="button">
+              <button
+                className="group relative inline-flex items-center justify-center px-10 py-5 font-bold text-white transition-all duration-200 bg-[#1d1d1f] rounded-2xl hover:bg-orange-600 active:scale-95 shadow-[0_20px_40px_-15px_rgba(0,0,0,0.3)] hover:shadow-orange-500/20"
+                onClick={() => document.getElementById('oferta')?.scrollIntoView({ behavior: 'smooth' })}
+                type="button"
+              >
                 <span className="mr-3">Baixar Preview Gratuito</span>
                 <Download size={20} className="group-hover:translate-y-0.5 transition-transform" />
               </button>

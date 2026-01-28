@@ -18,7 +18,7 @@ export const HeroSectionPotato: React.FC = () => {
   }, [])
 
   const scrollToSection = () => {
-    const element = document.getElementById('contexto')
+    const element = document.getElementById('oferta')
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' })
     }

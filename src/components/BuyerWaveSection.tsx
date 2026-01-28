@@ -169,6 +169,7 @@ export const BuyerWaveSection: React.FC = () => {
           <div className="mt-24 text-center">
             <button
               className="group relative inline-flex items-center gap-8 bg-orange-600 hover:bg-orange-500 text-white pl-12 pr-4 py-5 rounded-full transition-all duration-300 shadow-2xl shadow-orange-600/30 active:scale-95"
+              onClick={() => document.getElementById('oferta')?.scrollIntoView({ behavior: 'smooth' })}
               type="button"
             >
               <div className="text-left">

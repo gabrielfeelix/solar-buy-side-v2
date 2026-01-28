@@ -83,7 +83,10 @@ export const ManualStrategicSection: React.FC = () => {
             </div>
 
             <div className="mt-auto pt-12">
-              <ButtonPrimary className="text-base md:text-lg px-10 py-4">
+              <ButtonPrimary
+                className="text-base md:text-lg px-10 py-4"
+                onClick={() => document.getElementById('oferta')?.scrollIntoView({ behavior: 'smooth' })}
+              >
                 QUERO ME DESTACAR NO MERCADO
                 <ArrowRight size={20} />
               </ButtonPrimary>

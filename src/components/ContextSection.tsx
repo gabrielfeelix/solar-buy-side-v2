@@ -93,7 +93,11 @@ export const ContextSection: React.FC = () => {
             </div>
 
             <div className="lg:col-span-2 flex flex-col items-center lg:items-end">
-              <button className="group relative bg-slate-900 hover:bg-[#F97316] text-white px-8 py-4 rounded-full font-bold text-sm transition-all duration-300 flex items-center gap-3 shadow-lg shadow-slate-200 hover:shadow-[#F97316]/20" type="button">
+              <button
+                className="group relative bg-slate-900 hover:bg-[#F97316] text-white px-8 py-4 rounded-full font-bold text-sm transition-all duration-300 flex items-center gap-3 shadow-lg shadow-slate-200 hover:shadow-[#F97316]/20"
+                onClick={() => document.getElementById('oferta')?.scrollIntoView({ behavior: 'smooth' })}
+                type="button"
+              >
                 Garantir meu acesso agora
                 <div className="w-6 h-6 bg-white/10 rounded-full flex items-center justify-center group-hover:translate-x-1 transition-transform">
                   <ArrowRight className="w-4 h-4" />

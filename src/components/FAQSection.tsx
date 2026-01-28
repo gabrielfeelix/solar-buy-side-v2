@@ -4,8 +4,20 @@ import {
   ChevronDown,
   Clock,
   HelpCircle,
-  MessageCircle,
 } from 'lucide-react'
+
+const WhatsAppIcon: React.FC<{ size?: number; className?: string }> = ({ size = 20, className }) => (
+  <svg
+    width={size}
+    height={size}
+    viewBox="0 0 24 24"
+    fill="currentColor"
+    aria-hidden="true"
+    className={className}
+  >
+    <path d="M12 2a9.96 9.96 0 0 0-8.53 15.16L2 22l4.97-1.41A9.96 9.96 0 1 0 12 2Zm0 18.2c-1.55 0-3.07-.41-4.41-1.18l-.32-.19-2.95.84.83-2.88-.21-.33A8.17 8.17 0 1 1 12 20.2Zm4.78-6.08c-.26-.13-1.53-.75-1.77-.84-.24-.09-.42-.13-.6.13-.18.26-.69.84-.85 1.02-.16.18-.31.2-.57.07-.26-.13-1.1-.4-2.1-1.28-.78-.7-1.31-1.56-1.46-1.82-.15-.26-.02-.4.11-.53.12-.12.26-.31.39-.47.13-.16.18-.26.26-.44.09-.18.04-.33-.02-.47-.07-.13-.6-1.44-.82-1.97-.22-.54-.45-.46-.6-.47h-.51c-.18 0-.47.07-.71.33-.24.26-.94.92-.94 2.25s.96 2.61 1.1 2.79c.13.18 1.88 2.88 4.55 4.03.64.27 1.13.43 1.52.55.64.2 1.23.17 1.69.1.52-.08 1.53-.63 1.75-1.23.22-.6.22-1.12.16-1.23-.07-.11-.24-.18-.5-.31Z" />
+  </svg>
+)
 
 const faqData = [
   {
@@ -47,8 +59,12 @@ export const FAQSection: React.FC = () => {
             </div>
 
             <div className="flex flex-col sm:flex-row gap-4">
-              <button className="inline-flex items-center justify-center gap-3 px-8 py-4 bg-[#1d1d1f] text-white font-bold rounded-2xl hover:bg-orange-600 transition-all shadow-lg active:scale-95 group" type="button">
-                <MessageCircle size={20} />
+              <button
+                className="inline-flex items-center justify-center gap-3 px-8 py-4 bg-[#25D366] text-white font-bold rounded-2xl hover:bg-[#20bd5a] transition-all shadow-lg shadow-[#25D366]/20 active:scale-95 group"
+                onClick={() => document.getElementById('oferta')?.scrollIntoView({ behavior: 'smooth' })}
+                type="button"
+              >
+                <WhatsAppIcon size={20} />
                 <span>Fale com a equipe Buy-Side</span>
                 <ArrowUpRight size={18} className="opacity-0 group-hover:opacity-100 transition-opacity" />
               </button>

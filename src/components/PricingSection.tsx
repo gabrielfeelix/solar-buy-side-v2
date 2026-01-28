@@ -171,6 +171,7 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ id }) => {
                 <div className="space-y-4">
                   <button
                     className="relative w-full group overflow-hidden bg-orange-600 hover:bg-orange-500 text-white font-black py-6 rounded-2xl shadow-xl shadow-orange-600/30 transition-all duration-300 active:scale-[0.98] flex items-center justify-center"
+                    onClick={() => document.getElementById('oferta')?.scrollIntoView({ behavior: 'smooth' })}
                     type="button"
                   >
                     <div className="relative z-10 flex items-center gap-3">
