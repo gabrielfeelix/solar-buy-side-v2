@@ -1,32 +1,34 @@
 ﻿import React from 'react'
-import { Menu, Sun } from 'lucide-react'
+import { ArrowRight, Menu, Sun } from 'lucide-react'
 
 export const SolarHeader: React.FC = () => {
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-[#020617]/80 backdrop-blur-md border-b border-white/10 py-4">
       <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
-        <div className="flex items-center gap-2">
-          <div className="w-8 h-8 bg-[#F97316] rounded-sm flex items-center justify-center shadow-lg">
+        <a href="#hero" className="flex items-center gap-3">
+          <div className="w-8 h-8 bg-[#F97316] rounded-md flex items-center justify-center shadow-lg">
             <Sun className="w-5 h-5 text-white fill-white" />
           </div>
-          <span className="text-white font-bold tracking-tight text-lg">
-            MANUAL<span className="font-light text-slate-400">SOLAR</span>
-          </span>
-        </div>
+          <span className="text-white font-bold tracking-tight text-base sm:text-lg">SOLAR BUY-SIDE</span>
+        </a>
 
         <div className="hidden md:flex items-center gap-8">
-          <a href="#beneficios" className="text-sm font-medium text-slate-300 hover:text-white transition-colors">
-            Benefícios
+          <a href="#solucao" className="text-sm font-medium text-slate-300 hover:text-white transition-colors">
+            O Manual
           </a>
-          <a href="#conteudo" className="text-sm font-medium text-slate-300 hover:text-white transition-colors">
-            Conteúdo
+          <a href="#pricing" className="text-sm font-medium text-slate-300 hover:text-white transition-colors">
+            Planos
           </a>
-          <a href="#autor" className="text-sm font-medium text-slate-300 hover:text-white transition-colors">
-            Mentor
+          <a href="#faq" className="text-sm font-medium text-slate-300 hover:text-white transition-colors">
+            FAQ
           </a>
-          <button className="bg-white/10 hover:bg-white/20 text-white px-5 py-2 rounded-sm text-sm font-bold transition-all border border-white/20" type="button">
-            Área do Aluno
-          </button>
+          <a
+            href="#pricing"
+            className="inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 text-white px-5 py-2 rounded-sm text-sm font-bold transition-all border border-white/20"
+          >
+            Garantir Acesso
+            <ArrowRight className="w-4 h-4" />
+          </a>
         </div>
         <button className="md:hidden text-white" type="button">
           <Menu className="w-6 h-6" />
