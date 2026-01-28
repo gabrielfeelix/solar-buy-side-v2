@@ -1,7 +1,29 @@
-﻿import React from 'react'
+﻿import React, { useEffect, useState } from 'react'
 import { AlertCircle, Map, Monitor, Play, Search, ShieldAlert } from 'lucide-react'
 
 export const VideoSection: React.FC = () => {
+  const [showPlayer, setShowPlayer] = useState(false)
+  const WistiaPlayer = 'wistia-player' as React.ElementType
+
+  useEffect(() => {
+    if (!showPlayer) return
+    const existingPlayer = document.querySelector("script[src='https://fast.wistia.com/player.js']")
+    const existingEmbed = document.querySelector("script[src='https://fast.wistia.com/embed/u0jf5yyoda.js']")
+    if (!existingPlayer) {
+      const script = document.createElement('script')
+      script.src = 'https://fast.wistia.com/player.js'
+      script.async = true
+      document.body.appendChild(script)
+    }
+    if (!existingEmbed) {
+      const script = document.createElement('script')
+      script.src = 'https://fast.wistia.com/embed/u0jf5yyoda.js'
+      script.async = true
+      script.type = 'module'
+      document.body.appendChild(script)
+    }
+  }, [showPlayer])
+
   return (
     <section
       id="video-section"
@@ -91,35 +113,63 @@ export const VideoSection: React.FC = () => {
         <div className="relative group">
           <div className="absolute -inset-2 bg-orange-500/10 rounded-[52px] blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
 
-          <div className="relative aspect-video rounded-[48px] bg-slate-900 overflow-hidden border border-white/10 shadow-2xl flex items-center justify-center group cursor-pointer">
-            <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1497215728101-856f4ea42174?q=80&w=2070&auto=format&fit=crop')] bg-cover bg-center opacity-50 transition-transform duration-700 group-hover:scale-105"></div>
+          <div
+            className="relative aspect-video rounded-[48px] bg-slate-900 overflow-hidden border border-white/10 shadow-2xl flex items-center justify-center group cursor-pointer"
+            onClick={() => setShowPlayer(true)}
+            role="button"
+            tabIndex={0}
+            onKeyDown={(event) => {
+              if (event.key === 'Enter' || event.key === ' ') {
+                setShowPlayer(true)
+              }
+            }}
+          >
+            {!showPlayer && (
+              <>
+                <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1497215728101-856f4ea42174?q=80&w=2070&auto=format&fit=crop')] bg-cover bg-center opacity-50 transition-transform duration-700 group-hover:scale-105"></div>
 
-            <div className="absolute inset-0 bg-slate-900/60 group-hover:bg-slate-900/30 transition-colors"></div>
+                <div className="absolute inset-0 bg-slate-900/60 group-hover:bg-slate-900/30 transition-colors"></div>
 
-            <div className="relative z-10">
-              <div className="w-24 h-24 rounded-full bg-white/10 backdrop-blur-2xl border border-white/20 flex items-center justify-center transition-transform duration-500 group-hover:scale-110">
-                <div className="w-16 h-16 rounded-full bg-white shadow-2xl flex items-center justify-center group-hover:bg-orange-500 transition-colors">
-                  <Play className="w-6 h-6 text-slate-900 fill-slate-900 group-hover:text-white group-hover:fill-white ml-1 transition-colors" />
+                <div className="relative z-10">
+                  <div className="w-24 h-24 rounded-full bg-white/10 backdrop-blur-2xl border border-white/20 flex items-center justify-center transition-transform duration-500 group-hover:scale-110">
+                    <div className="w-16 h-16 rounded-full bg-white shadow-2xl flex items-center justify-center group-hover:bg-orange-500 transition-colors">
+                      <Play className="w-6 h-6 text-slate-900 fill-slate-900 group-hover:text-white group-hover:fill-white ml-1 transition-colors" />
+                    </div>
+                  </div>
                 </div>
-              </div>
-            </div>
 
-            <div className="absolute bottom-10 left-10 right-10 flex items-end justify-between">
-              <div className="flex items-center gap-4">
-                <div className="hidden sm:flex w-12 h-12 rounded-2xl bg-white/10 backdrop-blur-md border border-white/20 items-center justify-center text-white">
-                  <Monitor className="w-5 h-5" />
+                <div className="absolute bottom-10 left-10 right-10 flex items-end justify-between">
+                  <div className="flex items-center gap-4">
+                    <div className="hidden sm:flex w-12 h-12 rounded-2xl bg-white/10 backdrop-blur-md border border-white/20 items-center justify-center text-white">
+                      <Monitor className="w-5 h-5" />
+                    </div>
+                    <div>
+                      <p className="text-[10px] font-black text-orange-500 uppercase tracking-[0.3em] mb-1">
+                        Conteúdo Exclusivo
+                      </p>
+                      <p className="text-2xl font-black text-white tracking-tight">A Nova Realidade Solar</p>
+                    </div>
+                  </div>
+                  <div className="px-5 py-2 bg-black/40 backdrop-blur-md border border-white/10 rounded-full text-[10px] font-black text-white uppercase tracking-widest">
+                    12:45
+                  </div>
                 </div>
-                <div>
-                  <p className="text-[10px] font-black text-orange-500 uppercase tracking-[0.3em] mb-1">
-                    Conteúdo Exclusivo
-                  </p>
-                  <p className="text-2xl font-black text-white tracking-tight">A Nova Realidade Solar</p>
-                </div>
+              </>
+            )}
+
+            {showPlayer && (
+              <div className="absolute inset-0">
+                <style>{`
+                  wistia-player[media-id='u0jf5yyoda']:not(:defined) {
+                    background: center / contain no-repeat url('https://fast.wistia.com/embed/medias/u0jf5yyoda/swatch');
+                    display: block;
+                    filter: blur(5px);
+                    padding-top: 56.25%;
+                  }
+                `}</style>
+                <WistiaPlayer media-id="u0jf5yyoda" aspect="1.7777777777777777"></WistiaPlayer>
               </div>
-              <div className="px-5 py-2 bg-black/40 backdrop-blur-md border border-white/10 rounded-full text-[10px] font-black text-white uppercase tracking-widest">
-                12:45
-              </div>
-            </div>
+            )}
           </div>
         </div>
       </div>

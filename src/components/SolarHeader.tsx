@@ -6,7 +6,7 @@ export const SolarHeader: React.FC = () => {
     <header className="fixed top-0 left-0 right-0 z-50 bg-[#020617]/80 backdrop-blur-md border-b border-white/10 py-4">
       <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
         <a href="#hero" className="flex items-center gap-3">
-          <img src="/assets/logotipo-solar.png" alt="Solar Buy-Side" className="h-8 w-auto" />
+          <img src="/assets/logo-solar-buy-side.svg" alt="Solar Buy-Side" className="h-10 sm:h-11 w-auto" />
         </a>
 
         <div className="hidden md:flex items-center gap-8">

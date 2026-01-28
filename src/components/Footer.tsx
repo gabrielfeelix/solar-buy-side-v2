@@ -6,7 +6,7 @@ export const Footer: React.FC = () => {
     <footer className="bg-[#001529] text-white py-4 px-8 border-t border-white/5 font-sans">
       <div className="max-w-[1400px] mx-auto flex flex-col xl:flex-row items-center justify-between gap-4">
         <div className="flex items-center gap-4">
-          <img src="/assets/logotipo-solar.png" alt="Solar Buy-Side" className="h-6 w-auto" />
+          <img src="/assets/logo-solar-buy-side.svg" alt="Solar Buy-Side" className="h-8 w-auto" />
           <div className="h-3 w-px bg-white/10 hidden sm:block" />
           <span className="text-[10px] font-medium text-white/30 uppercase tracking-[0.15em]">
             CNPJ: 55.463.06/0001-80
