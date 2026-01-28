@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+Ôªøimport React, { useState } from 'react'
 import {
   ArrowRight,
   Award,
@@ -10,26 +10,26 @@ import {
 
 const testimonials = [
   {
-    name: 'RogÈrio',
+    name: 'Rog√©rio',
     role: 'Comprador',
     location: 'Campinas, SP',
     avatar: '/assets/person1.jpg',
-    reviewTitle: 'O manual valeu cada p·gina.',
+    reviewTitle: 'O manual valeu cada p√°gina.',
     quote:
-      'Nunca tinha tido contato com energia solar e tinha receio de tomar decis„o errada. Mas, ao comeÁar a ler o manual, tudo mudou. O conte˙do È claro, estruturado e me conquistou logo no inÌcio. As 4 fases da jornada de compra foram essenciais. Sempre que surgia uma d˙vida, o Ìndice interativo com mais de 160 tÛpicos me levava direto ‡ resposta.',
+      'Nunca tinha tido contato com energia solar e tinha receio de tomar decis√£o errada. Mas, ao come√ßar a ler o manual, tudo mudou. O conte√∫do √© claro, estruturado e me conquistou logo no in√≠cio. As 4 fases da jornada de compra foram essenciais. Sempre que surgia uma d√∫vida, o √≠ndice interativo com mais de 160 t√≥picos me levava direto √† resposta.',
     highlight:
-      'No fim, escolhi a empresa certa, o sistema ideal ao preÁo certo e conduzi tudo com seguranÁa. Sem exagero: o manual valeu cada p·gina.',
+      'No fim, escolhi a empresa certa, o sistema ideal ao pre√ßo certo e conduzi tudo com seguran√ßa. Sem exagero: o manual valeu cada p√°gina.',
   },
   {
-    name: 'Juliana Rocha',
-    role: 'Arquiteta',
-    location: 'FlorianÛpolis, SC',
+    name: 'Juliano Rocha',
+    role: 'Arquiteto',
+    location: 'Florian√≥polis, SC',
     avatar: '/assets/person2.jpg',
     reviewTitle: 'Autoridade total no projeto.',
     quote:
-      "Como arquiteta, precisava de algo que traduzisse o 'tecniquÍs' para uma linguagem que eu pudesse explicar aos meus clientes. O manual faz exatamente isso. Ele organiza o caos de informaÁıes que recebemos dos fornecedores e nos d· critÈrios reais de avaliaÁ„o tÈcnica e comercial.",
+      "Como arquiteto, precisava de algo que traduzisse o 'tecniqu√™s' para uma linguagem que eu pudesse explicar aos meus clientes. O manual faz exatamente isso. Ele organiza o caos de informa√ß√µes que recebemos dos fornecedores e nos d√° crit√©rios reais de avalia√ß√£o t√©cnica e comercial.",
     highlight:
-      'Hoje n„o assino um projeto sem conferir os checklists de validaÁ„o do manual. … o padr„o ouro do setor solar.',
+      'Hoje n√£o assino um projeto sem conferir os checklists de valida√ß√£o do manual. √â o padr√£o ouro do setor solar.',
   },
 ]
 
@@ -46,11 +46,11 @@ export const BuyerWaveSection: React.FC = () => {
           <span className="text-orange-600 font-semibold mb-3 block uppercase text-xs tracking-[0.2em]">
             Guia do Comprador
           </span>
-          <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-6">O que est· em jogo?</h2>
+          <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-6">O que est√° em jogo?</h2>
           <p className="text-xl text-[#86868B] max-w-2xl mx-auto leading-relaxed">
-            Seus compradores est„o evoluindo.
+            Seus compradores est√£o evoluindo.
             <br className="hidden md:block" />
-            Veja o que eles estar„o aprendendo em breve.
+            Veja o que eles estar√£o aprendendo em breve.
           </p>
         </div>
 
@@ -65,9 +65,9 @@ export const BuyerWaveSection: React.FC = () => {
             </h3>
             <ul className="space-y-6 flex-grow">
               {[
-                'Conceitos essenciais para uma compra tÈcnica e segura',
-                'Reconhecimento de marcas e distribuidores de alta confianÁa',
-                'CritÈrios para selecionar empresas sÈrias e competentes',
+                'Conceitos essenciais para uma compra t√©cnica e segura',
+                'Reconhecimento de marcas e distribuidores de alta confian√ßa',
+                'Crit√©rios para selecionar empresas s√©rias e competentes',
               ].map((item) => (
                 <li key={item} className="flex flex-col text-[#424245]">
                   <div className="flex gap-4 items-start">
@@ -89,9 +89,9 @@ export const BuyerWaveSection: React.FC = () => {
             </h3>
             <ul className="space-y-6 flex-grow">
               {[
-                'Analisar propostas com critÈrios tÈcnicos e financeiros',
-                'Avaliar reputaÁ„o e suporte de pÛs-venda com precis„o',
-                'Tomar decis„o com seguranÁa e embasamento tÈcnico',
+                'Analisar propostas com crit√©rios t√©cnicos e financeiros',
+                'Avaliar reputa√ß√£o e suporte de p√≥s-venda com precis√£o',
+                'Tomar decis√£o com seguran√ßa e embasamento t√©cnico',
               ].map((item) => (
                 <li key={item} className="flex flex-col text-[#424245]">
                   <div className="flex gap-4 items-start">
@@ -173,9 +173,9 @@ export const BuyerWaveSection: React.FC = () => {
             >
               <div className="text-left">
                 <span className="block text-[10px] font-black opacity-80 uppercase tracking-[0.25em] mb-0.5">
-                  ComeÁar agora
+                  Come√ßar agora
                 </span>
-                <span className="block text-xl font-bold tracking-tight">Acessar Guia EstratÈgico</span>
+                <span className="block text-xl font-bold tracking-tight">Acessar Guia Estrat√©gico</span>
               </div>
               <div className="w-14 h-14 bg-white/20 rounded-full flex items-center justify-center group-hover:translate-x-1 transition-transform">
                 <ArrowRight size={28} />
