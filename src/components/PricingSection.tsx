@@ -7,10 +7,10 @@ import {
   Layers,
   Lock,
   Map,
+  Package,
   RefreshCw,
   ShieldCheck,
   Sparkles,
-  Zap,
 } from 'lucide-react'
 
 type PricingSectionProps = {
@@ -50,12 +50,11 @@ const features = [
 ]
 
 export const PricingSection: React.FC<PricingSectionProps> = ({ id }) => {
-  const [timeLeft, setTimeLeft] = useState<Countdown>({ min: 0, sec: 0 })
+  const [timeLeft, setTimeLeft] = useState<Countdown>({ min: 11, sec: 42 })
   const stockLimit = 1000
-  const stockCurrent = 912
+  const stockCurrent = 847
 
   useEffect(() => {
-    setTimeLeft({ min: 14, sec: 59 })
     const timer = setInterval(() => {
       setTimeLeft((prev) => {
         if (prev.sec > 0) return { ...prev, sec: prev.sec - 1 }
@@ -67,13 +66,10 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ id }) => {
   }, [])
 
   return (
-    <section
-      id={id}
-      className="relative bg-[#010413] text-white font-sans selection:bg-orange-500/30 overflow-x-hidden"
-    >
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] bg-blue-600/10 rounded-full blur-[180px]"></div>
-        <div className="absolute top-[20%] right-[-5%] w-[30%] h-[40%] bg-orange-600/5 rounded-full blur-[150px]"></div>
+    <section id={id} className="relative overflow-hidden bg-[#010413] text-white font-sans selection:bg-orange-500/30">
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-[-20%] left-[-10%] w-[70%] h-[70%] bg-blue-600/10 rounded-full blur-[180px]"></div>
+        <div className="absolute bottom-[-10%] right-[-10%] w-[50%] h-[50%] bg-blue-500/5 rounded-full blur-[150px]"></div>
         <div
           className="absolute inset-0 opacity-[0.03]"
           style={{
@@ -84,81 +80,75 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ id }) => {
         ></div>
       </div>
 
-      <section className="relative z-10 max-w-7xl mx-auto px-6 py-20 md:py-32">
+      <div className="relative z-10 max-w-7xl mx-auto px-6 py-24 md:py-32">
         <div className="text-center mb-16 space-y-6">
           <div className="inline-flex items-center gap-3 px-5 py-2 bg-orange-500/10 border border-orange-500/20 rounded-full text-orange-500 text-[10px] font-black tracking-[0.2em] uppercase">
             <Sparkles size={14} className="animate-pulse" />
             Vagas Limitadas: Pré-Venda Profissional
           </div>
 
-          <h2 className="text-5xl md:text-8xl font-black tracking-tighter leading-[0.9] uppercase italic">
-            Não perca tempo <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 via-orange-600 to-orange-400">
-              nem posição no mercado.
+          <h2 className="text-5xl md:text-7xl font-black tracking-tighter leading-[0.95]">
+            NÃO PERCA TEMPO NEM <br />
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-blue-200 to-blue-500">
+              POSIÇÃO NO MERCADO.
             </span>
           </h2>
 
-          <p className="text-lg md:text-xl text-slate-400 max-w-3xl mx-auto font-medium">
-            O domínio do Buy-Side é o que separa os amadores dos especialistas que realmente fecham grandes contratos.
+          <p className="text-xl text-slate-400 max-w-2xl mx-auto font-medium">
+            O mercado solar não perdoa quem fica para trás. Garanta o método que os grandes players usam para dominar o Buy-Side.
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-12 gap-10 items-start">
-          <div className="lg:col-span-7 space-y-8">
-            <div className="relative p-1 bg-gradient-to-br from-white/10 to-transparent rounded-[32px]">
-              <div className="bg-[#020617] rounded-[30px] p-8 md:p-10">
-                <h3 className="text-2xl font-black mb-8 flex items-center gap-3 text-orange-500 uppercase tracking-tighter">
-                  <Zap size={24} className="fill-current" />
-                  Veja tudo que você recebe:
-                </h3>
+        <div className="grid lg:grid-cols-12 gap-12 items-start">
+          <div className="lg:col-span-7 space-y-10">
+            <div>
+              <h3 className="text-2xl font-bold mb-8 flex items-center gap-3 italic">
+                <span className="w-8 h-1 bg-blue-500 rounded-full"></span>
+                VEJA TUDO QUE VOCÊ RECEBE:
+              </h3>
 
-                <div className="grid sm:grid-cols-2 gap-6">
-                  {features.map((item) => (
-                    <div key={item.title} className="flex gap-4 group">
-                      <div className="shrink-0 p-3 bg-white/5 border border-white/10 rounded-2xl group-hover:border-orange-500/50 transition-colors">
-                        {item.icon}
-                      </div>
-                      <div className="space-y-1">
-                        <h4 className="font-bold text-lg leading-tight">{item.title}</h4>
-                        <p className="text-sm text-slate-500">{item.desc}</p>
-                      </div>
+              <div className="grid sm:grid-cols-2 gap-4">
+                {features.map((item) => (
+                  <div
+                    key={item.title}
+                    className="p-6 bg-white/[0.03] border border-white/10 rounded-[24px] hover:bg-white/[0.06] transition-all group"
+                  >
+                    <div className="mb-4 p-3 bg-blue-500/10 w-fit rounded-xl group-hover:scale-110 transition-transform">
+                      {item.icon}
                     </div>
-                  ))}
-                </div>
-
-                <div className="mt-10 p-5 bg-blue-500/5 border border-blue-500/20 rounded-2xl flex items-center gap-4">
-                  <div className="bg-blue-500/20 p-2 rounded-lg">
-                    <RefreshCw size={20} className="text-blue-400 animate-spin-slow" />
+                    <div className="space-y-1">
+                      <span className="text-[10px] font-black text-blue-500 tracking-widest">{item.tag}</span>
+                      <h4 className="font-bold text-lg leading-tight">{item.title}</h4>
+                      <p className="text-sm text-slate-500 leading-relaxed">{item.desc}</p>
+                    </div>
                   </div>
-                  <div>
-                    <p className="text-sm font-bold text-white uppercase tracking-tight">Acesso Imediato + Atualizações 2026</p>
-                    <p className="text-xs text-slate-500 italic">
-                      Conteúdo dinâmico que evolui com as novas regras do mercado.
-                    </p>
-                  </div>
-                </div>
+                ))}
               </div>
             </div>
 
-            <div className="px-8 py-6 bg-orange-600/10 border border-orange-500/20 rounded-3xl">
-              <div className="flex justify-between items-center mb-3">
-                <span className="text-xs font-black uppercase tracking-widest text-orange-500">
-                  Apenas 1.000 unidades garantem este preço
-                </span>
-                <span className="text-xs font-bold text-white bg-orange-600 px-2 py-0.5 rounded-md">
-                  {stockCurrent}/1.000
+            <div className="p-8 bg-gradient-to-br from-blue-900/20 to-transparent border border-blue-500/20 rounded-[32px] space-y-4">
+              <div className="flex justify-between items-end">
+                <div className="flex items-center gap-2 text-orange-500 font-black text-sm uppercase tracking-tighter">
+                  <Package size={18} />
+                  Apenas 1.000 unidades na Pré-venda
+                </div>
+                <span className="text-xs text-slate-500 font-bold uppercase tracking-widest">
+                  {stockCurrent} / {stockLimit} Vendidos
                 </span>
               </div>
-              <div className="h-2 w-full bg-white/5 rounded-full overflow-hidden">
+              <div className="h-3 bg-white/5 rounded-full overflow-hidden p-[2px]">
                 <div
-                  className="h-full bg-orange-600 shadow-[0_0_15px_rgba(234,88,12,0.5)] transition-all duration-1000"
+                  className="h-full bg-gradient-to-r from-orange-600 to-orange-400 rounded-full transition-all duration-1000 shadow-[0_0_15px_rgba(249,115,22,0.4)]"
                   style={{ width: `${(stockCurrent / stockLimit) * 100}%` }}
                 ></div>
               </div>
+              <p className="text-center text-[11px] text-slate-500 font-medium">
+                *O preço subirá para <span className="text-white">R$ 1.497,00</span> assim que o lote de pré-venda esgotar.
+              </p>
             </div>
           </div>
 
-          <div className="lg:col-span-5 lg:sticky lg:top-8">
+          <div className="lg:col-span-5 sticky top-8">
             <div className="relative">
               <div className="absolute -inset-4 bg-orange-600/20 blur-[60px] rounded-full opacity-50"></div>
 
@@ -232,23 +222,7 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ id }) => {
             </div>
           </div>
         </div>
-
-        <div className="mt-32 pt-16 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-8">
-          <div className="flex flex-col items-center md:items-start gap-2">
-            <span className="text-white font-black text-xl tracking-tighter italic">
-              GRUPO<span className="text-orange-600">MAIS</span>
-            </span>
-            <p className="text-[10px] text-slate-600 font-bold uppercase tracking-[0.3em]">
-              Intelligence & Solar Strategy
-            </p>
-          </div>
-          <div className="flex gap-8 text-[9px] font-black text-slate-500 uppercase tracking-widest">
-            <a href="#" className="hover:text-white transition-colors">Segurança</a>
-            <a href="#" className="hover:text-white transition-colors">Suporte</a>
-            <a href="#" className="hover:text-white transition-colors">Privacidade</a>
-          </div>
-        </div>
-      </section>
+      </div>
 
       <style
         dangerouslySetInnerHTML={{
