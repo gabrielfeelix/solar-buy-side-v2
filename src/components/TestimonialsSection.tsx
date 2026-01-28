@@ -1,5 +1,5 @@
 ﻿import React from 'react'
-import { AlertTriangle, Quote } from 'lucide-react'
+import { CheckCircle2, Quote } from 'lucide-react'
 
 const rodrigoImage = '/assets/person4.jpg'
 
@@ -35,26 +35,33 @@ export const TestimonialsSection: React.FC = () => {
           </div>
 
           <div className="lg:col-span-7">
-            <h2 className="text-4xl md:text-5xl font-serif text-[#0F172A] leading-tight mb-8">
-              "Eu não fechei apenas uma venda.<br />
-              <span className="text-[#F97316] italic">Eu mudei meu modelo de negócio.</span>"
+            <h2 className="text-4xl md:text-6xl font-black tracking-tight text-[#0F172A] leading-[1.1] mb-6">
+              "Em um mês fechei 5 sistemas novos"
             </h2>
-            <div className="space-y-6 text-lg text-slate-600 leading-relaxed">
+            <p className="text-xl md:text-2xl text-slate-500 font-medium mb-6">
+              Os benefícios são claros, e a prática comprova.
+            </p>
+            <p className="text-sm md:text-base font-medium text-slate-400 mb-10">
+              Veja a experiência de Rodrigo, Integrador de São Paulo
+            </p>
+            <div className="space-y-6 text-base md:text-lg text-slate-600 leading-relaxed font-medium">
               <p>
-                "Antes eu perdia tempo explicando datasheet e brigando por centavos. O Manual Buy-Side me ensinou a sentar na mesa do cliente como um consultor, não como um vendedor."
+                "Eu sofria com a concorrência acirrada e a baixa conversão. O Manual Solar Buy-Side me mostrou como entender a perspectiva do cliente, e isso mudou o jogo."
               </p>
               <p>
-                "Quando mostrei o cálculo de inflação energética que aprendi no módulo 3, o cliente parou de cotar com os outros na hora. A percepção de valor foi imediata."
+                "Em um mês, fechei 5 sistemas novos. O mais gratificante, porém, foi a conexão. Deixei de ser apenas um vendedor e me tornei um verdadeiro parceiro para meus clientes."
               </p>
             </div>
 
             <div className="mt-10 bg-slate-50 border-l-4 border-[#F97316] p-6 rounded-r-lg">
               <div className="flex items-start gap-3">
-                <AlertTriangle className="w-5 h-5 text-[#F97316] mt-1 flex-shrink-0" />
+                <CheckCircle2 className="w-5 h-5 text-[#F97316] mt-1 flex-shrink-0" />
                 <div>
-                  <h4 className="font-bold text-[#0F172A] text-sm uppercase mb-1">Reality Check</h4>
+                  <h4 className="font-bold text-[#0F172A] text-sm uppercase mb-1">Faça como ele</h4>
                   <p className="text-slate-600 text-sm italic">
-                    "Você acha que os concorrentes que perderam essa venda sabiam que o Rodrigo estava usando técnicas de valuation financeiro? Eles nunca tiveram chance."
+                    <span className="block mt-2 font-semibold text-[#0F172A] not-italic">
+                      Imersão no Manual de Compra Solar Buy-Side: pense como seu cliente e torne-se um Vendedor de Alta Performance!
+                    </span>
                   </p>
                 </div>
               </div>

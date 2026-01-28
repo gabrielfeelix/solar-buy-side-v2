@@ -6,10 +6,8 @@ import {
   VideoSection,
   AudienceSection,
   ManualStrategicSection,
-  ImpactSection,
   TestimonialsSection,
   StoryBridgeSection,
-  DeliverablesSection,
   PricingSection,
   BuyerWaveSection,
   ReviewsSection,
@@ -28,10 +26,8 @@ function App() {
       <VideoSection />
       <AudienceSection />
       <ManualStrategicSection />
-      <ImpactSection />
       <TestimonialsSection />
       <StoryBridgeSection />
-      <DeliverablesSection />
       <PricingSection id="oferta" />
       <BuyerWaveSection />
       <ReviewsSection />
