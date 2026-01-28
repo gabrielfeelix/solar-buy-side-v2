@@ -19,8 +19,8 @@ import {
 
 function App() {
   useEffect(() => {
-    const sections = document.querySelectorAll('section')
-    sections.forEach((section) => section.classList.add('reveal'))
+    const targets = document.querySelectorAll('section > *')
+    targets.forEach((target) => target.classList.add('reveal'))
 
     const observer = new IntersectionObserver(
       (entries) => {
@@ -34,7 +34,7 @@ function App() {
       { threshold: 0.15 }
     )
 
-    sections.forEach((section) => observer.observe(section))
+    targets.forEach((target) => observer.observe(target))
     return () => observer.disconnect()
   }, [])
 
