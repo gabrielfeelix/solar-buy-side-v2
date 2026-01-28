@@ -1,5 +1,5 @@
 ﻿import React from 'react'
-import { BookOpen, FileCheck, LayoutGrid, Layers, Sun } from 'lucide-react'
+import { BookOpen, FileCheck, LayoutGrid, Layers } from 'lucide-react'
 
 const features = [
   {
@@ -46,26 +46,10 @@ export const StoryBridgeSection: React.FC = () => {
               <div className="absolute -inset-4 bg-slate-100 rounded-[32px] blur-2xl"></div>
 
               <div className="relative bg-slate-900 aspect-[3/4.2] rounded-[16px] shadow-2xl overflow-hidden border-[1px] border-slate-800">
-                <div className="absolute inset-0 bg-gradient-to-b from-slate-800 to-slate-950"></div>
+                <div className="absolute inset-0 bg-[url('/assets/manual.jpg.png')] bg-cover bg-center"></div>
+                <div className="absolute inset-0 bg-gradient-to-b from-black/25 via-transparent to-black/30"></div>
 
-                <div className="absolute inset-0 p-12 flex flex-col justify-between">
-                  <div className="space-y-6">
-                    <div className="w-12 h-1 bg-orange-600"></div>
-                    <div>
-                      <h3 className="text-3xl font-bold text-white tracking-tight">
-                        Manual <br /> Solar
-                      </h3>
-                      <p className="text-orange-500 font-black tracking-[0.2em] uppercase text-[12px] mt-2">
-                        Buy-Side Perspective
-                      </p>
-                    </div>
-                  </div>
-
-                  <div className="flex items-center gap-4 text-slate-500 border-t border-slate-800 pt-8">
-                    <Sun size={32} strokeWidth={1.5} />
-                    <span className="text-[10px] uppercase tracking-widest font-bold">2024 Edition</span>
-                  </div>
-                </div>
+                <div className="absolute inset-0 p-12 flex flex-col justify-between"></div>
               </div>
             </div>
           </div>

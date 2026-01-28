@@ -95,28 +95,11 @@ export const ManualStrategicSection: React.FC = () => {
               <div className="absolute -inset-20 bg-orange-500/20 blur-[120px] rounded-full group-hover:bg-orange-500/30 transition-colors duration-700"></div>
 
               <div className="relative w-[340px] h-[480px] bg-[#0f172a] rounded-r-lg shadow-[30px_40px_60px_-15px_rgba(0,0,0,0.7)] border-y border-r border-white/10 flex flex-col justify-between p-12 overflow-hidden transform rotate-2 group-hover:rotate-0 transition-all duration-500">
+                <div className="absolute inset-0 bg-[url('/assets/manual.jpg.png')] bg-cover bg-center opacity-95"></div>
+                <div className="absolute inset-0 bg-gradient-to-b from-black/25 via-transparent to-black/30"></div>
                 <div className="absolute top-0 left-0 w-3 h-full bg-gradient-to-r from-black/40 via-white/5 to-transparent border-l border-white/5"></div>
 
-                <div className="space-y-4">
-                  <div className="w-10 h-1 bg-[#F97316]"></div>
-                  <h2 className="text-4xl font-black text-white leading-none tracking-tighter">
-                    BUY <br /> SIDE
-                  </h2>
-                </div>
-
-                <div className="space-y-4">
-                  <p className="text-[10px] font-bold tracking-[0.3em] text-orange-400 uppercase">
-                    Manual Estratégico
-                  </p>
-                  <div className="h-px w-full bg-white/10"></div>
-                  <p className="text-[8px] text-slate-500 leading-tight">
-                    UMA IMERSÃO COMPLETA NA PERSPECTIVA DO COMPRADOR PARA VENDER COM AUTORIDADE.
-                  </p>
-                </div>
-
-                <div className="absolute -bottom-10 -right-10 text-[140px] font-black text-white/[0.02] select-none pointer-events-none">
-                  BS
-                </div>
+                <div className="space-y-4"></div>
               </div>
             </div>
           </div>

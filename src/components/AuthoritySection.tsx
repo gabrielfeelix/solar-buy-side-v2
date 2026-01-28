@@ -23,12 +23,15 @@ export const AuthoritySection: React.FC = () => {
           </div>
         </div>
         <div className="space-y-8">
-          <h2 className="text-3xl font-bold text-white">
-            Criado Por Quem Viveu <br />
-            <span className="text-[#F97316]">Os Dois Lados da Mesa.</span>
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-[#F97316] text-[10px] font-bold uppercase tracking-widest">
+            Experiência Dual
+          </div>
+          <h2 className="text-3xl md:text-4xl font-bold text-white leading-tight">
+            Esse conteúdo só é possível porque foi criado por quem viveu os dois lados <br />
+            <span className="text-[#F97316]">da mesa: o do comprador e o do vendedor.</span>
           </h2>
           <p className="text-slate-400 leading-relaxed">
-            Francis não apenas ensina vendas; ele viveu a compra. Assessorando indústrias e fundos, ele decodificou exatamente o que faz um comprador fechar negócio.
+            Atua desde 2018 no setor de integração fotovoltaica e consultoria em investimento onde assessorou tanto no lado do comprador (Buy-Side) quanto no lado do vendedor (Sell-Side), ajudando na tomada de decisões inteligentes e seguras.
           </p>
           <div className="grid gap-4">
             <div className="p-4 bg-slate-900 border border-slate-800 rounded-lg flex gap-4 items-start hover:border-blue-500/30 transition-colors">
