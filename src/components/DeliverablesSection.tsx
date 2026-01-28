@@ -1,74 +1,52 @@
-import React from 'react'
-import { BookOpen, Layers, Sheet, Target } from 'lucide-react'
+﻿import React from 'react'
+import { CheckCircle2 } from 'lucide-react'
+
+const manualImage = '/assets/manual.jpg.png'
+
+const specs = [
+  'Mais de 130 páginas com conteúdo técnico e estratégico',
+  '160 tópicos organizados para consulta rápida',
+  'Uma metodologia em 4 fases que orienta toda a jornada de compra',
+  'Anexos técnicos que auxiliam na tomada de decisão',
+]
 
 export const DeliverablesSection: React.FC = () => {
   return (
-    <section className="section-diagonal section-diagonal-light bg-white py-24">
-      <div className="mx-auto max-w-6xl px-4">
-        <div className="text-center">
-          <h2 className="text-2xl font-semibold text-slate-900 sm:text-4xl">
-            Especificações & Entregáveis
-          </h2>
-          <p className="mt-3 text-sm text-slate-500">
-            Conteúdo técnico denso, estruturado para aplicação imediata.
-          </p>
+    <section id="conteudo" className="py-24 px-6 bg-[#020617] text-white border-t border-white/5">
+      <div className="max-w-6xl mx-auto">
+        <div className="grid lg:grid-cols-[1.1fr_0.9fr] gap-12 items-center">
+          <div>
+            <h2 className="text-3xl md:text-5xl font-bold leading-tight mb-6">
+              Uma imersão inovadora que revela a perspectiva do cliente para vender mais, melhor e com autoridade.
+            </h2>
+            <ul className="space-y-4 text-slate-300">
+              {specs.map((item) => (
+                <li key={item} className="flex items-start gap-3">
+                  <CheckCircle2 className="w-5 h-5 text-[#F97316] mt-1" />
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div className="relative flex justify-center">
+            <div className="absolute -inset-6 bg-gradient-to-tr from-[#F97316]/30 via-transparent to-blue-500/20 blur-3xl rounded-full"></div>
+            <div className="relative w-64 md:w-72 aspect-[3/4] rounded-2xl overflow-hidden border border-white/10 shadow-2xl">
+              <img src={manualImage} alt="Manual Solar Buy-Side" className="h-full w-full object-cover" loading="lazy" />
+            </div>
+          </div>
         </div>
 
-        <div className="mt-12 grid gap-6 lg:grid-cols-[0.7fr_1fr_0.7fr]">
-          <div className="grid gap-6">
-            <div className="glass-light flex flex-col items-center gap-4 rounded-2xl border border-slate-200 bg-white p-6 text-center shadow-soft">
-              <BookOpen className="h-7 w-7 text-orange-500" />
-              <div>
-                <div className="text-sm font-semibold">130+ Páginas</div>
-                <div className="text-xs text-slate-500">Densidade Profissional</div>
-              </div>
-            </div>
-            <div className="glass-light flex flex-col items-center gap-4 rounded-2xl border border-slate-200 bg-white p-6 text-center shadow-soft">
-              <Target className="h-7 w-7 text-orange-500" />
-              <div>
-                <div className="text-sm font-semibold">4 Fases</div>
-                <div className="text-xs text-slate-500">Metodologia Completa</div>
-              </div>
-            </div>
-          </div>
-
-          <div className="glass-light rounded-2xl border border-slate-200 bg-gradient-to-br from-orange-50 via-white to-white p-6 shadow-soft">
-            <div className="flex items-center justify-between">
-              <div className="flex h-9 w-9 items-center justify-center rounded-full bg-orange-100 text-orange-500">
-                <Layers className="h-5 w-5" />
-              </div>
-              <span className="rounded-full bg-orange-100 px-3 py-1 text-[10px] font-semibold uppercase text-orange-500">
-                Apenas Pré-venda
-              </span>
-            </div>
-            <p className="mt-5 text-sm text-slate-500">
-              Scripts reais de negociação, checklists de "Red Flags" e como conduzir compradores
-              iludidos pelo menor preço.
-            </p>
-            <div className="mt-4 text-xs font-semibold text-orange-500">Vale o preço do manual.</div>
-
-            <div className="mt-10 h-1.5 w-full rounded-full bg-slate-200">
-              <div className="h-1.5 w-3/5 rounded-full bg-orange-500" />
-            </div>
-            <div className="mt-2 text-right text-[10px] text-slate-400">327/1000 Restantes</div>
-          </div>
-
-          <div className="grid gap-6">
-            <div className="glass-light flex flex-col items-center gap-4 rounded-2xl border border-slate-200 bg-white p-6 text-center shadow-soft">
-              <Layers className="h-7 w-7 text-orange-500" />
-              <div>
-                <div className="text-sm font-semibold">160 Tópicos</div>
-                <div className="text-xs text-slate-500">Índice Interativo</div>
-              </div>
-            </div>
-            <div className="glass-light flex flex-col items-center gap-4 rounded-2xl border border-slate-200 bg-white p-6 text-center shadow-soft">
-              <Sheet className="h-7 w-7 text-orange-500" />
-              <div>
-                <div className="text-sm font-semibold">Anexos .XLS</div>
-                <div className="text-xs text-slate-500">Ferramentas Prontas</div>
-              </div>
-            </div>
-          </div>
+        <div className="mt-16 bg-slate-900/60 border border-[#F97316]/30 rounded-2xl p-8 text-center">
+          <h3 className="text-2xl md:text-3xl font-bold text-white mb-4">
+            Atenção: O tempo está correndo e quem agir primeiro, vende mais.
+          </h3>
+          <p className="text-slate-300 mb-3">
+            Em um mercado competitivo, sua vantagem é o conhecimento.
+          </p>
+          <p className="text-slate-400">
+            Não espere até que seus clientes e concorrentes tenham acesso ao manual, saibam mais que você e passem na sua frente.
+          </p>
         </div>
       </div>
     </section>

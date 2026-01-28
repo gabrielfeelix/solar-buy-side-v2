@@ -1,39 +1,43 @@
-import React from 'react'
-import { Download, Check } from 'lucide-react'
+﻿import React from 'react'
+import { CheckCircle2 } from 'lucide-react'
+import { ButtonSuccess } from './ManualAtoms'
+
+const ebookImage = '/assets/ebook-free.webp'
+
+const freebies = [
+  'Os 3 riscos na compra de sistemas solares',
+  'As 4 fases que seu cliente seguirá antes de comprar',
+  'Como sua proposta será avaliada e comparada',
+  'O índice detalhado do Manual Solar Buy-Side',
+]
 
 export const LeadMagnetSection: React.FC = () => {
   return (
-    <section className="section-diagonal section-diagonal-light bg-slate-50 py-24">
-      <div className="mx-auto max-w-5xl px-4">
-        <div className="grid overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-soft lg:grid-cols-[0.9fr_1.1fr]">
-          <div className="bg-gradient-to-br from-[#0f172a] via-[#121a30] to-[#1f2937] p-8 text-white">
-            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-white/10">
-              <Download className="h-5 w-5" />
-            </div>
-            <h3 className="mt-6 text-xl font-semibold">Prefere testar antes?</h3>
-            <p className="mt-2 text-sm text-slate-300">
-              Baixe o Capítulo Zero gratuitamente. Entenda as 4 Fases da Maturidade do Comprador.
-            </p>
-            <button type="button" className="cta-green mt-8 w-full rounded-xl px-6 py-4 text-sm font-semibold uppercase">
-              Baixar no Whatsapp
-            </button>
-          </div>
+    <section className="py-24 px-6 bg-white border-t border-slate-200">
+      <div className="max-w-6xl mx-auto grid lg:grid-cols-[1.1fr_0.9fr] gap-12 items-center">
+        <div>
+          <h2 className="text-3xl md:text-4xl font-bold text-[#0F172A] mb-4">
+            Se, mesmo com todas essas informações, você ainda tem dúvidas sobre o impacto do Manual Buy-Side,
+            temos uma prévia gratuita para você.
+          </h2>
+          <p className="text-slate-600 mb-6">
+            Garanta agora seu e-book grátis e entenda por que a imersão Solar Buy-Side faz vendedores
+            venderem mais e melhor.
+          </p>
+          <ul className="space-y-3 mb-8">
+            {freebies.map((item) => (
+              <li key={item} className="flex items-start gap-3 text-slate-700">
+                <CheckCircle2 className="w-5 h-5 text-[#22c55e] mt-0.5" />
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+          <ButtonSuccess className="px-8">Baixar ebook grátis agora</ButtonSuccess>
+        </div>
 
-          <div className="p-8">
-            <h4 className="text-sm font-semibold text-slate-900">O que você recebe grátis:</h4>
-            <ul className="mt-4 space-y-3 text-sm text-slate-600">
-              {['Os 3 Riscos Ocultos da Compra', 'As 4 Fases da Decisão', 'Checklist de Avaliação'].map(
-                (item) => (
-                  <li key={item} className="flex items-center gap-2">
-                    <Check className="h-4 w-4 text-orange-500" />
-                    {item}
-                  </li>
-                )
-              )}
-            </ul>
-            <p className="mt-6 text-xs italic text-slate-400">
-              "Se você ler isso e achar que não muda o jogo, não compre o manual."
-            </p>
+        <div className="flex justify-center">
+          <div className="relative w-64 md:w-72 aspect-[3/4] rounded-2xl overflow-hidden border border-slate-200 shadow-2xl">
+            <img src={ebookImage} alt="E-book grátis Manual Solar Buy-Side" className="h-full w-full object-cover" loading="lazy" />
           </div>
         </div>
       </div>

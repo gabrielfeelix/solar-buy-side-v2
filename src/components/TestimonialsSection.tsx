@@ -1,47 +1,61 @@
-import React from 'react'
-import { Quote, AlertTriangle } from 'lucide-react'
+﻿import React from 'react'
+import { AlertTriangle, Quote } from 'lucide-react'
+
+const rodrigoImage = '/assets/person4.jpg'
 
 export const TestimonialsSection: React.FC = () => {
   return (
-    <section className="section-diagonal section-diagonal-light bg-white py-24">
-      <div className="mx-auto max-w-6xl px-4">
-        <div className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr]">
-          <div className="relative">
-            <div className="relative h-full min-h-[360px] rounded-3xl bg-gradient-to-br from-[#111a30] via-[#0f172a] to-[#1c0f12] p-8 text-white shadow-deep">
-              <Quote className="h-10 w-10 text-orange-500" />
+    <section className="py-24 bg-white relative overflow-hidden">
+      <div className="absolute right-0 top-0 h-full w-1/3 bg-slate-50 hidden lg:block"></div>
+      <div className="max-w-7xl mx-auto px-6 relative z-10">
+        <div className="grid lg:grid-cols-12 gap-16 items-center">
+          <div className="lg:col-span-5 relative">
+            <div className="relative aspect-[3/4] bg-slate-900 rounded-2xl overflow-hidden shadow-2xl">
+              <img
+                src={rodrigoImage}
+                alt="Rodrigo M."
+                className="absolute inset-0 h-full w-full object-cover"
+                loading="lazy"
+              />
+              <div className="absolute inset-0 bg-gradient-to-tr from-slate-900/70 via-slate-800/10 to-slate-900/80"></div>
+              <div className="absolute inset-0 flex items-end">
+                <div className="w-full h-2/3 bg-gradient-to-t from-[#F97316]/20 to-transparent"></div>
+              </div>
               <div className="absolute bottom-8 left-8">
-                <div className="text-sm font-semibold">Rodrigo M.</div>
-                <div className="text-xs text-slate-300">Integrador Solar, SP</div>
+                <Quote className="w-12 h-12 text-[#F97316] mb-4 fill-current" />
+                <p className="text-white font-bold text-lg">Rodrigo M.</p>
+                <p className="text-slate-400 text-sm">Integrador Solar, SP</p>
               </div>
             </div>
-            <div className="absolute right-6 top-6 rounded-xl bg-white px-4 py-3 text-center text-xs shadow-soft">
-              <div className="text-[10px] font-semibold text-slate-500">CRESCIMENTO</div>
-              <div className="text-lg font-semibold text-orange-500">+5 Sistemas</div>
-              <div className="text-[11px] text-slate-400">Fechados em 30 dias</div>
+            <div className="absolute -right-8 top-12 bg-white p-6 rounded-xl shadow-xl border border-slate-100 hidden md:block">
+              <p className="text-slate-500 text-xs font-bold uppercase mb-1">Crescimento</p>
+              <p className="text-3xl font-bold text-[#F97316]">+5 Sistemas</p>
+              <p className="text-slate-400 text-xs mt-1">Fechados em 30 dias</p>
             </div>
           </div>
 
-          <div className="glass-light rounded-3xl border border-slate-200 bg-white p-8 shadow-soft">
-            <h3 className="text-2xl font-semibold leading-tight text-slate-900">
-              "Eu não fechei apenas uma venda.
-              <span className="block text-orange-500 italic">Eu mudei meu modelo de negócio."</span>
-            </h3>
-            <p className="mt-6 text-sm text-slate-500">
-              "Antes eu perdia tempo explicando datasheet e brigando por centavos. O Manual Buy-Side
-              me ensinou a sentar na mesa do cliente como um consultor, não como um vendedor."
-            </p>
-            <p className="mt-4 text-sm text-slate-500">
-              "Quando mostrei o cálculo de inflação energética que aprendi no módulo 3, o cliente
-              parou de cotar com os outros na hora. A percepção de valor foi imediata."
-            </p>
+          <div className="lg:col-span-7">
+            <h2 className="text-4xl md:text-5xl font-serif text-[#0F172A] leading-tight mb-8">
+              "Eu não fechei apenas uma venda.<br />
+              <span className="text-[#F97316] italic">Eu mudei meu modelo de negócio.</span>"
+            </h2>
+            <div className="space-y-6 text-lg text-slate-600 leading-relaxed">
+              <p>
+                "Antes eu perdia tempo explicando datasheet e brigando por centavos. O Manual Buy-Side me ensinou a sentar na mesa do cliente como um consultor, não como um vendedor."
+              </p>
+              <p>
+                "Quando mostrei o cálculo de inflação energética que aprendi no módulo 3, o cliente parou de cotar com os outros na hora. A percepção de valor foi imediata."
+              </p>
+            </div>
 
-            <div className="mt-6 flex items-start gap-3 rounded-xl border-l-2 border-orange-500 bg-orange-50/60 p-4 text-xs text-slate-600">
-              <AlertTriangle className="mt-0.5 h-4 w-4 text-orange-500" />
-              <div>
-                <div className="font-semibold uppercase text-orange-500">Reality Check</div>
-                <div className="mt-1">
-                  Você acha que os concorrentes que perderam essa venda sabiam que o Rodrigo estava
-                  usando técnicas de valuation financeiro? Eles nunca tiveram chance.
+            <div className="mt-10 bg-slate-50 border-l-4 border-[#F97316] p-6 rounded-r-lg">
+              <div className="flex items-start gap-3">
+                <AlertTriangle className="w-5 h-5 text-[#F97316] mt-1 flex-shrink-0" />
+                <div>
+                  <h4 className="font-bold text-[#0F172A] text-sm uppercase mb-1">Reality Check</h4>
+                  <p className="text-slate-600 text-sm italic">
+                    "Você acha que os concorrentes que perderam essa venda sabiam que o Rodrigo estava usando técnicas de valuation financeiro? Eles nunca tiveram chance."
+                  </p>
                 </div>
               </div>
             </div>

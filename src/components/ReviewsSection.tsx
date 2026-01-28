@@ -1,106 +1,138 @@
-import React from 'react'
-import { Star, BadgeCheck } from 'lucide-react'
+﻿import React, { useMemo, useState } from 'react'
+import { Star, UserCheck } from 'lucide-react'
+import { SectionHeading } from './ManualAtoms'
 
-const filters = ['Todos', 'Residencial', 'Comercial', 'Indústria', 'Investidor']
+type ReviewType = 'todos' | 'res' | 'com' | 'ind' | 'inv'
 
-const reviews = [
+type Review = {
+  name: string
+  type: ReviewType
+  role: string
+  text: string
+  stars: number
+  avatar: string
+}
+
+const avatars = ['/assets/person1.jpg', '/assets/person2.jpg', '/assets/person3.jpg', '/assets/person4.jpg']
+
+const baseReviews: Omit<Review, 'avatar'>[] = [
   {
-    label: 'Indústria',
-    quote:
-      '"Economizei R$ 40k evitando um inversor subdimensionado. O manual se pagou na primeira leitura."',
     name: 'Rogério M.',
-    initial: 'R',
+    type: 'ind',
+    role: 'Indústria',
+    text: 'Economizei R$ 40k evitando um inversor subdimensionado. O manual se pagou na primeira leitura.',
+    stars: 5,
   },
   {
-    label: 'Gestor Predial',
-    quote:
-      '"Fica claro quem é vendedor de kit e quem é engenheiro depois de ler o primeiro capítulo."',
     name: 'Carlos J.',
-    initial: 'C',
+    type: 'com',
+    role: 'Gestor Predial',
+    text: 'Fica claro quem é vendedor de kit e quem é engenheiro depois de ler o primeiro capítulo.',
+    stars: 5,
   },
   {
-    label: 'Investidor',
-    quote:
-      '"Não assine nada sem ler isso. Imprescindível para quem vai investir alto."',
     name: 'Ricardo T.',
-    initial: 'R',
+    type: 'inv',
+    role: 'Investidor',
+    text: 'Não assine nada sem ler isso. Imprescindível para quem vai investir alto.',
+    stars: 5,
   },
   {
-    label: 'Residencial',
-    quote:
-      '"Comparei 7 propostas. Escolhi com confiança e economizei 15% na proposta final."',
     name: 'Mariana',
-    initial: 'M',
+    type: 'res',
+    role: 'Residencial',
+    text: 'Comparei 7 propostas. Escolhi com confiança e economizei 15% na proposta final.',
+    stars: 5,
   },
   {
-    label: 'Comerciante',
-    quote:
-      '"O checklist de contrato salvou minha pele. Tinha uma pegadinha na garantia que eu não vi."',
     name: 'Felipe S.',
-    initial: 'F',
+    type: 'com',
+    role: 'Comerciante',
+    text: 'O checklist de contrato salvou minha pele. Tinha uma pegadinha na garantia que eu não vi.',
+    stars: 5,
   },
   {
-    label: 'Fundo Solar',
-    quote:
-      '"Uso os critérios do Francis para homologar integradores no meu fundo."',
     name: 'André L.',
-    initial: 'A',
+    type: 'inv',
+    role: 'Fundo Solar',
+    text: 'Uso os critérios do Francis para homologar integradores no meu fundo.',
+    stars: 5,
   },
 ]
 
-export const ReviewsSection: React.FC = () => {
-  return (
-    <section className="section-diagonal section-diagonal-light bg-white py-24">
-      <div className="mx-auto max-w-6xl px-4">
-        <div className="text-center">
-          <h2 className="text-2xl font-semibold text-slate-900 sm:text-4xl">
-            Quem Já Usou Para Escolher Melhor
-          </h2>
-          <p className="mt-3 text-sm text-slate-500">
-            Filtre por perfil e veja como o manual impacta diferentes negociações:
-          </p>
-        </div>
+const reviews: Review[] = baseReviews.map((review, index) => ({
+  ...review,
+  avatar: avatars[index % avatars.length],
+}))
 
-        <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
-          {filters.map((filter) => (
+export const ReviewsSection: React.FC = () => {
+  const [reviewFilter, setReviewFilter] = useState<ReviewType>('todos')
+
+  const filteredReviews = useMemo(() => {
+    if (reviewFilter === 'todos') {
+      return reviews
+    }
+    return reviews.filter((review) => review.type === reviewFilter)
+  }, [reviewFilter])
+
+  return (
+    <section className="py-24 px-6 bg-white relative">
+      <div className="max-w-7xl mx-auto">
+        <SectionHeading
+          title="Cada sorriso conta uma experiência."
+          subtitle="Feedbacks reais de quem aplicou o manual. Veja como ele fez a diferença."
+          theme="light"
+        />
+
+        <div className="flex flex-wrap justify-center gap-2 mb-12">
+          {[
+            { id: 'todos', label: 'Todos' },
+            { id: 'res', label: 'Residencial' },
+            { id: 'com', label: 'Comercial' },
+            { id: 'ind', label: 'Indústria' },
+            { id: 'inv', label: 'Investidor' },
+          ].map((tab) => (
             <button
-              key={filter}
+              key={tab.id}
+              onClick={() => setReviewFilter(tab.id as ReviewType)}
               type="button"
-              className={`rounded-full px-4 py-2 text-xs font-semibold transition ${
-                filter === 'Todos'
-                  ? 'bg-navy-900 text-white shadow-soft'
-                  : 'border border-slate-200 text-slate-500 hover:text-slate-900'
+              className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${
+                reviewFilter === tab.id
+                  ? 'bg-[#0F172A] text-white shadow-lg'
+                  : 'bg-slate-100 text-slate-500 hover:bg-slate-200'
               }`}
             >
-              {filter}
+              {tab.label}
             </button>
           ))}
         </div>
 
-        <div className="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {reviews.map((review) => (
-            <div key={review.name} className="glass-light rounded-2xl border border-slate-200 bg-white p-6 shadow-soft">
-              <div className="flex items-center justify-between">
-                <div className="flex gap-1 text-orange-500">
-                  {Array.from({ length: 5 }).map((_, index) => (
-                    <Star key={index} className="h-4 w-4 fill-orange-500" />
+        <div className="grid md:grid-cols-3 gap-6 animate-in fade-in duration-500">
+          {filteredReviews.map((review) => (
+            <div
+              key={`${review.name}-${review.role}`}
+              className="bg-slate-50 p-8 rounded-xl border border-slate-100 hover:shadow-lg transition-all hover:-translate-y-1"
+            >
+              <div className="flex justify-between items-start mb-4">
+                <div className="flex gap-0.5 text-[#F97316]">
+                  {[...Array(review.stars)].map((_, index) => (
+                    <Star key={`${review.name}-${index}`} className="w-4 h-4 fill-current" />
                   ))}
                 </div>
-                <span className="rounded-md border border-slate-200 px-2 py-1 text-[10px] font-semibold uppercase text-slate-400">
-                  {review.label}
+                <span className="px-2 py-1 bg-white border border-slate-200 rounded text-[10px] font-bold uppercase text-slate-400">
+                  {review.role}
                 </span>
               </div>
-              <p className="mt-4 text-sm text-slate-600">{review.quote}</p>
-              <div className="mt-6 flex items-center gap-3">
-                <div className="flex h-9 w-9 items-center justify-center rounded-full bg-slate-100 text-xs font-semibold text-slate-500">
-                  {review.initial}
+              <p className="text-slate-700 text-sm leading-relaxed mb-6 italic">"{review.text}"</p>
+              <div className="flex items-center gap-3">
+                <div className="w-8 h-8 rounded-full overflow-hidden border border-slate-200">
+                  <img src={review.avatar} alt={review.name} className="h-full w-full object-cover" loading="lazy" />
                 </div>
                 <div>
-                  <div className="text-sm font-semibold text-slate-900">{review.name}</div>
-                  <div className="mt-1 flex items-center gap-1 text-xs text-emerald-600">
-                    <BadgeCheck className="h-3.5 w-3.5" />
-                    Compra Verificada
-                  </div>
+                  <p className="font-bold text-sm text-[#0F172A]">{review.name}</p>
+                  <p className="text-[10px] text-green-600 flex items-center gap-1">
+                    <UserCheck className="w-3 h-3" /> Compra Verificada
+                  </p>
                 </div>
               </div>
             </div>

@@ -1,43 +1,40 @@
-import React from 'react'
+﻿import React from 'react'
+import { ButtonSuccess } from './ManualAtoms'
 
 const faqs = [
   {
-    title: 'O material serve para iniciantes?',
-    body: 'Absolutamente. Se você está começando, este manual vai te poupar pelo menos 2 anos de erros básicos.',
+    question: 'Como acessar meu produto?',
+    answer: 'Após a confirmação do pagamento, você recebe o acesso imediato por e-mail com login e senha.'
   },
   {
-    title: 'Já sou experiente. Vou aprender algo?',
-    body: 'Sim. A maioria dos integradores experientes ainda perde vendas por não saber articular o valor financeiro (LCOE, TIR Real).',
+    question: 'Como funciona o prazo de garantia e a solicitação de devolução?',
+    answer: 'Você tem 7 dias de garantia. Basta solicitar pelo suporte e fazemos o reembolso integral.'
   },
   {
-    title: 'Como funciona o acesso?',
-    body: 'O acesso é vitalício. Você recebe login e senha para nossa área de membros, onde pode baixar o PDF atualizado.',
-  },
-  {
-    title: 'Tem garantia?',
-    body: 'Sim, garantia incondicional de 7 dias. Devolvemos 100% do seu dinheiro sem perguntas.',
+    question: 'Política de devolução: como proceder para o reembolso?',
+    answer: 'Entre em contato com nossa equipe informando o e-mail de compra. O reembolso é processado sem burocracia.'
   },
 ]
 
 export const FAQSection: React.FC = () => {
   return (
-    <section className="section-diagonal section-diagonal-light bg-white py-24">
-      <div className="mx-auto max-w-5xl px-4">
-        <h2 className="text-center text-2xl font-semibold text-slate-900 sm:text-4xl">
-          Dúvidas Frequentes
-        </h2>
+    <section className="py-24 px-6 bg-[#020617] text-white border-t border-slate-800">
+      <div className="max-w-5xl mx-auto text-center mb-12">
+        <h2 className="text-3xl md:text-4xl font-bold mb-3">Ficou com dúvidas?</h2>
+        <p className="text-slate-300 mb-6">Fale com a equipe Buy-Side.</p>
+        <ButtonSuccess className="px-8">Entrar em contato</ButtonSuccess>
+      </div>
 
-        <div className="mt-10 grid gap-6 md:grid-cols-2">
+      <div className="max-w-4xl mx-auto">
+        <h3 className="text-2xl font-bold text-center mb-8">FAQ</h3>
+        <div className="space-y-4">
           {faqs.map((faq) => (
-            <div key={faq.title} className="rounded-2xl border border-slate-200 bg-white p-6 shadow-soft">
-              <div className="flex items-center gap-2 text-sm font-semibold text-slate-900">
-                <span className="flex h-6 w-6 items-center justify-center rounded-full border border-orange-200 text-orange-500">
-                  ?
-                </span>
-                {faq.title}
-              </div>
-              <p className="mt-3 text-sm text-slate-500">{faq.body}</p>
-            </div>
+            <details key={faq.question} className="border border-slate-700 rounded-lg bg-slate-900/50">
+              <summary className="cursor-pointer list-none px-4 py-3 font-semibold text-white">
+                {faq.question}
+              </summary>
+              <div className="px-4 pb-4 text-slate-300 text-sm">{faq.answer}</div>
+            </details>
           ))}
         </div>
       </div>

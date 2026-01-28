@@ -1,43 +1,44 @@
-import './App.css'
+﻿import './App.css'
 import {
   SolarHeader,
   HeroSectionPotato,
+  ContextSection,
   VideoSection,
   AudienceSection,
-  SystemSection,
-  TestimonialsSection,
+  ManualStrategicSection,
   ImpactSection,
-  ReviewsSection,
-  ComparisonSection,
+  TestimonialsSection,
+  StoryBridgeSection,
   DeliverablesSection,
-  ModulesSection,
-  MarketContextSection,
+  PricingSection,
+  BuyerWaveSection,
+  ReviewsSection,
   AuthoritySection,
   LeadMagnetSection,
   FAQSection,
-  PricingSection,
   Footer,
 } from './components'
 
 function App() {
   return (
-    <div className="min-h-screen bg-navy-950 font-body">
+    <div className="bg-[#020617] text-slate-400 font-sans overflow-x-hidden selection:bg-[#F97316] selection:text-white">
       <SolarHeader />
       <HeroSectionPotato />
+      <ContextSection />
       <VideoSection />
       <AudienceSection />
-      <SystemSection />
-      <TestimonialsSection />
+      <ManualStrategicSection />
       <ImpactSection />
-      <ReviewsSection />
-      <ComparisonSection />
+      <TestimonialsSection />
+      <StoryBridgeSection />
       <DeliverablesSection />
-      <ModulesSection />
-      <MarketContextSection />
+      <PricingSection id="oferta" />
+      <BuyerWaveSection />
+      <ReviewsSection />
       <AuthoritySection />
+      <PricingSection id="oferta-final" />
       <LeadMagnetSection />
       <FAQSection />
-      <PricingSection />
       <Footer />
     </div>
   )

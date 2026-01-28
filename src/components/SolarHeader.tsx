@@ -1,45 +1,35 @@
-import React from 'react'
-
-const navItems = ['Benefícios', 'Conteúdo', 'Mentor']
+﻿import React from 'react'
+import { Menu, Sun } from 'lucide-react'
 
 export const SolarHeader: React.FC = () => {
   return (
-    <header className="sticky top-0 z-50 border-b border-white/10 bg-[#0b1224]/90 backdrop-blur">
-      <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 lg:px-8">
-        <div className="flex items-center gap-3">
-          <div className="flex h-9 w-9 items-center justify-center rounded-md bg-orange-500">
-            <svg viewBox="0 0 24 24" className="h-5 w-5 text-white" fill="currentColor" aria-hidden="true">
-              <circle cx="12" cy="12" r="4" />
-              <g>
-                <circle cx="12" cy="2.5" r="1.2" />
-                <circle cx="12" cy="21.5" r="1.2" />
-                <circle cx="2.5" cy="12" r="1.2" />
-                <circle cx="21.5" cy="12" r="1.2" />
-                <circle cx="4.5" cy="4.5" r="1.1" />
-                <circle cx="19.5" cy="4.5" r="1.1" />
-                <circle cx="4.5" cy="19.5" r="1.1" />
-                <circle cx="19.5" cy="19.5" r="1.1" />
-              </g>
-            </svg>
+    <header className="fixed top-0 left-0 right-0 z-50 bg-[#020617]/80 backdrop-blur-md border-b border-white/10 py-4">
+      <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
+        <div className="flex items-center gap-2">
+          <div className="w-8 h-8 bg-[#F97316] rounded-sm flex items-center justify-center shadow-lg">
+            <Sun className="w-5 h-5 text-white fill-white" />
           </div>
-          <div className="text-sm font-semibold uppercase tracking-[0.18em] text-white">
-            MANUAL<span className="text-slate-400">SOLAR</span>
-          </div>
+          <span className="text-white font-bold tracking-tight text-lg">
+            MANUAL<span className="font-light text-slate-400">SOLAR</span>
+          </span>
         </div>
 
-        <nav className="hidden items-center gap-8 text-sm text-slate-200 md:flex">
-          {navItems.map((item) => (
-            <a key={item} href="#" className="transition hover:text-white">
-              {item}
-            </a>
-          ))}
-        </nav>
-
-        <button
-          className="rounded-md border border-white/20 px-4 py-2 text-xs font-semibold uppercase tracking-widest text-white transition hover:border-white/50"
-          type="button"
-        >
-          Área do Aluno
+        <div className="hidden md:flex items-center gap-8">
+          <a href="#beneficios" className="text-sm font-medium text-slate-300 hover:text-white transition-colors">
+            Benefícios
+          </a>
+          <a href="#conteudo" className="text-sm font-medium text-slate-300 hover:text-white transition-colors">
+            Conteúdo
+          </a>
+          <a href="#autor" className="text-sm font-medium text-slate-300 hover:text-white transition-colors">
+            Mentor
+          </a>
+          <button className="bg-white/10 hover:bg-white/20 text-white px-5 py-2 rounded-sm text-sm font-bold transition-all border border-white/20" type="button">
+            Área do Aluno
+          </button>
+        </div>
+        <button className="md:hidden text-white" type="button">
+          <Menu className="w-6 h-6" />
         </button>
       </div>
     </header>

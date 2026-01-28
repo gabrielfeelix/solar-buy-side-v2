@@ -1,66 +1,125 @@
-import React from 'react'
-import { Play, AlertTriangle } from 'lucide-react'
-
-const lessons = [
-  {
-    title: 'Os 3 grandes RISCOS',
-    description: 'Risco técnico (equipamento), financeiro (payback) e operacional (suporte).',
-  },
-  {
-    title: 'Comprador Informado',
-    description: 'Como identificar promessas exageradas e red flags em propostas.',
-  },
-  {
-    title: 'Jornada Planejada',
-    description: 'As 4 fases da decisão de compra e onde o vendedor perde a venda.',
-  },
-]
+﻿import React from 'react'
+import { AlertCircle, Map, Monitor, Play, Search, ShieldAlert } from 'lucide-react'
 
 export const VideoSection: React.FC = () => {
   return (
-    <section id="video-section" className="py-24 px-6 bg-white text-[#0F172A] relative">
-      <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-16">
-          <div className="inline-block px-3 py-1 bg-orange-50 border border-orange-100 rounded-full text-[#F97316] text-xs font-bold uppercase tracking-widest mb-4">
-            <AlertTriangle className="w-3 h-3 inline mr-1" /> Realidade de Mercado
-          </div>
-          <h2 className="text-4xl md:text-5xl font-bold text-[#0F172A]">
-            Descubra O Que O Manual Ensina Aos Compradores
+    <section
+      id="video-section"
+      className="relative overflow-hidden bg-[#0B1120] text-white font-sans selection:bg-orange-100 selection:text-orange-900 antialiased"
+    >
+      <div className="absolute inset-0 pointer-events-none">
+        <div
+          className="absolute inset-0 opacity-[0.03]"
+          style={{
+            backgroundImage:
+              'linear-gradient(#fff 1px, transparent 1px), linear-gradient(90deg, #fff 1px, transparent 1px)',
+            backgroundSize: '40px 40px',
+          }}
+        ></div>
+        <div className="absolute -top-[20%] -left-[10%] w-[70vw] h-[70vw] bg-blue-900/20 rounded-full blur-[120px]"></div>
+      </div>
+      <div className="relative max-w-5xl mx-auto px-6 py-32">
+        <div className="mb-24">
+          <h2 className="text-5xl md:text-7xl font-black tracking-tighter mb-6 leading-none">
+            Realidade de <br />
+            <span className="text-[#F97316] italic">Mercado</span>
           </h2>
+          <p className="text-xl text-white font-medium tracking-tight max-w-xl">
+            Descubra o que o Manual ensina aos compradores e entenda as novas regras do jogo.
+          </p>
         </div>
 
-        <div className="grid lg:grid-cols-12 gap-12 items-center">
-          <div className="lg:col-span-7">
-            <div className="relative aspect-video bg-slate-900 border-4 border-slate-900 rounded-xl overflow-hidden shadow-2xl group cursor-pointer">
-              <div className="absolute inset-0 flex items-center justify-center bg-black/20 group-hover:bg-black/10 transition-all">
-                <div className="w-20 h-20 bg-[#F97316] rounded-full flex items-center justify-center pl-1 shadow-[0_0_30px_rgba(249,115,22,0.5)] group-hover:scale-110 transition-transform">
-                  <Play className="text-white w-8 h-8 fill-current" />
+        <div className="space-y-6 mb-32">
+          {[
+            {
+              id: '01',
+              icon: <ShieldAlert className="w-6 h-6" />,
+              title: 'Os 3 grandes RISCOS',
+              desc: 'Risco técnico (equipamento), financeiro (payback) e operacional (suporte).',
+              tag: 'Proteção',
+            },
+            {
+              id: '02',
+              icon: <Search className="w-6 h-6" />,
+              title: 'Comprador Informado',
+              desc: 'Como identificar promessas exageradas e red flags em propostas comerciais.',
+              tag: 'Análise',
+            },
+            {
+              id: '03',
+              icon: <Map className="w-6 h-6" />,
+              title: 'Jornada Planejada',
+              desc: 'As 4 fases da decisão de compra e o momento exato onde o vendedor perde a venda.',
+              tag: 'Estratégia',
+            },
+          ].map((card) => (
+            <div
+              key={card.id}
+              className="group flex flex-col md:flex-row gap-8 p-10 md:p-14 rounded-[48px] bg-[#0F1C36] border border-white/10 transition-all duration-500 hover:bg-[#122242] hover:shadow-2xl hover:shadow-black/40"
+            >
+              <div className="flex-shrink-0">
+                <div className="w-14 h-14 rounded-2xl bg-white/10 shadow-sm flex items-center justify-center text-orange-500 group-hover:bg-orange-500 group-hover:text-white transition-all duration-500">
+                  {card.icon}
                 </div>
               </div>
-              <div className="absolute bottom-4 left-4 right-4 flex items-center gap-3 text-white text-xs font-mono">
-                <div className="h-1 bg-slate-600 flex-1 rounded-full">
-                  <div className="w-1/3 h-full bg-[#F97316] rounded-full"></div>
+              <div className="flex-grow">
+                <div className="flex items-center gap-3 mb-4">
+                  <span className="text-[10px] font-black text-slate-400 tracking-widest uppercase">{card.id}</span>
+                  <div className="h-px w-6 bg-white/15"></div>
+                  <span className="text-[10px] font-bold text-orange-600 uppercase tracking-widest">{card.tag}</span>
                 </div>
-                <span>02:14 / 08:45</span>
+                <h4 className="text-3xl font-black text-white mb-4 tracking-tight">{card.title}</h4>
+                <p className="text-xl text-slate-300 font-medium leading-relaxed max-w-2xl">{card.desc}</p>
               </div>
             </div>
-          </div>
+          ))}
+        </div>
 
-          <div className="lg:col-span-5 space-y-2">
-            {lessons.map((item, i) => (
-              <div
-                key={i}
-                className="p-6 rounded-lg border border-slate-100 bg-slate-50 hover:bg-white hover:border-orange-200 hover:shadow-lg transition-all group"
-              >
-                <h4 className="text-[#0F172A] font-bold text-lg mb-2 flex items-center gap-2">
-                  <div className="w-6 h-6 rounded-full bg-slate-200 text-slate-500 flex items-center justify-center text-xs group-hover:bg-[#F97316] group-hover:text-white transition-colors">
-                    {i + 1}
-                  </div>
-                  {item.title}
-                </h4>
-                <p className="text-slate-600 text-sm pl-8">{item.description}</p>
+        <div className="max-w-4xl mb-12">
+          <div className="inline-flex items-center gap-2 mb-8 text-red-500">
+            <AlertCircle className="w-5 h-5" />
+            <span className="text-xs font-black uppercase tracking-[0.2em]">Atenção Crítica</span>
+          </div>
+          <h3 className="text-3xl md:text-5xl font-black tracking-tighter text-white leading-[1.1]">
+            Veja o porquê de muitos vendedores ficarem fora do jogo. <br />
+            <span className="text-slate-400 text-lg md:text-2xl font-medium">
+              Não permita que isso aconteça com você.
+            </span>
+          </h3>
+        </div>
+
+        <div className="relative group">
+          <div className="absolute -inset-2 bg-orange-500/10 rounded-[52px] blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
+
+          <div className="relative aspect-video rounded-[48px] bg-slate-900 overflow-hidden border border-white/10 shadow-2xl flex items-center justify-center group cursor-pointer">
+            <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1497215728101-856f4ea42174?q=80&w=2070&auto=format&fit=crop')] bg-cover bg-center opacity-50 transition-transform duration-700 group-hover:scale-105"></div>
+
+            <div className="absolute inset-0 bg-slate-900/60 group-hover:bg-slate-900/30 transition-colors"></div>
+
+            <div className="relative z-10">
+              <div className="w-24 h-24 rounded-full bg-white/10 backdrop-blur-2xl border border-white/20 flex items-center justify-center transition-transform duration-500 group-hover:scale-110">
+                <div className="w-16 h-16 rounded-full bg-white shadow-2xl flex items-center justify-center group-hover:bg-orange-500 transition-colors">
+                  <Play className="w-6 h-6 text-slate-900 fill-slate-900 group-hover:text-white group-hover:fill-white ml-1 transition-colors" />
+                </div>
               </div>
-            ))}
+            </div>
+
+            <div className="absolute bottom-10 left-10 right-10 flex items-end justify-between">
+              <div className="flex items-center gap-4">
+                <div className="hidden sm:flex w-12 h-12 rounded-2xl bg-white/10 backdrop-blur-md border border-white/20 items-center justify-center text-white">
+                  <Monitor className="w-5 h-5" />
+                </div>
+                <div>
+                  <p className="text-[10px] font-black text-orange-500 uppercase tracking-[0.3em] mb-1">
+                    Conteúdo Exclusivo
+                  </p>
+                  <p className="text-2xl font-black text-white tracking-tight">A Nova Realidade Solar</p>
+                </div>
+              </div>
+              <div className="px-5 py-2 bg-black/40 backdrop-blur-md border border-white/10 rounded-full text-[10px] font-black text-white uppercase tracking-widest">
+                12:45
+              </div>
+            </div>
           </div>
         </div>
       </div>

@@ -1,5 +1,6 @@
-import React from 'react'
-import { Hourglass, BadgeCheck } from 'lucide-react'
+﻿import React from 'react'
+import { Hourglass, XCircle } from 'lucide-react'
+import { SectionHeading } from './ManualAtoms'
 
 const modules = [
   'Módulo 1: A Mente do Comprador',
@@ -7,74 +8,62 @@ const modules = [
   'Módulo 3: Técnica Anti-Objeção',
 ]
 
+const manualImage = '/assets/manual.jpg.png'
+
 export const ModulesSection: React.FC = () => {
   return (
-    <section className="bg-white">
-      <div className="bg-orange-50 py-10">
-        <div className="mx-auto max-w-4xl px-4 text-center">
-          <div className="flex items-center justify-center gap-2 text-xs font-semibold uppercase tracking-[0.2em] text-orange-500">
-            <Hourglass className="h-4 w-4" />
-            Tempo Limitado
+    <>
+      <section className="bg-orange-50 border-y border-orange-100 py-12 px-6 text-center">
+        <div className="max-w-4xl mx-auto">
+          <div className="inline-flex items-center gap-2 text-orange-600 font-bold uppercase tracking-widest text-xs mb-4">
+            <Hourglass className="w-4 h-4" /> Tempo Limitado
           </div>
-          <h3 className="mt-3 text-lg font-semibold text-slate-900">
-            O Mercado não espera. <span className="text-orange-500">Sua vantagem é agora.</span>
+          <h3 className="text-2xl font-bold text-[#0F172A] mb-4">
+            O Mercado não espera. <span className="text-[#F97316]">Sua vantagem é agora.</span>
           </h3>
-          <p className="mt-2 text-xs text-slate-500">
-            Não espere até que seus clientes saibam mais que você. Manual Completo + Bônus = Vantagem
-            Imediata.
+          <p className="text-slate-600 mb-6 text-sm">
+            Não espere até que seus clientes saibam mais que você. Manual Completo + Bônus = Vantagem Imediata.
           </p>
-          <div className="mt-4 flex flex-wrap items-center justify-center gap-4 text-xs font-semibold text-slate-700">
-            <span className="flex items-center gap-2">
-              <span className="h-2 w-2 rounded-full bg-orange-500" />
-              Clientes Acessando
+          <div className="flex justify-center gap-4 text-xs font-bold text-[#0F172A]">
+            <span className="flex items-center gap-1">
+              <XCircle className="w-3 h-3 text-red-500" /> Clientes Acessando
             </span>
-            <span className="flex items-center gap-2">
-              <span className="h-2 w-2 rounded-full bg-orange-500" />
-              Bônus Esgotando
+            <span className="flex items-center gap-1">
+              <XCircle className="w-3 h-3 text-red-500" /> Bônus Esgotando
             </span>
           </div>
         </div>
-      </div>
+      </section>
 
-      <div className="section-diagonal section-diagonal-light py-20">
-        <div className="mx-auto grid max-w-6xl items-center gap-10 px-4 lg:grid-cols-[1.1fr_0.9fr]">
-          <div>
-            <h2 className="text-2xl font-semibold text-slate-900 sm:text-4xl">
-              Não é Teoria. É Campo de Batalha.
-            </h2>
-            <p className="mt-3 text-sm text-slate-500">
-              Estruturado para consulta rápida durante a negociação.
-            </p>
-
-            <div className="mt-6 space-y-4">
-              {modules.map((item, index) => (
-                <div key={item} className="flex items-center gap-4 rounded-xl border border-slate-200 bg-white px-4 py-3 shadow-soft">
-                  <div className="flex h-8 w-8 items-center justify-center rounded-md bg-slate-100 text-xs font-semibold text-slate-500">
+      <section className="py-24 px-6 bg-white overflow-hidden">
+        <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-12">
+          <div className="flex-1">
+            <SectionHeading
+              title="Não é Teoria. É Campo de Batalha."
+              subtitle="Estruturado para consulta rápida durante a negociação."
+              align="left"
+              theme="light"
+            />
+            <div className="space-y-4">
+              {modules.map((moduleTitle, index) => (
+                <div key={moduleTitle} className="flex items-center gap-4 p-4 rounded-lg bg-slate-50 border border-slate-100">
+                  <div className="w-8 h-8 bg-slate-200 rounded flex items-center justify-center font-bold text-slate-500">
                     {index + 1}
                   </div>
-                  <div className="text-sm font-semibold text-slate-700">{item}</div>
+                  <span className="font-bold text-[#0F172A]">{moduleTitle}</span>
                 </div>
               ))}
             </div>
           </div>
-
-          <div className="relative flex items-center justify-center">
-            <div className="absolute h-56 w-40 -rotate-8 rounded-xl bg-orange-500 shadow-deep" />
-            <div className="relative h-60 w-44 rotate-3 rounded-xl bg-[#0f172a] shadow-deep">
-              <div className="flex h-full flex-col items-center justify-center text-white">
-                <span className="text-xs uppercase tracking-[0.2em] text-slate-300">Manual</span>
-                <span className="text-lg font-semibold">Solar</span>
-              </div>
-            </div>
-            <div className="absolute -bottom-6 left-4 rounded-xl bg-white px-4 py-3 text-xs text-slate-500 shadow-soft">
-              <div className="flex items-center gap-2 text-orange-500">
-                <BadgeCheck className="h-4 w-4" />
-                Checklist Pronto
-              </div>
+          <div className="flex-1 relative h-[420px] w-full flex items-center justify-center">
+            <div className="absolute w-72 h-96 bg-[#F97316] rounded-2xl shadow-xl transform -rotate-6 opacity-70"></div>
+            <div className="relative w-72 h-96 rounded-2xl shadow-2xl transform rotate-6 overflow-hidden border border-slate-200">
+              <img src={manualImage} alt="Manual Solar" className="h-full w-full object-cover" loading="lazy" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent"></div>
             </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </>
   )
 }
