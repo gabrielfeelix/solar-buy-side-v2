@@ -27,7 +27,7 @@ const profiles = [
 
 export const AudienceSection: React.FC = () => {
   return (
-    <section className="bg-white text-slate-900 font-sans selection:bg-orange-100 selection:text-orange-900 antialiased">
+    <section id="audiencia" className="bg-white text-slate-900 font-sans selection:bg-orange-100 selection:text-orange-900 antialiased">
       <div className="max-w-6xl mx-auto px-6 py-16">
         <div className="max-w-3xl mb-16">
           <h2 className="text-4xl md:text-6xl font-black tracking-tight text-slate-900 mb-6">

@@ -33,8 +33,8 @@ export const FAQSection: React.FC = () => {
   }
 
   return (
-    <div className="font-sans bg-[#fbfbfd] text-[#1d1d1f]">
-      <section className="max-w-7xl mx-auto py-24 px-6">
+    <section id="faq" className="font-sans bg-[#fbfbfd] text-[#1d1d1f]">
+      <div className="max-w-7xl mx-auto py-24 px-6">
         <div className="grid lg:grid-cols-2 gap-20 items-start">
           <div className="space-y-8">
             <div className="space-y-4">
@@ -105,7 +105,7 @@ export const FAQSection: React.FC = () => {
             ))}
           </div>
         </div>
-      </section>
-    </div>
+      </div>
+    </section>
   )
 }

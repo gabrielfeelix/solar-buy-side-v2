@@ -1,4 +1,5 @@
 ﻿import './App.css'
+import { useEffect } from 'react'
 import {
   SolarHeader,
   HeroSectionPotato,
@@ -17,6 +18,26 @@ import {
 } from './components'
 
 function App() {
+  useEffect(() => {
+    const sections = document.querySelectorAll('section')
+    sections.forEach((section) => section.classList.add('reveal'))
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible')
+            observer.unobserve(entry.target)
+          }
+        })
+      },
+      { threshold: 0.15 }
+    )
+
+    sections.forEach((section) => observer.observe(section))
+    return () => observer.disconnect()
+  }, [])
+
   return (
     <div className="bg-[#020617] text-slate-400 font-sans overflow-x-hidden selection:bg-[#F97316] selection:text-white">
       <SolarHeader />

@@ -1,7 +1,22 @@
-﻿import React from 'react'
+﻿import React, { useEffect, useState } from 'react'
 import { ArrowDown } from 'lucide-react'
 
 export const HeroSectionPotato: React.FC = () => {
+  const [typed, setTyped] = useState('')
+  const fullText = 'Vendedor Ideal.'
+
+  useEffect(() => {
+    let index = 0
+    const timer = setInterval(() => {
+      index += 1
+      setTyped(fullText.slice(0, index))
+      if (index >= fullText.length) {
+        clearInterval(timer)
+      }
+    }, 60)
+    return () => clearInterval(timer)
+  }, [])
+
   const scrollToSection = () => {
     const element = document.getElementById('contexto')
     if (element) {
@@ -10,7 +25,7 @@ export const HeroSectionPotato: React.FC = () => {
   }
 
   return (
-    <section className="relative min-h-screen flex flex-col justify-center items-center overflow-hidden border-b border-white/5 pt-16">
+    <section id="hero" className="relative min-h-screen flex flex-col justify-center items-center overflow-hidden border-b border-white/5 pt-16">
       <div className="absolute inset-0 pointer-events-none">
         <div
           className="absolute inset-0 opacity-[0.03]"
@@ -32,7 +47,10 @@ export const HeroSectionPotato: React.FC = () => {
 
         <h1 className="text-4xl md:text-6xl font-bold text-white leading-[1.05] tracking-tight mb-8">
           Transforme-se no<br />
-          <span className="text-[#F97316]">Vendedor Ideal.</span>
+          <span className="text-[#F97316]">
+            {typed}
+            <span className="ml-1 inline-block h-7 w-[2px] bg-[#F97316] align-middle animate-pulse"></span>
+          </span>
         </h1>
 
         <p className="text-lg md:text-xl text-slate-300 max-w-2xl mx-auto leading-relaxed mb-12 font-light">

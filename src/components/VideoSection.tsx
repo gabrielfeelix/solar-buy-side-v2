@@ -167,7 +167,7 @@ export const VideoSection: React.FC = () => {
                     padding-top: 56.25%;
                   }
                 `}</style>
-                <WistiaPlayer media-id="u0jf5yyoda" aspect="1.7777777777777777"></WistiaPlayer>
+                <WistiaPlayer media-id="u0jf5yyoda" aspect="1.7777777777777777" autoPlay="true"></WistiaPlayer>
               </div>
             )}
           </div>
