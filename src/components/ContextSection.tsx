@@ -74,7 +74,7 @@ export const ContextSection: React.FC = () => {
           <div className="grid grid-cols-1 lg:grid-cols-5 gap-10 items-center">
             <div className="lg:col-span-3">
               <span className="text-[10px] font-black uppercase tracking-[0.3em] text-slate-400 mb-4 block">
-                A Solução Definitive
+                A Solução Definitiva
               </span>
               <h3 className="text-3xl md:text-4xl font-black tracking-tight text-slate-900 mb-6">
                 Ainda há tempo para <span className="text-[#F97316]">reverter essa situação.</span>

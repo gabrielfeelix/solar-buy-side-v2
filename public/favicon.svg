@@ -5,17 +5,17 @@
       <stop offset="1" stop-color="#FF6B35" />
     </linearGradient>
   </defs>
-  <g fill="none" fill-rule="evenodd">
-    <circle cx="32" cy="32" r="14" fill="url(#sun)" />
-    <g stroke="url(#sun)" stroke-width="4" stroke-linecap="round">
-      <path d="M32 4v8" />
-      <path d="M32 52v8" />
-      <path d="M4 32h8" />
-      <path d="M52 32h8" />
-      <path d="M12.2 12.2l5.6 5.6" />
-      <path d="M46.2 46.2l5.6 5.6" />
-      <path d="M51.8 12.2l-5.6 5.6" />
-      <path d="M17.8 46.2l-5.6 5.6" />
+  <g fill="none" fill-rule="evenodd" transform="scale(2.6666667)">
+    <circle cx="12" cy="12" r="8" fill="url(#sun)" />
+    <g stroke="url(#sun)" stroke-width="2" stroke-linecap="round">
+      <path d="M12 0v2" />
+      <path d="M12 22v2" />
+      <path d="M0 12h2" />
+      <path d="M22 12h2" />
+      <path d="M3.2 3.2l1.4 1.4" />
+      <path d="M19.4 19.4l1.4 1.4" />
+      <path d="M20.8 3.2l-1.4 1.4" />
+      <path d="M4.6 19.4l-1.4 1.4" />
     </g>
   </g>
 </svg>
