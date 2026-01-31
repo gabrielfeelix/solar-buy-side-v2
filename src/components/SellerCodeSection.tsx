@@ -28,10 +28,10 @@ export const SellerCodeSection: React.FC = () => {
   ]
 
   return (
-    <section className="min-h-screen bg-white text-slate-900 font-sans">
+    <section className="bg-white text-slate-900 font-sans">
       <div className="max-w-7xl mx-auto px-6 py-20 lg:py-32">
         {/* CONTAINER GERAL */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24 items-start">
           {/* COLUNA ESQUERDA: NARRATIVA E LISTA */}
           <div className="lg:col-span-7 space-y-20">
             {/* Header Narrativo */}
@@ -125,7 +125,7 @@ export const SellerCodeSection: React.FC = () => {
 
           {/* COLUNA DIREITA: O LIVRO (Clean & Floating) */}
           <div className="lg:col-span-5 mt-12 lg:mt-0">
-            <div className="lg:sticky lg:top-24 flex justify-center lg:justify-end">
+            <div className="sticky top-24 flex justify-center lg:justify-end">
               <div className="relative group" style={{ perspective: '2000px' }}>
               {/* Efeito de Sombra Colorida (Aura) */}
               <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-orange-200/30 blur-[120px] rounded-full pointer-events-none opacity-60"></div>
