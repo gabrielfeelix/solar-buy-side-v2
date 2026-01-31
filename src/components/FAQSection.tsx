@@ -2,7 +2,6 @@
 import {
   ArrowUpRight,
   ChevronDown,
-  Clock,
   HelpCircle,
 } from 'lucide-react'
 
@@ -22,18 +21,72 @@ const WhatsAppIcon: React.FC<{ size?: number; className?: string }> = ({ size = 
 const faqData = [
   {
     question: 'Como acessar meu produto?',
-    answer:
-      'Você receberá o acesso ao Manual Solar Buy-Side por e-mail, por meio da plataforma online GREENN. Esta plataforma atua como intermediadora digital entre clientes e produtores, disponibilizando conteúdos, soluções e ferramentas tecnológicas.\n\nVocê receberá o Manual Solar Buy-Side e o bônus grátis Guia do Vendedor por e-mail em PDF, e ele virá personalizado com seu nome e CPF ou CNPJ.\n\nVocê poderá acessar o manual por meio de computador, celular, tablet ou outro dispositivo digital. No entanto, devido à formatação do manual, recomendamos enfaticamente o uso de um computador ou tablet para uma experiência de leitura e aproveitamento mais otimizada do material.',
+    answer: (
+      <>
+        Você receberá o acesso ao <span className="font-semibold">Manual Solar Buy-Side</span> por e-mail, por meio da plataforma online{' '}
+        <span className="font-semibold">GREENN</span>. Esta plataforma atua como intermediadora digital entre clientes e produtores, disponibilizando conteúdos,
+        soluções e ferramentas tecnológicas.
+        {'\n\n'}
+        Você receberá o Manual Solar Buy-Side e o <span className="font-semibold">bônus grátis Guia do Vendedor</span> por e-mail em PDF, e ele virá
+        personalizado com seu nome e <span className="font-semibold">CPF ou CNPJ</span>.
+        {'\n\n'}
+        Você poderá acessar o manual por meio de computador, celular, tablet ou outro dispositivo digital. No entanto, devido à formatação do manual,
+        recomendamos enfaticamente o uso de um <span className="font-semibold">computador ou tablet</span> para uma experiência de leitura e aproveitamento mais
+        otimizada do material.
+      </>
+    ),
   },
   {
     question: 'Como funciona o prazo de garantia e a solicitação de devolução?',
-    answer:
-      'O reembolso de uma compra de um produto digital é um direito garantido pelo Código de Defesa do Consumidor (Lei nº 8.078, Artigo 49) e pode ser solicitado em até 7 dias a partir da data de assinatura ou do recebimento do produto.',
+    answer: (
+      <>
+        O reembolso de uma compra de um produto digital é um direito garantido pelo{' '}
+        <span className="font-semibold">Código de Defesa do Consumidor (Lei nº 8.078, Artigo 49)</span> e pode ser solicitado em{' '}
+        <span className="font-semibold">até 7 dias</span> a partir da data de assinatura ou do recebimento do produto.
+      </>
+    ),
   },
   {
     question: 'Política de devolução: como proceder para o reembolso?',
-    answer:
-      'Para formalizar o pedido de reembolso do valor despendido, o Comprador deverá remeter sua solicitação ao endereço eletrônico contato@buyside.com.br. A comunicação deverá conter, obrigatoriamente, o número de referência da transação e a exposição detalhada da(s) razão(ões) que fundamenta(m) o pleito de cancelamento.\n\nAs condições para efetivação do reembolso pautam-se nas Regras Gerais estabelecidas pela plataforma GREENN. Para informações adicionais e consulta integral às diretrizes aplicáveis, o Comprador poderá acessar o seguinte link: `https://greenn.com.br/termos-de-compra-greenn/`.\n\nSolicitação de Cancelamento e Reembolsos na GREENN\nPrazo: O Comprador pode solicitar o reembolso dos valores pagos, os prazos mínimos estabelecidos pela legislação para garantia são entre 07 a 30 dias, mas dependem exclusivamente do prazo estabelecido pelo Produtor, que é o responsável direto por esta informação e pelas solicitações e as autorizações dos reembolsos. O prazo terá início a partir da efetivação da compra, pedidos de reembolso fora do prazo deverão ser feitos diretamente ao Produtor, e se por ele autorizados, salvo quando o reembolso deva ser processado para garantir os interesses do GREENN e para o cumprimento da lei.\n\nO GREENN pode recusar o reembolso integral dos valores pagos, ainda que dentro do prazo de garantia, na hipótese do Comprador ter usufruído de todo o Produto adquirido, como por exemplo, assistido a todas as aulas de um curso, participado de um evento, ou ter feito o download de todos os arquivos disponíveis, deixando o GREENN e o Produtor em clara desvantagem.\n\nForma de processamento: O reembolso será processado através do mesmo meio de pagamento escolhido pelo Comprador no momento da compra, por questões legais e processuais. O reembolso é realizado por meio de transferência bancária deve ocorrer em até 30 (trinta) dias, contados da data de solicitação. Nos casos de reembolso por meio de cartão de crédito, o GREENN fará a solicitação de estorno, mas a conclusão deste processo dependerá exclusivamente das operadoras de cartão, sem qualquer gerência do GREENN e poderá levar um prazo de 30 a 60 dias, após o pedido de estorno.\n\nSe o reembolso não ocorrer dentro dos prazos acima, o Comprador deverá entrar em contato com o GREENN. Se o reembolso for por intermédio de cartão de crédito, findado o prazo de 90 (noventa) dias, o Comprador se compromete a enviar as cópias de suas faturas para que o Greenn possa endereçar este assunto perante a operadora e finalizar o processo de investigação e conclusão do processo de estorno do pagamento. O comprador concorda que o não envio das faturas impede o Greenn de dar seguimento ao processo de investigação e conclusão do processo de estorno do pagamento.\n\nCanal de Reclamações: O Comprador pode solicitar cancelamento de sua compra de maneira independente, através do link `www.reclamacao.greenn.com.br`, bastando informar corretamente os dados solicitados e seguindo os procedimentos e orientações anteriormente colocados quanto a legalidade e prazos.',
+    answer: (
+      <>
+        Para formalizar o pedido de reembolso do valor despendido, o Comprador deverá remeter sua solicitação ao endereço eletrônico{' '}
+        <span className="font-semibold">contato@buyside.com.br</span>. A comunicação deverá conter, obrigatoriamente, o{' '}
+        <span className="font-semibold">número de referência da transação</span> e a exposição detalhada da(s) razão(ões) que fundamenta(m) o pleito de
+        cancelamento.
+        {'\n\n'}
+        As condições para efetivação do reembolso pautam-se nas <span className="font-semibold">Regras Gerais</span> estabelecidas pela plataforma{' '}
+        <span className="font-semibold">GREENN</span>. Para informações adicionais e consulta integral às diretrizes aplicáveis, o Comprador poderá acessar o
+        seguinte link: <span className="font-semibold">https://greenn.com.br/termos-de-compra-greenn/</span>.
+        {'\n\n'}
+        <span className="font-semibold">Solicitação de Cancelamento e Reembolsos na GREENN</span>
+        {'\n'}
+        <span className="font-semibold">Prazo:</span> O Comprador pode solicitar o reembolso dos valores pagos, os prazos mínimos estabelecidos pela legislação
+        para garantia são entre 07 a 30 dias, mas dependem exclusivamente do prazo estabelecido pelo Produtor, que é o responsável direto por esta informação e
+        pelas solicitações e as autorizações dos reembolsos. O prazo terá início a partir da efetivação da compra, pedidos de reembolso fora do prazo deverão ser
+        feitos diretamente ao Produtor, e se por ele autorizados, salvo quando o reembolso deva ser processado para garantir os interesses do GREENN e para o
+        cumprimento da lei.
+        {'\n\n'}
+        O GREENN pode recusar o reembolso integral dos valores pagos, ainda que dentro do prazo de garantia, na hipótese do Comprador ter usufruído de todo o
+        Produto adquirido, como por exemplo, assistido a todas as aulas de um curso, participado de um evento, ou ter feito o download de todos os arquivos
+        disponíveis, deixando o GREENN e o Produtor em clara desvantagem.
+        {'\n\n'}
+        <span className="font-semibold">Forma de processamento:</span> O reembolso será processado através do mesmo meio de pagamento escolhido pelo Comprador no
+        momento da compra, por questões legais e processuais. O reembolso é realizado por meio de transferência bancária deve ocorrer em até 30 (trinta) dias,
+        contados da data de solicitação. Nos casos de reembolso por meio de cartão de crédito, o GREENN fará a solicitação de estorno, mas a conclusão deste
+        processo dependerá exclusivamente das operadoras de cartão, sem qualquer gerência do GREENN e poderá levar um prazo de 30 a 60 dias, após o pedido de
+        estorno.
+        {'\n\n'}
+        Se o reembolso não ocorrer dentro dos prazos acima, o Comprador deverá entrar em contato com o GREENN. Se o reembolso for por intermédio de cartão de
+        crédito, findado o prazo de 90 (noventa) dias, o Comprador se compromete a enviar as cópias de suas faturas para que o Greenn possa endereçar este assunto
+        perante a operadora e finalizar o processo de investigação e conclusão do processo de estorno do pagamento. O comprador concorda que o não envio das
+        faturas impede o Greenn de dar seguimento ao processo de investigação e conclusão do processo de estorno do pagamento.
+        {'\n\n'}
+        <span className="font-semibold">Canal de Reclamações:</span> O Comprador pode solicitar cancelamento de sua compra de maneira independente, através do link
+        www.reclamacao.greenn.com.br, bastando informar corretamente os dados solicitados e seguindo os procedimentos e orientações anteriormente colocados quanto a
+        legalidade e prazos.
+      </>
+    ),
   },
 ]
 
@@ -70,14 +123,6 @@ export const FAQSection: React.FC = () => {
               </button>
             </div>
 
-            <div className="pt-8 border-t border-gray-200">
-              <div className="flex items-center gap-4 text-[#86868b]">
-                <Clock size={20} className="text-orange-600" />
-                <span className="text-sm font-medium italic">
-                  Tempo médio de resposta: 15 minutos (em horário comercial).
-                </span>
-              </div>
-            </div>
           </div>
 
           <div className="space-y-4">
@@ -112,7 +157,7 @@ export const FAQSection: React.FC = () => {
                     }`}
                   />
                 </button>
-                <div className={`overflow-hidden transition-all duration-300 ${openFaq === index ? 'max-h-[520px]' : 'max-h-0'}`}>
+                <div className={`overflow-hidden transition-all duration-300 ${openFaq === index ? 'max-h-[2400px]' : 'max-h-0'}`}>
                   <p className="p-6 pt-0 text-[#6e6e73] leading-relaxed whitespace-pre-line">
                     {item.answer}
                   </p>
