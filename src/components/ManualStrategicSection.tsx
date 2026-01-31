@@ -68,7 +68,7 @@ export const ManualStrategicSection: React.FC = () => {
             </div>
 
             <div className="mt-12 max-w-2xl">
-              <div className="space-y-6 text-lg text-slate-300 leading-relaxed font-medium text-justify">
+              <div className="space-y-6 text-lg text-slate-300 leading-relaxed font-medium" style={{ textAlign: 'justify' }}>
                 <p>
                   O <strong className="text-white font-semibold">Manual de Compra Solar Buy-Side</strong> é uma leitura essencial para profissionais do setor de vendas (Sell-Side) que desejam se destacar em um mercado ultracompetitivo.
                 </p>
