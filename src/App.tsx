@@ -14,6 +14,7 @@ import {
   AuthoritySection,
   LeadMagnetSection,
   FAQSection,
+  ContactSection,
   Footer,
   LegalPage,
 } from './components'
@@ -85,6 +86,7 @@ function App() {
       <PricingSection id="oferta-final" />
       <LeadMagnetSection />
       <FAQSection />
+      <ContactSection />
       <Footer />
     </div>
   )

@@ -32,13 +32,13 @@
   display: inline-block;
   overflow: hidden;
   white-space: nowrap;
-  animation: typewriter 0.8s steps(5) forwards;
+  animation: typewriter 0.4s steps(5) forwards;
 }
 
 .typing-animation-buyside {
   display: inline-block;
   overflow: hidden;
   white-space: nowrap;
-  animation: typewriter 1s steps(8) 0.8s forwards;
+  animation: typewriter 0.5s steps(8) 0.4s forwards;
   max-width: 0;
 }

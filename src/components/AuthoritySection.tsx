@@ -43,6 +43,11 @@ export const AuthoritySection: React.FC = () => {
                 <div className="aspect-[3/4] bg-slate-800 rounded-2xl overflow-hidden relative transition-all duration-700 group">
                   <img src={francisImage} alt="Francis Poloni" className="absolute inset-0 h-full w-full object-cover object-center" loading="lazy" />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#020617] via-transparent to-[#020617]/50"></div>
+                  {/* Badge de Experiência */}
+                  <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-[#F97316] to-[#FF8C3A] px-6 py-3 rounded-2xl shadow-xl">
+                    <p className="text-white text-2xl font-bold">7+ Anos</p>
+                    <p className="text-white/90 text-xs font-semibold uppercase tracking-wider">de Experiência</p>
+                  </div>
                 </div>
               </div>
             </div>
@@ -67,6 +72,11 @@ export const AuthoritySection: React.FC = () => {
                 <div className="aspect-[3/4] bg-slate-800 rounded-2xl overflow-hidden relative transition-all duration-700 group">
                   <img src={ovidioImage} alt="Ovídio Collesi" className="absolute inset-0 h-full w-full object-cover object-center" loading="lazy" />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#020617] via-transparent to-[#020617]/50"></div>
+                  {/* Badge de Experiência */}
+                  <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-[#F97316] to-[#FF8C3A] px-6 py-3 rounded-2xl shadow-xl">
+                    <p className="text-white text-2xl font-bold">5+ Anos</p>
+                    <p className="text-white/90 text-xs font-semibold uppercase tracking-wider">de Experiência</p>
+                  </div>
                 </div>
               </div>
             </div>
