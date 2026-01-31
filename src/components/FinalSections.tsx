@@ -62,7 +62,7 @@ export const FinalSections: React.FC = () => {
               <div className="relative">
                 <div className="aspect-[3/4] rounded-3xl overflow-hidden border-2 border-electric-cyan neon-glow-cyan">
                   <img
-                    src="/assets/manual.jpg.png"
+                    src="/assets/Mockup_Manual.jpeg"
                     alt="Manual Solar Buy-Side"
                     className="w-full h-full object-contain"
                   />
