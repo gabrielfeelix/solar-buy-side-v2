@@ -140,21 +140,12 @@ export const ProductShowcase: React.FC = () => {
 
           {/* Grid 2-Column */}
           <div className="grid md:grid-cols-5 gap-12 items-center">
-            {/* Mockup 3D */}
             <div className="md:col-span-2">
-              <div className="relative group">
-                <div className="absolute inset-0 bg-gradient-to-r from-electric-cyan to-neon-green rounded-3xl blur-3xl opacity-30 group-hover:opacity-50 transition-opacity"></div>
-                <div className="relative bg-gradient-to-br from-electric-cyan/10 to-neon-green/10 rounded-3xl p-8 border border-electric-cyan/20">
-                  <div className="aspect-[3/4] bg-bg-primary rounded-2xl border-2 border-electric-cyan shadow-2xl overflow-hidden">
-                    <div className="p-6 space-y-4">
-                      <div className="h-4 bg-gradient-to-r from-electric-cyan to-neon-green rounded w-3/4"></div>
-                      <div className="h-3 bg-text-muted/20 rounded w-full"></div>
-                      <div className="h-3 bg-text-muted/20 rounded w-5/6"></div>
-                      <div className="h-20 bg-gradient-to-br from-electric-cyan/20 to-neon-green/20 rounded-lg mt-6"></div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              <img
+                src="/assets/Mockup_Manual.png"
+                alt="Mockup do Manual Solar Buy-Side"
+                className="w-full h-auto"
+              />
             </div>
 
             {/* Texto + Specs */}

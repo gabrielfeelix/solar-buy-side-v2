@@ -1,5 +1,5 @@
 ﻿import React, { useEffect, useState } from 'react'
-import { AlertCircle, Map, Monitor, Play, Search, ShieldAlert } from 'lucide-react'
+import { AlertCircle, Map as MapIcon, Monitor, Play, Search, ShieldAlert } from 'lucide-react'
 
 export const VideoSection: React.FC = () => {
   const [showPlayer, setShowPlayer] = useState(false)
@@ -65,7 +65,7 @@ export const VideoSection: React.FC = () => {
             },
             {
               id: '03',
-              icon: <Map className="w-6 h-6" />,
+              icon: <MapIcon className="w-6 h-6" />,
               title: 'Jornada Planejada',
               desc: 'As 4 fases da decisão de compra e os momentos exatos nos quais o vendedor perde a venda.',
               tag: 'Estratégia',

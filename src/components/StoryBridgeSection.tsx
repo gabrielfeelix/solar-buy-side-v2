@@ -42,15 +42,11 @@ export const StoryBridgeSection: React.FC = () => {
 
         <div className="grid lg:grid-cols-12 gap-16 items-start">
           <div className="lg:col-span-5 flex justify-center lg:justify-start">
-            <div className="relative group">
-              <div className="absolute -inset-20 bg-orange-500/10 blur-[120px] rounded-full"></div>
-
-              <div className="relative w-[340px] h-[480px] bg-[#0f172a] rounded-r-lg shadow-[30px_40px_60px_-15px_rgba(0,0,0,0.7)] border-y border-r border-white/10 flex flex-col justify-between p-12 overflow-hidden transition-all duration-500">
-                <div className="absolute inset-0 bg-[url('/assets/manual.jpg.png')] bg-cover bg-center opacity-95"></div>
-                <div className="absolute inset-0 bg-gradient-to-b from-black/25 via-transparent to-black/30"></div>
-                <div className="absolute top-0 left-0 w-3 h-full bg-gradient-to-r from-black/40 via-white/5 to-transparent border-l border-white/5"></div>
-              </div>
-            </div>
+            <img
+              src="/assets/Mockup_Manual.png"
+              alt="Mockup do Manual Solar Buy-Side"
+              className="w-full max-w-[480px] lg:max-w-[520px] h-auto"
+            />
           </div>
 
           <div className="lg:col-span-7">

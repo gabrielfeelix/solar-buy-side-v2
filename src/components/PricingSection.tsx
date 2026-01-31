@@ -1,15 +1,13 @@
 ﻿import React from 'react'
 import {
   ArrowRight,
-  Award,
   BookOpen,
   CheckCircle2,
   FileText,
   Layers,
-  Lock,
-  Map,
+  Lock as LockIcon,
+  Map as MapIcon,
   Package,
-  Shield,
   ShieldCheck,
   Sparkles,
 } from 'lucide-react'
@@ -37,7 +35,7 @@ const features = [
     tag: 'TÉCNICO',
   },
   {
-    icon: <Map className="text-orange-500" size={28} />,
+    icon: <MapIcon className="text-orange-500" size={28} />,
     title: 'Método em 4 Fases',
     desc: 'A jornada de compra completa decifrada.',
     tag: 'ESTRATÉGIA',
@@ -143,7 +141,18 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ id }) => {
               <div className="absolute -inset-4 bg-orange-600/20 blur-[60px] rounded-full opacity-50"></div>
 
               <div className="relative bg-white text-slate-950 rounded-[40px] p-10 shadow-2xl overflow-hidden">
-                  <div className="mb-10">
+                <div className="flex items-start justify-between mb-10">
+                  <div>
+                    <span className="inline-flex items-center text-[10px] font-black tracking-[0.3em] uppercase text-orange-600">
+                      Plano de Acesso
+                    </span>
+                    <h3 className="text-2xl font-black text-slate-900 mt-2">Oferta Especial</h3>
+                  </div>
+                  <div className="w-12 h-12 rounded-2xl bg-slate-50 border border-slate-200 flex items-center justify-center">
+                    <ShieldCheck className="w-6 h-6 text-slate-500" />
+                  </div>
+                </div>
+                <div className="mb-10">
                   <div className="space-y-1">
                     <p className="text-slate-400 text-sm font-bold line-through">De R$ 997,00 por apenas:</p>
                     <div className="flex flex-col">
@@ -185,7 +194,7 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ id }) => {
                       Checkout 100% criptografado
                     </div>
                     <div className="flex items-center gap-3 text-slate-500 font-bold text-[11px] uppercase tracking-tight">
-                      <Lock size={16} className="text-blue-600 shrink-0" />
+                      <LockIcon size={16} className="text-blue-600 shrink-0" />
                       Acesso Imediato
                     </div>
                   </div>
@@ -193,13 +202,11 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ id }) => {
 
                 <div className="mt-10 pt-8 border-t border-slate-100 space-y-6">
                   <div className="flex items-center justify-center gap-6">
-                    <div className="text-center">
-                      <div className="w-16 h-16 mx-auto mb-2 rounded-full border-2 border-green-600 flex items-center justify-center">
-                        <Shield className="w-8 h-8 text-green-600" />
-                      </div>
-                      <p className="text-[10px] font-bold text-slate-600 uppercase">7 Dias</p>
-                      <p className="text-[9px] text-slate-500">Garantia</p>
-                    </div>
+                    <img
+                      src="/assets/Garantia.png"
+                      alt="7 dias de garantia"
+                      className="w-full max-w-[96px] h-auto"
+                    />
                   </div>
 
                   <div className="flex items-center justify-center gap-4">
@@ -209,19 +216,12 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ id }) => {
                     <img src="/assets/Boleto.png" alt="Boleto" className="h-8 w-auto object-contain" />
                   </div>
 
-                  <div className="grid grid-cols-3 gap-2 pt-4">
-                    <div className="text-center">
-                      <img src="/assets/Compra segura.png" alt="Compra Segura" className="h-6 w-auto object-contain mx-auto mb-1" />
-                      <p className="text-[9px] font-bold text-slate-600">Compra Segura</p>
-                    </div>
-                    <div className="text-center">
-                      <Award className="w-6 h-6 text-blue-600 mx-auto mb-1" />
-                      <p className="text-[9px] font-bold text-slate-600">Satisfação</p>
-                    </div>
-                    <div className="text-center">
-                      <Lock className="w-6 h-6 text-blue-600 mx-auto mb-1" />
-                      <p className="text-[9px] font-bold text-slate-600">Privacidade</p>
-                    </div>
+                  <div className="pt-4">
+                    <img
+                      src="/assets/Compra segura.png"
+                      alt="Compra Segura"
+                      className="w-full h-auto object-contain"
+                    />
                   </div>
 
                   <div className="flex justify-between items-center text-slate-400 pt-4">

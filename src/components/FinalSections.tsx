@@ -1,5 +1,5 @@
 import React from 'react';
-import { Quote, Star, Shield, CreditCard, Lock, Award, Clock, AlertTriangle, X, ChevronRight, Wrench, Target } from 'lucide-react';
+import { Quote, Star, Shield, CreditCard, Clock, AlertTriangle, X, ChevronRight, Wrench, Target } from 'lucide-react';
 
 export const FinalSections: React.FC = () => {
   return (
@@ -56,14 +56,11 @@ export const FinalSections: React.FC = () => {
               </div>
             </div>
 
-            {/* Foto + Badge */}
-            <div className="relative group">
-              <img
-                src="/assets/manual.jpg.png"
-                alt="Manual Solar Buy-Side"
-                className="w-full h-auto object-contain"
-              />
-            </div>
+            <img
+              src="/assets/Mockup_Manual.png"
+              alt="Mockup do Manual Solar Buy-Side"
+              className="w-full h-auto"
+            />
           </div>
 
           {/* Barra de Transição */}
@@ -263,22 +260,6 @@ export const FinalSections: React.FC = () => {
               </div>
 
               <div className="w-full h-px bg-gradient-to-r from-transparent via-white/20 to-transparent my-8"></div>
-
-              {/* Trust Badges */}
-              <div className="grid grid-cols-3 gap-4 text-center">
-                <div>
-                  <Shield className="w-8 h-8 text-electric-cyan mx-auto mb-2" />
-                  <p className="text-xs text-text-muted">Compra Segura</p>
-                </div>
-                <div>
-                  <Award className="w-8 h-8 text-electric-cyan mx-auto mb-2" />
-                  <p className="text-xs text-text-muted">Satisfação Garantida</p>
-                </div>
-                <div>
-                  <Lock className="w-8 h-8 text-electric-cyan mx-auto mb-2" />
-                  <p className="text-xs text-text-muted">Dados Protegidos</p>
-                </div>
-              </div>
 
               <p className="text-center text-sm text-text-muted italic mt-8">
                 💡 Menos que o custo de 1 painel fotovoltaico.
