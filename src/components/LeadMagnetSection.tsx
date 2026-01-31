@@ -6,6 +6,7 @@ import {
   Layers,
   ListChecks,
   Scale,
+  X,
   Zap,
 } from 'lucide-react'
 
@@ -34,6 +35,14 @@ const features = [
 
 export const LeadMagnetSection: React.FC = () => {
   const [hovered, setHovered] = useState(false)
+  const [showModal, setShowModal] = useState(false)
+  const [formData, setFormData] = useState({
+    nome: '',
+    sobrenome: '',
+    email: '',
+    celular: '',
+  })
+  const [submitted, setSubmitted] = useState(false)
 
   return (
     <section className="relative w-full bg-white py-24 md:py-40 px-6 overflow-hidden font-sans text-[#1d1d1f]">
@@ -80,15 +89,15 @@ export const LeadMagnetSection: React.FC = () => {
             <div className="pt-6">
               <button
                 className="group relative inline-flex items-center justify-center px-10 py-5 font-bold text-white transition-all duration-200 bg-[#1d1d1f] rounded-2xl hover:bg-orange-600 active:scale-95 shadow-[0_20px_40px_-15px_rgba(0,0,0,0.3)] hover:shadow-orange-500/20"
-                onClick={() => document.getElementById('oferta')?.scrollIntoView({ behavior: 'smooth' })}
+                onClick={() => setShowModal(true)}
                 type="button"
               >
-                <span className="mr-3">Baixar Preview Gratuito</span>
+                <span className="mr-3">Baixar E-book Gratuito</span>
                 <Download size={20} className="group-hover:translate-y-0.5 transition-transform" />
               </button>
               <p className="mt-4 text-xs text-[#86868b] flex items-center gap-2">
                 <CheckCircle2 size={14} className="text-green-500" />
-                PDF Interativo • 42 páginas • Acesso imediato
+                PDF Interativo • 24 páginas • Acesso imediato
               </p>
             </div>
           </div>
@@ -105,39 +114,12 @@ export const LeadMagnetSection: React.FC = () => {
             >
               <div className="absolute -bottom-10 left-10 right-0 h-10 bg-black/60 blur-[40px] rounded-full"></div>
 
-              <div className="aspect-[3/4.2] w-full bg-gradient-to-br from-[#2D2D2F] to-[#111111] rounded-r-xl border-y border-r border-white/10 shadow-2xl relative overflow-hidden flex flex-col">
-                <div className="absolute left-0 top-0 bottom-0 w-5 bg-gradient-to-r from-black/50 to-transparent shadow-inner z-20"></div>
-
-                <div className="p-10 h-full flex flex-col justify-between relative">
-                  <div>
-                    <div className="w-12 h-1 bg-orange-600 mb-10 rounded-full"></div>
-                    <h3 className="text-3xl md:text-4xl font-black text-white leading-[0.9] tracking-tighter uppercase italic">
-                      Solar<br />
-                      Buy-Side<br />
-                      <span className="text-orange-600 not-italic">Preview</span>
-                    </h3>
-                  </div>
-
-                  <div className="space-y-6">
-                    <div className="flex items-center gap-3">
-                      <div className="w-10 h-10 rounded-full bg-white/10 border border-white/20 flex items-center justify-center">
-                        <Zap size={20} className="text-orange-500 fill-orange-500" />
-                      </div>
-                      <p className="text-[10px] font-bold text-white/40 uppercase tracking-[0.3em]">
-                        Estratégia de <br />
-                        Alta Conversão
-                      </p>
-                    </div>
-
-                    <div className="h-px w-full bg-gradient-to-r from-white/20 to-transparent"></div>
-
-                    <p className="text-[9px] font-medium text-white/30 uppercase tracking-[0.1em]">
-                      © 2025 Manual Solar • All Rights Reserved
-                    </p>
-                  </div>
-                </div>
-
-                <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/5 to-transparent pointer-events-none"></div>
+              <div className="aspect-[3/4.2] w-full rounded-r-xl shadow-2xl relative overflow-hidden">
+                <img
+                  src="/assets/e-book-solar.jpeg"
+                  alt="E-book Solar Buy-Side"
+                  className="w-full h-full object-cover"
+                />
               </div>
             </div>
           </div>
@@ -150,6 +132,117 @@ export const LeadMagnetSection: React.FC = () => {
         .rotate-y-[-10deg] { transform: rotateY(-10deg); }
         .rotate-x-[5deg] { transform: rotateX(5deg); }
       `}</style>
+
+      {/* Modal de Formulário */}
+      {showModal && (
+        <div className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-50 p-4">
+          <div className="bg-white rounded-3xl shadow-2xl max-w-md w-full relative">
+            <button
+              onClick={() => {
+                setShowModal(false)
+                setSubmitted(false)
+              }}
+              className="absolute top-6 right-6 text-[#1d1d1f] hover:text-orange-600 transition-colors"
+              type="button"
+            >
+              <X size={24} />
+            </button>
+
+            <div className="p-8 sm:p-10">
+              {!submitted ? (
+                <>
+                  <h3 className="text-2xl font-bold text-[#1d1d1f] mb-2">Baixe seu E-book</h3>
+                  <p className="text-[#86868b] text-sm mb-6">
+                    Preencha seus dados para receber o E-book Manual Solar Buy-Side
+                  </p>
+
+                  <form
+                    onSubmit={(e) => {
+                      e.preventDefault()
+                      setSubmitted(true)
+                    }}
+                    className="space-y-4"
+                  >
+                    <div className="grid grid-cols-2 gap-4">
+                      <input
+                        type="text"
+                        placeholder="Nome"
+                        value={formData.nome}
+                        onChange={(e) =>
+                          setFormData({ ...formData, nome: e.target.value })
+                        }
+                        required
+                        className="px-4 py-3 border border-[#e5e5e7] rounded-xl focus:outline-none focus:border-orange-600 bg-[#f5f5f7] text-[#1d1d1f]"
+                      />
+                      <input
+                        type="text"
+                        placeholder="Sobrenome"
+                        value={formData.sobrenome}
+                        onChange={(e) =>
+                          setFormData({ ...formData, sobrenome: e.target.value })
+                        }
+                        required
+                        className="px-4 py-3 border border-[#e5e5e7] rounded-xl focus:outline-none focus:border-orange-600 bg-[#f5f5f7] text-[#1d1d1f]"
+                      />
+                    </div>
+
+                    <input
+                      type="email"
+                      placeholder="E-mail"
+                      value={formData.email}
+                      onChange={(e) =>
+                        setFormData({ ...formData, email: e.target.value })
+                      }
+                      required
+                      className="w-full px-4 py-3 border border-[#e5e5e7] rounded-xl focus:outline-none focus:border-orange-600 bg-[#f5f5f7] text-[#1d1d1f]"
+                    />
+
+                    <input
+                      type="tel"
+                      placeholder="Celular"
+                      value={formData.celular}
+                      onChange={(e) =>
+                        setFormData({ ...formData, celular: e.target.value })
+                      }
+                      required
+                      className="w-full px-4 py-3 border border-[#e5e5e7] rounded-xl focus:outline-none focus:border-orange-600 bg-[#f5f5f7] text-[#1d1d1f]"
+                    />
+
+                    <button
+                      type="submit"
+                      className="w-full bg-orange-600 hover:bg-orange-500 text-white font-bold py-3 rounded-xl transition-colors mt-6"
+                    >
+                      Baixar E-book Gratuito
+                    </button>
+                  </form>
+                </>
+              ) : (
+                <div className="text-center space-y-4">
+                  <div className="flex justify-center mb-4">
+                    <CheckCircle2 size={48} className="text-green-500" />
+                  </div>
+                  <h3 className="text-2xl font-bold text-[#1d1d1f]">
+                    Perfeito!
+                  </h3>
+                  <p className="text-[#86868b]">
+                    Confira seu e-mail para baixar o E-book Manual Solar Buy-Side
+                  </p>
+                  <button
+                    onClick={() => {
+                      setShowModal(false)
+                      setSubmitted(false)
+                    }}
+                    className="w-full bg-orange-600 hover:bg-orange-500 text-white font-bold py-3 rounded-xl transition-colors mt-6"
+                    type="button"
+                  >
+                    Fechar
+                  </button>
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
+      )}
     </section>
   )
 }
