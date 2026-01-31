@@ -23,7 +23,7 @@ function App() {
   const pathname = window.location.pathname.replace(/\/$/, '') || '/'
   const legalPages = {
     '/politica-de-privacidade': {
-      title: 'Política de Privacidade',
+      title: 'PolÃ­tica de Privacidade',
       sections: privacySections,
     },
     '/termos-de-uso': {
