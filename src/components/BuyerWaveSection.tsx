@@ -156,7 +156,7 @@ export const BuyerWaveSection: React.FC = () => {
             <div className="w-full md:w-[38%] relative">
               <img
                 src={testimonials[activeTestimonial].avatar}
-                className="absolute inset-0 w-full h-full object-cover"
+                className="absolute inset-0 w-full h-full object-cover object-center"
                 alt={testimonials[activeTestimonial].name}
               />
               <div className="absolute bottom-8 left-8 right-8 backdrop-blur-xl bg-white/20 border border-white/30 p-6 rounded-2xl text-white shadow-2xl">
