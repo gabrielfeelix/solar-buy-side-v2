@@ -203,28 +203,15 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ id }) => {
                   </div>
 
                   <div className="flex items-center justify-center gap-4">
-                    <svg className="w-8 h-8" viewBox="0 0 48 48" fill="none">
-                      <rect width="48" height="48" rx="4" fill="#1434CB"/>
-                      <path d="M12 24L20 32L36 16" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                    </svg>
-                    <svg className="w-8 h-8" viewBox="0 0 48 48" fill="none">
-                      <rect width="48" height="48" rx="4" fill="#FF5F00"/>
-                      <circle cx="18" cy="24" r="8" fill="white" opacity="0.7"/>
-                      <circle cx="30" cy="24" r="8" fill="white" opacity="0.7"/>
-                    </svg>
-                    <svg className="w-8 h-8" viewBox="0 0 48 48" fill="none">
-                      <rect width="48" height="48" rx="4" fill="#0066B2"/>
-                      <text x="24" y="32" textAnchor="middle" fill="white" fontSize="20" fontWeight="bold">PIX</text>
-                    </svg>
-                    <svg className="w-8 h-8" viewBox="0 0 48 48" fill="none">
-                      <rect width="48" height="48" rx="4" fill="#FFB81C"/>
-                      <text x="24" y="28" textAnchor="middle" fill="#003366" fontSize="10" fontWeight="bold">BOLETO</text>
-                    </svg>
+                    <img src="/assets/Visa.png" alt="Visa" className="h-8 w-auto object-contain" />
+                    <img src="/assets/Mastercard.png" alt="Mastercard" className="h-8 w-auto object-contain" />
+                    <img src="/assets/Pix.png" alt="PIX" className="h-8 w-auto object-contain" />
+                    <img src="/assets/Boleto.png" alt="Boleto" className="h-8 w-auto object-contain" />
                   </div>
 
                   <div className="grid grid-cols-3 gap-2 pt-4">
                     <div className="text-center">
-                      <Shield className="w-6 h-6 text-blue-600 mx-auto mb-1" />
+                      <img src="/assets/Compra segura.png" alt="Compra Segura" className="h-6 w-auto object-contain mx-auto mb-1" />
                       <p className="text-[9px] font-bold text-slate-600">Compra Segura</p>
                     </div>
                     <div className="text-center">
