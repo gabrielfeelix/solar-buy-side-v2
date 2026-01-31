@@ -58,19 +58,11 @@ export const FinalSections: React.FC = () => {
 
             {/* Foto + Badge */}
             <div className="relative group">
-              <div className="absolute inset-0 bg-gradient-to-r from-electric-cyan to-neon-green rounded-3xl blur-2xl opacity-30 group-hover:opacity-50 transition-opacity"></div>
-              <div className="relative">
-                <div className="aspect-[3/4] rounded-3xl overflow-hidden border-2 border-electric-cyan neon-glow-cyan">
-                  <img
-                    src="/assets/Mockup_Manual.jpeg"
-                    alt="Manual Solar Buy-Side"
-                    className="w-full h-full object-contain"
-                  />
-                </div>
-                <div className="absolute top-4 right-4 bg-neon-green text-bg-primary px-4 py-2 rounded-full font-bold">
-                  +5 sistemas/mês
-                </div>
-              </div>
+              <img
+                src="/assets/manual.jpg.png"
+                alt="Manual Solar Buy-Side"
+                className="w-full h-auto object-contain"
+              />
             </div>
           </div>
 
