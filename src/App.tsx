@@ -9,6 +9,7 @@ import {
   ManualStrategicSection,
   TestimonialsSection,
   StoryBridgeSection,
+  SellerCodeSection,
   PricingSection,
   BuyerWaveSection,
   AuthoritySection,
@@ -80,6 +81,7 @@ function App() {
       <ManualStrategicSection />
       <TestimonialsSection />
       <StoryBridgeSection />
+      <SellerCodeSection />
       <PricingSection id="oferta" />
       <BuyerWaveSection />
       <AuthoritySection />
