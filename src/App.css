@@ -19,19 +19,26 @@
   animation: cardFloat 6s ease-in-out infinite;
 }
 
-@keyframes typing {
+@keyframes typewriter {
   from {
-    width: 0;
-    opacity: 0;
+    max-width: 0;
   }
   to {
-    width: 100%;
-    opacity: 1;
+    max-width: 100%;
   }
 }
 
-@keyframes blink {
-  50% {
-    opacity: 0.7;
-  }
+.typing-animation-solar {
+  display: inline-block;
+  overflow: hidden;
+  white-space: nowrap;
+  animation: typewriter 0.8s steps(5) forwards;
+}
+
+.typing-animation-buyside {
+  display: inline-block;
+  overflow: hidden;
+  white-space: nowrap;
+  animation: typewriter 1s steps(8) 0.8s forwards;
+  max-width: 0;
 }

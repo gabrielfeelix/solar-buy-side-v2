@@ -22,25 +22,13 @@ export const SolarHeader: React.FC = () => {
             : 'bg-transparent border-transparent'
         }`}
       >
-        <a href="#hero" className="flex items-center gap-3">
-          <img src="/assets/LOGOSOLARBUYSIDE3.png" alt="Solar Buy-Side" className="h-10 sm:h-12 w-auto" />
+        <a href="#hero" className="flex items-center gap-3 flex-nowrap">
+          <img src="/assets/LOGOSOLARBUYSIDE3.png" alt="Solar Buy-Side" className="h-10 sm:h-12 w-auto flex-shrink-0" />
           <div className="flex flex-col leading-tight">
-            <span
-              className="text-white text-lg sm:text-xl font-bold tracking-tight animate-typing"
-              style={{
-                textShadow: '0 2px 4px rgba(0,0,0,0.3)',
-                animation: 'typing 1s steps(5) forwards, blink 0.5s step-end infinite alternate'
-              }}
-            >
+            <span className="text-white text-lg sm:text-xl font-bold tracking-tight typing-animation-solar" style={{ textShadow: '0 2px 4px rgba(0,0,0,0.3)' }}>
               Solar
             </span>
-            <span
-              className="text-[#F97316] text-lg sm:text-xl font-bold tracking-tight"
-              style={{
-                textShadow: '0 2px 4px rgba(0,0,0,0.3)',
-                animation: 'typing 1s steps(8) 1s forwards, blink 0.5s step-end 1s infinite alternate'
-              }}
-            >
+            <span className="text-[#F97316] text-lg sm:text-xl font-bold tracking-tight typing-animation-buyside" style={{ textShadow: '0 2px 4px rgba(0,0,0,0.3)' }}>
               Buy-Side
             </span>
           </div>
