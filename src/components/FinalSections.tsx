@@ -64,7 +64,7 @@ export const FinalSections: React.FC = () => {
                   <img
                     src="/assets/Mockup_Manual.jpeg"
                     alt="Manual Solar Buy-Side"
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-contain"
                   />
                 </div>
                 <div className="absolute top-4 right-4 bg-neon-green text-bg-primary px-4 py-2 rounded-full font-bold">
