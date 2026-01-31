@@ -39,7 +39,7 @@ export const ProductShowcase: React.FC = () => {
                 Empresas de Integração Solar
               </h3>
 
-              <p className="text-lg text-text-secondary mb-6 leading-relaxed">
+              <p className="text-lg text-text-secondary mb-6 leading-relaxed text-justify">
                 Se você está travado na guerra de preços, fechando projetos
                 com margem cada vez menor, e vendo clientes escolherem o "mais barato":
               </p>
@@ -72,7 +72,7 @@ export const ProductShowcase: React.FC = () => {
                 <h3 className="text-2xl font-bold text-text-primary mb-3 group-hover:text-electric-cyan transition-colors">
                   Empreendedores Iniciantes
                 </h3>
-                <p className="text-text-secondary mb-4 leading-relaxed">
+                <p className="text-text-secondary mb-4 leading-relaxed text-justify">
                   Construa um negócio sólido desde o primeiro cliente.
                 </p>
                 <ul className="space-y-2 text-sm text-text-secondary">
@@ -91,7 +91,7 @@ export const ProductShowcase: React.FC = () => {
                 <h3 className="text-2xl font-bold text-text-primary mb-3 group-hover:text-electric-cyan transition-colors">
                   Representantes Comerciais
                 </h3>
-                <p className="text-text-secondary mb-4 leading-relaxed">
+                <p className="text-text-secondary mb-4 leading-relaxed text-justify">
                   Aumente sua taxa de conversão sem queimar sua comissão.
                 </p>
                 <ul className="space-y-2 text-sm text-text-secondary">
@@ -150,7 +150,7 @@ export const ProductShowcase: React.FC = () => {
 
             {/* Texto + Specs */}
             <div className="md:col-span-3 glass-card p-8 sm:p-12">
-              <p className="text-lg text-text-primary mb-6">
+              <p className="text-lg text-text-primary mb-6 text-justify">
                 O Manual de Compra Solar Buy-Side é uma leitura essencial para
                 profissionais do setor de vendas (Sell-Side) que{' '}
                 <span className="font-bold gradient-text">DESEJAM SE DESTACAR</span>{' '}
@@ -166,7 +166,7 @@ export const ProductShowcase: React.FC = () => {
                     <h4 className="text-xl font-bold text-text-primary mb-2">
                       VISÃO 360° DA TRANSAÇÃO
                     </h4>
-                    <p className="text-text-secondary mb-3">
+                    <p className="text-text-secondary mb-3 text-justify">
                       Ao proporcionar uma imersão na jornada de compra{' '}
                       <span className="text-warning-orange font-semibold">
                         SOB A ÓTICA DO COMPRADOR
@@ -190,7 +190,7 @@ export const ProductShowcase: React.FC = () => {
                     <h4 className="text-xl font-bold text-text-primary mb-2">
                       O RESULTADO PRÁTICO
                     </h4>
-                    <p className="text-text-secondary mb-3">
+                    <p className="text-text-secondary mb-3 text-justify">
                       Ao dominar o conceito Buy-Side, você estará apto a:
                     </p>
                     <ul className="space-y-2 text-text-secondary">
