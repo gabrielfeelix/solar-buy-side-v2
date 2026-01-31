@@ -5,7 +5,7 @@ export const Footer: React.FC = () => {
     <footer className="bg-[#001529] text-white py-6 px-8 border-t border-white/5 font-sans">
       <div className="max-w-[1400px] mx-auto flex flex-col lg:flex-row items-center justify-between gap-6">
         <div className="flex items-center gap-4">
-          <img src="/assets/logo-solar-buy-side.svg" alt="Solar Buy-Side" className="h-10 w-auto" />
+          <img src="/assets/LOGOSOLARBUYSIDE3.svg" alt="Solar Buy-Side" className="h-10 w-auto" />
         </div>
 
         <nav className="flex flex-col sm:flex-row items-center gap-4 sm:gap-6 text-sm font-semibold text-white/70">

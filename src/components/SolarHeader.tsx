@@ -23,7 +23,7 @@ export const SolarHeader: React.FC = () => {
         }`}
       >
         <a href="#hero" className="flex items-center gap-3">
-          <img src="/assets/logo-solar-buy-side.svg" alt="Solar Buy-Side" className="h-12 sm:h-14 w-auto" />
+          <img src="/assets/LOGOSOLARBUYSIDE3.svg" alt="Solar Buy-Side" className="h-12 sm:h-14 w-auto" />
         </a>
 
         <div className="hidden md:flex items-center gap-8">
