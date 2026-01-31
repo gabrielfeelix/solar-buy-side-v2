@@ -45,7 +45,7 @@ export const HeroSectionPotato: React.FC = () => {
           <span className="text-xs font-mono font-bold text-white tracking-widest uppercase">Inteligência de Mercado 2026</span>
         </div>
 
-        <h1 className="text-4xl md:text-6xl font-bold text-white leading-[1.05] tracking-tight mb-8">
+        <h1 className="text-4xl md:text-[64px] font-bold text-white leading-[1.05] tracking-tight mb-8">
           Transforme-se no<br />
           <span className="text-[#F97316]">
             {typed}

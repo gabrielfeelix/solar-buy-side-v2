@@ -42,13 +42,9 @@ export const VideoSection: React.FC = () => {
       </div>
       <div className="relative max-w-5xl mx-auto px-6 py-32">
         <div className="mb-24">
-          <h2 className="text-5xl md:text-7xl font-black tracking-tighter mb-6 leading-none">
-            Realidade de <br />
-            <span className="text-[#F97316] italic">Mercado</span>
-          </h2>
-          <p className="text-xl text-white font-medium tracking-tight max-w-xl">
+          <h2 className="text-5xl md:text-7xl font-black tracking-tighter mb-6 leading-tight">
             Descubra o que o Manual ensina aos compradores e entenda as novas regras do jogo.
-          </p>
+          </h2>
         </div>
 
         <div className="space-y-6 mb-32">

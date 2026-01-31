@@ -41,7 +41,7 @@ export const AuthoritySection: React.FC = () => {
             <div className="md:col-span-4">
               <div className="relative max-w-[280px] mx-auto">
                 <div className="aspect-[3/4] bg-slate-800 rounded-2xl overflow-hidden relative transition-all duration-700 group">
-                  <img src={francisImage} alt="Francis Poloni" className="absolute inset-0 h-full w-full object-cover" loading="lazy" />
+                  <img src={francisImage} alt="Francis Poloni" className="absolute inset-0 h-full w-full object-cover object-center" loading="lazy" />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#020617] via-transparent to-[#020617]/50"></div>
                 </div>
               </div>
@@ -65,7 +65,7 @@ export const AuthoritySection: React.FC = () => {
             <div className="md:col-span-4">
               <div className="relative max-w-[280px] mx-auto">
                 <div className="aspect-[3/4] bg-slate-800 rounded-2xl overflow-hidden relative transition-all duration-700 group">
-                  <img src={ovidioImage} alt="Ovídio Collesi" className="absolute inset-0 h-full w-full object-cover" loading="lazy" />
+                  <img src={ovidioImage} alt="Ovídio Collesi" className="absolute inset-0 h-full w-full object-cover object-center" loading="lazy" />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#020617] via-transparent to-[#020617]/50"></div>
                 </div>
               </div>
