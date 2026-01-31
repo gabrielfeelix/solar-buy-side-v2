@@ -23,7 +23,15 @@ export const SolarHeader: React.FC = () => {
         }`}
       >
         <a href="#hero" className="flex items-center gap-3">
-          <img src="/assets/LOGOSOLARBUYSIDE3.svg" alt="Solar Buy-Side" className="h-12 sm:h-14 w-auto" />
+          <img src="/assets/LOGOSOLARBUYSIDE3.svg" alt="Solar Buy-Side" className="h-10 sm:h-12 w-auto" />
+          <div className="flex flex-col leading-tight">
+            <span className="text-white text-lg sm:text-xl font-bold tracking-tight" style={{ textShadow: '0 2px 4px rgba(0,0,0,0.3)' }}>
+              Solar
+            </span>
+            <span className="text-[#F97316] text-lg sm:text-xl font-bold tracking-tight" style={{ textShadow: '0 2px 4px rgba(0,0,0,0.3)' }}>
+              Buy-Side
+            </span>
+          </div>
         </a>
 
         <div className="hidden md:flex items-center gap-8">

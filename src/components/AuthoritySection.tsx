@@ -1,7 +1,7 @@
 ﻿import React from 'react'
 
 const francisImage = '/assets/Francis Poloni LP PRO.jpg.jpeg'
-const ovidioImage = '/assets/Ovídio.jpeg'
+const ovidioImage = '/assets/Ovídio2.png'
 
 export const AuthoritySection: React.FC = () => {
   return (
