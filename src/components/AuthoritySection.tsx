@@ -23,14 +23,14 @@ export const AuthoritySection: React.FC = () => {
       </div>
 
       <div className="relative z-10 max-w-6xl mx-auto">
-        {/* Título Centralizado */}
-        <div className="text-center mb-20">
+        {/* Título */}
+        <div className="text-left mb-20">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-[#F97316] text-[10px] font-bold uppercase tracking-widest mb-6">
             Experiência Dual
           </div>
-          <h2 className="text-4xl md:text-5xl font-bold text-white leading-tight max-w-3xl mx-auto">
-            Esse conteúdo só é possível porque foi criado por quem viveu os dois lados <br />
-            <span className="text-[#F97316]">da mesa: o do comprador e o do vendedor.</span>
+          <h2 className="text-4xl md:text-5xl font-bold text-white leading-tight max-w-4xl">
+            Este conteúdo foi concebido por quem domina, as duas perspectivas da{' '}
+            <span className="text-[#F97316]">mesa de negociação — a do comprador e a do vendedor.</span>
           </h2>
         </div>
 

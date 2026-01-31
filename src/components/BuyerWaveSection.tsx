@@ -25,6 +25,7 @@ const testimonials = [
     role: 'Empresário',
     location: 'São Paulo, SP',
     avatar: '/assets/Ricardo.png',
+    objectPosition: '55% 20%',
     reviewTitle: 'Errar na escolha de um fornecedor pode gerar prejuízo enorme',
     quote:
       'No mundo dos negócios em São Paulo, errar na escolha de um fornecedor pode gerar um prejuízo enorme. O manual foi uma ferramenta indispensável para evitar armadilhas na compra do sistema solar. Aprendi a identificar empresas despreparadas e equipamentos de qualidade duvidosa. O mais importante foi que o manual me ensinou a procurar empresas que não apenas vendiam o sistema, mas também ofereciam garantia de suporte técnico contínuo e manutenção.',
@@ -36,6 +37,7 @@ const testimonials = [
     role: 'Particular',
     location: 'Recife, PE',
     avatar: '/assets/Lucineide.png',
+    objectPosition: '55% 20%',
     reviewTitle: 'Esse Manual foi realmente um passo a passo arretado',
     quote:
       'Morando sozinha, confesso que a enorme variedade de empresas e tecnologias de energia solar me deixava bastante perdida e insegura sobre qual seria a escolha ideal para não me arrepender depois. Mas o manual foi um guia fundamental nessa jornada! Seguindo cada fase e etapa, consegui avaliar detalhadamente cada proposta, descartando aquelas que pareciam boas demais para ser verdade. Com segurança e convicção, instalei um sistema de R$ 28 mil.',
@@ -156,7 +158,8 @@ export const BuyerWaveSection: React.FC = () => {
             <div className="w-full md:w-[38%] relative">
               <img
                 src={testimonials[activeTestimonial].avatar}
-                className="absolute inset-0 w-full h-full object-cover object-center"
+                className="absolute inset-0 w-full h-full object-cover"
+                style={{ objectPosition: testimonials[activeTestimonial].objectPosition ?? 'center' }}
                 alt={testimonials[activeTestimonial].name}
               />
               <div className="absolute bottom-8 left-8 right-8 backdrop-blur-xl bg-white/20 border border-white/30 p-6 rounded-2xl text-white shadow-2xl">
