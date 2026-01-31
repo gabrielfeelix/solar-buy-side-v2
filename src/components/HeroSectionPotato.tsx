@@ -18,7 +18,7 @@ export const HeroSectionPotato: React.FC = () => {
   }, [])
 
   const scrollToSection = () => {
-    const element = document.getElementById('oferta')
+    const element = document.getElementById('contexto')
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' })
     }
@@ -53,11 +53,11 @@ export const HeroSectionPotato: React.FC = () => {
           </span>
         </h1>
 
-        <p className="text-lg md:text-xl text-slate-300 max-w-2xl mx-auto leading-relaxed mb-12 font-light">
-          Aprenda como o seu cliente pensa e fuja da guerra de preços com o{' '}
-          <span className="text-white underline underline-offset-4 decoration-[#F97316]/80">
-            Manual Solar Buy-Side.
-          </span>
+        <p className="text-2xl md:text-4xl text-slate-300 max-w-2xl mx-auto leading-relaxed mb-4 font-light">
+          Aprenda como o seu cliente pensa e fuja da guerra de preços com o
+        </p>
+        <p className="text-2xl md:text-4xl text-white max-w-2xl mx-auto leading-relaxed mb-12 font-light">
+          <span className="font-bold">Manual Solar Buy-Side.</span>
         </p>
 
         <button onClick={scrollToSection} type="button" className="group flex flex-col items-center gap-3 mx-auto opacity-80 hover:opacity-100 transition-opacity">

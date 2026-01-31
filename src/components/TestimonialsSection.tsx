@@ -1,7 +1,7 @@
 ﻿import React from 'react'
 import { CheckCircle2, Quote } from 'lucide-react'
 
-const rodrigoImage = '/assets/person4.jpg'
+const rodrigoImage = '/assets/Integrador_Rodrigo_SP.png'
 
 export const TestimonialsSection: React.FC = () => {
   return (

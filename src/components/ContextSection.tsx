@@ -66,7 +66,7 @@ export const ContextSection: React.FC = () => {
           </div>
           <div className="h-px md:h-8 w-full md:w-px bg-white/10"></div>
           <p className="text-xs font-medium text-slate-400 uppercase tracking-widest text-center md:text-left">
-            O mercado amadureceu. <br className="hidden md:block" /> Você está pronto?
+            O cenário está evoluindo. <br className="hidden md:block" /> Você está pronto?
           </p>
         </div>
 

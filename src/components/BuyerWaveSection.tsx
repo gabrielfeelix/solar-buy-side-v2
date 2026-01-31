@@ -10,26 +10,48 @@ import {
 
 const testimonials = [
   {
-    name: 'Rogério',
-    role: 'Comprador',
-    location: 'Campinas, SP',
-    avatar: '/assets/person1.jpg',
-    reviewTitle: 'O manual valeu cada página.',
+    name: 'Carlos',
+    role: 'Particular',
+    location: 'Belo Horizonte, MG',
+    avatar: '/assets/Carlos.png',
+    reviewTitle: 'O Manual Buy-Side abriu meus olhos para os riscos',
     quote:
-      'Nunca tinha tido contato com energia solar e tinha receio de tomar decisão errada. Mas, ao começar a ler o manual, tudo mudou. O conteúdo é claro, estruturado e me conquistou logo no início. As 4 fases da jornada de compra foram essenciais. Sempre que surgia uma dúvida, o índice interativo com mais de 160 tópicos me levava direto à resposta.',
+      'Morando em Belo Horizonte, o sol é uma bênção, mas eu tinha medo de cair em cilada ao tentar aproveitar essa energia. As empresas prometiam mundos e fundos, mas eu sentia que tinha algo escondido. O manual abriu meus olhos para os riscos de contratos mal feitos e equipamentos de baixa qualidade. Com as dicas práticas, conversei de igual para igual com os vendedores e ainda economizei R$ 1.800 na negociação!',
     highlight:
-      'No fim, escolhi a empresa certa, o sistema ideal ao preço certo e conduzi tudo com segurança. Sem exagero: o manual valeu cada página.',
+      'Valeu cada página pra fechar com uma empresa séria e garantir um sistema que atende minhas necessidades de verdade.',
   },
   {
-    name: 'Juliano Rocha',
-    role: 'Arquiteto',
-    location: 'Florianópolis, SC',
-    avatar: '/assets/person2.jpg',
-    reviewTitle: 'Autoridade total no projeto.',
+    name: 'Ricardo S.',
+    role: 'Empresário',
+    location: 'São Paulo, SP',
+    avatar: '/assets/Ricardo.png',
+    reviewTitle: 'Errar na escolha de um fornecedor pode gerar prejuízo enorme',
     quote:
-      "Como arquiteto, precisava de algo que traduzisse o 'tecniquês' para uma linguagem que eu pudesse explicar aos meus clientes. O manual faz exatamente isso. Ele organiza o caos de informações que recebemos dos fornecedores e nos dá critérios reais de avaliação técnica e comercial.",
+      'No mundo dos negócios em São Paulo, errar na escolha de um fornecedor pode gerar um prejuízo enorme. O manual foi uma ferramenta indispensável para evitar armadilhas na compra do sistema solar. Aprendi a identificar empresas despreparadas e equipamentos de qualidade duvidosa. O mais importante foi que o manual me ensinou a procurar empresas que não apenas vendiam o sistema, mas também ofereciam garantia de suporte técnico contínuo e manutenção.',
     highlight:
-      'Hoje não assino um projeto sem conferir os checklists de validação do manual. É o padrão ouro do setor solar.',
+      'Fechei negócio com a melhor empresa e tenho certeza que meu investimento de R$ 145 mil foi muito bem aplicado. Evitei um monte de dor de cabeça e escolhi com confiança.',
+  },
+  {
+    name: 'Lucineide',
+    role: 'Particular',
+    location: 'Recife, PE',
+    avatar: '/assets/Lucineide.png',
+    reviewTitle: 'Esse Manual foi realmente um passo a passo arretado',
+    quote:
+      'Morando sozinha, confesso que a enorme variedade de empresas e tecnologias de energia solar me deixava bastante perdida e insegura sobre qual seria a escolha ideal para não me arrepender depois. Mas o manual foi um guia fundamental nessa jornada! Seguindo cada fase e etapa, consegui avaliar detalhadamente cada proposta, descartando aquelas que pareciam boas demais para ser verdade. Com segurança e convicção, instalei um sistema de R$ 28 mil.',
+    highlight:
+      'Esse manual foi realmente um passo a passo "arretado" para entender tudo direitinho e fazer a escolha certa para minha casa. E o melhor de tudo? No final das negociações, fui até elogiada por vendedores, que nunca tinham encontrado uma mulher com tanto conhecimento no assunto! 😂',
+  },
+  {
+    name: 'Edivaldo',
+    role: 'Produtor Rural',
+    location: 'Sinop, MT',
+    avatar: '/assets/Edivaldo.png',
+    reviewTitle: 'O Manual me deu segurança para investir R$ 248.000,00',
+    quote:
+      'Sou produtor rural aqui em Sinop, no Mato Grosso, e decidi instalar um sistema solar no meu galpão por causa do alto consumo de energia nas atividades da fazenda, principalmente na irrigação e no uso de máquinas. Com o clima seco e a expansão da lavoura, a conta de luz estava pesando cada vez mais. O Manual de Compra Profissional de Sistema Solar Fotovoltaico Buy-Side foi essencial nesse processo.',
+    highlight:
+      'Ele me ajudou a entender como comparar propostas e evitar erros comuns, o que me deu segurança para investir R$ 248.000,00 com confiança.',
   },
 ]
 
@@ -48,7 +70,7 @@ export const BuyerWaveSection: React.FC = () => {
           </span>
           <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-6">O que está em jogo?</h2>
           <p className="text-xl text-[#86868B] max-w-2xl mx-auto leading-relaxed">
-            Seus compradores estão evoluindo.
+            Compradores estão evoluindo.
             <br className="hidden md:block" />
             Veja o que eles estarão aprendendo em breve.
           </p>

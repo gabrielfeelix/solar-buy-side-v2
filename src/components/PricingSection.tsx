@@ -1,6 +1,7 @@
 ﻿import React from 'react'
 import {
   ArrowRight,
+  Award,
   BookOpen,
   CheckCircle2,
   FileText,
@@ -8,7 +9,7 @@ import {
   Lock,
   Map,
   Package,
-  RefreshCw,
+  Shield,
   ShieldCheck,
   Sparkles,
 } from 'lucide-react'
@@ -73,7 +74,7 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ id }) => {
         <div className="text-center mb-16 space-y-6">
           <div className="inline-flex items-center gap-3 px-5 py-2 bg-orange-500/10 border border-orange-500/20 rounded-full text-orange-500 text-[10px] font-black tracking-[0.2em] uppercase">
             <Sparkles size={14} className="animate-pulse" />
-            Vagas Limitadas: Pré-Venda Profissional
+            Pré-venda profissional por tempo limitado
           </div>
 
           <h2 className="text-5xl md:text-7xl font-black tracking-tighter leading-[0.95]">
@@ -142,27 +143,20 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ id }) => {
               <div className="absolute -inset-4 bg-orange-600/20 blur-[60px] rounded-full opacity-50"></div>
 
               <div className="relative bg-white text-slate-950 rounded-[40px] p-10 shadow-2xl overflow-hidden">
-                <div className="absolute top-8 -right-12 bg-orange-600 text-white py-1 px-14 rotate-45 font-black text-[10px] uppercase tracking-widest shadow-lg">
-                  Último Lote
-                </div>
-
-                <div className="mb-10">
-                  <span className="inline-block px-3 py-1 bg-slate-100 rounded-full text-[10px] font-black uppercase tracking-widest text-slate-600 mb-4">
-                    Plano Vitalício
-                  </span>
+                  <div className="mb-10">
                   <div className="space-y-1">
-                    <p className="text-slate-400 text-sm font-bold line-through">De R$ 1.497,00 por apenas:</p>
+                    <p className="text-slate-400 text-sm font-bold line-through">De R$ 997,00 por apenas:</p>
                     <div className="flex flex-col">
                       <div className="flex items-start">
                         <span className="text-xl font-bold mt-2 mr-1">12x de</span>
                         <div className="flex items-start">
                           <span className="text-2xl font-black mt-2">R$</span>
-                          <span className="text-8xl font-black tracking-tighter leading-none">47</span>
-                          <span className="text-2xl font-black mt-2">,25</span>
+                          <span className="text-8xl font-black tracking-tighter leading-none">61</span>
+                          <span className="text-2xl font-black mt-2">,38</span>
                         </div>
                       </div>
                       <p className="text-slate-500 text-sm font-medium mt-2">
-                        Ou <span className="text-slate-900 font-bold">R$ 567,00 à vista</span> no PIX
+                        Ou <span className="text-slate-900 font-bold">R$ 597,00 à vista</span> no PIX
                       </p>
                     </div>
                   </div>
@@ -194,15 +188,56 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ id }) => {
                       <Lock size={16} className="text-blue-600 shrink-0" />
                       Acesso Imediato
                     </div>
-                    <div className="flex items-center gap-3 text-slate-500 font-bold text-[11px] uppercase tracking-tight">
-                      <RefreshCw size={16} className="text-blue-600 shrink-0" />
-                      Atualizações 2026
-                    </div>
                   </div>
                 </div>
 
-                <div className="mt-10 pt-8 border-t border-slate-100">
-                  <div className="flex justify-between items-center text-slate-400">
+                <div className="mt-10 pt-8 border-t border-slate-100 space-y-6">
+                  <div className="flex items-center justify-center gap-6">
+                    <div className="text-center">
+                      <div className="w-16 h-16 mx-auto mb-2 rounded-full border-2 border-green-600 flex items-center justify-center">
+                        <Shield className="w-8 h-8 text-green-600" />
+                      </div>
+                      <p className="text-[10px] font-bold text-slate-600 uppercase">7 Dias</p>
+                      <p className="text-[9px] text-slate-500">Garantia</p>
+                    </div>
+                  </div>
+
+                  <div className="flex items-center justify-center gap-4">
+                    <svg className="w-8 h-8" viewBox="0 0 48 48" fill="none">
+                      <rect width="48" height="48" rx="4" fill="#1434CB"/>
+                      <path d="M12 24L20 32L36 16" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                    </svg>
+                    <svg className="w-8 h-8" viewBox="0 0 48 48" fill="none">
+                      <rect width="48" height="48" rx="4" fill="#FF5F00"/>
+                      <circle cx="18" cy="24" r="8" fill="white" opacity="0.7"/>
+                      <circle cx="30" cy="24" r="8" fill="white" opacity="0.7"/>
+                    </svg>
+                    <svg className="w-8 h-8" viewBox="0 0 48 48" fill="none">
+                      <rect width="48" height="48" rx="4" fill="#0066B2"/>
+                      <text x="24" y="32" textAnchor="middle" fill="white" fontSize="20" fontWeight="bold">PIX</text>
+                    </svg>
+                    <svg className="w-8 h-8" viewBox="0 0 48 48" fill="none">
+                      <rect width="48" height="48" rx="4" fill="#FFB81C"/>
+                      <text x="24" y="28" textAnchor="middle" fill="#003366" fontSize="10" fontWeight="bold">BOLETO</text>
+                    </svg>
+                  </div>
+
+                  <div className="grid grid-cols-3 gap-2 pt-4">
+                    <div className="text-center">
+                      <Shield className="w-6 h-6 text-blue-600 mx-auto mb-1" />
+                      <p className="text-[9px] font-bold text-slate-600">Compra Segura</p>
+                    </div>
+                    <div className="text-center">
+                      <Award className="w-6 h-6 text-blue-600 mx-auto mb-1" />
+                      <p className="text-[9px] font-bold text-slate-600">Satisfação</p>
+                    </div>
+                    <div className="text-center">
+                      <Lock className="w-6 h-6 text-blue-600 mx-auto mb-1" />
+                      <p className="text-[9px] font-bold text-slate-600">Privacidade</p>
+                    </div>
+                  </div>
+
+                  <div className="flex justify-between items-center text-slate-400 pt-4">
                     <span className="text-[10px] font-black uppercase tracking-widest">Sua oferta expira em:</span>
                     <div className="flex gap-1 text-slate-900 font-black tabular-nums">
                       <span>{timeLeft.min < 10 ? `0${timeLeft.min}` : timeLeft.min}</span>

@@ -13,7 +13,7 @@ import { ButtonPrimary } from './ManualAtoms'
 type CardProps = {
   Icon: React.ComponentType<{ size?: number }>
   title: string
-  desc: string
+  desc: React.ReactNode
 }
 
 const Card: React.FC<CardProps> = ({ Icon, title, desc }) => {
@@ -68,7 +68,7 @@ export const ManualStrategicSection: React.FC = () => {
             </div>
 
             <div className="mt-12 max-w-2xl">
-              <div className="space-y-6 text-lg text-slate-300 leading-relaxed font-medium">
+              <div className="space-y-6 text-lg text-slate-300 leading-relaxed font-medium text-justify">
                 <p>
                   O <strong className="text-white font-semibold">Manual de Compra Solar Buy-Side</strong> é uma leitura essencial para profissionais do setor de vendas (Sell-Side) que desejam se destacar em um mercado ultracompetitivo.
                 </p>
@@ -93,7 +93,7 @@ export const ManualStrategicSection: React.FC = () => {
             </div>
           </div>
 
-          <div className="lg:col-span-5 sticky top-16 hidden lg:flex justify-end pt-12">
+          <div className="lg:col-span-5 sticky top-16 flex justify-end pt-12">
             <div className="relative group">
               <div className="absolute -inset-20 bg-orange-500/20 blur-[120px] rounded-full group-hover:bg-orange-500/30 transition-colors duration-700"></div>
 
@@ -112,7 +112,7 @@ export const ManualStrategicSection: React.FC = () => {
 
         <div className="mt-16 max-w-4xl">
           <h2 className="text-4xl md:text-6xl font-black text-white leading-[1.1] tracking-tighter mb-8">
-            Mas o que essa imersão representa na prática para o seu dia a dia como vendedor?
+            Descubra o que o manual ensina aos compradores e entenda as novas regras do jogo
           </h2>
           <p className="text-xl md:text-2xl text-slate-400 font-medium">
             Veja os resultados concretos que você pode alcançar ao aplicar o Manual Solar Buy-Side no seu processo de venda.
@@ -130,17 +130,17 @@ export const ManualStrategicSection: React.FC = () => {
               <Card
                 Icon={Target}
                 title="Dores reais do cliente"
-                desc="Compreenda o que realmente pesa na decisão, não apenas o que ele diz na reunião."
+                desc="Suas objeções e motivações"
               />
               <Card
                 Icon={Users}
                 title="Postura consultiva"
-                desc="Pare de empurrar produto. Vire parceiro e ganhe confiança instantânea."
+                desc="Pare de competir por preço. Ajude o cliente a decidir bem e construa uma relação de parceria e confiança."
               />
               <Card
                 Icon={TrendingUp}
                 title="Valor técnico e econômico"
-                desc="Explique payback, LCOE e TIR com clareza e faça o cliente enxergar valor."
+                desc="Demonstra, de forma fundamentada, como o valor técnico da solução se converte em benefício econômico."
               />
             </div>
           </div>
@@ -155,12 +155,12 @@ export const ManualStrategicSection: React.FC = () => {
               <Card
                 Icon={Layout}
                 title="Apresentações persuasivas"
-                desc="Use dados do próprio cliente para construir propostas que convencem."
+                desc="Estruture propostas objetivas e transparentes que facilitam a decisão do cliente."
               />
               <Card
                 Icon={BarChart3}
                 title="Cenário financeiro sólido"
-                desc="Estruture a decisão com números para reduzir insegurança e indecisão."
+                desc={<><strong>Domine a venda.</strong> Conquiste autoridade e crie conexões reais para fechar mais negócios.</>}
               />
               <Card
                 Icon={MinusCircle}
