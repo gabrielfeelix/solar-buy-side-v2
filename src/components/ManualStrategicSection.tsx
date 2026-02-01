@@ -9,6 +9,7 @@ import {
   Users,
 } from 'lucide-react'
 import { ButtonPrimary } from './ManualAtoms'
+import { useContent } from '../contexts/ContentContext'
 
 type CardProps = {
   Icon: React.ComponentType<{ size?: number }>
@@ -34,6 +35,9 @@ const Card: React.FC<CardProps> = ({ Icon, title, desc }) => {
 }
 
 export const ManualStrategicSection: React.FC = () => {
+  const { getSection } = useContent()
+  const section = getSection('manual-strategic')
+
   return (
     <section className="relative overflow-hidden bg-gradient-to-b from-[#0b1224] via-[#0a1730] to-[#020617] text-slate-100 font-sans antialiased selection:bg-orange-100 selection:text-orange-900">
       <div className="absolute inset-0 pointer-events-none">
@@ -54,15 +58,14 @@ export const ManualStrategicSection: React.FC = () => {
           <div className="lg:col-span-7 flex flex-col min-h-[600px]">
             <div className="space-y-6">
               <span className="inline-flex items-center px-3 py-1 rounded-full bg-orange-500/10 border border-orange-500/20 text-orange-400 text-[10px] font-bold uppercase tracking-widest">
-                A ferramenta estratégica
+                {section?.texts.badge || 'A ferramenta estratégica'}
               </span>
               <div className="space-y-4">
                 <h2 className="text-4xl md:text-6xl font-black tracking-tight text-white">
-                  Manual Solar <br />
-                  <span className="text-[#F97316]">Buy-Side</span>
+                  {section?.texts.title || 'Manual Solar Buy-Side'}
                 </h2>
                 <p className="text-xl md:text-2xl text-slate-300 font-medium leading-relaxed max-w-md border-l-2 border-orange-500 pl-4">
-                  A ferramenta estratégica que todo vendedor do setor solar precisa ter.
+                  {section?.texts.subtitle || 'A ferramenta estratégica que todo vendedor do setor solar precisa ter.'}
                 </p>
               </div>
             </div>
@@ -70,14 +73,13 @@ export const ManualStrategicSection: React.FC = () => {
             <div className="mt-12 max-w-2xl">
               <div className="space-y-6 text-lg text-slate-300 leading-relaxed font-medium" style={{ textAlign: 'justify' }}>
                 <p>
-                  O <strong className="text-white font-semibold">Manual de Compra Solar Buy-Side</strong> é uma leitura essencial para profissionais do setor de vendas (Sell-Side) que desejam se destacar em um mercado ultracompetitivo.
+                  {section?.texts.description1 || 'O Manual de Compra Solar Buy-Side é uma leitura essencial para profissionais do setor de vendas (Sell-Side) que desejam se destacar em um mercado ultracompetitivo.'}
                 </p>
                 <p>
-                  Ao proporcionar uma imersão na jornada de compra sob a ótica do comprador, este manual oferece uma compreensão estratégica dos critérios, motivações e desafios enfrentados pelo{' '}
-                  <span className="text-[#F97316] font-semibold italic">lado comprador (Buy-Side)</span>.
+                  {section?.texts.description2 || 'Ao proporcionar uma imersão na jornada de compra sob a ótica do comprador, este manual oferece uma compreensão estratégica dos critérios, motivações e desafios enfrentados pelo lado comprador (Buy-Side).'}
                 </p>
                 <p>
-                  Ao dominar o conceito Buy-Side, vendedores estarão aptos a lapidar sua abordagem comercial, entregar valor real, distanciar-se da briga por preço e elevar sua credibilidade no relacionamento com os clientes.
+                  {section?.texts.description3 || 'Ao dominar o conceito Buy-Side, vendedores estarão aptos a lapidar sua abordagem comercial, entregar valor real, distanciar-se da briga por preço e elevar sua credibilidade no relacionamento com os clientes.'}
                 </p>
               </div>
             </div>
@@ -87,7 +89,7 @@ export const ManualStrategicSection: React.FC = () => {
                 className="text-base md:text-lg px-10 py-4"
                 onClick={() => document.getElementById('oferta')?.scrollIntoView({ behavior: 'smooth' })}
               >
-                QUERO ME DESTACAR NO MERCADO
+                {section?.texts.ctaButton || 'QUERO ME DESTACAR NO MERCADO'}
                 <ArrowRight size={20} />
               </ButtonPrimary>
             </div>
@@ -97,7 +99,7 @@ export const ManualStrategicSection: React.FC = () => {
             <div className="relative group">
               <div className="absolute -inset-20 bg-orange-500/20 blur-[120px] rounded-full group-hover:bg-orange-500/30 transition-colors duration-700"></div>
 
-              <div className="relative w-[340px] h-[480px] rounded-r-lg shadow-[30px_40px_60px_-15px_rgba(0,0,0,0.7)] border-y border-r border-white/10 flex flex-col justify-between overflow-hidden transform rotate-2 group-hover:rotate-0 transition-all duration-500" style={{ backgroundImage: "url('/assets/manual.jpg.png')", backgroundSize: 'cover', backgroundPosition: 'center' }}>
+              <div className="relative w-[340px] h-[480px] rounded-r-lg shadow-[30px_40px_60px_-15px_rgba(0,0,0,0.7)] border-y border-r border-white/10 flex flex-col justify-between overflow-hidden transform rotate-2 group-hover:rotate-0 transition-all duration-500" style={{ backgroundImage: `url('${section?.images.manual || '/assets/manual.jpg.png'}')`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
               </div>
             </div>
           </div>
@@ -107,10 +109,10 @@ export const ManualStrategicSection: React.FC = () => {
 
         <div className="mt-16 max-w-4xl">
           <h2 className="text-4xl md:text-6xl font-black text-white leading-[1.1] tracking-tighter mb-8">
-            Descubra o que o manual ensina aos compradores e entenda as novas regras do jogo
+            {section?.texts.section2Title || 'Descubra o que o manual ensina aos compradores e entenda as novas regras do jogo'}
           </h2>
           <p className="text-xl md:text-2xl text-slate-400 font-medium">
-            Veja os resultados concretos que você pode alcançar ao aplicar o Manual Solar Buy-Side no seu processo de venda.
+            {section?.texts.section2Subtitle || 'Veja os resultados concretos que você pode alcançar ao aplicar o Manual Solar Buy-Side no seu processo de venda.'}
           </p>
         </div>
 
@@ -118,24 +120,24 @@ export const ManualStrategicSection: React.FC = () => {
           <div className="space-y-12">
             <header className="flex items-center gap-4">
               <div className="h-8 w-1 bg-[#F97316] rounded-full"></div>
-              <h3 className="text-sm font-black tracking-[0.3em] text-[#F97316] uppercase">O que o vendedor vai dominar</h3>
+              <h3 className="text-sm font-black tracking-[0.3em] text-[#F97316] uppercase">{section?.texts.sellSideHeader || 'O que o vendedor vai dominar'}</h3>
             </header>
 
             <div className="space-y-8">
               <Card
                 Icon={Target}
-                title="Dores reais do cliente"
-                desc="Suas objeções e motivações"
+                title={section?.texts.sellCard1Title || 'Dores reais do cliente'}
+                desc={section?.texts.sellCard1Desc || 'Suas objeções e motivações'}
               />
               <Card
                 Icon={Users}
-                title="Postura consultiva"
-                desc="Pare de competir por preço. Ajude o cliente a decidir bem e construa uma relação de parceria e confiança."
+                title={section?.texts.sellCard2Title || 'Postura consultiva'}
+                desc={section?.texts.sellCard2Desc || 'Pare de competir por preço. Ajude o cliente a decidir bem e construa uma relação de parceria e confiança.'}
               />
               <Card
                 Icon={TrendingUp}
-                title="Valor técnico e econômico"
-                desc="Demonstra, de forma fundamentada, como o valor técnico da solução se converte em benefício econômico."
+                title={section?.texts.sellCard3Title || 'Valor técnico e econômico'}
+                desc={section?.texts.sellCard3Desc || 'Demonstra, de forma fundamentada, como o valor técnico da solução se converte em benefício econômico.'}
               />
             </div>
           </div>
@@ -143,24 +145,24 @@ export const ManualStrategicSection: React.FC = () => {
           <div className="space-y-12">
             <header className="flex items-center gap-4">
               <div className="h-8 w-1 bg-[#F97316] rounded-full"></div>
-              <h3 className="text-sm font-black tracking-[0.3em] text-[#F97316] uppercase">Principais focos e habilidades</h3>
+              <h3 className="text-sm font-black tracking-[0.3em] text-[#F97316] uppercase">{section?.texts.focusHeader || 'Principais focos e habilidades'}</h3>
             </header>
 
             <div className="space-y-8">
               <Card
                 Icon={Layout}
-                title="Apresentações persuasivas"
-                desc="Estruture propostas objetivas e transparentes que facilitam a decisão do cliente."
+                title={section?.texts.focusCard1Title || 'Apresentações persuasivas'}
+                desc={section?.texts.focusCard1Desc || 'Estruture propostas objetivas e transparentes que facilitam a decisão do cliente.'}
               />
               <Card
                 Icon={BarChart3}
-                title="Cenário financeiro sólido"
-                desc={<><strong>Domine a venda.</strong> Conquiste autoridade e crie conexões reais para fechar mais negócios.</>}
+                title={section?.texts.focusCard2Title || 'Cenário financeiro sólido'}
+                desc={section?.texts.focusCard2Desc || 'Domine a venda. Conquiste autoridade e crie conexões reais para fechar mais negócios.'}
               />
               <Card
                 Icon={MinusCircle}
-                title="Menos desconto, mais margem"
-                desc="Argumente com precisão e preserve sua comissão sem perder vendas."
+                title={section?.texts.focusCard3Title || 'Menos desconto, mais margem'}
+                desc={section?.texts.focusCard3Desc || 'Argumente com precisão e preserve sua comissão sem perder vendas.'}
               />
             </div>
           </div>

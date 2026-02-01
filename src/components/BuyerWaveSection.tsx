@@ -7,6 +7,7 @@ import {
   ChevronRight,
   Target,
 } from 'lucide-react'
+import { useContent } from '../contexts/ContentContext'
 
 const testimonials = [
   {
@@ -58,6 +59,8 @@ const testimonials = [
 ]
 
 export const BuyerWaveSection: React.FC = () => {
+  const { getSection } = useContent()
+  const section = getSection('buyer-wave')
   const [activeTestimonial, setActiveTestimonial] = useState(0)
 
   const next = () => setActiveTestimonial((prev) => (prev + 1) % testimonials.length)
@@ -68,13 +71,11 @@ export const BuyerWaveSection: React.FC = () => {
       <div className="py-24 px-6 max-w-5xl mx-auto">
         <div className="text-center mb-16">
           <span className="text-orange-600 font-semibold mb-3 block uppercase text-xs tracking-[0.2em]">
-            Guia do Comprador
+            {section?.texts.badge || 'Guia do Comprador'}
           </span>
-          <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-6">O que está em jogo?</h2>
+          <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-6">{section?.texts.title || 'O que está em jogo?'}</h2>
           <p className="text-xl text-[#86868B] max-w-2xl mx-auto leading-relaxed">
-            Compradores estão evoluindo.
-            <br className="hidden md:block" />
-            Veja o que eles estarão aprendendo em breve.
+            {section?.texts.subtitle || 'Compradores estão evoluindo. Veja o que eles estarão aprendendo em breve.'}
           </p>
         </div>
 
@@ -84,14 +85,13 @@ export const BuyerWaveSection: React.FC = () => {
               <Award className="text-blue-600" size={24} />
             </div>
             <h3 className="text-2xl font-bold mb-8 tracking-tight text-[#1D1D1F]">
-              O que o comprador <br />
-              vai dominar?
+              {section?.texts.card1Title || 'O que o comprador vai dominar?'}
             </h3>
             <ul className="space-y-6 flex-grow">
               {[
-                'Conceitos essenciais para uma compra técnica e segura',
-                'Reconhecimento de marcas e distribuidores de alta confiança',
-                'Critérios para selecionar empresas sérias e competentes',
+                section?.texts.card1Item1 || 'Conceitos essenciais para uma compra técnica e segura',
+                section?.texts.card1Item2 || 'Reconhecimento de marcas e distribuidores de alta confiança',
+                section?.texts.card1Item3 || 'Critérios para selecionar empresas sérias e competentes',
               ].map((item) => (
                 <li key={item} className="flex flex-col text-[#424245]">
                   <div className="flex gap-4 items-start">
@@ -108,14 +108,13 @@ export const BuyerWaveSection: React.FC = () => {
               <Target className="text-orange-500" size={24} />
             </div>
             <h3 className="text-2xl font-bold mb-8 tracking-tight text-[#1D1D1F]">
-              Principais focos <br />
-              e Habilidades
+              {section?.texts.card2Title || 'Principais focos e Habilidades'}
             </h3>
             <ul className="space-y-6 flex-grow">
               {[
-                'Analisar propostas com critérios técnicos e financeiros',
-                'Avaliar reputação e suporte de pós-venda com precisão',
-                'Tomar decisão com segurança e embasamento técnico',
+                section?.texts.card2Item1 || 'Analisar propostas com critérios técnicos e financeiros',
+                section?.texts.card2Item2 || 'Avaliar reputação e suporte de pós-venda com precisão',
+                section?.texts.card2Item3 || 'Tomar decisão com segurança e embasamento técnico',
               ].map((item) => (
                 <li key={item} className="flex flex-col text-[#424245]">
                   <div className="flex gap-4 items-start">
@@ -133,8 +132,8 @@ export const BuyerWaveSection: React.FC = () => {
         <div className="max-w-6xl mx-auto">
           <div className="flex justify-between items-end mb-10">
             <div>
-              <h2 className="text-3xl md:text-5xl font-bold tracking-tight mb-2">A voz de quem aprendeu.</h2>
-              <p className="text-lg text-[#86868B]">Relatos reais de compradores preparados.</p>
+              <h2 className="text-3xl md:text-5xl font-bold tracking-tight mb-2">{section?.texts.testimonialsTitle || 'A voz de quem aprendeu.'}</h2>
+              <p className="text-lg text-[#86868B]">{section?.texts.testimonialsSubtitle || 'Relatos reais de compradores preparados.'}</p>
             </div>
             <div className="flex gap-3">
               <button
@@ -199,9 +198,9 @@ export const BuyerWaveSection: React.FC = () => {
             >
               <div className="text-left">
                 <span className="block text-[10px] font-black opacity-80 uppercase tracking-[0.25em] mb-0.5">
-                  Começar agora
+                  {section?.texts.ctaText1 || 'Começar agora'}
                 </span>
-                <span className="block text-xl font-bold tracking-tight">Acessar Guia Estratégico</span>
+                <span className="block text-xl font-bold tracking-tight">{section?.texts.ctaText2 || 'Acessar Guia Estratégico'}</span>
               </div>
               <div className="w-14 h-14 bg-white/20 rounded-full flex items-center justify-center group-hover:translate-x-1 transition-transform">
                 <ArrowRight size={28} />

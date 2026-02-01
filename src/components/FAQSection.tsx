@@ -4,6 +4,7 @@ import {
   ChevronDown,
   HelpCircle,
 } from 'lucide-react'
+import { useContent } from '../contexts/ContentContext'
 
 const WhatsAppIcon: React.FC<{ size?: number; className?: string }> = ({ size = 20, className }) => (
   <svg
@@ -91,6 +92,8 @@ const faqData = [
 ]
 
 export const FAQSection: React.FC = () => {
+  const { getSection } = useContent()
+  const section = getSection('faq')
   const [openFaq, setOpenFaq] = useState<number | null>(null)
 
   const toggleFaq = (index: number) => {
@@ -104,10 +107,10 @@ export const FAQSection: React.FC = () => {
           <div className="space-y-8">
             <div className="space-y-4">
               <h2 className="text-5xl font-black tracking-tighter leading-none">
-                Ficou com <span className="text-orange-600">dúvidas?</span>
+                {section?.texts.title || 'Ficou com dúvidas?'}
               </h2>
               <p className="text-xl text-[#6e6e73] font-medium">
-                Nossa equipe de especialistas está pronta para ajudar você a entender como o Manual Buy-Side pode transformar sua operação comercial.
+                {section?.texts.subtitle || 'Nossa equipe de especialistas está pronta para ajudar você a entender como o Manual Buy-Side pode transformar sua operação comercial.'}
               </p>
             </div>
 
@@ -118,7 +121,7 @@ export const FAQSection: React.FC = () => {
                 type="button"
               >
                 <WhatsAppIcon size={20} />
-                <span>Fale com a equipe Buy-Side</span>
+                <span>{section?.texts.ctaButton || 'Fale com a equipe Buy-Side'}</span>
                 <ArrowUpRight size={18} className="opacity-0 group-hover:opacity-100 transition-opacity" />
               </button>
             </div>
@@ -128,7 +131,7 @@ export const FAQSection: React.FC = () => {
           <div className="space-y-4">
             <div className="flex items-center gap-2 mb-6">
               <HelpCircle className="text-orange-600" size={24} />
-              <h3 className="text-2xl font-black tracking-tight">Perguntas Frequentes</h3>
+              <h3 className="text-2xl font-black tracking-tight">{section?.texts.sectionTitle || 'Perguntas Frequentes'}</h3>
             </div>
 
             {faqData.map((item, index) => (

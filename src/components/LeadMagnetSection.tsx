@@ -9,31 +9,35 @@ import {
   X,
   Zap,
 } from 'lucide-react'
-
-const features = [
-  {
-    title: 'Os 3 riscos na compra de sistemas solares',
-    desc: '',
-    icon: <AlertTriangle className="text-orange-500" size={20} />,
-  },
-  {
-    title: 'As 4 fases que seu cliente seguirá antes de comprar',
-    desc: '',
-    icon: <Layers className="text-orange-500" size={20} />,
-  },
-  {
-    title: 'Como sua proposta será avaliada e comparada',
-    desc: '',
-    icon: <Scale className="text-orange-500" size={20} />,
-  },
-  {
-    title: 'O índice detalhado do Manual Solar Buy-Side',
-    desc: '',
-    icon: <ListChecks className="text-orange-500" size={20} />,
-  },
-]
+import { useContent } from '../contexts/ContentContext'
 
 export const LeadMagnetSection: React.FC = () => {
+  const { getSection } = useContent()
+  const section = getSection('lead-magnet')
+
+  const features = [
+    {
+      title: section?.texts.feature1 || 'Os 3 riscos na compra de sistemas solares',
+      desc: '',
+      icon: <AlertTriangle className="text-orange-500" size={20} />,
+    },
+    {
+      title: section?.texts.feature2 || 'As 4 fases que seu cliente seguirá antes de comprar',
+      desc: '',
+      icon: <Layers className="text-orange-500" size={20} />,
+    },
+    {
+      title: section?.texts.feature3 || 'Como sua proposta será avaliada e comparada',
+      desc: '',
+      icon: <Scale className="text-orange-500" size={20} />,
+    },
+    {
+      title: section?.texts.feature4 || 'O índice detalhado do Manual Solar Buy-Side',
+      desc: '',
+      icon: <ListChecks className="text-orange-500" size={20} />,
+    },
+  ]
+
   const [hovered, setHovered] = useState(false)
   const [showModal, setShowModal] = useState(false)
   const [formData, setFormData] = useState({
@@ -56,18 +60,15 @@ export const LeadMagnetSection: React.FC = () => {
           <div className="flex-[1.2] space-y-8">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-orange-50 border border-orange-100 text-orange-700 text-xs font-bold uppercase tracking-widest">
               <Zap size={14} fill="currentColor" />
-              Conteúdo Exclusivo
+              {section?.texts.badge || 'Conteúdo Exclusivo'}
             </div>
 
             <h2 className="text-5xl md:text-7xl font-black tracking-tight leading-[0.95] text-[#1d1d1f]">
-              Ainda tem dúvidas sobre o impacto do <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-600 to-orange-400">
-                Manual Buy-Side?
-              </span>
+              {section?.texts.title || 'Ainda tem dúvidas sobre o impacto do Manual Buy-Side?'}
             </h2>
 
             <p className="max-w-xl text-xl md:text-2xl text-[#6e6e73] font-medium leading-relaxed">
-              Garanta agora seu e-book grátis e entenda por que a imersão Solar Buy-Side faz vendedores venderem mais e melhor.
+              {section?.texts.subtitle || 'Garanta agora seu e-book grátis e entenda por que a imersão Solar Buy-Side faz vendedores venderem mais e melhor.'}
             </p>
 
             <div className="grid sm:grid-cols-1 md:grid-cols-1 gap-6 pt-4">
@@ -92,12 +93,12 @@ export const LeadMagnetSection: React.FC = () => {
                 onClick={() => setShowModal(true)}
                 type="button"
               >
-                <span className="mr-3">Baixar E-book Gratuito</span>
+                <span className="mr-3">{section?.texts.ctaButton || 'Baixar E-book Gratuito'}</span>
                 <Download size={20} className="group-hover:translate-y-0.5 transition-transform" />
               </button>
               <p className="mt-4 text-xs text-[#86868b] flex items-center gap-2">
                 <CheckCircle2 size={14} className="text-green-500" />
-                PDF Interativo • 24 páginas • Acesso imediato
+                {section?.texts.ctaSubtext || 'PDF Interativo • 24 páginas • Acesso imediato'}
               </p>
             </div>
           </div>
@@ -116,7 +117,7 @@ export const LeadMagnetSection: React.FC = () => {
 
               <div className="aspect-[3/4.2] w-full rounded-r-xl shadow-2xl relative overflow-hidden">
                 <img
-                  src="/assets/e-book-solar.jpeg"
+                  src={section?.images.ebook || '/assets/e-book-solar.jpeg'}
                   alt="E-book Solar Buy-Side"
                   className="w-full h-full object-cover"
                 />
@@ -151,9 +152,9 @@ export const LeadMagnetSection: React.FC = () => {
             <div className="p-8 sm:p-10">
               {!submitted ? (
                 <>
-                  <h3 className="text-2xl font-bold text-[#1d1d1f] mb-2">Baixe seu E-book</h3>
+                  <h3 className="text-2xl font-bold text-[#1d1d1f] mb-2">{section?.texts.modalTitle || 'Baixe seu E-book'}</h3>
                   <p className="text-[#86868b] text-sm mb-6">
-                    Preencha seus dados para receber o E-book Manual Solar Buy-Side
+                    {section?.texts.modalSubtitle || 'Preencha seus dados para receber o E-book Manual Solar Buy-Side'}
                   </p>
 
                   <form
@@ -212,7 +213,7 @@ export const LeadMagnetSection: React.FC = () => {
                       type="submit"
                       className="w-full bg-orange-600 hover:bg-orange-500 text-white font-bold py-3 rounded-xl transition-colors mt-6"
                     >
-                      Baixar E-book Gratuito
+                      {section?.texts.ctaButton || 'Baixar E-book Gratuito'}
                     </button>
                   </form>
                 </>
@@ -222,10 +223,10 @@ export const LeadMagnetSection: React.FC = () => {
                     <CheckCircle2 size={48} className="text-green-500" />
                   </div>
                   <h3 className="text-2xl font-bold text-[#1d1d1f]">
-                    Perfeito!
+                    {section?.texts.successTitle || 'Perfeito!'}
                   </h3>
                   <p className="text-[#86868b]">
-                    Confira seu e-mail para baixar o E-book Manual Solar Buy-Side
+                    {section?.texts.successMessage || 'Confira seu e-mail para baixar o E-book Manual Solar Buy-Side'}
                   </p>
                   <button
                     onClick={() => {

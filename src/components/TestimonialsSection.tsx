@@ -1,9 +1,12 @@
 ﻿import React from 'react'
 import { CheckCircle2, Quote } from 'lucide-react'
-
-const rodrigoImage = '/assets/Integrador_Rodrigo_SP.png'
+import { useContent } from '../contexts/ContentContext'
 
 export const TestimonialsSection: React.FC = () => {
+  const { getSection } = useContent()
+  const section = getSection('testimonials')
+
+  const rodrigoImage = section?.images.testimonialImage || '/assets/Integrador_Rodrigo_SP.png'
   return (
     <section className="py-24 bg-white relative overflow-hidden">
       <div className="absolute right-0 top-0 h-full w-1/3 bg-slate-50 hidden lg:block"></div>
@@ -23,33 +26,33 @@ export const TestimonialsSection: React.FC = () => {
               </div>
               <div className="absolute bottom-8 left-8">
                 <Quote className="w-12 h-12 text-[#F97316] mb-4 fill-current" />
-                <p className="text-white font-bold text-lg">Rodrigo M.</p>
-                <p className="text-slate-400 text-sm">Integrador Solar, SP</p>
+                <p className="text-white font-bold text-lg">{section?.texts.authorName || 'Rodrigo M.'}</p>
+                <p className="text-slate-400 text-sm">{section?.texts.authorRole || 'Integrador Solar, SP'}</p>
               </div>
             </div>
             <div className="absolute -right-8 top-12 bg-white p-6 rounded-xl shadow-xl border border-slate-100 hidden md:block">
-              <p className="text-slate-500 text-xs font-bold uppercase mb-1">Crescimento</p>
-              <p className="text-3xl font-bold text-[#F97316]">+5 Sistemas</p>
-              <p className="text-slate-400 text-xs mt-1">Fechados em 30 dias</p>
+              <p className="text-slate-500 text-xs font-bold uppercase mb-1">{section?.texts.statLabel || 'Crescimento'}</p>
+              <p className="text-3xl font-bold text-[#F97316]">{section?.texts.statValue || '+5 Sistemas'}</p>
+              <p className="text-slate-400 text-xs mt-1">{section?.texts.statSubtext || 'Fechados em 30 dias'}</p>
             </div>
           </div>
 
           <div className="lg:col-span-7">
             <h2 className="text-4xl md:text-6xl font-black tracking-tight text-[#0F172A] leading-[1.1] mb-6">
-              "Em um mês fechei 5 sistemas novos"
+              {section?.texts.title || '"Em um mês fechei 5 sistemas novos"'}
             </h2>
             <p className="text-xl md:text-2xl text-slate-500 font-medium mb-6">
-              Os benefícios são claros, e a prática comprova.
+              {section?.texts.subtitle || 'Os benefícios são claros, e a prática comprova.'}
             </p>
             <p className="text-sm md:text-base font-medium text-slate-400 mb-10">
-              Veja a experiência de Rodrigo, Integrador de São Paulo
+              {section?.texts.intro || 'Veja a experiência de Rodrigo, Integrador de São Paulo'}
             </p>
             <div className="space-y-6 text-base md:text-lg text-slate-600 leading-relaxed font-medium">
               <p>
-                "Eu sofria com a concorrência acirrada e a baixa conversão. O Manual Solar Buy-Side me mostrou como entender a perspectiva do cliente, e isso mudou o jogo."
+                {section?.texts.quote1 || '"Eu sofria com a concorrência acirrada e a baixa conversão. O Manual Solar Buy-Side me mostrou como entender a perspectiva do cliente, e isso mudou o jogo."'}
               </p>
               <p>
-                "Em um mês, fechei 5 sistemas novos. O mais gratificante, porém, foi a conexão. Deixei de ser apenas um vendedor e me tornei um verdadeiro parceiro para meus clientes."
+                {section?.texts.quote2 || '"Em um mês, fechei 5 sistemas novos. O mais gratificante, porém, foi a conexão. Deixei de ser apenas um vendedor e me tornei um verdadeiro parceiro para meus clientes."'}
               </p>
             </div>
 
@@ -57,10 +60,10 @@ export const TestimonialsSection: React.FC = () => {
               <div className="flex items-start gap-3">
                 <CheckCircle2 className="w-5 h-5 text-[#F97316] mt-1 flex-shrink-0" />
                 <div>
-                  <h4 className="font-bold text-[#0F172A] text-sm uppercase mb-1">Faça como ele</h4>
+                  <h4 className="font-bold text-[#0F172A] text-sm uppercase mb-1">{section?.texts.ctaTitle || 'Faça como ele'}</h4>
                   <p className="text-slate-600 text-sm italic">
                     <span className="block mt-2 font-semibold text-[#0F172A] not-italic">
-                      Imersão no Manual de Compra Solar Buy-Side: pense como seu cliente e torne-se um Vendedor de Alta Performance!
+                      {section?.texts.ctaText || 'Imersão no Manual de Compra Solar Buy-Side: pense como seu cliente e torne-se um Vendedor de Alta Performance!'}
                     </span>
                   </p>
                 </div>

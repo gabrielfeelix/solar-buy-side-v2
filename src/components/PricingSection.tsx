@@ -11,6 +11,7 @@ import {
   ShieldCheck,
   Sparkles,
 } from 'lucide-react'
+import { useContent } from '../contexts/ContentContext'
 
 type PricingSectionProps = {
   id?: string
@@ -21,34 +22,36 @@ type Countdown = {
   sec: number
 }
 
-const features = [
-  {
-    icon: <BookOpen className="text-orange-500" size={28} />,
-    title: 'Manual Solar Buy-Side',
-    desc: 'Acesso imediato à bíblia da estratégia solar.',
-    tag: 'VITALÍCIO',
-  },
-  {
-    icon: <Layers className="text-orange-500" size={28} />,
-    title: '130 Páginas + 160 Tópicos',
-    desc: 'Conteúdo denso e interativo. Sem enrolação.',
-    tag: 'TÉCNICO',
-  },
-  {
-    icon: <MapIcon className="text-orange-500" size={28} />,
-    title: 'Método em 4 Fases',
-    desc: 'A jornada de compra completa decifrada.',
-    tag: 'ESTRATÉGIA',
-  },
-  {
-    icon: <FileText className="text-orange-500" size={28} />,
-    title: 'Anexos Técnicos',
-    desc: 'Documentação exclusiva para pronta aplicação.',
-    tag: 'EXCLUSIVO',
-  },
-]
-
 export const PricingSection: React.FC<PricingSectionProps> = ({ id }) => {
+  const { getSection } = useContent()
+  const section = getSection('pricing')
+
+  const features = [
+    {
+      icon: <BookOpen className="text-orange-500" size={28} />,
+      title: section?.texts.feature1Title || 'Manual Solar Buy-Side',
+      desc: section?.texts.feature1Desc || 'Acesso imediato à bíblia da estratégia solar.',
+      tag: section?.texts.feature1Tag || 'VITALÍCIO',
+    },
+    {
+      icon: <Layers className="text-orange-500" size={28} />,
+      title: section?.texts.feature2Title || '130 Páginas + 160 Tópicos',
+      desc: section?.texts.feature2Desc || 'Conteúdo denso e interativo. Sem enrolação.',
+      tag: section?.texts.feature2Tag || 'TÉCNICO',
+    },
+    {
+      icon: <MapIcon className="text-orange-500" size={28} />,
+      title: section?.texts.feature3Title || 'Método em 4 Fases',
+      desc: section?.texts.feature3Desc || 'A jornada de compra completa decifrada.',
+      tag: section?.texts.feature3Tag || 'ESTRATÉGIA',
+    },
+    {
+      icon: <FileText className="text-orange-500" size={28} />,
+      title: section?.texts.feature4Title || 'Anexos Técnicos',
+      desc: section?.texts.feature4Desc || 'Documentação exclusiva para pronta aplicação.',
+      tag: section?.texts.feature4Tag || 'EXCLUSIVO',
+    },
+  ]
   const timeLeft: Countdown = { min: 11, sec: 42 }
   const stockLimit = 1000
   const stockCurrent = 847
@@ -72,18 +75,18 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ id }) => {
         <div className="text-center mb-16 space-y-6">
           <div className="inline-flex items-center gap-3 px-5 py-2 bg-orange-500/10 border border-orange-500/20 rounded-full text-orange-500 text-[10px] font-black tracking-[0.2em] uppercase">
             <Sparkles size={14} className="animate-pulse" />
-            Pré-venda profissional por tempo limitado
+            {section?.texts.badge || 'Pré-venda profissional por tempo limitado'}
           </div>
 
           <h2 className="text-5xl md:text-7xl font-black tracking-tighter leading-[0.95]">
-            NÃO PERCA TEMPO NEM <br />
+            {section?.texts.title || 'NÃO PERCA TEMPO NEM'} <br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-blue-200 to-blue-500">
-              POSIÇÃO NO MERCADO.
+              {section?.texts.titleHighlight || 'POSIÇÃO NO MERCADO.'}
             </span>
           </h2>
 
           <p className="text-xl text-slate-400 max-w-2xl mx-auto font-medium">
-            O mercado solar não perdoa quem fica para trás. Garanta o método que os grandes players usam para dominar o Buy-Side.
+            {section?.texts.subtitle || 'O mercado solar não perdoa quem fica para trás. Garanta o método que os grandes players usam para dominar o Buy-Side.'}
           </p>
         </div>
 
@@ -92,7 +95,7 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ id }) => {
             <div>
               <h3 className="text-2xl font-bold mb-8 flex items-center gap-3 italic">
                 <span className="w-8 h-1 bg-blue-500 rounded-full"></span>
-                VEJA TUDO QUE VOCÊ RECEBE:
+                {section?.texts.featuresTitle || 'VEJA TUDO QUE VOCÊ RECEBE:'}
               </h3>
 
               <div className="grid sm:grid-cols-2 gap-4">
@@ -118,7 +121,7 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ id }) => {
               <div className="flex justify-between items-end">
                 <div className="flex items-center gap-2 text-orange-500 font-black text-sm uppercase tracking-tighter">
                   <Package size={18} />
-                  Apenas 1.000 unidades na Pré-venda
+                  {section?.texts.stockTitle || 'Apenas 1.000 unidades na Pré-venda'}
                 </div>
                 <span className="text-xs text-slate-500 font-bold uppercase tracking-widest">
                   {stockCurrent} / {stockLimit} Vendidos
@@ -131,7 +134,7 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ id }) => {
                 ></div>
               </div>
               <p className="text-center text-[11px] text-slate-500 font-medium">
-                *O preço subirá para <span className="text-white">R$ 1.497,00</span> assim que o lote de pré-venda esgotar.
+                {section?.texts.stockWarning || '*O preço subirá para R$ 1.497,00 assim que o lote de pré-venda esgotar.'}
               </p>
             </div>
           </div>
@@ -144,9 +147,9 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ id }) => {
                 <div className="flex items-start justify-between mb-10">
                   <div>
                     <span className="inline-flex items-center text-[10px] font-black tracking-[0.3em] uppercase text-orange-600">
-                      Plano de Acesso
+                      {section?.texts.planBadge || 'Plano de Acesso'}
                     </span>
-                    <h3 className="text-2xl font-black text-slate-900 mt-2">Oferta Especial</h3>
+                    <h3 className="text-2xl font-black text-slate-900 mt-2">{section?.texts.planTitle || 'Oferta Especial'}</h3>
                   </div>
                   <div className="w-12 h-12 rounded-2xl bg-slate-50 border border-slate-200 flex items-center justify-center">
                     <ShieldCheck className="w-6 h-6 text-slate-500" />
@@ -154,18 +157,18 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ id }) => {
                 </div>
                 <div className="mb-10">
                   <div className="space-y-1">
-                    <p className="text-slate-400 text-sm font-bold line-through">De R$ 997,00 por apenas:</p>
+                    <p className="text-slate-400 text-sm font-bold line-through">{section?.texts.priceFrom || 'De R$ 997,00 por apenas:'}</p>
                     <div className="flex flex-col">
                       <div className="flex items-start">
-                        <span className="text-xl font-bold mt-2 mr-1">12x de</span>
+                        <span className="text-xl font-bold mt-2 mr-1">{section?.texts.priceInstallments || '12x de'}</span>
                         <div className="flex items-start">
                           <span className="text-2xl font-black mt-2">R$</span>
-                          <span className="text-8xl font-black tracking-tighter leading-none">61</span>
-                          <span className="text-2xl font-black mt-2">,38</span>
+                          <span className="text-8xl font-black tracking-tighter leading-none">{section?.texts.priceValue || '61'}</span>
+                          <span className="text-2xl font-black mt-2">{section?.texts.priceCents || ',38'}</span>
                         </div>
                       </div>
                       <p className="text-slate-500 text-sm font-medium mt-2">
-                        Ou <span className="text-slate-900 font-bold">R$ 597,00 à vista</span> no PIX
+                        {section?.texts.priceUpfront || 'Ou R$ 597,00 à vista no PIX'}
                       </p>
                     </div>
                   </div>
@@ -178,7 +181,7 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ id }) => {
                     type="button"
                   >
                     <div className="relative z-10 flex items-center gap-3">
-                      <span className="text-lg uppercase tracking-tight">GARANTIR MINHA UNIDADE</span>
+                      <span className="text-lg uppercase tracking-tight">{section?.texts.ctaButton || 'GARANTIR MINHA UNIDADE'}</span>
                       <ArrowRight size={22} className="group-hover:translate-x-1 transition-transform" />
                     </div>
                     <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
@@ -187,15 +190,15 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ id }) => {
                   <div className="flex flex-col gap-3 pt-4">
                     <div className="flex items-center gap-3 text-slate-500 font-bold text-[11px] uppercase tracking-tight">
                       <CheckCircle2 size={16} className="text-green-600 shrink-0" />
-                      Liberação imediata no seu e-mail
+                      {section?.texts.benefit1 || 'Liberação imediata no seu e-mail'}
                     </div>
                     <div className="flex items-center gap-3 text-slate-500 font-bold text-[11px] uppercase tracking-tight">
                       <ShieldCheck size={16} className="text-blue-600 shrink-0" />
-                      Checkout 100% criptografado
+                      {section?.texts.benefit2 || 'Checkout 100% criptografado'}
                     </div>
                     <div className="flex items-center gap-3 text-slate-500 font-bold text-[11px] uppercase tracking-tight">
                       <LockIcon size={16} className="text-blue-600 shrink-0" />
-                      Acesso Imediato
+                      {section?.texts.benefit3 || 'Acesso Imediato'}
                     </div>
                   </div>
                 </div>
@@ -225,7 +228,7 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ id }) => {
                   </div>
 
                   <div className="flex justify-between items-center text-slate-400 pt-4">
-                    <span className="text-[10px] font-black uppercase tracking-widest">Sua oferta expira em:</span>
+                    <span className="text-[10px] font-black uppercase tracking-widest">{section?.texts.timerLabel || 'Sua oferta expira em:'}</span>
                     <div className="flex gap-1 text-slate-900 font-black tabular-nums">
                       <span>{timeLeft.min < 10 ? `0${timeLeft.min}` : timeLeft.min}</span>
                       <span className="animate-pulse">:</span>

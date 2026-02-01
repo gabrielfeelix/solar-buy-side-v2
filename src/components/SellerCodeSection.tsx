@@ -1,30 +1,33 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { ShieldCheck, Target, UserCheck, Settings2, Sparkles, ArrowRight } from 'lucide-react'
+import { useContent } from '../contexts/ContentContext'
 
 export const SellerCodeSection: React.FC = () => {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null)
   const stickyRef = useRef<HTMLDivElement | null>(null)
   const stickyContainerRef = useRef<HTMLDivElement | null>(null)
+  const { getSection } = useContent()
+  const section = getSection('seller-code')
 
   const contentItems = [
     {
-      title: 'Índice de Confiabilidade',
-      desc: 'Aprenda a medir e provar a segurança da sua proposta de forma estruturada e profissional.',
+      title: section?.texts.item1Title || 'Índice de Confiabilidade',
+      desc: section?.texts.item1Desc || 'Aprenda a medir e provar a segurança da sua proposta de forma estruturada e profissional.',
       icon: <ShieldCheck size={20} />,
     },
     {
-      title: 'Ajuste de Precisão com Checklist',
-      desc: 'Refine seus materiais de vendas com base no que compradores realmente avaliam (e o que eles descartam).',
+      title: section?.texts.item2Title || 'Ajuste de Precisão com Checklist',
+      desc: section?.texts.item2Desc || 'Refine seus materiais de vendas com base no que compradores realmente avaliam (e o que eles descartam).',
       icon: <Settings2 size={20} />,
     },
     {
-      title: 'Estratégia Anti-Leilão',
-      desc: 'Saiba exatamente como agir com clientes focados apenas em preço e recupere sua margem de lucro.',
+      title: section?.texts.item3Title || 'Estratégia Anti-Leilão',
+      desc: section?.texts.item3Desc || 'Saiba exatamente como agir com clientes focados apenas em preço e recupere sua margem de lucro.',
       icon: <Target size={20} />,
     },
     {
-      title: 'Postura Consultiva de Elite',
-      desc: 'Prepare-se para fechar contratos com clientes técnicos e criteriosos que costumam ignorar vendedores comuns.',
+      title: section?.texts.item4Title || 'Postura Consultiva de Elite',
+      desc: section?.texts.item4Desc || 'Prepare-se para fechar contratos com clientes técnicos e criteriosos que costumam ignorar vendedores comuns.',
       icon: <UserCheck size={20} />,
     },
   ]
@@ -102,17 +105,12 @@ export const SellerCodeSection: React.FC = () => {
             {/* Header Narrativo */}
             <div className="space-y-8">
               <h2 className="text-4xl md:text-6xl font-medium tracking-tight leading-[1.05] text-slate-900">
-                O Segredo por trás <br /> dos resultados: <br />
-                <span className="text-[#F97316]">O Código do Vendedor Consultivo</span>
+                {section?.texts.title || 'O Segredo por trás dos resultados: O Código do Vendedor Consultivo'}
               </h2>
 
               <div className="pl-6 border-l-2 border-slate-100">
                 <p className="text-lg md:text-xl text-slate-500 font-normal leading-relaxed">
-                  O sucesso do Rodrigo <span className="text-slate-900 font-medium">não foi por acaso.</span> Além de
-                  aplicar o Manual Solar Buy-Side, ele dominou a estratégia que inverte o jogo:{' '}
-                  <span className="italic text-slate-700">
-                    aprender a pensar como um comprador profissional para dominar a venda.
-                  </span>
+                  {section?.texts.subtitle || 'O sucesso do Rodrigo não foi por acaso. Além de aplicar o Manual Solar Buy-Side, ele dominou a estratégia que inverte o jogo: aprender a pensar como um comprador profissional para dominar a venda.'}
                 </p>
               </div>
             </div>
@@ -125,23 +123,23 @@ export const SellerCodeSection: React.FC = () => {
                 </div>
                 <div>
                   <span className="block text-[10px] font-bold text-slate-400 uppercase tracking-widest">
-                    Oferta Especial
+                    {section?.texts.badge || 'Oferta Especial'}
                   </span>
                   <span className="block text-sm font-bold text-slate-900 uppercase tracking-tight">
-                    [BÔNUS EXCLUSIVO]
+                    {section?.texts.badgeHighlight || '[BÔNUS EXCLUSIVO]'}
                   </span>
                 </div>
               </div>
 
-              <h3 className="text-3xl font-bold mb-4 tracking-tight">E-book: O Código do Vendedor Consultivo</h3>
+              <h3 className="text-3xl font-bold mb-4 tracking-tight">{section?.texts.bonusTitle || 'E-book: O Código do Vendedor Consultivo'}</h3>
               <p className="text-slate-500 text-lg font-light mb-12">
-                O método de imersão no Manual Solar Buy-Side para quem não aceita mais perder vendas por preço.
+                {section?.texts.bonusDesc || 'O método de imersão no Manual Solar Buy-Side para quem não aceita mais perder vendas por preço.'}
               </p>
 
               {/* LISTA INTERATIVA (Apple Style Specs) */}
               <div className="space-y-0" onMouseLeave={() => setHoveredIndex(null)}>
                 <h4 className="text-xs font-bold text-slate-400 uppercase tracking-widest mb-6 pb-2 border-b border-slate-100">
-                  O que você vai dominar:
+                  {section?.texts.listTitle || 'O que você vai dominar:'}
                 </h4>
 
                 {contentItems.map((item, idx) => (
@@ -192,7 +190,7 @@ export const SellerCodeSection: React.FC = () => {
 
               {/* O Livro */}
               <img
-                src="/assets/o-codigo-oficial-4.png"
+                src={section?.images.bookImage || '/assets/o-codigo-oficial-4.png'}
                 alt="O Codigo Oficial"
                 className="w-[420px] max-w-full h-auto"
               />

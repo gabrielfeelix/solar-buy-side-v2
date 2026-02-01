@@ -1,7 +1,10 @@
 ﻿import React, { useEffect, useState } from 'react'
 import { AlertCircle, Map as MapIcon, Monitor, Play, Search, ShieldAlert } from 'lucide-react'
+import { useContent } from '../contexts/ContentContext'
 
 export const VideoSection: React.FC = () => {
+  const { getSection } = useContent()
+  const section = getSection('video')
   const [showPlayer, setShowPlayer] = useState(false)
   const WistiaPlayer = 'wistia-player' as React.ElementType
 
@@ -43,7 +46,7 @@ export const VideoSection: React.FC = () => {
       <div className="relative max-w-5xl mx-auto px-6 py-32">
         <div className="mb-24">
           <h2 className="text-5xl md:text-[60px] font-black tracking-tighter mb-6 leading-tight">
-            Descubra o que o <span className="text-[#F97316]">Manual</span> ensina aos compradores e entenda as <span className="text-[#F97316]">novas regras do jogo.</span>
+            {section?.texts.title || 'Descubra o que o Manual ensina aos compradores e entenda as novas regras do jogo.'}
           </h2>
         </div>
 
@@ -52,23 +55,23 @@ export const VideoSection: React.FC = () => {
             {
               id: '01',
               icon: <ShieldAlert className="w-6 h-6" />,
-              title: 'Os 3 grandes RISCOS',
-              desc: 'Risco integrador (engenharia e suporte), técnico (equipamentos e garantias) e financeiro (payback e custo proprietário).',
-              tag: 'Proteção',
+              title: section?.texts.card1Title || 'Os 3 grandes RISCOS',
+              desc: section?.texts.card1Desc || 'Risco integrador (engenharia e suporte), técnico (equipamentos e garantias) e financeiro (payback e custo proprietário).',
+              tag: section?.texts.card1Tag || 'Proteção',
             },
             {
               id: '02',
               icon: <Search className="w-6 h-6" />,
-              title: 'Comprador Informado',
-              desc: 'Como identificar promessas exageradas e indício de risco em propostas comerciais.',
-              tag: 'Análise',
+              title: section?.texts.card2Title || 'Comprador Informado',
+              desc: section?.texts.card2Desc || 'Como identificar promessas exageradas e indício de risco em propostas comerciais.',
+              tag: section?.texts.card2Tag || 'Análise',
             },
             {
               id: '03',
               icon: <MapIcon className="w-6 h-6" />,
-              title: 'Jornada Planejada',
-              desc: 'As 4 fases da decisão de compra e os momentos exatos nos quais o vendedor perde a venda.',
-              tag: 'Estratégia',
+              title: section?.texts.card3Title || 'Jornada Planejada',
+              desc: section?.texts.card3Desc || 'As 4 fases da decisão de compra e os momentos exatos nos quais o vendedor perde a venda.',
+              tag: section?.texts.card3Tag || 'Estratégia',
             },
           ].map((card) => (
             <div
@@ -96,12 +99,12 @@ export const VideoSection: React.FC = () => {
         <div className="max-w-4xl mb-12">
           <div className="inline-flex items-center gap-2 mb-8 text-red-500">
             <AlertCircle className="w-5 h-5" />
-            <span className="text-xs font-black uppercase tracking-[0.2em]">Atenção Crítica</span>
+            <span className="text-xs font-black uppercase tracking-[0.2em]">{section?.texts.alertBadge || 'Atenção Crítica'}</span>
           </div>
           <h3 className="text-3xl md:text-5xl font-black tracking-tighter text-white leading-[1.1]">
-            Veja o porquê de muitos vendedores ficarem fora do jogo. <br />
+            {section?.texts.alertTitle || 'Veja o porquê de muitos vendedores ficarem fora do jogo.'} <br />
             <span className="text-slate-400 text-lg md:text-2xl font-medium">
-              Não permita que isso aconteça com você.
+              {section?.texts.alertSubtitle || 'Não permita que isso aconteça com você.'}
             </span>
           </h3>
         </div>
@@ -141,13 +144,13 @@ export const VideoSection: React.FC = () => {
                     </div>
                     <div>
                       <p className="text-[10px] font-black text-orange-500 uppercase tracking-[0.3em] mb-1">
-                        Conteúdo Exclusivo
+                        {section?.texts.videoBadge || 'Conteúdo Exclusivo'}
                       </p>
-                      <p className="text-2xl font-black text-white tracking-tight">A Nova Realidade Solar</p>
+                      <p className="text-2xl font-black text-white tracking-tight">{section?.texts.videoTitle || 'A Nova Realidade Solar'}</p>
                     </div>
                   </div>
                   <div className="px-5 py-2 bg-black/40 backdrop-blur-md border border-white/10 rounded-full text-[10px] font-black text-white uppercase tracking-widest">
-                    03:54
+                    {section?.texts.videoDuration || '03:54'}
                   </div>
                 </div>
               </>
