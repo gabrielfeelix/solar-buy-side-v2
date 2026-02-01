@@ -1,4 +1,4 @@
-﻿import React from 'react'
+﻿import React, { useState, useEffect } from 'react'
 import {
   ArrowRight,
   BookOpen,
@@ -52,9 +52,32 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ id }) => {
       tag: section?.texts.feature4Tag || 'EXCLUSIVO',
     },
   ]
-  const timeLeft: Countdown = { min: 11, sec: 42 }
   const stockLimit = 1000
-  const stockCurrent = 847
+  const [stockCurrent, setStockCurrent] = useState(742)
+  const [timeLeft, setTimeLeft] = useState<Countdown>({ min: 11, sec: 42 })
+
+  // Counter: +1 a cada 4 segundos
+  useEffect(() => {
+    const counterInterval = setInterval(() => {
+      setStockCurrent((prev) => (prev < stockLimit ? prev + 1 : prev))
+    }, 4000)
+    return () => clearInterval(counterInterval)
+  }, [])
+
+  // Countdown: -1 segundo
+  useEffect(() => {
+    const countdownInterval = setInterval(() => {
+      setTimeLeft((prev) => {
+        if (prev.sec > 0) {
+          return { ...prev, sec: prev.sec - 1 }
+        } else if (prev.min > 0) {
+          return { min: prev.min - 1, sec: 59 }
+        }
+        return prev
+      })
+    }, 1000)
+    return () => clearInterval(countdownInterval)
+  }, [])
 
   return (
     <section id={id} className="relative overflow-hidden bg-[#010413] text-white font-sans selection:bg-orange-500/30">
