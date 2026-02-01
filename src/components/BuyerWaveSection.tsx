@@ -153,16 +153,16 @@ export const BuyerWaveSection: React.FC = () => {
             </div>
           </div>
 
-          <div className="bg-white rounded-[3rem] overflow-hidden border border-[#E5E5E7] shadow-[0_20px_60px_rgba(0,0,0,0.03)] flex flex-col md:flex-row min-h-[580px]">
-            <div className="w-full md:w-[38%] relative">
+          <div className="bg-white rounded-[3rem] overflow-hidden border border-[#E5E5E7] shadow-[0_20px_60px_rgba(0,0,0,0.03)] flex flex-col md:flex-row md:min-h-[580px]">
+            <div className="w-full md:w-[38%] relative h-[360px] md:h-auto">
               <img
                 src={testimonials[activeTestimonial].avatar}
                 className="absolute inset-0 w-full h-full object-cover"
                 style={{ objectPosition: testimonials[activeTestimonial].objectPosition ?? 'center' }}
                 alt={testimonials[activeTestimonial].name}
               />
-              <div className="absolute bottom-8 left-8 right-8 backdrop-blur-xl bg-white/20 border border-white/30 p-6 rounded-2xl text-white shadow-2xl">
-                <p className="text-2xl font-bold tracking-tight">{testimonials[activeTestimonial].name}</p>
+              <div className="absolute bottom-6 left-6 right-6 md:bottom-8 md:left-8 md:right-8 backdrop-blur-xl bg-white/20 border border-white/30 p-4 md:p-6 rounded-2xl text-white shadow-2xl">
+                <p className="text-xl md:text-2xl font-bold tracking-tight">{testimonials[activeTestimonial].name}</p>
                 <div className="flex items-center gap-2 mt-1.5 opacity-90 text-[10px] font-bold uppercase tracking-[0.15em]">
                   <span>{testimonials[activeTestimonial].role}</span>
                   <span className="w-1 h-1 bg-white/50 rounded-full"></span>
@@ -171,18 +171,18 @@ export const BuyerWaveSection: React.FC = () => {
               </div>
             </div>
 
-            <div className="w-full md:w-[62%] p-10 md:p-16 flex flex-col justify-center">
-              <div className="space-y-8">
-                <h4 className="text-2xl md:text-3xl font-extrabold tracking-tight text-[#1D1D1F]">
+            <div className="w-full md:w-[62%] p-8 md:p-16 flex flex-col justify-center">
+              <div className="space-y-6 md:space-y-8">
+                <h4 className="text-xl md:text-3xl font-extrabold tracking-tight text-[#1D1D1F] leading-tight">
                   {testimonials[activeTestimonial].reviewTitle}
                 </h4>
 
-                <p className="text-lg md:text-xl text-[#424245] leading-relaxed font-light">
+                <p className="text-base md:text-xl text-[#424245] leading-relaxed font-light">
                   {testimonials[activeTestimonial].quote}
                 </p>
 
-                <div className="pt-6 border-t border-[#F5F5F7]">
-                  <p className="text-xl md:text-2xl font-bold tracking-tight text-[#1D1D1F] leading-snug">
+                <div className="pt-4 md:pt-6 border-t border-[#F5F5F7]">
+                  <p className="text-lg md:text-2xl font-bold tracking-tight text-[#1D1D1F] leading-snug">
                     "{testimonials[activeTestimonial].highlight}"
                   </p>
                 </div>
