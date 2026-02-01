@@ -22,17 +22,6 @@ const testimonials = [
       'No fim, escolhi a empresa certa, o sistema ideal ao preço certo e conduzi tudo com segurança. Sem exagero: o manual valeu cada página.',
   },
   {
-    name: 'Carlos',
-    role: 'Particular',
-    location: 'Belo Horizonte, MG',
-    avatar: '/assets/Carlos.png',
-    reviewTitle: 'O Manual Buy-Side abriu meus olhos para os riscos',
-    quote:
-      'Morando em Belo Horizonte, o sol é uma bênção, mas eu tinha medo de cair em cilada ao tentar aproveitar essa energia. As empresas prometiam mundos e fundos, mas eu sentia que tinha algo escondido. O manual abriu meus olhos para os riscos de contratos mal feitos e equipamentos de baixa qualidade. Com as dicas práticas, conversei de igual para igual com os vendedores e ainda economizei R$ 1.800 na negociação!',
-    highlight:
-      'Valeu cada página pra fechar com uma empresa séria e garantir um sistema que atende minhas necessidades de verdade.',
-  },
-  {
     name: 'Ricardo S.',
     role: 'Empresário',
     location: 'São Paulo, SP',
@@ -55,6 +44,17 @@ const testimonials = [
       'Morando sozinha, confesso que a enorme variedade de empresas e tecnologias de energia solar me deixava bastante perdida e insegura sobre qual seria a escolha ideal para não me arrepender depois. Mas o manual foi um guia fundamental nessa jornada! Seguindo cada fase e etapa, consegui avaliar detalhadamente cada proposta, descartando aquelas que pareciam boas demais para ser verdade. Com segurança e convicção, instalei um sistema de R$ 28 mil.',
     highlight:
       'Esse manual foi realmente um passo a passo "arretado" para entender tudo direitinho e fazer a escolha certa para minha casa. E o melhor de tudo? No final das negociações, fui até elogiada por vendedores, que nunca tinham encontrado uma mulher com tanto conhecimento no assunto! 😂',
+  },
+  {
+    name: 'Carlos',
+    role: 'Particular',
+    location: 'Belo Horizonte, MG',
+    avatar: '/assets/Carlos.png',
+    reviewTitle: 'O Manual Buy-Side abriu meus olhos para os riscos',
+    quote:
+      'Morando em Belo Horizonte, o sol é uma bênção, mas eu tinha medo de cair em cilada ao tentar aproveitar essa energia. As empresas prometiam mundos e fundos, mas eu sentia que tinha algo escondido. O manual abriu meus olhos para os riscos de contratos mal feitos e equipamentos de baixa qualidade. Com as dicas práticas, conversei de igual para igual com os vendedores e ainda economizei R$ 1.800 na negociação!',
+    highlight:
+      'Valeu cada página pra fechar com uma empresa séria e garantir um sistema que atende minhas necessidades de verdade.',
   },
   {
     name: 'Edivaldo',
