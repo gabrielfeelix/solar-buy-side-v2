@@ -20,9 +20,19 @@ import {
   LegalPage,
 } from './components'
 import { antipiracySections, privacySections, termsSections } from './legal/legalContent'
+import { AdminLogin } from './components/admin/AdminLogin'
+import { AdminPanel } from './components/admin/AdminPanel'
+import { useAuth } from './contexts/AuthContext'
 
 function App() {
   const pathname = window.location.pathname.replace(/\/$/, '') || '/'
+  const { isAuthenticated } = useAuth()
+
+  // Admin routes
+  if (pathname === '/admin') {
+    return isAuthenticated ? <AdminPanel /> : <AdminLogin />
+  }
+
   const legalPages = {
     '/politica-de-privacidade': {
       title: 'Política de Privacidade',
