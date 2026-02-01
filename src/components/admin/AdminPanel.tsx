@@ -478,26 +478,27 @@ export const AdminPanel: React.FC = () => {
       {/* Modal de Preview Real */}
       {showRealPreview && (
         <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/80 backdrop-blur-sm p-4">
-          <div className="relative w-full h-full max-w-[95vw] max-h-[95vh] bg-white rounded-2xl shadow-2xl overflow-hidden flex flex-col">
+          <div className="relative bg-slate-900 rounded-2xl shadow-2xl overflow-hidden flex flex-col" style={{ width: '1003px', height: '564px' }}>
             {/* Header do Modal */}
-            <div className="flex items-center justify-between bg-slate-900 text-white px-6 py-4 border-b border-white/10">
+            <div className="flex items-center justify-between bg-slate-900 text-white px-6 py-3 border-b border-white/10">
               <div className="flex items-center gap-3">
                 <ExternalLink className="w-5 h-5 text-[#F97316]" />
-                <h3 className="text-lg font-bold">Preview Real - {currentSection?.name}</h3>
+                <h3 className="text-sm font-bold">Preview ao Vivo - 1003px × 564px (52.22%)</h3>
               </div>
               <button
                 onClick={closeRealPreview}
-                className="flex items-center gap-2 px-4 py-2 bg-red-500/10 hover:bg-red-500/20 border border-red-500/20 text-red-400 rounded-lg transition-all font-medium"
+                className="flex items-center gap-2 px-3 py-1.5 bg-red-500/10 hover:bg-red-500/20 border border-red-500/20 text-red-400 rounded-lg transition-all font-medium text-sm"
               >
                 Fechar
               </button>
             </div>
 
             {/* Iframe com o site real */}
-            <div className="flex-1 overflow-hidden">
+            <div className="flex-1 overflow-auto bg-white">
               <iframe
                 src={`/#${getSectionHash()}`}
-                className="w-full h-full border-0"
+                className="w-[1920px] h-[1080px] border-0 origin-top-left"
+                style={{ transform: 'scale(0.5222)' }}
                 title="Preview Real"
                 onLoad={(e) => {
                   const iframe = e.target as HTMLIFrameElement
