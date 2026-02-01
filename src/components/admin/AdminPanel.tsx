@@ -477,10 +477,10 @@ export const AdminPanel: React.FC = () => {
 
       {/* Modal de Preview Real */}
       {showRealPreview && (
-        <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/80 backdrop-blur-sm p-4">
-          <div className="relative bg-slate-900 rounded-2xl shadow-2xl overflow-hidden flex flex-col" style={{ width: '1003px', height: '564px' }}>
+        <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/80 backdrop-blur-sm">
+          <div className="relative bg-slate-900 rounded-2xl shadow-2xl flex flex-col" style={{ width: '1050px', maxHeight: '90vh' }}>
             {/* Header do Modal */}
-            <div className="flex items-center justify-between bg-slate-900 text-white px-6 py-3 border-b border-white/10">
+            <div className="flex items-center justify-between bg-slate-900 text-white px-6 py-3 border-b border-white/10 shrink-0">
               <div className="flex items-center gap-3">
                 <ExternalLink className="w-5 h-5 text-[#F97316]" />
                 <h3 className="text-sm font-bold">Preview ao Vivo - 1003px × 564px (52.22%)</h3>
@@ -494,22 +494,23 @@ export const AdminPanel: React.FC = () => {
             </div>
 
             {/* Iframe com o site real */}
-            <div className="flex-1 overflow-auto bg-white">
-              <iframe
-                src={`/#${getSectionHash()}`}
-                className="w-[1920px] h-[1080px] border-0 origin-top-left"
-                style={{ transform: 'scale(0.5222)' }}
-                title="Preview Real"
-                onLoad={(e) => {
-                  const iframe = e.target as HTMLIFrameElement
-                  try {
-                    const hash = getSectionHash()
-                    iframe.contentWindow?.postMessage({ type: 'scrollToSection', hash }, '*')
-                  } catch (err) {
-                    console.log('Cannot access iframe:', err)
-                  }
-                }}
-              />
+            <div className="bg-white overflow-auto" style={{ width: '1003px', height: '564px' }}>
+              <div style={{ width: '1920px', height: '1080px', transform: 'scale(0.5222)', transformOrigin: 'top left' }}>
+                <iframe
+                  src={`/#${getSectionHash()}`}
+                  className="w-full h-full border-0"
+                  title="Preview Real"
+                  onLoad={(e) => {
+                    const iframe = e.target as HTMLIFrameElement
+                    try {
+                      const hash = getSectionHash()
+                      iframe.contentWindow?.postMessage({ type: 'scrollToSection', hash }, '*')
+                    } catch (err) {
+                      console.log('Cannot access iframe:', err)
+                    }
+                  }}
+                />
+              </div>
             </div>
           </div>
         </div>
