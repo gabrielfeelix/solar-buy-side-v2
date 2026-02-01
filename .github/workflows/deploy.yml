@@ -2,66 +2,25 @@ name: Deploy to HostGator
 
 on:
   push:
-    branches: ["main"]
+    branches:
+      - main
 
 jobs:
-  build-and-deploy:
+  ftp-deploy:
+    name: Deploy via FTP
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
+      - name: Checkout
+        uses: actions/checkout@v2
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
+      - name: FTP Deploy
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.0
         with:
-          node-version: '18'
-          cache: 'npm'
-
-      - name: Install dependencies
-        run: npm install --prefer-offline --no-audit
-
-      - name: Run linter
-        run: npm run lint
-        continue-on-error: true
-
-      - name: Build project
-        run: npm run build
-
-      - name: Validate build output
-        run: |
-          if [ ! -d "dist" ]; then
-            echo "ERROR: dist folder not created"
-            exit 1
-          fi
-          if [ -z "$(ls -A dist)" ]; then
-            echo "ERROR: dist folder is empty"
-            exit 1
-          fi
-          echo "✓ Build validation passed"
-          echo "Files in dist: $(find dist -type f | wc -l)"
-
-      - name: Deploy to HostGator via SSH
-        uses: appleboy/ssh-action@v1.0.3
-        with:
-          host: ${{ secrets.HOSTGATOR_HOST }}
+          server: ${{ secrets.HOSTGATOR_HOST }}
           username: ${{ secrets.HOSTGATOR_USER }}
-          key: ${{ secrets.HOSTGATOR_SSH_KEY }}
-          port: ${{ secrets.HOSTGATOR_SSH_PORT || 22 }}
-          script: 'bash ~/deploy.sh'
-          script_stop: true
-
-      - name: Deployment Status
-        if: success()
-        run: |
-          echo "✓ Deployment completed successfully!"
-          echo "Repository: ${{ github.repository }}"
-          echo "Commit: ${{ github.sha }}"
-          echo "Timestamp: $(date)"
-
-      - name: Deployment Failed
-        if: failure()
-        run: |
-          echo "✗ Deployment failed!"
-          echo "Check the logs above for details"
-          exit 1
+          password: ${{ secrets.HOSTGATOR_PASSWORD }}
+          server-dir: ${{ secrets.HOSTGATOR_DIR }}
+          local-dir: "./"
+          protocol: "ftp"
+          port: 21
+          timeout: 300000
