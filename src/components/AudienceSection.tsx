@@ -1,41 +1,59 @@
-﻿import React from 'react'
+import React from 'react'
 import { Building2, CheckCircle2, Rocket, Users } from 'lucide-react'
+import { useContent } from '../contexts/ContentContext'
 
-const profiles = [
-  {
-    title: 'Empresas de Integração Solar',
-    description: 'Para vender valor, fugir da guerra dos preços e fechar mais projetos.',
-    bullets: ['Vender valor', 'Fechar mais projetos'],
-    icon: <Building2 className="w-6 h-6 text-blue-500" />,
-    tag: 'ESTRUTURADOS',
-  },
-  {
-    title: 'Empreendedores Iniciantes',
-    description: 'Para construir um negócio sólido desde o primeiro passo na integração solar.',
-    bullets: ['Base sólida', 'Autoridade desde o dia 1'],
-    icon: <Rocket className="w-6 h-6 text-orange-500" />,
-    tag: 'STARTUPS',
-  },
-  {
-    title: 'Representantes Comerciais',
-    description: 'Para aumentar sua taxa de conversão reduzindo sua taxa de desconto.',
-    bullets: ['Menos desconto', 'Mais conversão'],
-    icon: <Users className="w-6 h-6 text-emerald-500" />,
-    tag: 'VENDAS',
-  },
+const profileIcons = [
+  <Building2 className="w-6 h-6 text-blue-500" />,
+  <Rocket className="w-6 h-6 text-orange-500" />,
+  <Users className="w-6 h-6 text-emerald-500" />,
 ]
 
 export const AudienceSection: React.FC = () => {
+  const { getSection } = useContent()
+  const section = getSection('audience')
+
+  const profiles = [
+    {
+      title: section?.texts.profile1Title || 'Empresas de Integração Solar',
+      description: section?.texts.profile1Desc || 'Para vender valor, fugir da guerra dos preços e fechar mais projetos.',
+      bullets: [
+        section?.texts.profile1Bullet1 || 'Vender valor',
+        section?.texts.profile1Bullet2 || 'Fechar mais projetos',
+      ],
+      icon: profileIcons[0],
+      tag: section?.texts.profile1Tag || 'ESTRUTURADOS',
+    },
+    {
+      title: section?.texts.profile2Title || 'Empreendedores Iniciantes',
+      description: section?.texts.profile2Desc || 'Para construir um negócio sólido desde o primeiro passo na integração solar.',
+      bullets: [
+        section?.texts.profile2Bullet1 || 'Base sólida',
+        section?.texts.profile2Bullet2 || 'Autoridade desde o dia 1',
+      ],
+      icon: profileIcons[1],
+      tag: section?.texts.profile2Tag || 'STARTUPS',
+    },
+    {
+      title: section?.texts.profile3Title || 'Representantes Comerciais',
+      description: section?.texts.profile3Desc || 'Para aumentar sua taxa de conversão reduzindo sua taxa de desconto.',
+      bullets: [
+        section?.texts.profile3Bullet1 || 'Menos desconto',
+        section?.texts.profile3Bullet2 || 'Mais conversão',
+      ],
+      icon: profileIcons[2],
+      tag: section?.texts.profile3Tag || 'VENDAS',
+    },
+  ]
+
   return (
     <section id="audiencia" className="bg-white text-slate-900 font-sans selection:bg-orange-100 selection:text-orange-900 antialiased">
       <div className="max-w-6xl mx-auto px-6 py-16">
         <div className="max-w-3xl mb-16">
           <h2 className="text-4xl md:text-6xl font-black tracking-tight text-slate-900 mb-6">
-            Quem <span className="text-orange-500">REALMENTE</span> precisa <br />
-            desse conhecimento?
+            {section?.texts.title || 'Quem REALMENTE precisa desse conhecimento?'}
           </h2>
           <p className="text-xl md:text-2xl text-slate-500 font-medium leading-relaxed">
-            Veja para quem o Manual Solar Buy-Side é essencial:
+            {section?.texts.subtitle || 'Veja para quem o Manual Solar Buy-Side é essencial:'}
           </p>
         </div>
 
@@ -82,8 +100,7 @@ export const AudienceSection: React.FC = () => {
               <CheckCircle2 className="w-6 h-6" />
             </div>
             <h3 className="text-lg md:text-2xl font-bold text-white leading-tight">
-              Não importa em qual ponto da cadeia você está, o Manual Solar Buy-Side não é apenas um guia, mas uma{' '}
-              <span className="text-[#F97316]">imersão completa na perspectiva do comprador.</span>
+              {section?.texts.bottomTitle || 'Não importa em qual ponto da cadeia você está, o Manual Solar Buy-Side não é apenas um guia, mas uma imersão completa na perspectiva do comprador.'}
             </h3>
           </div>
           <div className="h-px w-full bg-white/10"></div>
