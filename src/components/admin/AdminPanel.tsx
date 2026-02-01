@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { LogOut, Home, Save, Upload, Monitor, Smartphone } from 'lucide-react'
+import { LogOut, Home, Save, Upload, Monitor, Smartphone, ExternalLink } from 'lucide-react'
 import { useAuth } from '../../contexts/AuthContext'
 import { useContent } from '../../contexts/ContentContext'
 import { AdminPreview } from './AdminPreview'
@@ -12,6 +12,7 @@ export const AdminPanel: React.FC = () => {
   const [selectedSection, setSelectedSection] = useState(content[0]?.id || 'hero')
   const [editedTexts, setEditedTexts] = useState<{ [key: string]: string }>({})
   const [viewMode, setViewMode] = useState<ViewMode>('desktop')
+  const [showRealPreview, setShowRealPreview] = useState(false)
 
   const currentSection = content.find((s) => s.id === selectedSection)
 
@@ -44,6 +45,33 @@ export const AdminPanel: React.FC = () => {
 
   const getPreviewWidth = () => {
     return viewMode === 'mobile' ? '375px' : '100%'
+  }
+
+  const getSectionHash = () => {
+    const sectionMap: { [key: string]: string } = {
+      'hero': 'hero',
+      'context': 'contexto',
+      'video': 'video-section',
+      'audience': 'audiencia',
+      'pricing': 'oferta',
+      'testimonials': 'depoimentos',
+      'story-bridge': 'story-bridge',
+      'seller-code': 'seller-code',
+      'manual-strategic': 'manual-strategic',
+      'buyer-wave': 'buyer-wave',
+      'authority': 'authority',
+      'lead-magnet': 'lead-magnet',
+      'faq': 'faq',
+    }
+    return sectionMap[selectedSection] || selectedSection
+  }
+
+  const openRealPreview = () => {
+    setShowRealPreview(true)
+  }
+
+  const closeRealPreview = () => {
+    setShowRealPreview(false)
   }
 
   return (
@@ -170,6 +198,15 @@ export const AdminPanel: React.FC = () => {
                 <h2 className="text-lg font-bold">Preview ao Vivo</h2>
                 <div className="flex items-center gap-2">
                   <button
+                    onClick={openRealPreview}
+                    className="flex items-center gap-2 px-4 py-2 bg-green-600 hover:bg-green-500 text-white rounded-lg transition-all font-medium text-sm"
+                    title="Ver Preview Real"
+                  >
+                    <ExternalLink className="w-4 h-4" />
+                    Preview Real
+                  </button>
+                  <div className="w-px h-6 bg-white/10"></div>
+                  <button
                     onClick={() => setViewMode('desktop')}
                     className={`p-2 rounded-lg transition-all ${
                       viewMode === 'desktop'
@@ -214,6 +251,46 @@ export const AdminPanel: React.FC = () => {
           </div>
         </div>
       </div>
+
+      {/* Modal de Preview Real */}
+      {showRealPreview && (
+        <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/80 backdrop-blur-sm p-4">
+          <div className="relative w-full h-full max-w-[95vw] max-h-[95vh] bg-white rounded-2xl shadow-2xl overflow-hidden flex flex-col">
+            {/* Header do Modal */}
+            <div className="flex items-center justify-between bg-slate-900 text-white px-6 py-4 border-b border-white/10">
+              <div className="flex items-center gap-3">
+                <ExternalLink className="w-5 h-5 text-[#F97316]" />
+                <h3 className="text-lg font-bold">Preview Real - {currentSection?.name}</h3>
+              </div>
+              <button
+                onClick={closeRealPreview}
+                className="flex items-center gap-2 px-4 py-2 bg-red-500/10 hover:bg-red-500/20 border border-red-500/20 text-red-400 rounded-lg transition-all font-medium"
+              >
+                Fechar
+              </button>
+            </div>
+
+            {/* Iframe com o site real */}
+            <div className="flex-1 overflow-hidden">
+              <iframe
+                src={`/#${getSectionHash()}`}
+                className="w-full h-full border-0"
+                title="Preview Real"
+                onLoad={(e) => {
+                  // Scroll para a seção após carregar
+                  const iframe = e.target as HTMLIFrameElement
+                  try {
+                    const hash = getSectionHash()
+                    iframe.contentWindow?.postMessage({ type: 'scrollToSection', hash }, '*')
+                  } catch (err) {
+                    console.log('Cannot access iframe:', err)
+                  }
+                }}
+              />
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   )
 }

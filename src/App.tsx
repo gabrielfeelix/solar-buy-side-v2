@@ -69,7 +69,25 @@ function App() {
     )
 
     targets.forEach((target) => observer.observe(target))
-    return () => observer.disconnect()
+
+    // Listener para mensagens do iframe do admin
+    const handleMessage = (event: MessageEvent) => {
+      if (event.data.type === 'scrollToSection' && event.data.hash) {
+        const element = document.getElementById(event.data.hash)
+        if (element) {
+          setTimeout(() => {
+            element.scrollIntoView({ behavior: 'smooth', block: 'start' })
+          }, 100)
+        }
+      }
+    }
+
+    window.addEventListener('message', handleMessage)
+
+    return () => {
+      observer.disconnect()
+      window.removeEventListener('message', handleMessage)
+    }
   }, [legalPage])
 
   if (legalPage) {
@@ -84,20 +102,20 @@ function App() {
   return (
     <div className="bg-[#020617] text-slate-400 font-sans overflow-x-hidden selection:bg-[#F97316] selection:text-white">
       <SolarHeader />
-      <HeroSectionPotato />
-      <ContextSection />
-      <VideoSection />
-      <AudienceSection />
-      <ManualStrategicSection />
-      <TestimonialsSection />
-      <StoryBridgeSection />
-      <SellerCodeSection />
+      <div id="hero"><HeroSectionPotato /></div>
+      <div id="contexto"><ContextSection /></div>
+      <div id="video-section"><VideoSection /></div>
+      <div id="audiencia"><AudienceSection /></div>
+      <div id="manual-strategic"><ManualStrategicSection /></div>
+      <div id="depoimentos"><TestimonialsSection /></div>
+      <div id="story-bridge"><StoryBridgeSection /></div>
+      <div id="seller-code"><SellerCodeSection /></div>
       <PricingSection id="oferta" />
-      <BuyerWaveSection />
-      <AuthoritySection />
+      <div id="buyer-wave"><BuyerWaveSection /></div>
+      <div id="authority"><AuthoritySection /></div>
       <PricingSection id="oferta-final" />
-      <LeadMagnetSection />
-      <FAQSection />
+      <div id="lead-magnet"><LeadMagnetSection /></div>
+      <div id="faq"><FAQSection /></div>
       <ContactSection />
       <Footer />
     </div>
