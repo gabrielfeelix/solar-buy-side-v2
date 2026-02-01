@@ -306,6 +306,36 @@ export const initialContent: SectionContent[] = [
       subtitle: 'Nossa equipe de especialistas está pronta para ajudar você a entender como o Manual Buy-Side pode transformar sua operação comercial.',
       ctaButton: 'Fale com a equipe Buy-Side',
       sectionTitle: 'Perguntas Frequentes',
+      faq1Question: 'Como acessar meu produto?',
+      faq1Answer: 'Você receberá o acesso ao Manual Solar Buy-Side por e-mail, por meio da plataforma online GREENN. Esta plataforma atua como intermediadora digital entre clientes e produtores, disponibilizando conteúdos, soluções e ferramentas tecnológicas.\n\nVocê receberá o Manual Solar Buy-Side e o bônus grátis Guia do Vendedor por e-mail em PDF, e ele virá personalizado com seu nome e CPF ou CNPJ.\n\nVocê poderá acessar o manual por meio de computador, celular, tablet ou outro dispositivo digital. No entanto, devido à formatação do manual, recomendamos enfaticamente o uso de um computador ou tablet para uma experiência de leitura e aproveitamento mais otimizada do material.',
+      faq2Question: 'Como funciona o prazo de garantia e a solicitação de devolução?',
+      faq2Answer: 'O reembolso de uma compra de um produto digital é um direito garantido pelo Código de Defesa do Consumidor (Lei nº 8.078, Artigo 49) e pode ser solicitado em até 7 dias a partir da data de assinatura ou do recebimento do produto.',
+      faq3Question: 'Política de devolução: como proceder para o reembolso?',
+      faq3Answer: 'Para formalizar o pedido de reembolso do valor despendido, o Comprador deverá remeter sua solicitação ao endereço eletrônico contato@buyside.com.br. A comunicação deverá conter, obrigatoriamente, o número de referência da transação e a exposição detalhada da(s) razão(ões) que fundamenta(m) o pleito de cancelamento.\n\nAs condições para efetivação do reembolso pautam-se nas Regras Gerais estabelecidas pela plataforma GREENN. Para informações adicionais e consulta integral às diretrizes aplicáveis, o Comprador poderá acessar o seguinte link: https://greenn.com.br/termos-de-compra-greenn/.',
+    },
+    images: {},
+  },
+  {
+    id: 'privacy-policy',
+    name: 'Política de Privacidade',
+    texts: {
+      content: 'Conteúdo da política de privacidade...',
+    },
+    images: {},
+  },
+  {
+    id: 'terms-of-use',
+    name: 'Termos de Uso',
+    texts: {
+      content: 'Conteúdo dos termos de uso...',
+    },
+    images: {},
+  },
+  {
+    id: 'antipiracy',
+    name: 'Medidas Antipiratarias',
+    texts: {
+      content: 'Conteúdo das medidas antipiratarias...',
     },
     images: {},
   },

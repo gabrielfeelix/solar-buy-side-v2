@@ -14,12 +14,19 @@ export interface GlobalAssets {
   logo: string
 }
 
+export interface GlobalSettings {
+  whatsappNumber: string
+  purchaseLink: string
+}
+
 interface ContentContextType {
   content: SectionContent[]
   globalAssets: GlobalAssets
+  globalSettings: GlobalSettings
   updateText: (sectionId: string, key: string, value: string) => void
   updateImage: (sectionId: string, key: string, value: string) => void
   updateGlobalAsset: (key: keyof GlobalAssets, value: string) => void
+  updateGlobalSetting: (key: keyof GlobalSettings, value: string) => void
   getSection: (sectionId: string) => SectionContent | undefined
 }
 
@@ -34,6 +41,11 @@ export const ContentProvider: React.FC<{ children: ReactNode }> = ({ children })
   const [globalAssets, setGlobalAssets] = useState<GlobalAssets>(() => {
     const saved = localStorage.getItem('cms-global-assets')
     return saved ? JSON.parse(saved) : { favicon: '/favicon.png', logo: '/assets/logo.svg' }
+  })
+
+  const [globalSettings, setGlobalSettings] = useState<GlobalSettings>(() => {
+    const saved = localStorage.getItem('cms-global-settings')
+    return saved ? JSON.parse(saved) : { whatsappNumber: '', purchaseLink: '' }
   })
 
   const updateText = (sectionId: string, key: string, value: string) => {
@@ -68,12 +80,20 @@ export const ContentProvider: React.FC<{ children: ReactNode }> = ({ children })
     })
   }
 
+  const updateGlobalSetting = (key: keyof GlobalSettings, value: string) => {
+    setGlobalSettings((prev) => {
+      const updated = { ...prev, [key]: value }
+      localStorage.setItem('cms-global-settings', JSON.stringify(updated))
+      return updated
+    })
+  }
+
   const getSection = (sectionId: string) => {
     return content.find((section) => section.id === sectionId)
   }
 
   return (
-    <ContentContext.Provider value={{ content, globalAssets, updateText, updateImage, updateGlobalAsset, getSection }}>
+    <ContentContext.Provider value={{ content, globalAssets, globalSettings, updateText, updateImage, updateGlobalAsset, updateGlobalSetting, getSection }}>
       {children}
     </ContentContext.Provider>
   )

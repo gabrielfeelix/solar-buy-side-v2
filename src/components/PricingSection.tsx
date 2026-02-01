@@ -23,7 +23,7 @@ type Countdown = {
 }
 
 export const PricingSection: React.FC<PricingSectionProps> = ({ id }) => {
-  const { getSection } = useContent()
+  const { getSection, globalSettings } = useContent()
   const section = getSection('pricing')
 
   const features = [
@@ -198,17 +198,18 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ id }) => {
                 </div>
 
                 <div className="space-y-4">
-                  <button
+                  <a
+                    href={globalSettings.purchaseLink || '#oferta'}
+                    target={globalSettings.purchaseLink ? '_blank' : undefined}
+                    rel={globalSettings.purchaseLink ? 'noopener noreferrer' : undefined}
                     className="relative w-full group overflow-hidden bg-orange-600 hover:bg-orange-500 text-white font-black py-6 rounded-2xl shadow-xl shadow-orange-600/30 transition-all duration-300 active:scale-[0.98] flex items-center justify-center"
-                    onClick={() => document.getElementById('oferta')?.scrollIntoView({ behavior: 'smooth' })}
-                    type="button"
                   >
                     <div className="relative z-10 flex items-center gap-3">
                       <span className="text-lg uppercase tracking-tight">{section?.texts.ctaButton || 'GARANTIR MINHA UNIDADE'}</span>
                       <ArrowRight size={22} className="group-hover:translate-x-1 transition-transform" />
                     </div>
                     <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
-                  </button>
+                  </a>
 
                   <div className="flex flex-col gap-3 pt-4">
                     <div className="flex items-center gap-3 text-slate-500 font-bold text-[11px] uppercase tracking-tight">

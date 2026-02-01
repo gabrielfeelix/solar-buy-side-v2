@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { LogOut, Home, Save, Upload, Monitor, Smartphone, ExternalLink, ChevronDown, ChevronUp, Image as ImageIcon } from 'lucide-react'
+import { LogOut, Home, Save, Upload, Monitor, Smartphone, ExternalLink, ChevronDown, ChevronUp, Image as ImageIcon, Phone, ShoppingCart } from 'lucide-react'
 import { useAuth } from '../../contexts/AuthContext'
 import { useContent } from '../../contexts/ContentContext'
 import { AdminPreview } from './AdminPreview'
@@ -8,16 +8,19 @@ type ViewMode = 'desktop' | 'tablet' | 'mobile'
 
 export const AdminPanel: React.FC = () => {
   const { logout } = useAuth()
-  const { content, globalAssets, updateText, updateImage, updateGlobalAsset } = useContent()
+  const { content, globalAssets, globalSettings, updateText, updateImage, updateGlobalAsset, updateGlobalSetting } = useContent()
   const [selectedSection, setSelectedSection] = useState(content[0]?.id || 'hero')
   const [editedTexts, setEditedTexts] = useState<{ [key: string]: string }>({})
   const [editedImages, setEditedImages] = useState<{ [key: string]: string }>({})
   const [editedGlobalAssets, setEditedGlobalAssets] = useState<{ favicon?: string; logo?: string }>({})
+  const [editedGlobalSettings, setEditedGlobalSettings] = useState<{ whatsappNumber?: string; purchaseLink?: string }>({})
   const [viewportWidth, setViewportWidth] = useState(52.22) // Percentage - começa em 52.22% (1003px)
   const [showRealPreview, setShowRealPreview] = useState(false)
 
   // Estados para controlar os accordions
   const [globalAssetsOpen, setGlobalAssetsOpen] = useState(false)
+  const [whatsappOpen, setWhatsappOpen] = useState(false)
+  const [purchaseLinkOpen, setPurchaseLinkOpen] = useState(false)
   const [sectionsOpen, setSectionsOpen] = useState(true)
   const [textsOpen, setTextsOpen] = useState(false)
   const [imagesOpen, setImagesOpen] = useState(false)
@@ -62,10 +65,20 @@ export const AdminPanel: React.FC = () => {
       updateGlobalAsset(key as 'favicon' | 'logo', value)
     })
 
+    // Salvar settings globais
+    Object.entries(editedGlobalSettings).forEach(([key, value]) => {
+      updateGlobalSetting(key as 'whatsappNumber' | 'purchaseLink', value)
+    })
+
     setEditedTexts({})
     setEditedImages({})
     setEditedGlobalAssets({})
+    setEditedGlobalSettings({})
     alert('Alterações salvas com sucesso!')
+  }
+
+  const handleGlobalSettingChange = (key: 'whatsappNumber' | 'purchaseLink', value: string) => {
+    setEditedGlobalSettings((prev) => ({ ...prev, [key]: value }))
   }
 
   const getTextValue = (key: string) => {
@@ -83,10 +96,16 @@ export const AdminPanel: React.FC = () => {
     return globalAssets[key] || ''
   }
 
+  const getGlobalSettingValue = (key: 'whatsappNumber' | 'purchaseLink') => {
+    if (editedGlobalSettings[key] !== undefined) return editedGlobalSettings[key]
+    return globalSettings[key] || ''
+  }
+
   const hasUnsavedChanges =
     Object.keys(editedTexts).length > 0 ||
     Object.keys(editedImages).length > 0 ||
-    Object.keys(editedGlobalAssets).length > 0
+    Object.keys(editedGlobalAssets).length > 0 ||
+    Object.keys(editedGlobalSettings).length > 0
 
   const getPreviewDimensions = () => {
     // Base em 1920x1080 para desktop real
@@ -237,6 +256,76 @@ export const AdminPanel: React.FC = () => {
                     </label>
                     <p className="text-xs text-slate-500 mt-2">
                       * Atualiza header e footer automaticamente
+                    </p>
+                  </div>
+                </div>
+              )}
+            </div>
+
+            {/* WhatsApp */}
+            <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl overflow-hidden">
+              <button
+                onClick={() => setWhatsappOpen(!whatsappOpen)}
+                className="w-full flex items-center justify-between px-6 py-4 hover:bg-white/5 transition-colors"
+              >
+                <div className="flex items-center gap-2">
+                  <Phone className="w-5 h-5" />
+                  <h2 className="text-lg font-bold">WhatsApp</h2>
+                </div>
+                {whatsappOpen ? <ChevronUp className="w-5 h-5" /> : <ChevronDown className="w-5 h-5" />}
+              </button>
+
+              {whatsappOpen && (
+                <div className="px-6 pb-6 space-y-4">
+                  <div>
+                    <label className="block text-sm font-medium text-slate-300 mb-2">
+                      Número de WhatsApp
+                      <span className="text-xs text-slate-500 ml-2">(Formato: 5511999999999)</span>
+                    </label>
+                    <input
+                      type="text"
+                      value={getGlobalSettingValue('whatsappNumber')}
+                      onChange={(e) => handleGlobalSettingChange('whatsappNumber', e.target.value)}
+                      placeholder="5511999999999"
+                      className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-2 text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-[#F97316] focus:border-transparent"
+                    />
+                    <p className="text-xs text-slate-500 mt-2">
+                      * Será usado no botão WhatsApp da seção FAQ
+                    </p>
+                  </div>
+                </div>
+              )}
+            </div>
+
+            {/* Link da Venda */}
+            <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl overflow-hidden">
+              <button
+                onClick={() => setPurchaseLinkOpen(!purchaseLinkOpen)}
+                className="w-full flex items-center justify-between px-6 py-4 hover:bg-white/5 transition-colors"
+              >
+                <div className="flex items-center gap-2">
+                  <ShoppingCart className="w-5 h-5" />
+                  <h2 className="text-lg font-bold">Link da Venda</h2>
+                </div>
+                {purchaseLinkOpen ? <ChevronUp className="w-5 h-5" /> : <ChevronDown className="w-5 h-5" />}
+              </button>
+
+              {purchaseLinkOpen && (
+                <div className="px-6 pb-6 space-y-4">
+                  <div>
+                    <label className="block text-sm font-medium text-slate-300 mb-2">
+                      URL do Link de Compra
+                      <span className="text-xs text-slate-500 ml-2">(URL completa)</span>
+                    </label>
+                    <input
+                      type="url"
+                      value={getGlobalSettingValue('purchaseLink')}
+                      onChange={(e) => handleGlobalSettingChange('purchaseLink', e.target.value)}
+                      placeholder="https://exemplo.com/comprar"
+                      className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-2 text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-[#F97316] focus:border-transparent"
+                    />
+                    <p className="text-xs text-slate-500 mt-2">
+                      * Será usado no botão CTA da seção de Preços
                     </p>
                   </div>
                 </div>
