@@ -33,7 +33,7 @@ export const ContentProvider: React.FC<{ children: ReactNode }> = ({ children })
 
   const [globalAssets, setGlobalAssets] = useState<GlobalAssets>(() => {
     const saved = localStorage.getItem('cms-global-assets')
-    return saved ? JSON.parse(saved) : { favicon: '/favicon.ico', logo: '/assets/logo.svg' }
+    return saved ? JSON.parse(saved) : { favicon: '/favicon.png', logo: '/assets/logo.svg' }
   })
 
   const updateText = (sectionId: string, key: string, value: string) => {
