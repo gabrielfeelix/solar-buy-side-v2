@@ -303,6 +303,7 @@ export const initialContent: SectionContent[] = [
     name: 'Newsletter',
     texts: {
       title: 'Fique por dentro das novidades',
+      highlightWord: 'novidades',
       subtitle: 'Cadastre seu e-mail para receber informações exclusivas, atualizações e conteúdos sobre o mercado solar.',
       placeholder: 'seu@email.com',
       ctaButton: 'Cadastrar',
