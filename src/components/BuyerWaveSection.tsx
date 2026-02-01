@@ -11,6 +11,17 @@ import { useContent } from '../contexts/ContentContext'
 
 const testimonials = [
   {
+    name: 'Rogério',
+    role: 'Comprador',
+    location: 'Campinas, SP',
+    avatar: '/assets/Rogerio.png',
+    reviewTitle: 'O manual valeu cada página.',
+    quote:
+      'Nunca tinha tido contato com energia solar e tinha receio de tomar decisão errada. Mas, ao começar a ler o manual, tudo mudou. O conteúdo é claro, estruturado e me conquistou logo no início. As 4 fases da jornada de compra foram essenciais. Sempre que surgia uma dúvida, o índice interativo com mais de 160 tópicos me levava direto à resposta.',
+    highlight:
+      'No fim, escolhi a empresa certa, o sistema ideal ao preço certo e conduzi tudo com segurança. Sem exagero: o manual valeu cada página.',
+  },
+  {
     name: 'Carlos',
     role: 'Particular',
     location: 'Belo Horizonte, MG',
