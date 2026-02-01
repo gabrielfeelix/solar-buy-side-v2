@@ -24,6 +24,7 @@ jobs:
         run: npm ci
         env:
           npm_config_production: false
+          npm_config_optional: true
 
       - name: Build
         run: npm run build
