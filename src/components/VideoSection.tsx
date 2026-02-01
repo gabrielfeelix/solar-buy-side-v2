@@ -46,7 +46,7 @@ export const VideoSection: React.FC = () => {
       <div className="relative max-w-5xl mx-auto px-6 py-32">
         <div className="mb-24">
           <h2 className="text-5xl md:text-[60px] font-black tracking-tighter mb-6 leading-tight">
-            {section?.texts.title || 'Descubra o que o Manual ensina aos compradores e entenda as novas regras do jogo.'}
+            Descubra o que o <span className="text-[#F97316]">Manual</span> ensina aos compradores e entenda as <span className="text-[#F97316]">novas regras do jogo.</span>
           </h2>
         </div>
 

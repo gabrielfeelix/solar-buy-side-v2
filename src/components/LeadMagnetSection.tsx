@@ -64,7 +64,10 @@ export const LeadMagnetSection: React.FC = () => {
             </div>
 
             <h2 className="text-5xl md:text-7xl font-black tracking-tight leading-[0.95] text-[#1d1d1f]">
-              {section?.texts.title || 'Ainda tem dúvidas sobre o impacto do Manual Buy-Side?'}
+              Ainda tem dúvidas sobre o impacto do <br />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-600 to-orange-400">
+                Manual Buy-Side?
+              </span>
             </h2>
 
             <p className="max-w-xl text-xl md:text-2xl text-[#6e6e73] font-medium leading-relaxed">
