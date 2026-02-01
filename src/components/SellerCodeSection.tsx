@@ -38,6 +38,15 @@ export const SellerCodeSection: React.FC = () => {
     let rafId = 0
 
     const update = () => {
+      const isDesktop = window.innerWidth >= 1024
+      if (!isDesktop) {
+        stickyEl.style.position = 'relative'
+        stickyEl.style.top = '0'
+        stickyEl.style.left = '0'
+        stickyEl.style.right = 'auto'
+        stickyEl.style.width = 'auto'
+        return
+      }
       if (!stickyEl || !containerEl) return
       const containerRect = containerEl.getBoundingClientRect()
       const containerTop = window.scrollY + containerRect.top
