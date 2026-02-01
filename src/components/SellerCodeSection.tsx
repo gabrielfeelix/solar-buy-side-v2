@@ -115,7 +115,7 @@ export const SellerCodeSection: React.FC = () => {
               </div>
             </div>
 
-            {/* O BÔNUS (Header da Lista) */}
+            {/* O BÔNUS (Header) */}
             <div>
               <div className="flex items-center gap-3 mb-8">
                 <div className="flex items-center justify-center w-8 h-8 rounded-full bg-orange-50 text-[#F97316]">
@@ -135,8 +135,25 @@ export const SellerCodeSection: React.FC = () => {
               <p className="text-xl md:text-2xl text-slate-500 font-medium leading-tight italic">
                 O método de imersão no Manual Solar Buy-Side para quem não aceita mais perder vendas por preço.
               </p>
+            </div>
 
-              {/* LISTA INTERATIVA (Apple Style Specs) */}
+            {/* O LIVRO NO MOBILE - aparece aqui após o bônus */}
+            <div className="lg:hidden flex justify-center py-8">
+              <div className="relative group w-full max-w-md" style={{ perspective: '2000px' }}>
+                {/* Efeito de Sombra Colorida (Aura) */}
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-orange-200/30 blur-[120px] rounded-full pointer-events-none opacity-60"></div>
+
+                {/* O Livro */}
+                <img
+                  src={section?.images.bookImage || '/assets/o-codigo-oficial-4.png'}
+                  alt="O Codigo Oficial"
+                  className="w-full h-auto"
+                />
+              </div>
+            </div>
+
+            {/* LISTA INTERATIVA (Apple Style Specs) */}
+            <div>
               <div className="space-y-0" onMouseLeave={() => setHoveredIndex(null)}>
                 <h4 className="text-xs font-bold text-slate-400 uppercase tracking-widest mb-6 pb-2 border-b border-slate-100">
                   {section?.texts.listTitle || 'O que você vai dominar:'}
@@ -179,9 +196,9 @@ export const SellerCodeSection: React.FC = () => {
             </div>
           </div>
 
-          {/* COLUNA DIREITA: O LIVRO (Clean & Floating) */}
+          {/* COLUNA DIREITA: O LIVRO NO DESKTOP (Clean & Floating) */}
           <div
-            className="lg:col-span-5 mt-12 lg:mt-0 flex justify-center lg:justify-end relative"
+            className="hidden lg:flex lg:col-span-5 mt-12 lg:mt-0 justify-center lg:justify-end relative"
             ref={stickyContainerRef}
           >
             <div className="relative group w-full flex justify-end" style={{ perspective: '2000px' }} ref={stickyRef}>
@@ -195,7 +212,7 @@ export const SellerCodeSection: React.FC = () => {
                 className="w-[420px] max-w-full h-auto"
               />
 
- 
+
               </div>
           </div>
         </div>
