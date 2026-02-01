@@ -2,17 +2,7 @@
 import { ArrowRight, Menu } from 'lucide-react'
 
 export const SolarHeader: React.FC = () => {
-  const [isScrolled, setIsScrolled] = useState(false)
   const [isMenuOpen, setIsMenuOpen] = useState(false)
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 10)
-    }
-    handleScroll()
-    window.addEventListener('scroll', handleScroll, { passive: true })
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
 
   useEffect(() => {
     if (!isMenuOpen) return
@@ -26,14 +16,8 @@ export const SolarHeader: React.FC = () => {
   }, [isMenuOpen])
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 py-4">
-      <div
-        className={`max-w-6xl mx-auto px-6 flex items-center justify-between transition-all duration-300 ${
-          isScrolled
-            ? 'bg-[#020617]/85 backdrop-blur-md border border-white/10 rounded-full py-3 shadow-2xl shadow-black/20'
-            : 'bg-transparent border-transparent'
-        }`}
-      >
+    <header className="fixed top-0 left-0 right-0 z-50 bg-[#020617]/95 backdrop-blur-md border-b border-white/10 shadow-lg">
+      <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
         <a href="#hero" className="flex items-center gap-3 flex-nowrap">
           <img src="/assets/LOGOSOLARBUYSIDE3.png" alt="Solar Buy-Side" className="h-10 sm:h-12 w-auto flex-shrink-0" />
           <div className="flex flex-col leading-tight">
