@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
-import { LogOut, Home, Save, Upload, Monitor, Smartphone, Maximize2 } from 'lucide-react'
+import { LogOut, Home, Save, Upload, Monitor, Smartphone } from 'lucide-react'
 import { useAuth } from '../../contexts/AuthContext'
 import { useContent } from '../../contexts/ContentContext'
 import { AdminPreview } from './AdminPreview'
 
-type ViewMode = 'desktop' | 'mobile' | 'custom'
+type ViewMode = 'desktop' | 'mobile'
 
 export const AdminPanel: React.FC = () => {
   const { logout } = useAuth()
@@ -12,7 +12,6 @@ export const AdminPanel: React.FC = () => {
   const [selectedSection, setSelectedSection] = useState(content[0]?.id || 'hero')
   const [editedTexts, setEditedTexts] = useState<{ [key: string]: string }>({})
   const [viewMode, setViewMode] = useState<ViewMode>('desktop')
-  const [customWidth, setCustomWidth] = useState(1024)
 
   const currentSection = content.find((s) => s.id === selectedSection)
 
@@ -44,16 +43,7 @@ export const AdminPanel: React.FC = () => {
   }
 
   const getPreviewWidth = () => {
-    switch (viewMode) {
-      case 'mobile':
-        return '375px'
-      case 'desktop':
-        return '100%'
-      case 'custom':
-        return `${customWidth}px`
-      default:
-        return '100%'
-    }
+    return viewMode === 'mobile' ? '375px' : '100%'
   }
 
   return (
@@ -201,34 +191,8 @@ export const AdminPanel: React.FC = () => {
                   >
                     <Smartphone className="w-4 h-4" />
                   </button>
-                  <button
-                    onClick={() => setViewMode('custom')}
-                    className={`p-2 rounded-lg transition-all ${
-                      viewMode === 'custom'
-                        ? 'bg-[#F97316] text-white'
-                        : 'bg-white/5 text-slate-400 hover:bg-white/10'
-                    }`}
-                    title="Personalizado"
-                  >
-                    <Maximize2 className="w-4 h-4" />
-                  </button>
                 </div>
               </div>
-
-              {viewMode === 'custom' && (
-                <div className="mb-4 flex items-center gap-3">
-                  <label className="text-sm text-slate-300">Largura:</label>
-                  <input
-                    type="range"
-                    min="320"
-                    max="1920"
-                    value={customWidth}
-                    onChange={(e) => setCustomWidth(Number(e.target.value))}
-                    className="flex-1"
-                  />
-                  <span className="text-sm text-slate-400 w-20">{customWidth}px</span>
-                </div>
-              )}
 
               <div className="bg-white rounded-xl overflow-hidden shadow-2xl">
                 <div
