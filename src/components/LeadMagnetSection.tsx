@@ -175,7 +175,7 @@ export const LeadMagnetSection: React.FC = () => {
                         formDataToSend.append('_captcha', 'false')
                         formDataToSend.append('_next', window.location.href)
 
-                        await fetch('https://formsubmit.co/contato@solarbuyside.com.br', {
+                        await fetch('https://formsubmit.co/contato@buyside.com.br', {
                           method: 'POST',
                           body: formDataToSend
                         })

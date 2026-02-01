@@ -20,7 +20,7 @@ export const NewsletterSection: React.FC = () => {
         formData.append('_captcha', 'false')
         formData.append('_next', window.location.href)
 
-        await fetch('https://formsubmit.co/contato@solarbuyside.com.br', {
+        await fetch('https://formsubmit.co/contato@buyside.com.br', {
           method: 'POST',
           body: formData
         })
