@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { LogOut, Home, Save, Upload, Monitor, Smartphone, ExternalLink, ChevronDown, ChevronUp } from 'lucide-react'
+import { LogOut, Home, Save, Upload, Monitor, Smartphone, ExternalLink, ChevronDown, ChevronUp, Image as ImageIcon } from 'lucide-react'
 import { useAuth } from '../../contexts/AuthContext'
 import { useContent } from '../../contexts/ContentContext'
 import { AdminPreview } from './AdminPreview'
@@ -8,14 +8,16 @@ type ViewMode = 'desktop' | 'tablet' | 'mobile'
 
 export const AdminPanel: React.FC = () => {
   const { logout } = useAuth()
-  const { content, updateText, updateImage } = useContent()
+  const { content, globalAssets, updateText, updateImage, updateGlobalAsset } = useContent()
   const [selectedSection, setSelectedSection] = useState(content[0]?.id || 'hero')
   const [editedTexts, setEditedTexts] = useState<{ [key: string]: string }>({})
   const [editedImages, setEditedImages] = useState<{ [key: string]: string }>({})
+  const [editedGlobalAssets, setEditedGlobalAssets] = useState<{ favicon?: string; logo?: string }>({})
   const [viewportWidth, setViewportWidth] = useState(100) // Percentage
   const [showRealPreview, setShowRealPreview] = useState(false)
 
-  // Estados para controlar os dropdowns
+  // Estados para controlar os accordions
+  const [globalAssetsOpen, setGlobalAssetsOpen] = useState(true)
   const [sectionsOpen, setSectionsOpen] = useState(true)
   const [textsOpen, setTextsOpen] = useState(true)
   const [imagesOpen, setImagesOpen] = useState(true)
@@ -35,6 +37,15 @@ export const AdminPanel: React.FC = () => {
     reader.readAsDataURL(file)
   }
 
+  const handleGlobalAssetUpload = (key: 'favicon' | 'logo', file: File) => {
+    const reader = new FileReader()
+    reader.onload = (e) => {
+      const result = e.target?.result as string
+      setEditedGlobalAssets((prev) => ({ ...prev, [key]: result }))
+    }
+    reader.readAsDataURL(file)
+  }
+
   const handleSaveAll = () => {
     // Salvar textos
     Object.entries(editedTexts).forEach(([key, value]) => {
@@ -46,8 +57,14 @@ export const AdminPanel: React.FC = () => {
       updateImage(selectedSection, key, value)
     })
 
+    // Salvar assets globais
+    Object.entries(editedGlobalAssets).forEach(([key, value]) => {
+      updateGlobalAsset(key as 'favicon' | 'logo', value)
+    })
+
     setEditedTexts({})
     setEditedImages({})
+    setEditedGlobalAssets({})
     alert('Alterações salvas com sucesso!')
   }
 
@@ -61,9 +78,18 @@ export const AdminPanel: React.FC = () => {
     return currentSection?.images[key] || ''
   }
 
-  const hasUnsavedChanges = Object.keys(editedTexts).length > 0 || Object.keys(editedImages).length > 0
+  const getGlobalAssetValue = (key: 'favicon' | 'logo') => {
+    if (editedGlobalAssets[key] !== undefined) return editedGlobalAssets[key]
+    return globalAssets[key] || ''
+  }
+
+  const hasUnsavedChanges =
+    Object.keys(editedTexts).length > 0 ||
+    Object.keys(editedImages).length > 0 ||
+    Object.keys(editedGlobalAssets).length > 0
 
   const getPreviewDimensions = () => {
+    // Base em 1920x1080 para desktop real
     const baseWidth = 1920
     const baseHeight = 1080
     const width = Math.round((baseWidth * viewportWidth) / 100)
@@ -71,8 +97,9 @@ export const AdminPanel: React.FC = () => {
     return { width, height }
   }
 
-  const getPreviewWidth = () => {
-    return `${viewportWidth}%`
+  const getPreviewScale = () => {
+    // Retorna a escala CSS para o preview aparecer em tamanho real
+    return viewportWidth / 100
   }
 
   const setViewMode = (mode: ViewMode) => {
@@ -139,7 +166,84 @@ export const AdminPanel: React.FC = () => {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
           {/* Coluna Esquerda - Controles */}
           <div className="lg:col-span-1 space-y-4">
-            {/* Seções - Com Dropdown */}
+            {/* Favicon e Logotipo */}
+            <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl overflow-hidden">
+              <button
+                onClick={() => setGlobalAssetsOpen(!globalAssetsOpen)}
+                className="w-full flex items-center justify-between px-6 py-4 hover:bg-white/5 transition-colors"
+              >
+                <div className="flex items-center gap-2">
+                  <ImageIcon className="w-5 h-5" />
+                  <h2 className="text-lg font-bold">Favicon e Logotipo</h2>
+                </div>
+                {globalAssetsOpen ? <ChevronUp className="w-5 h-5" /> : <ChevronDown className="w-5 h-5" />}
+              </button>
+
+              {globalAssetsOpen && (
+                <div className="px-6 pb-6 space-y-4">
+                  {/* Favicon */}
+                  <div>
+                    <label className="block text-sm font-medium text-slate-300 mb-2">
+                      Favicon
+                      <span className="text-xs text-slate-500 ml-2">(Recomendado: 64x64px)</span>
+                    </label>
+                    {getGlobalAssetValue('favicon') && (
+                      <img
+                        src={getGlobalAssetValue('favicon')}
+                        alt="Favicon"
+                        className="w-16 h-16 object-cover rounded-lg mb-2 bg-white p-2"
+                      />
+                    )}
+                    <label className="flex items-center justify-center gap-2 w-full bg-white/5 hover:bg-white/10 border border-white/10 text-slate-300 px-4 py-2 rounded-xl cursor-pointer transition-all">
+                      <Upload className="w-4 h-4" />
+                      <span className="text-sm">Alterar Favicon</span>
+                      <input
+                        type="file"
+                        accept="image/*"
+                        className="hidden"
+                        onChange={(e) => {
+                          const file = e.target.files?.[0]
+                          if (file) handleGlobalAssetUpload('favicon', file)
+                        }}
+                      />
+                    </label>
+                  </div>
+
+                  {/* Logo */}
+                  <div>
+                    <label className="block text-sm font-medium text-slate-300 mb-2">
+                      Logotipo
+                      <span className="text-xs text-slate-500 ml-2">(Recomendado: 200x60px)</span>
+                    </label>
+                    {getGlobalAssetValue('logo') && (
+                      <img
+                        src={getGlobalAssetValue('logo')}
+                        alt="Logo"
+                        className="w-full h-16 object-contain rounded-lg mb-2 bg-white p-2"
+                      />
+                    )}
+                    <label className="flex items-center justify-center gap-2 w-full bg-white/5 hover:bg-white/10 border border-white/10 text-slate-300 px-4 py-2 rounded-xl cursor-pointer transition-all">
+                      <Upload className="w-4 h-4" />
+                      <span className="text-sm">Alterar Logotipo</span>
+                      <input
+                        type="file"
+                        accept="image/*"
+                        className="hidden"
+                        onChange={(e) => {
+                          const file = e.target.files?.[0]
+                          if (file) handleGlobalAssetUpload('logo', file)
+                        }}
+                      />
+                    </label>
+                    <p className="text-xs text-slate-500 mt-2">
+                      * Atualiza header e footer automaticamente
+                    </p>
+                  </div>
+                </div>
+              )}
+            </div>
+
+            {/* Seções - Com Accordion */}
             <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl overflow-hidden">
               <button
                 onClick={() => setSectionsOpen(!sectionsOpen)}
@@ -174,7 +278,7 @@ export const AdminPanel: React.FC = () => {
               )}
             </div>
 
-            {/* Editar Textos - Com Dropdown */}
+            {/* Editar Textos - Com Accordion */}
             {currentSection && (
               <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl overflow-hidden">
                 <button
@@ -207,7 +311,7 @@ export const AdminPanel: React.FC = () => {
               </div>
             )}
 
-            {/* Editar Imagens - Com Dropdown */}
+            {/* Editar Imagens - Com Accordion */}
             {currentSection && Object.keys(currentSection.images).length > 0 && (
               <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl overflow-hidden">
                 <button
@@ -327,21 +431,23 @@ export const AdminPanel: React.FC = () => {
                 />
               </div>
 
-              {/* Container do Preview */}
-              <div className="bg-slate-100 rounded-xl overflow-hidden shadow-2xl p-6">
+              {/* Container do Preview com escala real */}
+              <div className="bg-slate-100 rounded-xl overflow-auto shadow-2xl" style={{ maxHeight: '800px' }}>
                 <div
-                  className="mx-auto transition-all duration-300 bg-white shadow-xl"
-                  style={{ width: getPreviewWidth(), maxWidth: '100%' }}
+                  className="bg-white origin-top-left"
+                  style={{
+                    width: '1920px',
+                    transform: `scale(${getPreviewScale()})`,
+                    transformOrigin: 'top left'
+                  }}
                 >
-                  <div className="max-h-[700px] overflow-y-auto">
-                    {currentSection && (
-                      <AdminPreview
-                        sectionId={currentSection.id}
-                        texts={{ ...currentSection.texts, ...editedTexts }}
-                        images={{ ...currentSection.images, ...editedImages }}
-                      />
-                    )}
-                  </div>
+                  {currentSection && (
+                    <AdminPreview
+                      sectionId={currentSection.id}
+                      texts={{ ...currentSection.texts, ...editedTexts }}
+                      images={{ ...currentSection.images, ...editedImages }}
+                    />
+                  )}
                 </div>
               </div>
             </div>
@@ -404,7 +510,6 @@ export const AdminPanel: React.FC = () => {
                 className="w-full h-full border-0"
                 title="Preview Real"
                 onLoad={(e) => {
-                  // Scroll para a seção após carregar
                   const iframe = e.target as HTMLIFrameElement
                   try {
                     const hash = getSectionHash()
