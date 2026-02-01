@@ -125,7 +125,7 @@ export const VideoSection: React.FC = () => {
           >
             {!showPlayer && (
               <>
-                <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1497215728101-856f4ea42174?q=80&w=2070&auto=format&fit=crop')] bg-cover bg-center opacity-50 transition-transform duration-700 group-hover:scale-105"></div>
+                <div className="absolute inset-0 bg-[url('/assets/manualdecompra1.png')] bg-cover bg-center opacity-90 transition-transform duration-700 group-hover:scale-105"></div>
 
                 <div className="absolute inset-0 bg-slate-900/60 group-hover:bg-slate-900/30 transition-colors"></div>
 
