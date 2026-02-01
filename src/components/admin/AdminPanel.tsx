@@ -1,14 +1,18 @@
 import React, { useState } from 'react'
-import { LogOut, Home, Save } from 'lucide-react'
+import { LogOut, Home, Save, Upload, Monitor, Smartphone, Maximize2 } from 'lucide-react'
 import { useAuth } from '../../contexts/AuthContext'
 import { useContent } from '../../contexts/ContentContext'
 import { AdminPreview } from './AdminPreview'
 
+type ViewMode = 'desktop' | 'mobile' | 'custom'
+
 export const AdminPanel: React.FC = () => {
   const { logout } = useAuth()
-  const { content, updateText } = useContent()
+  const { content, updateText, updateImage } = useContent()
   const [selectedSection, setSelectedSection] = useState(content[0]?.id || 'hero')
   const [editedTexts, setEditedTexts] = useState<{ [key: string]: string }>({})
+  const [viewMode, setViewMode] = useState<ViewMode>('desktop')
+  const [customWidth, setCustomWidth] = useState(1024)
 
   const currentSection = content.find((s) => s.id === selectedSection)
 
@@ -24,9 +28,32 @@ export const AdminPanel: React.FC = () => {
     alert('Textos salvos com sucesso!')
   }
 
+  const handleImageUpload = (key: string, file: File) => {
+    const reader = new FileReader()
+    reader.onload = (e) => {
+      const result = e.target?.result as string
+      updateImage(selectedSection, key, result)
+      alert('Imagem atualizada com sucesso!')
+    }
+    reader.readAsDataURL(file)
+  }
+
   const getTextValue = (key: string) => {
     if (editedTexts[key] !== undefined) return editedTexts[key]
     return currentSection?.texts[key] || ''
+  }
+
+  const getPreviewWidth = () => {
+    switch (viewMode) {
+      case 'mobile':
+        return '375px'
+      case 'desktop':
+        return '100%'
+      case 'custom':
+        return `${customWidth}px`
+      default:
+        return '100%'
+    }
   }
 
   return (
@@ -59,7 +86,7 @@ export const AdminPanel: React.FC = () => {
           <div className="lg:col-span-1 space-y-4">
             <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-6">
               <h2 className="text-lg font-bold mb-4">Seções</h2>
-              <div className="space-y-2">
+              <div className="space-y-2 max-h-[400px] overflow-y-auto pr-2">
                 {content.map((section) => (
                   <button
                     key={section.id}
@@ -93,7 +120,7 @@ export const AdminPanel: React.FC = () => {
                   </button>
                 </div>
 
-                <div className="space-y-4 max-h-[600px] overflow-y-auto pr-2">
+                <div className="space-y-4 max-h-[400px] overflow-y-auto pr-2">
                   {Object.entries(currentSection.texts).map(([key]) => (
                     <div key={key}>
                       <label className="block text-sm font-medium text-slate-300 mb-2 capitalize">
@@ -110,19 +137,114 @@ export const AdminPanel: React.FC = () => {
                 </div>
               </div>
             )}
+
+            {currentSection && Object.keys(currentSection.images).length > 0 && (
+              <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-6">
+                <h2 className="text-lg font-bold mb-4">Editar Imagens</h2>
+                <div className="space-y-4">
+                  {Object.entries(currentSection.images).map(([key, value]) => (
+                    <div key={key}>
+                      <label className="block text-sm font-medium text-slate-300 mb-2 capitalize">
+                        {key.replace(/([A-Z])/g, ' $1').trim()}
+                      </label>
+                      {value && (
+                        <img
+                          src={value}
+                          alt={key}
+                          className="w-full h-24 object-cover rounded-lg mb-2"
+                        />
+                      )}
+                      <label className="flex items-center justify-center gap-2 w-full bg-white/5 hover:bg-white/10 border border-white/10 text-slate-300 px-4 py-2 rounded-xl cursor-pointer transition-all">
+                        <Upload className="w-4 h-4" />
+                        <span className="text-sm">Alterar Imagem</span>
+                        <input
+                          type="file"
+                          accept="image/*"
+                          className="hidden"
+                          onChange={(e) => {
+                            const file = e.target.files?.[0]
+                            if (file) handleImageUpload(key, file)
+                          }}
+                        />
+                      </label>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
           </div>
 
           <div className="lg:col-span-2">
             <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-6">
-              <h2 className="text-lg font-bold mb-4">Preview ao Vivo</h2>
-              <div className="bg-white rounded-xl overflow-hidden shadow-2xl max-h-[800px] overflow-y-auto">
-                {currentSection && (
-                  <AdminPreview
-                    sectionId={currentSection.id}
-                    texts={{ ...currentSection.texts, ...editedTexts }}
-                    images={currentSection.images}
+              <div className="flex items-center justify-between mb-4">
+                <h2 className="text-lg font-bold">Preview ao Vivo</h2>
+                <div className="flex items-center gap-2">
+                  <button
+                    onClick={() => setViewMode('desktop')}
+                    className={`p-2 rounded-lg transition-all ${
+                      viewMode === 'desktop'
+                        ? 'bg-[#F97316] text-white'
+                        : 'bg-white/5 text-slate-400 hover:bg-white/10'
+                    }`}
+                    title="Desktop"
+                  >
+                    <Monitor className="w-4 h-4" />
+                  </button>
+                  <button
+                    onClick={() => setViewMode('mobile')}
+                    className={`p-2 rounded-lg transition-all ${
+                      viewMode === 'mobile'
+                        ? 'bg-[#F97316] text-white'
+                        : 'bg-white/5 text-slate-400 hover:bg-white/10'
+                    }`}
+                    title="Mobile"
+                  >
+                    <Smartphone className="w-4 h-4" />
+                  </button>
+                  <button
+                    onClick={() => setViewMode('custom')}
+                    className={`p-2 rounded-lg transition-all ${
+                      viewMode === 'custom'
+                        ? 'bg-[#F97316] text-white'
+                        : 'bg-white/5 text-slate-400 hover:bg-white/10'
+                    }`}
+                    title="Personalizado"
+                  >
+                    <Maximize2 className="w-4 h-4" />
+                  </button>
+                </div>
+              </div>
+
+              {viewMode === 'custom' && (
+                <div className="mb-4 flex items-center gap-3">
+                  <label className="text-sm text-slate-300">Largura:</label>
+                  <input
+                    type="range"
+                    min="320"
+                    max="1920"
+                    value={customWidth}
+                    onChange={(e) => setCustomWidth(Number(e.target.value))}
+                    className="flex-1"
                   />
-                )}
+                  <span className="text-sm text-slate-400 w-20">{customWidth}px</span>
+                </div>
+              )}
+
+              <div className="bg-white rounded-xl overflow-hidden shadow-2xl">
+                <div
+                  className="mx-auto transition-all duration-300"
+                  style={{ width: getPreviewWidth(), maxWidth: '100%' }}
+                >
+                  <div className="max-h-[800px] overflow-y-auto">
+                    {currentSection && (
+                      <AdminPreview
+                        sectionId={currentSection.id}
+                        texts={{ ...currentSection.texts, ...editedTexts }}
+                        images={currentSection.images}
+                      />
+                    )}
+                  </div>
+                </div>
               </div>
             </div>
           </div>
