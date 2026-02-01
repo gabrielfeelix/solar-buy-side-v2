@@ -22,9 +22,13 @@ jobs:
 
       - name: Install deps
         run: npm ci
+        env:
+          NODE_ENV: development
 
       - name: Build
         run: npm run build
+        env:
+          NODE_ENV: development
 
       - name: Ensure dist exists
         run: |
@@ -37,7 +41,7 @@ jobs:
           server: ${{ secrets.HOSTGATOR_HOST }}
           username: ${{ secrets.HOSTGATOR_USER }}
           password: ${{ secrets.HOSTGATOR_PASSWORD }}
-          server-dir: ${{ secrets.HOSTGATOR_DIR }}
+          server-dir: ${{ secrets.HOSTGATOR_DIR }}/
           local-dir: dist/
           protocol: ftp
           port: 21
