@@ -105,7 +105,7 @@ export const AdminPanel: React.FC = () => {
   const setViewMode = (mode: ViewMode) => {
     if (mode === 'desktop') setViewportWidth(100)
     else if (mode === 'tablet') setViewportWidth(50)
-    else if (mode === 'mobile') setViewportWidth(20)
+    else if (mode === 'mobile') setViewportWidth(19.53) // 375px / 1920px = 19.53%
   }
 
   const getSectionHash = () => {
@@ -387,29 +387,18 @@ export const AdminPanel: React.FC = () => {
                         ? 'bg-[#F97316] text-white'
                         : 'bg-white/5 text-slate-400 hover:bg-white/10'
                     }`}
-                    title="Desktop (100%)"
+                    title="Desktop (1920px)"
                   >
                     <Monitor className="w-4 h-4" />
                   </button>
                   <button
-                    onClick={() => setViewMode('tablet')}
-                    className={`p-2 rounded-lg transition-all ${
-                      viewportWidth === 50
-                        ? 'bg-[#F97316] text-white'
-                        : 'bg-white/5 text-slate-400 hover:bg-white/10'
-                    }`}
-                    title="Tablet (50%)"
-                  >
-                    <Monitor className="w-3.5 h-3.5" />
-                  </button>
-                  <button
                     onClick={() => setViewMode('mobile')}
                     className={`p-2 rounded-lg transition-all ${
-                      viewportWidth === 20
+                      viewportWidth < 25
                         ? 'bg-[#F97316] text-white'
                         : 'bg-white/5 text-slate-400 hover:bg-white/10'
                     }`}
-                    title="Mobile (20%)"
+                    title="Mobile (375px)"
                   >
                     <Smartphone className="w-4 h-4" />
                   </button>
@@ -420,8 +409,9 @@ export const AdminPanel: React.FC = () => {
               <div className="mb-4">
                 <input
                   type="range"
-                  min="20"
+                  min="19.53"
                   max="100"
+                  step="0.01"
                   value={viewportWidth}
                   onChange={(e) => setViewportWidth(Number(e.target.value))}
                   className="w-full h-2 bg-white/10 rounded-lg appearance-none cursor-pointer slider"
@@ -436,8 +426,8 @@ export const AdminPanel: React.FC = () => {
                 <div
                   className="bg-white origin-top-left"
                   style={{
-                    width: '1920px',
-                    transform: `scale(${getPreviewScale()})`,
+                    width: viewportWidth < 25 ? '375px' : '1920px',
+                    transform: viewportWidth < 25 ? 'scale(1)' : `scale(${getPreviewScale()})`,
                     transformOrigin: 'top left'
                   }}
                 >
