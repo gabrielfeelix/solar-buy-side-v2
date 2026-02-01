@@ -161,9 +161,30 @@ export const LeadMagnetSection: React.FC = () => {
                   </p>
 
                   <form
-                    onSubmit={(e) => {
+                    onSubmit={async (e) => {
                       e.preventDefault()
-                      setSubmitted(true)
+                      try {
+                        // Enviar para FormSubmit
+                        const formDataToSend = new FormData()
+                        formDataToSend.append('nome', formData.nome)
+                        formDataToSend.append('sobrenome', formData.sobrenome)
+                        formDataToSend.append('email', formData.email)
+                        formDataToSend.append('celular', formData.celular)
+                        formDataToSend.append('_subject', '📚 Novo Download E-book - Solar Buy-Side')
+                        formDataToSend.append('_template', 'box')
+                        formDataToSend.append('_captcha', 'false')
+                        formDataToSend.append('_next', window.location.href)
+
+                        await fetch('https://formsubmit.co/contato@solarbuyside.com.br', {
+                          method: 'POST',
+                          body: formDataToSend
+                        })
+
+                        setSubmitted(true)
+                      } catch (error) {
+                        console.error('Erro ao enviar:', error)
+                        alert('Erro ao enviar dados. Tente novamente.')
+                      }
                     }}
                     className="space-y-4"
                   >

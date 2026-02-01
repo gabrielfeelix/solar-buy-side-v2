@@ -8,18 +8,34 @@ export const NewsletterSection: React.FC = () => {
   const [email, setEmail] = useState('')
   const [submitted, setSubmitted] = useState(false)
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     if (email) {
-      // Aqui você pode integrar com um serviço de newsletter
-      console.log('Email cadastrado:', email)
-      setSubmitted(true)
-      setEmail('')
+      try {
+        // Enviar para FormSubmit
+        const formData = new FormData()
+        formData.append('email', email)
+        formData.append('_subject', '🔔 Novo Cadastro Newsletter - Solar Buy-Side')
+        formData.append('_template', 'box')
+        formData.append('_captcha', 'false')
+        formData.append('_next', window.location.href)
 
-      // Reset após 5 segundos
-      setTimeout(() => {
-        setSubmitted(false)
-      }, 5000)
+        await fetch('https://formsubmit.co/contato@solarbuyside.com.br', {
+          method: 'POST',
+          body: formData
+        })
+
+        setSubmitted(true)
+        setEmail('')
+
+        // Reset após 5 segundos
+        setTimeout(() => {
+          setSubmitted(false)
+        }, 5000)
+      } catch (error) {
+        console.error('Erro ao enviar:', error)
+        alert('Erro ao cadastrar. Tente novamente.')
+      }
     }
   }
 
