@@ -182,14 +182,11 @@ export const SellerCodeSection: React.FC = () => {
               <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-orange-200/30 blur-[120px] rounded-full pointer-events-none opacity-60"></div>
 
               {/* O Livro */}
-              <div className="relative">
-                <div className="absolute -bottom-1 left-8 right-6 h-2 bg-black/25 blur-[4px] rounded-full"></div>
               <img
-                src="/assets/o-codigo-oficial3.png"
+                src="/assets/o-codigo-oficial-4.png"
                 alt="O Codigo Oficial"
                 className="w-[420px] max-w-full h-auto"
               />
-              </div>
 
  
               </div>
