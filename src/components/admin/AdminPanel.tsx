@@ -1,18 +1,24 @@
 import React, { useState } from 'react'
-import { LogOut, Home, Save, Upload, Monitor, Smartphone, ExternalLink } from 'lucide-react'
+import { LogOut, Home, Save, Upload, Monitor, Smartphone, ExternalLink, ChevronDown, ChevronUp } from 'lucide-react'
 import { useAuth } from '../../contexts/AuthContext'
 import { useContent } from '../../contexts/ContentContext'
 import { AdminPreview } from './AdminPreview'
 
-type ViewMode = 'desktop' | 'mobile'
+type ViewMode = 'desktop' | 'tablet' | 'mobile'
 
 export const AdminPanel: React.FC = () => {
   const { logout } = useAuth()
   const { content, updateText, updateImage } = useContent()
   const [selectedSection, setSelectedSection] = useState(content[0]?.id || 'hero')
   const [editedTexts, setEditedTexts] = useState<{ [key: string]: string }>({})
-  const [viewMode, setViewMode] = useState<ViewMode>('desktop')
+  const [editedImages, setEditedImages] = useState<{ [key: string]: string }>({})
+  const [viewportWidth, setViewportWidth] = useState(100) // Percentage
   const [showRealPreview, setShowRealPreview] = useState(false)
+
+  // Estados para controlar os dropdowns
+  const [sectionsOpen, setSectionsOpen] = useState(true)
+  const [textsOpen, setTextsOpen] = useState(true)
+  const [imagesOpen, setImagesOpen] = useState(true)
 
   const currentSection = content.find((s) => s.id === selectedSection)
 
@@ -20,22 +26,29 @@ export const AdminPanel: React.FC = () => {
     setEditedTexts((prev) => ({ ...prev, [key]: value }))
   }
 
-  const handleSaveTexts = () => {
-    Object.entries(editedTexts).forEach(([key, value]) => {
-      updateText(selectedSection, key, value)
-    })
-    setEditedTexts({})
-    alert('Textos salvos com sucesso!')
-  }
-
   const handleImageUpload = (key: string, file: File) => {
     const reader = new FileReader()
     reader.onload = (e) => {
       const result = e.target?.result as string
-      updateImage(selectedSection, key, result)
-      alert('Imagem atualizada com sucesso!')
+      setEditedImages((prev) => ({ ...prev, [key]: result }))
     }
     reader.readAsDataURL(file)
+  }
+
+  const handleSaveAll = () => {
+    // Salvar textos
+    Object.entries(editedTexts).forEach(([key, value]) => {
+      updateText(selectedSection, key, value)
+    })
+
+    // Salvar imagens
+    Object.entries(editedImages).forEach(([key, value]) => {
+      updateImage(selectedSection, key, value)
+    })
+
+    setEditedTexts({})
+    setEditedImages({})
+    alert('Alterações salvas com sucesso!')
   }
 
   const getTextValue = (key: string) => {
@@ -43,8 +56,29 @@ export const AdminPanel: React.FC = () => {
     return currentSection?.texts[key] || ''
   }
 
+  const getImageValue = (key: string) => {
+    if (editedImages[key] !== undefined) return editedImages[key]
+    return currentSection?.images[key] || ''
+  }
+
+  const hasUnsavedChanges = Object.keys(editedTexts).length > 0 || Object.keys(editedImages).length > 0
+
+  const getPreviewDimensions = () => {
+    const baseWidth = 1920
+    const baseHeight = 1080
+    const width = Math.round((baseWidth * viewportWidth) / 100)
+    const height = Math.round((baseHeight * viewportWidth) / 100)
+    return { width, height }
+  }
+
   const getPreviewWidth = () => {
-    return viewMode === 'mobile' ? '375px' : '100%'
+    return `${viewportWidth}%`
+  }
+
+  const setViewMode = (mode: ViewMode) => {
+    if (mode === 'desktop') setViewportWidth(100)
+    else if (mode === 'tablet') setViewportWidth(50)
+    else if (mode === 'mobile') setViewportWidth(20)
   }
 
   const getSectionHash = () => {
@@ -74,8 +108,10 @@ export const AdminPanel: React.FC = () => {
     setShowRealPreview(false)
   }
 
+  const dimensions = getPreviewDimensions()
+
   return (
-    <div className="min-h-screen bg-[#020617] text-white">
+    <div className="min-h-screen bg-[#020617] text-white pb-24">
       <header className="bg-white/5 backdrop-blur-xl border-b border-white/10 sticky top-0 z-50">
         <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
           <div className="flex items-center gap-4">
@@ -101,101 +137,135 @@ export const AdminPanel: React.FC = () => {
 
       <div className="max-w-7xl mx-auto p-6">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+          {/* Coluna Esquerda - Controles */}
           <div className="lg:col-span-1 space-y-4">
-            <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-6">
-              <h2 className="text-lg font-bold mb-4">Seções</h2>
-              <div className="space-y-2 max-h-[400px] overflow-y-auto pr-2">
-                {content.map((section) => (
-                  <button
-                    key={section.id}
-                    onClick={() => {
-                      setSelectedSection(section.id)
-                      setEditedTexts({})
-                    }}
-                    className={`w-full text-left px-4 py-3 rounded-xl transition-all ${
-                      selectedSection === section.id
-                        ? 'bg-[#F97316] text-white font-bold'
-                        : 'bg-white/5 text-slate-300 hover:bg-white/10'
-                    }`}
-                  >
-                    Seção {content.indexOf(section) + 1}: {section.name}
-                  </button>
-                ))}
-              </div>
+            {/* Seções - Com Dropdown */}
+            <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl overflow-hidden">
+              <button
+                onClick={() => setSectionsOpen(!sectionsOpen)}
+                className="w-full flex items-center justify-between px-6 py-4 hover:bg-white/5 transition-colors"
+              >
+                <h2 className="text-lg font-bold">Seções</h2>
+                {sectionsOpen ? <ChevronUp className="w-5 h-5" /> : <ChevronDown className="w-5 h-5" />}
+              </button>
+
+              {sectionsOpen && (
+                <div className="px-6 pb-6">
+                  <div className="space-y-2 max-h-[400px] overflow-y-auto pr-2">
+                    {content.map((section) => (
+                      <button
+                        key={section.id}
+                        onClick={() => {
+                          setSelectedSection(section.id)
+                          setEditedTexts({})
+                          setEditedImages({})
+                        }}
+                        className={`w-full text-left px-4 py-3 rounded-xl transition-all ${
+                          selectedSection === section.id
+                            ? 'bg-[#F97316] text-white font-bold'
+                            : 'bg-white/5 text-slate-300 hover:bg-white/10'
+                        }`}
+                      >
+                        Seção {content.indexOf(section) + 1}: {section.name}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              )}
             </div>
 
+            {/* Editar Textos - Com Dropdown */}
             {currentSection && (
-              <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-6">
-                <div className="flex items-center justify-between mb-4">
+              <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl overflow-hidden">
+                <button
+                  onClick={() => setTextsOpen(!textsOpen)}
+                  className="w-full flex items-center justify-between px-6 py-4 hover:bg-white/5 transition-colors"
+                >
                   <h2 className="text-lg font-bold">Editar Textos</h2>
-                  <button
-                    onClick={handleSaveTexts}
-                    disabled={Object.keys(editedTexts).length === 0}
-                    className="flex items-center gap-2 bg-[#F97316] hover:bg-[#ea6a0a] disabled:bg-slate-600 disabled:cursor-not-allowed text-white px-4 py-2 rounded-xl transition-all text-sm font-medium"
-                  >
-                    <Save className="w-4 h-4" />
-                    Salvar
-                  </button>
-                </div>
+                  {textsOpen ? <ChevronUp className="w-5 h-5" /> : <ChevronDown className="w-5 h-5" />}
+                </button>
 
-                <div className="space-y-4 max-h-[400px] overflow-y-auto pr-2">
-                  {Object.entries(currentSection.texts).map(([key]) => (
-                    <div key={key}>
-                      <label className="block text-sm font-medium text-slate-300 mb-2 capitalize">
-                        {key.replace(/([A-Z])/g, ' $1').trim()}
-                      </label>
-                      <textarea
-                        value={getTextValue(key)}
-                        onChange={(e) => handleTextChange(key, e.target.value)}
-                        className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-2 text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-[#F97316] focus:border-transparent resize-none"
-                        rows={3}
-                      />
+                {textsOpen && (
+                  <div className="px-6 pb-6">
+                    <div className="space-y-4 max-h-[400px] overflow-y-auto pr-2">
+                      {Object.entries(currentSection.texts).map(([key]) => (
+                        <div key={key}>
+                          <label className="block text-sm font-medium text-slate-300 mb-2 capitalize">
+                            {key.replace(/([A-Z])/g, ' $1').trim()}
+                          </label>
+                          <textarea
+                            value={getTextValue(key)}
+                            onChange={(e) => handleTextChange(key, e.target.value)}
+                            className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-2 text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-[#F97316] focus:border-transparent resize-none"
+                            rows={3}
+                          />
+                        </div>
+                      ))}
                     </div>
-                  ))}
-                </div>
+                  </div>
+                )}
               </div>
             )}
 
+            {/* Editar Imagens - Com Dropdown */}
             {currentSection && Object.keys(currentSection.images).length > 0 && (
-              <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-6">
-                <h2 className="text-lg font-bold mb-4">Editar Imagens</h2>
-                <div className="space-y-4">
-                  {Object.entries(currentSection.images).map(([key, value]) => (
-                    <div key={key}>
-                      <label className="block text-sm font-medium text-slate-300 mb-2 capitalize">
-                        {key.replace(/([A-Z])/g, ' $1').trim()}
-                      </label>
-                      {value && (
-                        <img
-                          src={value}
-                          alt={key}
-                          className="w-full h-24 object-cover rounded-lg mb-2"
-                        />
-                      )}
-                      <label className="flex items-center justify-center gap-2 w-full bg-white/5 hover:bg-white/10 border border-white/10 text-slate-300 px-4 py-2 rounded-xl cursor-pointer transition-all">
-                        <Upload className="w-4 h-4" />
-                        <span className="text-sm">Alterar Imagem</span>
-                        <input
-                          type="file"
-                          accept="image/*"
-                          className="hidden"
-                          onChange={(e) => {
-                            const file = e.target.files?.[0]
-                            if (file) handleImageUpload(key, file)
-                          }}
-                        />
-                      </label>
+              <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl overflow-hidden">
+                <button
+                  onClick={() => setImagesOpen(!imagesOpen)}
+                  className="w-full flex items-center justify-between px-6 py-4 hover:bg-white/5 transition-colors"
+                >
+                  <h2 className="text-lg font-bold">Editar Imagens</h2>
+                  {imagesOpen ? <ChevronUp className="w-5 h-5" /> : <ChevronDown className="w-5 h-5" />}
+                </button>
+
+                {imagesOpen && (
+                  <div className="px-6 pb-6">
+                    <div className="space-y-4">
+                      {Object.entries(currentSection.images).map(([key]) => (
+                        <div key={key}>
+                          <label className="block text-sm font-medium text-slate-300 mb-2 capitalize">
+                            {key.replace(/([A-Z])/g, ' $1').trim()}
+                          </label>
+                          {getImageValue(key) && (
+                            <img
+                              src={getImageValue(key)}
+                              alt={key}
+                              className="w-full h-24 object-cover rounded-lg mb-2"
+                            />
+                          )}
+                          <label className="flex items-center justify-center gap-2 w-full bg-white/5 hover:bg-white/10 border border-white/10 text-slate-300 px-4 py-2 rounded-xl cursor-pointer transition-all">
+                            <Upload className="w-4 h-4" />
+                            <span className="text-sm">Alterar Imagem</span>
+                            <input
+                              type="file"
+                              accept="image/*"
+                              className="hidden"
+                              onChange={(e) => {
+                                const file = e.target.files?.[0]
+                                if (file) handleImageUpload(key, file)
+                              }}
+                            />
+                          </label>
+                        </div>
+                      ))}
                     </div>
-                  ))}
-                </div>
+                  </div>
+                )}
               </div>
             )}
           </div>
 
+          {/* Coluna Direita - Preview */}
           <div className="lg:col-span-2">
             <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-6">
+              {/* Header do Preview */}
               <div className="flex items-center justify-between mb-4">
-                <h2 className="text-lg font-bold">Preview ao Vivo</h2>
+                <div className="flex items-center gap-3">
+                  <h2 className="text-lg font-bold">Preview ao Vivo</h2>
+                  <span className="text-xs text-slate-400 font-mono">
+                    {dimensions.width}px × {dimensions.height}px ({viewportWidth}%)
+                  </span>
+                </div>
                 <div className="flex items-center gap-2">
                   <button
                     onClick={openRealPreview}
@@ -209,39 +279,66 @@ export const AdminPanel: React.FC = () => {
                   <button
                     onClick={() => setViewMode('desktop')}
                     className={`p-2 rounded-lg transition-all ${
-                      viewMode === 'desktop'
+                      viewportWidth === 100
                         ? 'bg-[#F97316] text-white'
                         : 'bg-white/5 text-slate-400 hover:bg-white/10'
                     }`}
-                    title="Desktop"
+                    title="Desktop (100%)"
                   >
                     <Monitor className="w-4 h-4" />
                   </button>
                   <button
-                    onClick={() => setViewMode('mobile')}
+                    onClick={() => setViewMode('tablet')}
                     className={`p-2 rounded-lg transition-all ${
-                      viewMode === 'mobile'
+                      viewportWidth === 50
                         ? 'bg-[#F97316] text-white'
                         : 'bg-white/5 text-slate-400 hover:bg-white/10'
                     }`}
-                    title="Mobile"
+                    title="Tablet (50%)"
+                  >
+                    <Monitor className="w-3.5 h-3.5" />
+                  </button>
+                  <button
+                    onClick={() => setViewMode('mobile')}
+                    className={`p-2 rounded-lg transition-all ${
+                      viewportWidth === 20
+                        ? 'bg-[#F97316] text-white'
+                        : 'bg-white/5 text-slate-400 hover:bg-white/10'
+                    }`}
+                    title="Mobile (20%)"
                   >
                     <Smartphone className="w-4 h-4" />
                   </button>
                 </div>
               </div>
 
-              <div className="bg-white rounded-xl overflow-hidden shadow-2xl">
+              {/* Slider de Largura */}
+              <div className="mb-4">
+                <input
+                  type="range"
+                  min="20"
+                  max="100"
+                  value={viewportWidth}
+                  onChange={(e) => setViewportWidth(Number(e.target.value))}
+                  className="w-full h-2 bg-white/10 rounded-lg appearance-none cursor-pointer slider"
+                  style={{
+                    background: `linear-gradient(to right, #F97316 0%, #F97316 ${viewportWidth}%, rgba(255,255,255,0.1) ${viewportWidth}%, rgba(255,255,255,0.1) 100%)`
+                  }}
+                />
+              </div>
+
+              {/* Container do Preview */}
+              <div className="bg-slate-100 rounded-xl overflow-hidden shadow-2xl p-6">
                 <div
-                  className="mx-auto transition-all duration-300"
+                  className="mx-auto transition-all duration-300 bg-white shadow-xl"
                   style={{ width: getPreviewWidth(), maxWidth: '100%' }}
                 >
-                  <div className="max-h-[800px] overflow-y-auto">
+                  <div className="max-h-[700px] overflow-y-auto">
                     {currentSection && (
                       <AdminPreview
                         sectionId={currentSection.id}
                         texts={{ ...currentSection.texts, ...editedTexts }}
-                        images={currentSection.images}
+                        images={{ ...currentSection.images, ...editedImages }}
                       />
                     )}
                   </div>
@@ -249,6 +346,36 @@ export const AdminPanel: React.FC = () => {
               </div>
             </div>
           </div>
+        </div>
+      </div>
+
+      {/* Barra Inferior Fixa - Salvar */}
+      <div className="fixed bottom-0 left-0 right-0 z-40 bg-slate-900/95 backdrop-blur-xl border-t border-white/10 shadow-2xl">
+        <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+          <div className="flex items-center gap-3">
+            {hasUnsavedChanges && (
+              <>
+                <div className="w-2 h-2 rounded-full bg-orange-500 animate-pulse"></div>
+                <span className="text-sm text-slate-300">
+                  Você tem alterações não salvas
+                </span>
+              </>
+            )}
+            {!hasUnsavedChanges && (
+              <span className="text-sm text-slate-400">
+                Nenhuma alteração pendente
+              </span>
+            )}
+          </div>
+
+          <button
+            onClick={handleSaveAll}
+            disabled={!hasUnsavedChanges}
+            className="flex items-center gap-2 bg-[#F97316] hover:bg-[#ea6a0a] disabled:bg-slate-700 disabled:cursor-not-allowed disabled:opacity-50 text-white px-6 py-3 rounded-xl transition-all font-bold text-sm shadow-lg"
+          >
+            <Save className="w-5 h-5" />
+            Salvar Alterações
+          </button>
         </div>
       </div>
 
@@ -291,6 +418,28 @@ export const AdminPanel: React.FC = () => {
           </div>
         </div>
       )}
+
+      <style>{`
+        .slider::-webkit-slider-thumb {
+          appearance: none;
+          width: 20px;
+          height: 20px;
+          border-radius: 50%;
+          background: #F97316;
+          cursor: pointer;
+          box-shadow: 0 2px 8px rgba(249, 115, 22, 0.4);
+        }
+
+        .slider::-moz-range-thumb {
+          width: 20px;
+          height: 20px;
+          border-radius: 50%;
+          background: #F97316;
+          cursor: pointer;
+          border: none;
+          box-shadow: 0 2px 8px rgba(249, 115, 22, 0.4);
+        }
+      `}</style>
     </div>
   )
 }
