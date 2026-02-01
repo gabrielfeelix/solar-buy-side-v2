@@ -17,10 +17,10 @@ export const AdminPanel: React.FC = () => {
   const [showRealPreview, setShowRealPreview] = useState(false)
 
   // Estados para controlar os accordions
-  const [globalAssetsOpen, setGlobalAssetsOpen] = useState(true)
+  const [globalAssetsOpen, setGlobalAssetsOpen] = useState(false)
   const [sectionsOpen, setSectionsOpen] = useState(true)
-  const [textsOpen, setTextsOpen] = useState(true)
-  const [imagesOpen, setImagesOpen] = useState(true)
+  const [textsOpen, setTextsOpen] = useState(false)
+  const [imagesOpen, setImagesOpen] = useState(false)
 
   const currentSection = content.find((s) => s.id === selectedSection)
 
