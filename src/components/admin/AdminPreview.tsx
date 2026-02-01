@@ -394,6 +394,278 @@ export const AdminPreview: React.FC<AdminPreviewProps> = ({ sectionId, texts }) 
     )
   }
 
+  if (sectionId === 'manual-strategic') {
+    return (
+      <div className="relative overflow-hidden bg-gradient-to-b from-[#0b1224] via-[#0a1730] to-[#020617] text-white p-12">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+          <div>
+            <span className="inline-flex items-center px-3 py-1 rounded-full bg-orange-500/10 border border-orange-500/20 text-orange-400 text-xs font-bold uppercase mb-4">
+              {texts.badge || 'Badge'}
+            </span>
+            <h2 className="text-4xl md:text-5xl font-black tracking-tight text-white mb-4">
+              {texts.title || 'Manual Solar'} <br />
+              <span className="text-[#F97316]">{texts.titleHighlight || 'Buy-Side'}</span>
+            </h2>
+            <p className="text-xl text-slate-300 font-medium mb-8 border-l-2 border-orange-500 pl-4">
+              {texts.subtitle || 'A ferramenta estratégica'}
+            </p>
+            <div className="space-y-4 text-slate-300 leading-relaxed">
+              <p>{texts.paragraph1 || 'Parágrafo 1'}</p>
+              <p>{texts.paragraph2 || 'Parágrafo 2'}</p>
+              <p>{texts.paragraph3 || 'Parágrafo 3'}</p>
+            </div>
+            <button className="mt-8 bg-orange-600 text-white px-8 py-3 rounded-full font-bold flex items-center gap-2">
+              {texts.ctaButton || 'CTA Button'}
+              <ArrowRight size={20} />
+            </button>
+          </div>
+          <div className="flex items-center justify-center">
+            <div className="w-64 h-80 bg-gradient-to-br from-slate-800 to-slate-900 rounded-lg shadow-2xl flex items-center justify-center text-slate-400">
+              📖 Manual
+            </div>
+          </div>
+        </div>
+      </div>
+    )
+  }
+
+  if (sectionId === 'testimonials') {
+    return (
+      <div className="bg-white p-12">
+        <div className="grid lg:grid-cols-2 gap-12 items-center">
+          <div className="relative aspect-[3/4] bg-slate-900 rounded-2xl overflow-hidden shadow-2xl flex items-center justify-center">
+            <span className="text-6xl">👤</span>
+            <div className="absolute bottom-8 left-8">
+              <p className="text-white font-bold text-lg">{texts.authorName || 'Nome'}</p>
+              <p className="text-slate-400 text-sm">{texts.authorRole || 'Cargo'}</p>
+            </div>
+            <div className="absolute -right-4 top-12 bg-white p-4 rounded-xl shadow-xl border border-slate-100">
+              <p className="text-slate-500 text-xs font-bold uppercase mb-1">{texts.statLabel || 'Stat'}</p>
+              <p className="text-2xl font-bold text-[#F97316]">{texts.statValue || '+5'}</p>
+              <p className="text-slate-400 text-xs">{texts.statSubtext || 'Subtext'}</p>
+            </div>
+          </div>
+          <div>
+            <h2 className="text-4xl md:text-5xl font-black tracking-tight text-slate-900 mb-4">
+              {texts.title || 'Título'}
+            </h2>
+            <p className="text-xl text-slate-500 font-medium mb-4">
+              {texts.subtitle || 'Subtítulo'}
+            </p>
+            <p className="text-sm text-slate-400 mb-8">
+              {texts.intro || 'Introdução'}
+            </p>
+            <div className="space-y-4 text-slate-600">
+              <p>{texts.quote1 || 'Quote 1'}</p>
+              <p>{texts.quote2 || 'Quote 2'}</p>
+            </div>
+            <div className="mt-8 bg-slate-50 border-l-4 border-[#F97316] p-4 rounded-r-lg">
+              <h4 className="font-bold text-slate-900 text-sm uppercase mb-1">{texts.ctaTitle || 'CTA'}</h4>
+              <p className="text-slate-600 text-sm">{texts.ctaText || 'Texto CTA'}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    )
+  }
+
+  if (sectionId === 'story-bridge') {
+    return (
+      <div className="bg-white p-12">
+        <div className="text-center mb-12">
+          <h2 className="text-4xl md:text-5xl font-black tracking-tight text-slate-900 mb-6">
+            {texts.title || 'Título'}
+          </h2>
+          <p className="text-lg text-slate-500 font-medium">
+            {texts.subtitle || 'Subtítulo'}
+          </p>
+        </div>
+        <div className="grid lg:grid-cols-2 gap-12 items-center">
+          <div className="flex justify-center">
+            <div className="w-48 h-64 bg-slate-200 rounded-lg flex items-center justify-center text-slate-400">
+              📖
+            </div>
+          </div>
+          <div className="grid sm:grid-cols-2 gap-6">
+            {[1, 2, 3, 4].map((num) => (
+              <div key={num} className="flex flex-col gap-3">
+                <div className="p-3 bg-slate-50 rounded-xl w-fit">📋</div>
+                <h4 className="text-lg font-bold text-slate-900">{texts[`feature${num}Title`] || `Feature ${num}`}</h4>
+                <p className="text-slate-500 text-sm">{texts[`feature${num}Desc`] || 'Descrição'}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    )
+  }
+
+  if (sectionId === 'seller-code') {
+    return (
+      <div className="bg-white p-12">
+        <div className="grid lg:grid-cols-2 gap-12 items-start">
+          <div>
+            <h2 className="text-4xl md:text-5xl font-medium tracking-tight text-slate-900 mb-6">
+              {texts.title || 'O Código do Vendedor'}
+            </h2>
+            <p className="text-lg text-slate-500 mb-8 pl-4 border-l-2 border-slate-100">
+              {texts.subtitle || 'Subtítulo'}
+            </p>
+            <div className="mb-6">
+              <span className="text-xs font-bold text-slate-400 uppercase mb-2 block">{texts.badge || 'Badge'}</span>
+              <span className="text-sm font-bold text-slate-900 uppercase">{texts.badgeHighlight || '[BÔNUS]'}</span>
+            </div>
+            <h3 className="text-2xl font-bold mb-3">{texts.bonusTitle || 'Título Bônus'}</h3>
+            <p className="text-slate-500 mb-8">{texts.bonusDesc || 'Descrição'}</p>
+            <h4 className="text-xs font-bold text-slate-400 uppercase mb-4">{texts.listTitle || 'Lista'}</h4>
+            <div className="space-y-4">
+              {[1, 2, 3, 4].map((num) => (
+                <div key={num} className="border-b border-slate-100 pb-4">
+                  <h5 className="font-semibold text-slate-900 mb-1">{texts[`item${num}Title`] || `Item ${num}`}</h5>
+                  <p className="text-sm text-slate-500">{texts[`item${num}Desc`] || 'Descrição'}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+          <div className="flex items-center justify-center">
+            <div className="w-64 h-80 bg-gradient-to-br from-orange-100 to-orange-200 rounded-lg shadow-2xl flex items-center justify-center text-orange-600 text-6xl">
+              📚
+            </div>
+          </div>
+        </div>
+      </div>
+    )
+  }
+
+  if (sectionId === 'buyer-wave') {
+    return (
+      <div className="bg-white p-12">
+        <div className="text-center mb-12">
+          <span className="inline-flex items-center px-3 py-1 rounded-full bg-orange-50 border border-orange-100 text-orange-600 text-xs font-bold uppercase mb-4">
+            {texts.badge || 'Badge'}
+          </span>
+          <h2 className="text-4xl md:text-5xl font-black tracking-tight text-slate-900 mb-6">
+            {texts.title || 'Título'}
+          </h2>
+          <p className="text-lg text-slate-500 font-medium max-w-2xl mx-auto">
+            {texts.subtitle || 'Subtítulo'}
+          </p>
+        </div>
+        <div className="grid md:grid-cols-2 gap-6 mb-12">
+          {[1, 2, 3, 4].map((num) => (
+            <div key={num} className="p-6 bg-slate-50 rounded-2xl border border-slate-100">
+              <div className="w-10 h-10 bg-orange-100 rounded-lg flex items-center justify-center text-orange-600 mb-4">
+                {num}
+              </div>
+              <h4 className="font-bold text-slate-900 mb-2">{texts[`card${num}Title`] || `Card ${num}`}</h4>
+              <p className="text-sm text-slate-500">{texts[`card${num}Desc`] || 'Descrição'}</p>
+            </div>
+          ))}
+        </div>
+        <div className="text-center">
+          <button className="bg-orange-600 text-white px-8 py-3 rounded-full font-bold">
+            {texts.ctaButton || 'CTA Button'}
+          </button>
+        </div>
+      </div>
+    )
+  }
+
+  if (sectionId === 'authority') {
+    return (
+      <div className="bg-slate-950 text-white p-12">
+        <div className="text-center mb-12">
+          <h2 className="text-4xl md:text-5xl font-black tracking-tight mb-6">
+            {texts.title || 'Quem criou este manual?'}
+          </h2>
+          <p className="text-lg text-slate-400">
+            {texts.subtitle || 'Subtítulo'}
+          </p>
+        </div>
+        <div className="grid md:grid-cols-2 gap-8">
+          <div className="bg-white/5 rounded-2xl p-8 border border-white/10">
+            <div className="w-20 h-20 bg-orange-500/20 rounded-full flex items-center justify-center text-4xl mb-4">
+              👤
+            </div>
+            <h3 className="text-2xl font-bold mb-2">{texts.francisName || 'Francis Poloni'}</h3>
+            <p className="text-orange-500 font-bold text-sm uppercase mb-4">{texts.francisRole || 'Cargo'}</p>
+            <p className="text-slate-300 leading-relaxed">{texts.francisBio || 'Bio'}</p>
+          </div>
+          <div className="bg-white/5 rounded-2xl p-8 border border-white/10">
+            <div className="w-20 h-20 bg-blue-500/20 rounded-full flex items-center justify-center text-4xl mb-4">
+              👤
+            </div>
+            <h3 className="text-2xl font-bold mb-2">{texts.ovidioName || 'Ovídio Silva'}</h3>
+            <p className="text-blue-500 font-bold text-sm uppercase mb-4">{texts.ovidioRole || 'Cargo'}</p>
+            <p className="text-slate-300 leading-relaxed">{texts.ovidioBio || 'Bio'}</p>
+          </div>
+        </div>
+      </div>
+    )
+  }
+
+  if (sectionId === 'lead-magnet') {
+    return (
+      <div className="bg-slate-900 text-white p-12">
+        <div className="text-center mb-12">
+          <span className="inline-flex items-center px-3 py-1 rounded-full bg-orange-500/10 border border-orange-500/20 text-orange-400 text-xs font-bold uppercase mb-4">
+            {texts.badge || 'Grátis'}
+          </span>
+          <h2 className="text-4xl md:text-5xl font-black tracking-tight mb-6">
+            {texts.title || 'Guia Gratuito'}
+          </h2>
+          <p className="text-lg text-slate-400 max-w-2xl mx-auto mb-8">
+            {texts.subtitle || 'Subtítulo'}
+          </p>
+          <button className="bg-orange-600 text-white px-8 py-4 rounded-full font-bold text-lg">
+            {texts.ctaButton || 'Baixar Agora'}
+          </button>
+        </div>
+        <div className="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+          {[1, 2, 3].map((num) => (
+            <div key={num} className="text-center">
+              <div className="w-12 h-12 bg-orange-500/10 rounded-xl flex items-center justify-center text-orange-500 mx-auto mb-3">
+                ✓
+              </div>
+              <h4 className="font-bold mb-2">{texts[`feature${num}Title`] || `Feature ${num}`}</h4>
+              <p className="text-sm text-slate-400">{texts[`feature${num}Desc`] || 'Descrição'}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    )
+  }
+
+  if (sectionId === 'faq') {
+    return (
+      <div className="bg-white p-12">
+        <div className="max-w-3xl mx-auto">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl md:text-5xl font-black tracking-tight text-slate-900 mb-4">
+              {texts.title || 'Perguntas Frequentes'}
+            </h2>
+            <p className="text-lg text-slate-500">
+              {texts.subtitle || 'Subtítulo'}
+            </p>
+          </div>
+          <div className="space-y-4 mb-12">
+            {[1, 2, 3, 4, 5].map((num) => (
+              <div key={num} className="border border-slate-200 rounded-lg p-6">
+                <h4 className="font-bold text-slate-900 mb-2">Pergunta {num}?</h4>
+                <p className="text-slate-600 text-sm">Resposta da pergunta {num}</p>
+              </div>
+            ))}
+          </div>
+          <div className="text-center">
+            <button className="bg-orange-600 text-white px-8 py-3 rounded-full font-bold">
+              {texts.ctaButton || 'Garantir Acesso'}
+            </button>
+          </div>
+        </div>
+      </div>
+    )
+  }
+
   return (
     <div className="p-12 text-center">
       <p className="text-slate-600">Preview não disponível para esta seção</p>
