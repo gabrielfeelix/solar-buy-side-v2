@@ -3,6 +3,7 @@ import { ArrowRight, Menu } from 'lucide-react'
 
 export const SolarHeader: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false)
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
 
   useEffect(() => {
     const handleScroll = () => {
@@ -12,6 +13,17 @@ export const SolarHeader: React.FC = () => {
     window.addEventListener('scroll', handleScroll, { passive: true })
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
+
+  useEffect(() => {
+    if (!isMenuOpen) return
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        setIsMenuOpen(false)
+      }
+    }
+    document.addEventListener('keydown', onKeyDown)
+    return () => document.removeEventListener('keydown', onKeyDown)
+  }, [isMenuOpen])
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 py-4">
@@ -58,9 +70,55 @@ export const SolarHeader: React.FC = () => {
             <ArrowRight className="w-4 h-4" />
           </a>
         </div>
-        <button className="md:hidden text-white" type="button">
+        <button
+          className="md:hidden text-white"
+          type="button"
+          aria-expanded={isMenuOpen}
+          aria-controls="mobile-menu"
+          onClick={() => setIsMenuOpen((prev) => !prev)}
+        >
           <Menu className="w-6 h-6" />
         </button>
+      </div>
+
+      {isMenuOpen && (
+        <div
+          className="fixed inset-0 z-40 bg-black/40 backdrop-blur-sm md:hidden"
+          onClick={() => setIsMenuOpen(false)}
+        ></div>
+      )}
+      <div
+        id="mobile-menu"
+        className={`md:hidden fixed top-20 left-4 right-4 z-50 rounded-3xl border border-white/10 bg-[#020617]/95 backdrop-blur-xl shadow-2xl transition-all duration-300 ${
+          isMenuOpen ? 'opacity-100 translate-y-0 pointer-events-auto' : 'opacity-0 -translate-y-4 pointer-events-none'
+        }`}
+      >
+        <div className="p-6 flex flex-col gap-4">
+          {[
+            { href: '#contexto', label: 'Panorama' },
+            { href: '#video-section', label: 'Vídeo' },
+            { href: '#audiencia', label: 'Para Quem' },
+            { href: '#autor', label: 'Mentor' },
+            { href: '#faq', label: 'FAQ' },
+          ].map((item) => (
+            <a
+              key={item.href}
+              href={item.href}
+              className="text-base font-semibold text-slate-200 hover:text-white transition-colors"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              {item.label}
+            </a>
+          ))}
+          <a
+            href="#oferta"
+            className="mt-2 inline-flex items-center justify-center gap-2 bg-white/10 hover:bg-white/20 text-white px-5 py-3 rounded-xl text-sm font-bold transition-all border border-white/20"
+            onClick={() => setIsMenuOpen(false)}
+          >
+            Garantir Acesso
+            <ArrowRight className="w-4 h-4" />
+          </a>
+        </div>
       </div>
     </header>
   )
