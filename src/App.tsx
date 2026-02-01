@@ -14,6 +14,7 @@ import {
   BuyerWaveSection,
   AuthoritySection,
   LeadMagnetSection,
+  NewsletterSection,
   FAQSection,
   ContactSection,
   Footer,
@@ -115,6 +116,7 @@ function App() {
       <div id="authority"><AuthoritySection /></div>
       <PricingSection id="oferta-final" />
       <div id="lead-magnet"><LeadMagnetSection /></div>
+      <div id="newsletter"><NewsletterSection /></div>
       <div id="faq"><FAQSection /></div>
       <ContactSection />
       <Footer />

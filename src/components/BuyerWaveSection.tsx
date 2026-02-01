@@ -22,7 +22,7 @@ const testimonials = [
       'No fim, escolhi a empresa certa, o sistema ideal ao preço certo e conduzi tudo com segurança. Sem exagero: o manual valeu cada página.',
   },
   {
-    name: 'Ricardo S.',
+    name: 'Ricardo',
     role: 'Empresário',
     location: 'São Paulo, SP',
     avatar: '/assets/Ricardo 1.png',

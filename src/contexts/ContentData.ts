@@ -299,6 +299,20 @@ export const initialContent: SectionContent[] = [
     },
   },
   {
+    id: 'newsletter',
+    name: 'Newsletter',
+    texts: {
+      title: 'Fique por dentro das novidades',
+      subtitle: 'Cadastre seu e-mail para receber informações exclusivas, atualizações e conteúdos sobre o mercado solar.',
+      placeholder: 'seu@email.com',
+      ctaButton: 'Cadastrar',
+      successButton: 'Cadastrado!',
+      successMessage: 'E-mail cadastrado com sucesso! Fique atento às novidades.',
+      privacyNote: '🔒 Seus dados estão seguros conosco. Não compartilhamos com terceiros.',
+    },
+    images: {},
+  },
+  {
     id: 'faq',
     name: 'FAQ',
     texts: {

@@ -42,3 +42,12 @@
   animation: typewriter 0.5s steps(8) 0.4s forwards;
   max-width: 0;
 }
+
+/* Compensar header fixo no scroll */
+section[id] {
+  scroll-margin-top: 80px;
+}
+
+div[id] {
+  scroll-margin-top: 80px;
+}
