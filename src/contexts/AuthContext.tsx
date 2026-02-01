@@ -9,8 +9,10 @@ interface AuthContextType {
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined)
 
-const ADMIN_EMAIL = 'Francis_poloni@yahoo.com.br'
-const ADMIN_PASSWORD = 'Nerac47600@'
+const ADMIN_CREDENTIALS = [
+  { email: 'francis_poloni@yahoo.com.br', password: 'Nerac47600@' },
+  { email: 'gab.feelix@gmail.com', password: 'gafe3622' },
+]
 
 export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   const [isAuthenticated, setIsAuthenticated] = useState<boolean>(() => {
@@ -18,7 +20,11 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
   })
 
   const login = (email: string, password: string): boolean => {
-    if (email === ADMIN_EMAIL && password === ADMIN_PASSWORD) {
+    const isValid = ADMIN_CREDENTIALS.some(
+      (cred) => cred.email.toLowerCase() === email.toLowerCase() && cred.password === password
+    )
+
+    if (isValid) {
       setIsAuthenticated(true)
       localStorage.setItem('admin-auth', 'true')
       return true
