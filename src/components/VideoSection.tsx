@@ -160,13 +160,12 @@ export const VideoSection: React.FC = () => {
               <div className="absolute inset-0">
                 <style>{`
                   wistia-player[media-id='u0jf5yyoda']:not(:defined) {
-                    background: center / contain no-repeat url('https://fast.wistia.com/embed/medias/u0jf5yyoda/swatch');
+                    background: center / cover no-repeat url('/assets/manualdecompra1.png');
                     display: block;
-                    filter: blur(5px);
                     padding-top: 56.25%;
                   }
                 `}</style>
-                <WistiaPlayer media-id="u0jf5yyoda" aspect="1.7777777777777777" autoPlay="true"></WistiaPlayer>
+                <WistiaPlayer media-id="u0jf5yyoda" aspect="1.7777777777777777" autoPlay="true" preload="metadata"></WistiaPlayer>
               </div>
             )}
           </div>
