@@ -105,7 +105,7 @@ export const SellerCodeSection: React.FC = () => {
             {/* Header Narrativo */}
             <div className="space-y-8">
               <h2 className="text-4xl md:text-6xl font-medium tracking-tight leading-[1.05] text-slate-900">
-                {section?.texts.title || 'O Segredo por trás dos resultados: O Código do Vendedor Consultivo'}
+                O Segredo por trás dos resultados: <span className="text-[#F97316]">O Código do Vendedor Consultivo</span>
               </h2>
 
               <div className="pl-6 border-l-2 border-slate-100">
@@ -126,14 +126,14 @@ export const SellerCodeSection: React.FC = () => {
                     {section?.texts.badge || 'Oferta Especial'}
                   </span>
                   <span className="block text-sm font-bold text-slate-900 uppercase tracking-tight">
-                    {section?.texts.badgeHighlight || '[BÔNUS EXCLUSIVO]'}
+                    {section?.texts.badgeHighlight || ''}
                   </span>
                 </div>
               </div>
 
-              <h3 className="text-3xl font-bold mb-4 tracking-tight">{section?.texts.bonusTitle || 'E-book: O Código do Vendedor Consultivo'}</h3>
-              <p className="text-slate-500 text-lg font-light mb-12">
-                {section?.texts.bonusDesc || 'O método de imersão no Manual Solar Buy-Side para quem não aceita mais perder vendas por preço.'}
+              <h3 className="text-3xl font-bold mb-4 tracking-tight">BÔNUS EXCLUSIVO</h3>
+              <p className="text-xl md:text-2xl text-slate-500 font-medium leading-tight italic">
+                O método de imersão no Manual Solar Buy-Side para quem não aceita mais perder vendas por preço.
               </p>
 
               {/* LISTA INTERATIVA (Apple Style Specs) */}
