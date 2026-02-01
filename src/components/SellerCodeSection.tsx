@@ -1,8 +1,10 @@
-import React, { useState } from 'react'
-import { ShieldCheck, Target, UserCheck, Settings2, Sparkles, ArrowRight, BookOpen } from 'lucide-react'
+import React, { useEffect, useRef, useState } from 'react'
+import { ShieldCheck, Target, UserCheck, Settings2, Sparkles, ArrowRight } from 'lucide-react'
 
 export const SellerCodeSection: React.FC = () => {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null)
+  const stickyRef = useRef<HTMLDivElement | null>(null)
+  const stickyContainerRef = useRef<HTMLDivElement | null>(null)
 
   const contentItems = [
     {
@@ -27,22 +29,69 @@ export const SellerCodeSection: React.FC = () => {
     },
   ]
 
+  useEffect(() => {
+    const stickyEl = stickyRef.current
+    const containerEl = stickyContainerRef.current
+    if (!stickyEl || !containerEl) return
+
+    const topOffset = 140
+    let rafId = 0
+
+    const update = () => {
+      if (!stickyEl || !containerEl) return
+      const containerRect = containerEl.getBoundingClientRect()
+      const containerTop = window.scrollY + containerRect.top
+      const containerHeight = containerEl.offsetHeight
+      const stickyHeight = stickyEl.offsetHeight
+      const start = containerTop - topOffset
+      const end = containerTop + containerHeight - stickyHeight - topOffset
+      const scrollY = window.scrollY
+
+      if (scrollY < start) {
+        stickyEl.style.position = 'absolute'
+        stickyEl.style.top = '0'
+        stickyEl.style.left = '0'
+        stickyEl.style.right = 'auto'
+        stickyEl.style.width = '100%'
+      } else if (scrollY > end) {
+        stickyEl.style.position = 'absolute'
+        stickyEl.style.top = `${containerHeight - stickyHeight}px`
+        stickyEl.style.left = '0'
+        stickyEl.style.right = 'auto'
+        stickyEl.style.width = '100%'
+      } else {
+        stickyEl.style.position = 'fixed'
+        stickyEl.style.top = `${topOffset}px`
+        stickyEl.style.left = `${containerRect.left}px`
+        stickyEl.style.right = 'auto'
+        stickyEl.style.width = `${containerRect.width}px`
+      }
+    }
+
+    const onScroll = () => {
+      cancelAnimationFrame(rafId)
+      rafId = requestAnimationFrame(update)
+    }
+
+    update()
+    window.addEventListener('scroll', onScroll, { passive: true })
+    window.addEventListener('resize', onScroll)
+    return () => {
+      cancelAnimationFrame(rafId)
+      window.removeEventListener('scroll', onScroll)
+      window.removeEventListener('resize', onScroll)
+    }
+  }, [])
+
   return (
     <section className="bg-white text-slate-900 font-sans">
-      <div className="max-w-7xl mx-auto px-6 py-20 lg:py-32">
+      <div className="max-w-7xl mx-auto px-6 py-20 lg:py-32 no-reveal">
         {/* CONTAINER GERAL */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24">
           {/* COLUNA ESQUERDA: NARRATIVA E LISTA */}
           <div className="lg:col-span-7 space-y-20">
             {/* Header Narrativo */}
             <div className="space-y-8">
-              <div className="inline-flex items-center gap-2 border-b border-slate-900 pb-1">
-                <span className="text-[10px] font-bold uppercase tracking-widest text-slate-900">Case Study</span>
-                <span className="text-[10px] font-bold uppercase tracking-widest text-slate-400">
-                  / Rodrigo & Team
-                </span>
-              </div>
-
               <h2 className="text-4xl md:text-6xl font-medium tracking-tight leading-[1.05] text-slate-900">
                 O Segredo por trás <br /> dos resultados: <br />
                 <span className="text-[#F97316]">O Código do Vendedor Consultivo</span>
@@ -124,75 +173,26 @@ export const SellerCodeSection: React.FC = () => {
           </div>
 
           {/* COLUNA DIREITA: O LIVRO (Clean & Floating) */}
-          <div className="lg:col-span-5 mt-12 lg:mt-0">
-            <div className="sticky top-24 flex justify-center lg:justify-end">
-              <div className="relative group" style={{ perspective: '2000px' }}>
+          <div
+            className="lg:col-span-5 mt-12 lg:mt-0 flex justify-center lg:justify-end relative"
+            ref={stickyContainerRef}
+          >
+            <div className="relative group w-full flex justify-end" style={{ perspective: '2000px' }} ref={stickyRef}>
               {/* Efeito de Sombra Colorida (Aura) */}
               <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-orange-200/30 blur-[120px] rounded-full pointer-events-none opacity-60"></div>
 
               {/* O Livro */}
-              <div className="relative w-[340px] aspect-[3/4] transition-all duration-700 transform hover:-translate-y-4 hover:rotate-1">
-                {/* Capa */}
-                <div className="absolute inset-0 bg-white rounded-sm shadow-[0_30px_60px_-10px_rgba(0,0,0,0.12)] border border-slate-100 overflow-hidden flex flex-col">
-                  {/* Faixa Lateral (Lombada Visual) */}
-                  <div className="absolute left-0 top-0 bottom-0 w-8 bg-slate-50 border-r border-slate-100"></div>
-
-                  <div className="flex-1 p-12 pl-16 flex flex-col justify-between relative z-10">
-                    {/* Topo da Capa */}
-                    <div>
-                      <div className="flex items-center gap-3 mb-10">
-                        <BookOpen size={20} className="text-slate-900" />
-                        <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">
-                          BUY-SIDE PRESS
-                        </span>
-                      </div>
-
-                      <h3 className="text-5xl font-black text-slate-900 tracking-tighter leading-[0.85] mb-6">
-                        CÓDIGO <br />
-                        <span className="text-[#F97316]">VENDEDOR</span> <br />
-                        CONSULTIVO
-                      </h3>
-
-                      <div className="w-12 h-1 bg-slate-900 mt-2"></div>
-                    </div>
-
-                    {/* Base da Capa */}
-                    <div className="space-y-4">
-                      <p className="text-[10px] font-mono font-medium text-slate-400 uppercase tracking-widest leading-relaxed">
-                        Estratégias de negociação <br />
-                        para o mercado de energia.
-                      </p>
-                      <div className="pt-6 border-t border-slate-100 flex justify-between items-end">
-                        <div>
-                          <p className="text-[8px] font-bold text-slate-300 uppercase">Author</p>
-                          <p className="text-xs font-bold text-slate-900">Francis & Ovídio</p>
-                        </div>
-                        <span className="text-4xl font-black text-slate-100">01</span>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Brilho Glossy */}
-                  <div className="absolute inset-0 bg-gradient-to-br from-white/40 via-transparent to-black/5 pointer-events-none"></div>
-                </div>
-
-                {/* Detalhe de Páginas (Simulação 3D) */}
-                <div className="absolute top-1 right-1 bottom-1 w-4 bg-slate-100 -z-10 rounded-r-sm shadow-inner transform translate-x-2 translate-y-2 border-r border-slate-200"></div>
+              <div className="relative">
+                <div className="absolute -bottom-1 left-8 right-6 h-2 bg-black/25 blur-[4px] rounded-full"></div>
+              <img
+                src="/assets/o-codigo-oficial3.png"
+                alt="O Codigo Oficial"
+                className="w-[420px] max-w-full h-auto"
+              />
               </div>
 
-              {/* Badge Flutuante Clean */}
-              <div
-                className="absolute -bottom-6 -right-2 bg-white px-6 py-4 rounded-xl shadow-[0_20px_40px_-10px_rgba(0,0,0,0.1)] border border-slate-100 flex items-center gap-3"
-                style={{ animation: 'bounce-slow 4s infinite ease-in-out' }}
-              >
-                <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></div>
-                <div>
-                  <p className="text-[9px] font-bold text-slate-400 uppercase tracking-wide">Status</p>
-                  <p className="text-xs font-black text-slate-900 uppercase">100% Gratuito</p>
-                </div>
+ 
               </div>
-            </div>
-            </div>
           </div>
         </div>
       </div>

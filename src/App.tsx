@@ -43,7 +43,7 @@ function App() {
     if (legalPage) {
       return
     }
-    const targets = document.querySelectorAll('section > *')
+    const targets = document.querySelectorAll('section > *:not(.no-reveal)')
     targets.forEach((target) => target.classList.add('reveal'))
 
     const observer = new IntersectionObserver(

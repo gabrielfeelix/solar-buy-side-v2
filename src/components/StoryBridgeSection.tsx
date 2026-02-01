@@ -40,12 +40,12 @@ export const StoryBridgeSection: React.FC = () => {
           </p>
         </header>
 
-        <div className="grid lg:grid-cols-12 gap-16 items-start">
-          <div className="lg:col-span-5 flex justify-center lg:justify-start">
+        <div className="grid lg:grid-cols-12 gap-28 items-start">
+          <div className="lg:col-span-5 flex justify-center lg:justify-end">
             <img
-              src="/assets/Mockup_Manual.png"
-              alt="Mockup do Manual Solar Buy-Side"
-              className="w-full max-w-[480px] lg:max-w-[520px] h-auto"
+              src="/assets/manualdecompra1.png"
+              alt="Manual de Compra Solar Buy-Side"
+              className="w-full max-w-[260px] lg:max-w-[300px] h-auto"
             />
           </div>
 

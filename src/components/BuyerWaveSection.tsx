@@ -24,7 +24,7 @@ const testimonials = [
     name: 'Ricardo S.',
     role: 'Empresário',
     location: 'São Paulo, SP',
-    avatar: '/assets/Ricardo.png',
+    avatar: '/assets/Ricardo 1.png',
     objectPosition: '55% 20%',
     reviewTitle: 'Errar na escolha de um fornecedor pode gerar prejuízo enorme',
     quote:
@@ -36,7 +36,7 @@ const testimonials = [
     name: 'Lucineide',
     role: 'Particular',
     location: 'Recife, PE',
-    avatar: '/assets/Lucineide.png',
+    avatar: '/assets/Lucineide 1.png',
     objectPosition: '55% 20%',
     reviewTitle: 'Esse Manual foi realmente um passo a passo arretado',
     quote:
