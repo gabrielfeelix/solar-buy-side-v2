@@ -13,7 +13,7 @@ export const AdminPanel: React.FC = () => {
   const [editedTexts, setEditedTexts] = useState<{ [key: string]: string }>({})
   const [editedImages, setEditedImages] = useState<{ [key: string]: string }>({})
   const [editedGlobalAssets, setEditedGlobalAssets] = useState<{ favicon?: string; logo?: string }>({})
-  const [viewportWidth, setViewportWidth] = useState(100) // Percentage
+  const [viewportWidth, setViewportWidth] = useState(52.22) // Percentage - começa em 52.22% (1003px)
   const [showRealPreview, setShowRealPreview] = useState(false)
 
   // Estados para controlar os accordions
