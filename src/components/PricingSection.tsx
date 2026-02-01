@@ -160,7 +160,7 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ id }) => {
                     <p className="text-slate-400 text-sm font-bold line-through">{section?.texts.priceFrom || 'De R$ 997,00 por apenas:'}</p>
                     <div className="flex flex-col">
                       <div className="flex items-start">
-                        <span className="text-xl font-bold mt-2 mr-1">{section?.texts.priceInstallments || '12x de'}</span>
+                        <span className="text-xl font-bold mt-2 mr-1">12x de</span>
                         <div className="flex items-start">
                           <span className="text-2xl font-black mt-2">R$</span>
                           <span className="text-8xl font-black tracking-tighter leading-none">{section?.texts.priceValue || '61'}</span>
