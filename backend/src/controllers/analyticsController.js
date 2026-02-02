@@ -35,13 +35,24 @@ exports.trackEvent = async (req, res) => {
     const userAgent = req.headers['user-agent'];
 
     // Upsert analytics_sessions
-    await db.query(`
-      INSERT INTO analytics_sessions (session_id, first_seen, last_seen, pages_visited, ip_address, user_agent)
-      VALUES (?, NOW(), NOW(), 1, ?, ?)
-      ON DUPLICATE KEY UPDATE
-        last_seen = NOW(),
-        pages_visited = pages_visited + 1
-    `, [session_id, ipAddress, userAgent]);
+    // Only increment pages_visited for page_view events
+    if (event_type === 'page_view') {
+      await db.query(`
+        INSERT INTO analytics_sessions (session_id, first_seen, last_seen, pages_visited, ip_address, user_agent)
+        VALUES (?, NOW(), NOW(), 1, ?, ?)
+        ON DUPLICATE KEY UPDATE
+          last_seen = NOW(),
+          pages_visited = pages_visited + 1
+      `, [session_id, ipAddress, userAgent]);
+    } else {
+      // For other events, just update last_seen without incrementing pages_visited
+      await db.query(`
+        INSERT INTO analytics_sessions (session_id, first_seen, last_seen, pages_visited, ip_address, user_agent)
+        VALUES (?, NOW(), NOW(), 0, ?, ?)
+        ON DUPLICATE KEY UPDATE
+          last_seen = NOW()
+      `, [session_id, ipAddress, userAgent]);
+    }
 
     // Insert analytics_events
     const [result] = await db.query(`
