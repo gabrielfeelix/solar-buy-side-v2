@@ -174,7 +174,7 @@ exports.getMetrics = async (req, res) => {
       data: {
         total_visitors: visitorsResult[0].total_visitors || 0,
         avg_time_on_site: Math.round(avgTimeResult[0].avg_time_seconds || 0),
-        avg_sections_depth: parseFloat((sectionsResult[0].avg_sections || 0).toFixed(2)),
+        avg_sections_depth: sectionsResult[0].avg_sections ? parseFloat(Number(sectionsResult[0].avg_sections).toFixed(2)) : 0,
         ebook_downloads: ebookResult[0].ebook_downloads || 0,
         newsletter_subs: newsletterResult[0].newsletter_subs || 0,
         buy_clicks: buyResult[0].buy_clicks || 0,
