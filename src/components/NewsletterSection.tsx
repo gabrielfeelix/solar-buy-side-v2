@@ -3,7 +3,7 @@ import { Mail, CheckCircle2 } from 'lucide-react'
 import { useContent } from '../contexts/ContentContext'
 import { trackNewsletterSubscribe } from '../utils/analytics'
 
-const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000'
+const API_URL = import.meta.env.VITE_API_URL || ''
 
 export const NewsletterSection: React.FC = () => {
   const { getSection } = useContent()

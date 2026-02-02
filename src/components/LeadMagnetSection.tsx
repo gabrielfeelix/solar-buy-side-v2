@@ -12,7 +12,7 @@ import {
 import { useContent } from '../contexts/ContentContext'
 import { trackEbookDownload } from '../utils/analytics'
 
-const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000'
+const API_URL = import.meta.env.VITE_API_URL || ''
 
 export const LeadMagnetSection: React.FC = () => {
   const { getSection } = useContent()
