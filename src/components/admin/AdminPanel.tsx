@@ -160,8 +160,13 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({ hideHeader = false }) =>
 
   const dimensions = getPreviewDimensions()
 
+  // Classes dinâmicas baseadas no modo (inline vs standalone)
+  const cardBg = hideHeader ? 'bg-white' : 'bg-white/5 backdrop-blur-xl'
+  const cardBorder = hideHeader ? 'border-slate-200' : 'border-white/10'
+  const textPrimary = hideHeader ? 'text-slate-800' : 'text-white'
+
   return (
-    <div className="min-h-screen bg-[#020617] text-white pb-24">
+    <div className={hideHeader ? "space-y-8" : "min-h-screen bg-[#020617] text-white pb-24"}>
       {!hideHeader && (
         <header className="bg-white/5 backdrop-blur-xl border-b border-white/10 sticky top-0 z-50">
           <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
@@ -187,19 +192,27 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({ hideHeader = false }) =>
         </header>
       )}
 
-      <div className="max-w-7xl mx-auto p-6">
+      {/* Título e Subtítulo quando inline */}
+      {hideHeader && (
+        <div>
+          <h2 className="text-2xl font-bold text-slate-800 mb-2">Edição de Conteúdo</h2>
+          <p className="text-slate-600">Edite textos, imagens e configurações do site</p>
+        </div>
+      )}
+
+      <div className={`max-w-7xl mx-auto p-6 ${hideHeader ? 'admin-editor-light' : ''}`}>
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
           {/* Coluna Esquerda - Controles */}
           <div className="lg:col-span-1 space-y-4">
             {/* Favicon e Logotipo */}
-            <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl overflow-hidden">
+            <div className={`${cardBg} border ${cardBorder} rounded-2xl overflow-hidden shadow-sm`}>
               <button
                 onClick={() => setGlobalAssetsOpen(!globalAssetsOpen)}
-                className="w-full flex items-center justify-between px-6 py-4 hover:bg-white/5 transition-colors"
+                className={`w-full flex items-center justify-between px-6 py-4 ${hideHeader ? 'hover:bg-slate-50' : 'hover:bg-white/5'} transition-colors`}
               >
                 <div className="flex items-center gap-2">
                   <ImageIcon className="w-5 h-5" />
-                  <h2 className="text-lg font-bold">Favicon e Logotipo</h2>
+                  <h2 className={`text-lg font-bold ${textPrimary}`}>Favicon e Logotipo</h2>
                 </div>
                 {globalAssetsOpen ? <ChevronUp className="w-5 h-5" /> : <ChevronDown className="w-5 h-5" />}
               </button>
@@ -269,14 +282,14 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({ hideHeader = false }) =>
             </div>
 
             {/* WhatsApp */}
-            <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl overflow-hidden">
+            <div className={`${cardBg} border ${cardBorder} rounded-2xl overflow-hidden shadow-sm`}>
               <button
                 onClick={() => setWhatsappOpen(!whatsappOpen)}
-                className="w-full flex items-center justify-between px-6 py-4 hover:bg-white/5 transition-colors"
+                className={`w-full flex items-center justify-between px-6 py-4 ${hideHeader ? 'hover:bg-slate-50' : 'hover:bg-white/5'} transition-colors`}
               >
                 <div className="flex items-center gap-2">
                   <Phone className="w-5 h-5" />
-                  <h2 className="text-lg font-bold">WhatsApp</h2>
+                  <h2 className={`text-lg font-bold ${textPrimary}`}>WhatsApp</h2>
                 </div>
                 {whatsappOpen ? <ChevronUp className="w-5 h-5" /> : <ChevronDown className="w-5 h-5" />}
               </button>
@@ -304,10 +317,10 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({ hideHeader = false }) =>
             </div>
 
             {/* Link da Venda */}
-            <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl overflow-hidden">
+            <div className={`${cardBg} border ${cardBorder} rounded-2xl overflow-hidden shadow-sm`}>
               <button
                 onClick={() => setPurchaseLinkOpen(!purchaseLinkOpen)}
-                className="w-full flex items-center justify-between px-6 py-4 hover:bg-white/5 transition-colors"
+                className={`w-full flex items-center justify-between px-6 py-4 ${hideHeader ? 'hover:bg-slate-50' : 'hover:bg-white/5'} transition-colors`}
               >
                 <div className="flex items-center gap-2">
                   <ShoppingCart className="w-5 h-5" />
@@ -339,10 +352,10 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({ hideHeader = false }) =>
             </div>
 
             {/* Seções - Com Accordion */}
-            <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl overflow-hidden">
+            <div className={`${cardBg} border ${cardBorder} rounded-2xl overflow-hidden shadow-sm`}>
               <button
                 onClick={() => setSectionsOpen(!sectionsOpen)}
-                className="w-full flex items-center justify-between px-6 py-4 hover:bg-white/5 transition-colors"
+                className={`w-full flex items-center justify-between px-6 py-4 ${hideHeader ? 'hover:bg-slate-50' : 'hover:bg-white/5'} transition-colors`}
               >
                 <h2 className="text-lg font-bold">Seções</h2>
                 {sectionsOpen ? <ChevronUp className="w-5 h-5" /> : <ChevronDown className="w-5 h-5" />}
@@ -375,10 +388,10 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({ hideHeader = false }) =>
 
             {/* Editar Textos - Com Accordion */}
             {currentSection && (
-              <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl overflow-hidden">
+              <div className={`${cardBg} border ${cardBorder} rounded-2xl overflow-hidden shadow-sm`}>
                 <button
                   onClick={() => setTextsOpen(!textsOpen)}
-                  className="w-full flex items-center justify-between px-6 py-4 hover:bg-white/5 transition-colors"
+                  className={`w-full flex items-center justify-between px-6 py-4 ${hideHeader ? 'hover:bg-slate-50' : 'hover:bg-white/5'} transition-colors`}
                 >
                   <h2 className="text-lg font-bold">Editar Textos</h2>
                   {textsOpen ? <ChevronUp className="w-5 h-5" /> : <ChevronDown className="w-5 h-5" />}
@@ -408,10 +421,10 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({ hideHeader = false }) =>
 
             {/* Editar Imagens - Com Accordion */}
             {currentSection && Object.keys(currentSection.images).length > 0 && (
-              <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl overflow-hidden">
+              <div className={`${cardBg} border ${cardBorder} rounded-2xl overflow-hidden shadow-sm`}>
                 <button
                   onClick={() => setImagesOpen(!imagesOpen)}
-                  className="w-full flex items-center justify-between px-6 py-4 hover:bg-white/5 transition-colors"
+                  className={`w-full flex items-center justify-between px-6 py-4 ${hideHeader ? 'hover:bg-slate-50' : 'hover:bg-white/5'} transition-colors`}
                 >
                   <h2 className="text-lg font-bold">Editar Imagens</h2>
                   {imagesOpen ? <ChevronUp className="w-5 h-5" /> : <ChevronDown className="w-5 h-5" />}
@@ -630,6 +643,31 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({ hideHeader = false }) =>
           cursor: pointer;
           border: none;
           box-shadow: 0 2px 8px rgba(249, 115, 22, 0.4);
+        }
+
+        /* Estilos para modo inline (claro) */
+        .admin-editor-light h2 {
+          color: #1e293b !important;
+        }
+        .admin-editor-light h3 {
+          color: #1e293b !important;
+        }
+        .admin-editor-light label {
+          color: #475569 !important;
+        }
+        .admin-editor-light .text-slate-300,
+        .admin-editor-light .text-slate-400 {
+          color: #64748b !important;
+        }
+        .admin-editor-light input,
+        .admin-editor-light textarea {
+          background-color: #f8fafc !important;
+          border-color: #cbd5e1 !important;
+          color: #1e293b !important;
+        }
+        .admin-editor-light input::placeholder,
+        .admin-editor-light textarea::placeholder {
+          color: #94a3b8 !important;
         }
       `}</style>
     </div>

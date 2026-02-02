@@ -7,6 +7,9 @@ import {
   Mail,
   ShoppingCart,
   TrendingUp,
+  FileSpreadsheet,
+  FileText,
+  Percent,
 } from 'lucide-react'
 import { API_URL } from '../../utils/api'
 
@@ -26,19 +29,51 @@ type Metrics = {
   }>
 }
 
+type PeriodFilter = 'today' | 'yesterday' | 'last7days' | 'last30days' | 'custom'
+
 export const Dashboard: React.FC = () => {
   const [metrics, setMetrics] = useState<Metrics | null>(null)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState('')
+  const [period, setPeriod] = useState<PeriodFilter>('last30days')
+  const [customStart, setCustomStart] = useState('')
+  const [customEnd, setCustomEnd] = useState('')
 
   useEffect(() => {
     fetchMetrics()
-  }, [])
+  }, [period, customStart, customEnd])
 
   const fetchMetrics = async () => {
     try {
+      setLoading(true)
       const token = localStorage.getItem('admin-token')
-      const response = await fetch(`${API_URL}/api/admin/metrics`, {
+
+      let url = `${API_URL}/api/admin/metrics`
+      const params = new URLSearchParams()
+
+      if (period === 'today') {
+        const today = new Date().toISOString().split('T')[0]
+        params.append('start_date', today)
+        params.append('end_date', today)
+      } else if (period === 'yesterday') {
+        const yesterday = new Date(Date.now() - 86400000).toISOString().split('T')[0]
+        params.append('start_date', yesterday)
+        params.append('end_date', yesterday)
+      } else if (period === 'last7days') {
+        const start = new Date(Date.now() - 7 * 86400000).toISOString().split('T')[0]
+        const end = new Date().toISOString().split('T')[0]
+        params.append('start_date', start)
+        params.append('end_date', end)
+      } else if (period === 'custom' && customStart && customEnd) {
+        params.append('start_date', customStart)
+        params.append('end_date', customEnd)
+      }
+
+      if (params.toString()) {
+        url += `?${params.toString()}`
+      }
+
+      const response = await fetch(url, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -63,6 +98,76 @@ export const Dashboard: React.FC = () => {
     return `${mins}m ${secs}s`
   }
 
+  const calculateConversionRate = () => {
+    if (!metrics || metrics.total_visitors === 0) return 0
+    const totalLeads = metrics.ebook_downloads + metrics.newsletter_subs
+    return ((totalLeads / metrics.total_visitors) * 100).toFixed(1)
+  }
+
+  const exportToCSV = () => {
+    if (!metrics) return
+
+    const headers = ['Data', 'Visitantes', 'Ebook', 'Newsletter', 'Compras']
+    const rows = metrics.daily_stats.map(stat => [
+      new Date(stat.date).toLocaleDateString('pt-BR'),
+      stat.visitors,
+      stat.ebook_downloads,
+      stat.newsletter_subs,
+      stat.buy_clicks
+    ])
+
+    const csvContent = [
+      headers.join(','),
+      ...rows.map(row => row.join(','))
+    ].join('\n')
+
+    const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' })
+    const link = document.createElement('a')
+    link.href = URL.createObjectURL(blob)
+    link.download = `analytics_${period}_${new Date().toISOString().split('T')[0]}.csv`
+    link.click()
+  }
+
+  const exportToExcel = () => {
+    if (!metrics) return
+
+    // Simples export usando CSV com extensão .xls
+    const headers = ['Data', 'Visitantes', 'Ebook', 'Newsletter', 'Compras']
+    const rows = metrics.daily_stats.map(stat => [
+      new Date(stat.date).toLocaleDateString('pt-BR'),
+      stat.visitors,
+      stat.ebook_downloads,
+      stat.newsletter_subs,
+      stat.buy_clicks
+    ])
+
+    const csvContent = [
+      headers.join('\t'),
+      ...rows.map(row => row.join('\t'))
+    ].join('\n')
+
+    const blob = new Blob([csvContent], { type: 'application/vnd.ms-excel' })
+    const link = document.createElement('a')
+    link.href = URL.createObjectURL(blob)
+    link.download = `analytics_${period}_${new Date().toISOString().split('T')[0]}.xls`
+    link.click()
+  }
+
+  const exportToPDF = () => {
+    alert('Exportação PDF será implementada em breve! Por enquanto, use Ctrl+P ou Cmd+P para salvar como PDF.')
+  }
+
+  const getPeriodLabel = () => {
+    switch (period) {
+      case 'today': return 'Hoje'
+      case 'yesterday': return 'Ontem'
+      case 'last7days': return 'Últimos 7 dias'
+      case 'last30days': return 'Últimos 30 dias'
+      case 'custom': return 'Período personalizado'
+      default: return 'Últimos 30 dias'
+    }
+  }
+
   if (loading) {
     return (
       <div className="flex items-center justify-center h-64">
@@ -84,7 +189,7 @@ export const Dashboard: React.FC = () => {
       title: 'Visitantes Únicos',
       value: metrics.total_visitors,
       icon: <Users className="text-blue-500" size={24} />,
-      subtitle: 'Últimos 30 dias',
+      subtitle: getPeriodLabel(),
     },
     {
       title: 'Tempo Médio',
@@ -99,34 +204,105 @@ export const Dashboard: React.FC = () => {
       subtitle: 'Média por visita',
     },
     {
+      title: 'Taxa de Conversão',
+      value: `${calculateConversionRate()}%`,
+      icon: <Percent className="text-pink-500" size={24} />,
+      subtitle: 'Visitantes → Leads',
+    },
+    {
       title: 'Downloads Ebook',
       value: metrics.ebook_downloads,
       icon: <Download className="text-orange-500" size={24} />,
-      subtitle: 'Últimos 30 dias',
+      subtitle: getPeriodLabel(),
     },
     {
       title: 'Inscritos Newsletter',
       value: metrics.newsletter_subs,
       icon: <Mail className="text-cyan-500" size={24} />,
-      subtitle: 'Últimos 30 dias',
+      subtitle: getPeriodLabel(),
     },
     {
       title: 'Cliques Comprar',
       value: metrics.buy_clicks,
       icon: <ShoppingCart className="text-green-600" size={24} />,
-      subtitle: 'Últimos 30 dias',
+      subtitle: getPeriodLabel(),
     },
   ]
 
   return (
     <div className="space-y-8">
-      <div>
-        <h2 className="text-2xl font-bold text-slate-800 mb-2">Dashboard Analytics</h2>
-        <p className="text-slate-600">Resumo dos últimos 30 dias</p>
+      {/* Header com Título e Filtros */}
+      <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-4">
+        <div>
+          <h2 className="text-2xl font-bold text-slate-800 mb-2">Dashboard Analytics</h2>
+          <p className="text-slate-600">{getPeriodLabel()}</p>
+        </div>
+
+        <div className="flex flex-wrap items-center gap-3">
+          {/* Filtro de Período */}
+          <select
+            value={period}
+            onChange={(e) => setPeriod(e.target.value as PeriodFilter)}
+            className="px-4 py-2 bg-white border border-slate-300 rounded-lg text-slate-700 font-medium focus:outline-none focus:ring-2 focus:ring-blue-500"
+          >
+            <option value="today">Hoje</option>
+            <option value="yesterday">Ontem</option>
+            <option value="last7days">Últimos 7 dias</option>
+            <option value="last30days">Últimos 30 dias</option>
+            <option value="custom">Personalizado</option>
+          </select>
+
+          {/* Datas Personalizadas */}
+          {period === 'custom' && (
+            <>
+              <input
+                type="date"
+                value={customStart}
+                onChange={(e) => setCustomStart(e.target.value)}
+                className="px-4 py-2 bg-white border border-slate-300 rounded-lg text-slate-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              />
+              <span className="text-slate-600">até</span>
+              <input
+                type="date"
+                value={customEnd}
+                onChange={(e) => setCustomEnd(e.target.value)}
+                className="px-4 py-2 bg-white border border-slate-300 rounded-lg text-slate-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              />
+            </>
+          )}
+
+          {/* Botões de Exportação */}
+          <div className="flex items-center gap-2 border-l border-slate-300 pl-3">
+            <button
+              onClick={exportToCSV}
+              className="flex items-center gap-2 px-4 py-2 bg-green-600 hover:bg-green-700 text-white rounded-lg transition-colors font-medium"
+              title="Exportar CSV"
+            >
+              <FileText size={18} />
+              <span className="hidden sm:inline">CSV</span>
+            </button>
+            <button
+              onClick={exportToExcel}
+              className="flex items-center gap-2 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors font-medium"
+              title="Exportar Excel"
+            >
+              <FileSpreadsheet size={18} />
+              <span className="hidden sm:inline">Excel</span>
+            </button>
+            <button
+              onClick={exportToPDF}
+              className="flex items-center gap-2 px-4 py-2 bg-red-600 hover:bg-red-700 text-white rounded-lg transition-colors font-medium"
+              title="Exportar PDF"
+            >
+              <FileText size={18} />
+              <span className="hidden sm:inline">PDF</span>
+            </button>
+          </div>
+        </div>
       </div>
 
       {/* Metric Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         {metricCards.map((card) => (
           <div
             key={card.title}
@@ -145,7 +321,7 @@ export const Dashboard: React.FC = () => {
 
       {/* Simple Daily Stats Table */}
       <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-6">
-        <h3 className="text-lg font-bold text-slate-800 mb-4">Estatísticas Diárias (Últimos 7 dias)</h3>
+        <h3 className="text-lg font-bold text-slate-800 mb-4">Estatísticas Diárias</h3>
         <div className="overflow-x-auto">
           <table className="w-full text-sm">
             <thead>
