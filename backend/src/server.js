@@ -68,6 +68,15 @@ const authLimiter = rateLimit({
   legacyHeaders: false
 });
 
+// Rate limiting - Analytics endpoints (prevent spam)
+const analyticsLimiter = rateLimit({
+  windowMs: 1 * 60 * 1000, // 1 minute
+  max: 60, // 60 events per minute per IP
+  message: { success: false, message: 'Too many analytics events, please slow down.' },
+  standardHeaders: true,
+  legacyHeaders: false
+});
+
 app.use('/api/', globalLimiter);
 
 // Body parser middleware (using Express built-in)
@@ -88,7 +97,7 @@ app.use('/api/auth', authLimiter, authRoutes);
 app.use('/api/newsletter', publicLimiter, newsletterRoutes);
 app.use('/api/ebook', publicLimiter, ebookRoutes);
 app.use('/api/content', contentRoutes);
-app.use('/api/analytics', globalLimiter, analyticsRoutes);
+app.use('/api/analytics', analyticsLimiter, analyticsRoutes);
 app.use('/api/admin', authLimiter, adminRoutes);
 app.use('/api/users', authLimiter, usersRoutes);
 
