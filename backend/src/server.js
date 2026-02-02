@@ -59,10 +59,10 @@ const publicLimiter = rateLimit({
   legacyHeaders: false
 });
 
-// Rate limiting - Auth endpoints (very strict)
+// Rate limiting - Auth endpoints (moderate)
 const authLimiter = rateLimit({
   windowMs: 15 * 60 * 1000, // 15 minutes
-  max: 5, // 5 login attempts per 15min
+  max: 50, // 50 login attempts per 15min
   message: { success: false, message: 'Too many login attempts, please try again later.' },
   standardHeaders: true,
   legacyHeaders: false

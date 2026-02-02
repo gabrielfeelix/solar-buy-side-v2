@@ -79,20 +79,35 @@ exports.trackEvent = async (req, res) => {
 // Get analytics summary (admin only)
 exports.getMetrics = async (req, res) => {
   try {
-    // Total unique visitors (last 30 days)
+    // Get date range from query params or default to last 30 days
+    const { start_date, end_date } = req.query;
+
+    let dateCondition = 'first_seen >= DATE_SUB(NOW(), INTERVAL 30 DAY)';
+    let dateConditionEvents = 'timestamp >= DATE_SUB(NOW(), INTERVAL 30 DAY)';
+    const params = [];
+    const paramsEvents = [];
+
+    if (start_date && end_date) {
+      dateCondition = 'first_seen >= ? AND first_seen <= DATE_ADD(?, INTERVAL 1 DAY)';
+      dateConditionEvents = 'timestamp >= ? AND timestamp <= DATE_ADD(?, INTERVAL 1 DAY)';
+      params.push(start_date, end_date);
+      paramsEvents.push(start_date, end_date);
+    }
+
+    // Total unique visitors
     const [visitorsResult] = await db.query(`
       SELECT COUNT(DISTINCT session_id) as total_visitors
       FROM analytics_sessions
-      WHERE first_seen >= DATE_SUB(NOW(), INTERVAL 30 DAY)
-    `);
+      WHERE ${dateCondition}
+    `, params);
 
-    // Average time on site (last 30 days)
+    // Average time on site
     const [avgTimeResult] = await db.query(`
       SELECT AVG(TIMESTAMPDIFF(SECOND, first_seen, last_seen)) as avg_time_seconds
       FROM analytics_sessions
-      WHERE first_seen >= DATE_SUB(NOW(), INTERVAL 30 DAY)
+      WHERE ${dateCondition}
         AND TIMESTAMPDIFF(SECOND, first_seen, last_seen) > 0
-    `);
+    `, params);
 
     // Average sections viewed per session
     const [sectionsResult] = await db.query(`
@@ -101,36 +116,36 @@ exports.getMetrics = async (req, res) => {
         SELECT user_session, COUNT(DISTINCT section_name) as section_count
         FROM analytics_events
         WHERE event_type = 'section_view'
-          AND timestamp >= DATE_SUB(NOW(), INTERVAL 30 DAY)
+          AND ${dateConditionEvents}
         GROUP BY user_session
       ) as section_stats
-    `);
+    `, paramsEvents);
 
-    // Ebook downloads (last 30 days)
+    // Ebook downloads
     const [ebookResult] = await db.query(`
       SELECT COUNT(*) as ebook_downloads
       FROM analytics_events
       WHERE event_type = 'ebook_download'
-        AND timestamp >= DATE_SUB(NOW(), INTERVAL 30 DAY)
-    `);
+        AND ${dateConditionEvents}
+    `, paramsEvents);
 
-    // Newsletter subscriptions (last 30 days)
+    // Newsletter subscriptions
     const [newsletterResult] = await db.query(`
       SELECT COUNT(*) as newsletter_subs
       FROM analytics_events
       WHERE event_type = 'newsletter_subscribe'
-        AND timestamp >= DATE_SUB(NOW(), INTERVAL 30 DAY)
-    `);
+        AND ${dateConditionEvents}
+    `, paramsEvents);
 
-    // Buy button clicks (last 30 days)
+    // Buy button clicks
     const [buyResult] = await db.query(`
       SELECT COUNT(*) as buy_clicks
       FROM analytics_events
       WHERE event_type = 'buy_click'
-        AND timestamp >= DATE_SUB(NOW(), INTERVAL 30 DAY)
-    `);
+        AND ${dateConditionEvents}
+    `, paramsEvents);
 
-    // Daily stats for chart (last 30 days)
+    // Daily stats for chart
     const [dailyStats] = await db.query(`
       SELECT
         DATE(timestamp) as date,
@@ -139,10 +154,10 @@ exports.getMetrics = async (req, res) => {
         SUM(CASE WHEN event_type = 'newsletter_subscribe' THEN 1 ELSE 0 END) as newsletter_subs,
         SUM(CASE WHEN event_type = 'buy_click' THEN 1 ELSE 0 END) as buy_clicks
       FROM analytics_events
-      WHERE timestamp >= DATE_SUB(NOW(), INTERVAL 30 DAY)
+      WHERE ${dateConditionEvents}
       GROUP BY DATE(timestamp)
       ORDER BY date ASC
-    `);
+    `, paramsEvents);
 
     res.status(200).json({
       success: true,
