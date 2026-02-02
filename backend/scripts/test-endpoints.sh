@@ -1,135 +1,139 @@
 #!/bin/bash
-# Test all API endpoints
-# Usage: bash test-endpoints.sh
+# Test all API endpoints with healthcheck and retry
+# Usage: API_URL=http://localhost:5000 bash test-endpoints.sh
 
-API_URL="http://localhost:5000"
+API_URL="${API_URL:-http://localhost:5000}"
 TOKEN=""
+PASS_COUNT=0
+FAIL_COUNT=0
 
 echo "🧪 Testing Solar Buy-Side API Endpoints"
 echo "========================================="
+echo "API URL: $API_URL"
 echo ""
+
+# Wait for service to be healthy
+echo "⏳ Waiting for service to be healthy..."
+MAX_RETRIES=30
+RETRY_COUNT=0
+
+while [ $RETRY_COUNT -lt $MAX_RETRIES ]; do
+  HEALTH_CHECK=$(curl -s -o /dev/null -w "%{http_code}" "$API_URL/health" 2>/dev/null)
+  if [ "$HEALTH_CHECK" = "200" ]; then
+    echo "✅ Service is healthy!"
+    echo ""
+    break
+  fi
+  RETRY_COUNT=$((RETRY_COUNT + 1))
+  echo "   Retry $RETRY_COUNT/$MAX_RETRIES..."
+  sleep 2
+done
+
+if [ $RETRY_COUNT -eq $MAX_RETRIES ]; then
+  echo "❌ Service failed to become healthy after $MAX_RETRIES attempts"
+  echo "FAIL: Healthcheck timeout"
+  exit 1
+fi
+
+# Helper function to test endpoint
+test_endpoint() {
+  local NAME="$1"
+  local METHOD="$2"
+  local URL="$3"
+  local DATA="$4"
+  local HEADERS="$5"
+  local EXPECTED_STATUS="$6"
+
+  echo "Testing: $NAME"
+
+  if [ -z "$DATA" ]; then
+    RESPONSE=$(curl -s -w "\n%{http_code}" -X "$METHOD" "$URL" $HEADERS 2>/dev/null)
+  else
+    RESPONSE=$(curl -s -w "\n%{http_code}" -X "$METHOD" "$URL" -H "Content-Type: application/json" $HEADERS -d "$DATA" 2>/dev/null)
+  fi
+
+  STATUS=$(echo "$RESPONSE" | tail -n 1)
+  BODY=$(echo "$RESPONSE" | sed '$d')
+
+  if [ "$STATUS" = "$EXPECTED_STATUS" ]; then
+    echo "✅ PASS - Status: $STATUS"
+    PASS_COUNT=$((PASS_COUNT + 1))
+  else
+    echo "❌ FAIL - Expected: $EXPECTED_STATUS, Got: $STATUS"
+    echo "   Response: $BODY"
+    FAIL_COUNT=$((FAIL_COUNT + 1))
+  fi
+  echo ""
+}
 
 # Test 1: Health check
-echo "1️⃣  Testing health endpoint..."
-HEALTH=$(curl -s -X GET "$API_URL/health")
-echo "Response: $HEALTH"
-if echo "$HEALTH" | grep -q '"success":true'; then
-  echo "✅ Health check passed"
-else
-  echo "❌ Health check failed"
-fi
-echo ""
+test_endpoint "Health Check" "GET" "$API_URL/health" "" "" "200"
 
-# Test 2: Login
-echo "2️⃣  Testing login endpoint..."
-LOGIN=$(curl -s -X POST "$API_URL/api/auth/login" \
+# Test 2: Login (should succeed with correct credentials)
+echo "Testing: Login"
+LOGIN_RESPONSE=$(curl -s -X POST "$API_URL/api/auth/login" \
   -H "Content-Type: application/json" \
-  -d '{"email":"admin@example.com","password":"testpass123"}')
-echo "Response: $LOGIN"
-if echo "$LOGIN" | grep -q '"success":true'; then
-  TOKEN=$(echo "$LOGIN" | grep -o '"token":"[^"]*"' | cut -d'"' -f4)
-  echo "✅ Login successful"
-  echo "Token: ${TOKEN:0:20}..."
+  -d '{"email":"admin@example.com","password":"testpass123"}' 2>/dev/null)
+
+if echo "$LOGIN_RESPONSE" | grep -q '"success":true'; then
+  TOKEN=$(echo "$LOGIN_RESPONSE" | grep -o '"token":"[^"]*"' | cut -d'"' -f4)
+  echo "✅ PASS - Login successful"
+  echo "   Token: ${TOKEN:0:20}..."
+  PASS_COUNT=$((PASS_COUNT + 1))
 else
-  echo "❌ Login failed"
+  echo "❌ FAIL - Login failed"
+  echo "   Response: $LOGIN_RESPONSE"
+  FAIL_COUNT=$((FAIL_COUNT + 1))
 fi
 echo ""
 
 # Test 3: Verify token
 if [ ! -z "$TOKEN" ]; then
-  echo "3️⃣  Testing verify token endpoint..."
-  VERIFY=$(curl -s -X GET "$API_URL/api/auth/verify" \
-    -H "Authorization: Bearer $TOKEN")
-  echo "Response: $VERIFY"
-  if echo "$VERIFY" | grep -q '"success":true'; then
-    echo "✅ Token verification passed"
-  else
-    echo "❌ Token verification failed"
-  fi
-  echo ""
+  test_endpoint "Verify Token" "GET" "$API_URL/api/auth/verify" "" "-H \"Authorization: Bearer $TOKEN\"" "200"
 fi
 
-# Test 4: Newsletter subscription
-echo "4️⃣  Testing newsletter subscription..."
-NEWSLETTER=$(curl -s -X POST "$API_URL/api/newsletter/subscribe" \
-  -H "Content-Type: application/json" \
-  -d "{\"email\":\"test-$(date +%s)@example.com\"}")
-echo "Response: $NEWSLETTER"
-if echo "$NEWSLETTER" | grep -q '"success":true'; then
-  echo "✅ Newsletter subscription successful"
-else
-  echo "❌ Newsletter subscription failed"
-fi
-echo ""
+# Test 4: Newsletter subscription (unique email each time)
+UNIQUE_EMAIL="test-$(date +%s)@example.com"
+test_endpoint "Newsletter Subscribe" "POST" "$API_URL/api/newsletter/subscribe" \
+  "{\"email\":\"$UNIQUE_EMAIL\"}" "" "201"
 
-# Test 5: Ebook lead
-echo "5️⃣  Testing ebook lead save..."
-EBOOK=$(curl -s -X POST "$API_URL/api/ebook/save-lead" \
-  -H "Content-Type: application/json" \
-  -d "{\"nome\":\"Test\",\"sobrenome\":\"User\",\"email\":\"ebook-$(date +%s)@example.com\",\"celular\":\"11987654321\"}")
-echo "Response: $EBOOK"
-if echo "$EBOOK" | grep -q '"success":true'; then
-  echo "✅ Ebook lead saved successfully"
-else
-  echo "❌ Ebook lead save failed"
-fi
-echo ""
+# Test 5: Ebook lead (unique email each time)
+UNIQUE_EMAIL="ebook-$(date +%s)@example.com"
+test_endpoint "Ebook Lead Save" "POST" "$API_URL/api/ebook/save-lead" \
+  "{\"nome\":\"Test\",\"sobrenome\":\"User\",\"email\":\"$UNIQUE_EMAIL\",\"celular\":\"11987654321\"}" "" "201"
 
 # Test 6: Analytics event
-echo "6️⃣  Testing analytics event tracking..."
-SESSION_ID=$(uuidgen 2>/dev/null || cat /proc/sys/kernel/random/uuid 2>/dev/null || echo "test-session-$(date +%s)")
-ANALYTICS=$(curl -s -X POST "$API_URL/api/analytics/event" \
-  -H "Content-Type: application/json" \
-  -d "{\"event_type\":\"page_view\",\"session_id\":\"$SESSION_ID\",\"page_url\":\"/\"}")
-echo "Response: $ANALYTICS"
-if echo "$ANALYTICS" | grep -q '"success":true'; then
-  echo "✅ Analytics event tracked successfully"
-else
-  echo "❌ Analytics event tracking failed"
-fi
-echo ""
+SESSION_ID="test-session-$(date +%s)"
+test_endpoint "Analytics Event" "POST" "$API_URL/api/analytics/event" \
+  "{\"event_type\":\"page_view\",\"session_id\":\"$SESSION_ID\",\"page_url\":\"/\"}" "" "201"
 
 # Test 7: Admin metrics (requires token)
 if [ ! -z "$TOKEN" ]; then
-  echo "7️⃣  Testing admin metrics endpoint..."
-  METRICS=$(curl -s -X GET "$API_URL/api/admin/metrics" \
-    -H "Authorization: Bearer $TOKEN")
-  echo "Response: $METRICS"
-  if echo "$METRICS" | grep -q '"success":true'; then
-    echo "✅ Admin metrics retrieved successfully"
-  else
-    echo "❌ Admin metrics retrieval failed"
-  fi
-  echo ""
+  test_endpoint "Admin Metrics" "GET" "$API_URL/api/admin/metrics" "" "-H \"Authorization: Bearer $TOKEN\"" "200"
 fi
 
 # Test 8: Admin ebook leads (requires token)
 if [ ! -z "$TOKEN" ]; then
-  echo "8️⃣  Testing admin ebook leads endpoint..."
-  LEADS=$(curl -s -X GET "$API_URL/api/admin/leads/ebook" \
-    -H "Authorization: Bearer $TOKEN")
-  echo "Response: $LEADS"
-  if echo "$LEADS" | grep -q '"success":true'; then
-    echo "✅ Admin ebook leads retrieved successfully"
-  else
-    echo "❌ Admin ebook leads retrieval failed"
-  fi
-  echo ""
+  test_endpoint "Admin Ebook Leads" "GET" "$API_URL/api/admin/leads/ebook" "" "-H \"Authorization: Bearer $TOKEN\"" "200"
 fi
 
 # Test 9: Admin newsletter subscribers (requires token)
 if [ ! -z "$TOKEN" ]; then
-  echo "9️⃣  Testing admin newsletter subscribers endpoint..."
-  SUBS=$(curl -s -X GET "$API_URL/api/admin/leads/newsletter" \
-    -H "Authorization: Bearer $TOKEN")
-  echo "Response: $SUBS"
-  if echo "$SUBS" | grep -q '"success":true'; then
-    echo "✅ Admin newsletter subscribers retrieved successfully"
-  else
-    echo "❌ Admin newsletter subscribers retrieval failed"
-  fi
-  echo ""
+  test_endpoint "Admin Newsletter Subscribers" "GET" "$API_URL/api/admin/leads/newsletter" "" "-H \"Authorization: Bearer $TOKEN\"" "200"
 fi
 
+# Summary
 echo "========================================="
-echo "✅ All tests completed!"
+echo "📊 Test Summary:"
+echo "   Total: $((PASS_COUNT + FAIL_COUNT))"
+echo "   ✅ Passed: $PASS_COUNT"
+echo "   ❌ Failed: $FAIL_COUNT"
+echo ""
+
+if [ $FAIL_COUNT -eq 0 ]; then
+  echo "🎉 All tests passed!"
+  exit 0
+else
+  echo "💥 Some tests failed!"
+  exit 1
+fi

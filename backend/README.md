@@ -41,6 +41,30 @@ npm run dev
 npm start
 ```
 
+## 🧪 Testes com Docker
+
+Para testar os endpoints automaticamente usando Docker:
+
+1. **Iniciar o container MySQL de teste:**
+```bash
+docker compose up -d
+```
+
+2. **Executar os testes:**
+```bash
+bash scripts/test-endpoints.sh
+```
+
+O script irá:
+- Aguardar o serviço ficar healthy (healthcheck com retry)
+- Testar todos os endpoints principais
+- Exibir um resumo com PASS/FAIL
+
+3. **Parar o container:**
+```bash
+docker compose down
+```
+
 ## 📚 Endpoints da API
 
 ### Health Check
