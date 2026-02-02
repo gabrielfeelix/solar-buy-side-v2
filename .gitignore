@@ -29,6 +29,9 @@ secrets.*
 admin_passwords.*
 backend/.local/
 
+# Claude CLI local files
+.claude/
+
 # IDE
 .vscode/*
 !.vscode/extensions.json
