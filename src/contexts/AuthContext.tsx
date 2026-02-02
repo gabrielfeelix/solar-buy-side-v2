@@ -1,5 +1,6 @@
 import React, { createContext, useContext, useState } from 'react'
 import type { ReactNode } from 'react'
+import { API_URL } from '../utils/api'
 
 interface AuthContextType {
   isAuthenticated: boolean
@@ -8,8 +9,6 @@ interface AuthContextType {
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined)
-
-const API_URL = import.meta.env.VITE_API_URL || ''
 
 export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   const [isAuthenticated, setIsAuthenticated] = useState<boolean>(() => {

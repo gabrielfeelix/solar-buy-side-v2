@@ -1,8 +1,7 @@
 import React, { createContext, useContext, useState, useEffect } from 'react'
 import type { ReactNode } from 'react'
 import { initialContent } from './ContentData'
-
-const API_URL = import.meta.env.VITE_API_URL || ''
+import { API_URL } from '../utils/api'
 
 export interface SectionContent {
   id: string

@@ -1,4 +1,5 @@
-const API_URL = import.meta.env.VITE_API_URL || '';
+import { API_URL } from './api';
+
 const SESSION_KEY = 'analytics_session_id';
 
 // Get or create session ID

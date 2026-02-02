@@ -1,8 +1,17 @@
 <IfModule mod_rewrite.c>
   RewriteEngine On
   RewriteBase /
+
+  # Proxy para API - redireciona /api/* para o backend Node.js
+  # IMPORTANTE: Configure o backend Node.js no cPanel em "Setup Node.js App"
+  # e atualize a porta abaixo (padrão: 5000)
+  RewriteCond %{REQUEST_URI} ^/api/
+  RewriteRule ^api/(.*)$ http://localhost:5000/api/$1 [P,L]
+
+  # SPA Routing - redireciona todas as rotas para index.html
   RewriteRule ^index\.html$ - [L]
   RewriteCond %{REQUEST_FILENAME} !-f
   RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteCond %{REQUEST_URI} !^/api/
   RewriteRule . /index.html [L]
 </IfModule>

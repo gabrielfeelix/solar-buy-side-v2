@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { UserPlus, Edit2, Trash2, X, Save } from 'lucide-react'
-
-const API_URL = import.meta.env.VITE_API_URL || ''
+import { API_URL } from '../../utils/api'
 
 type User = {
   id: number

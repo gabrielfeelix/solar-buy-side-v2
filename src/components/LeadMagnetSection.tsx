@@ -11,8 +11,7 @@ import {
 } from 'lucide-react'
 import { useContent } from '../contexts/ContentContext'
 import { trackEbookDownload } from '../utils/analytics'
-
-const API_URL = import.meta.env.VITE_API_URL || ''
+import { API_URL } from '../utils/api'
 
 export const LeadMagnetSection: React.FC = () => {
   const { getSection } = useContent()
