@@ -191,13 +191,23 @@ exports.getMetrics = async (req, res) => {
        ORDER BY
          CASE section_name
            WHEN 'hero' THEN 1
-           WHEN 'benefits' THEN 2
-           WHEN 'solution' THEN 3
-           WHEN 'results' THEN 4
-           WHEN 'pricing' THEN 5
-           WHEN 'faq' THEN 6
-           WHEN 'cta' THEN 7
-           ELSE 8
+           WHEN 'context' THEN 2
+           WHEN 'video' THEN 3
+           WHEN 'audience' THEN 4
+           WHEN 'manual-strategic' THEN 5
+           WHEN 'testimonials' THEN 6
+           WHEN 'story-bridge' THEN 7
+           WHEN 'seller-code' THEN 8
+           WHEN 'pricing' THEN 9
+           WHEN 'buyer-wave' THEN 10
+           WHEN 'authority' THEN 11
+           WHEN 'lead-magnet' THEN 12
+           WHEN 'newsletter' THEN 13
+           WHEN 'faq' THEN 14
+           WHEN 'privacy-policy' THEN 15
+           WHEN 'terms-of-use' THEN 16
+           WHEN 'antipiracy' THEN 17
+           ELSE 18
          END`,
       eventsParams
     );
