@@ -99,7 +99,7 @@ export const ManualStrategicSection: React.FC = () => {
             <div className="relative group">
               <div className="absolute -inset-20 bg-orange-500/20 blur-[120px] rounded-full group-hover:bg-orange-500/30 transition-colors duration-700"></div>
 
-              <div className="relative w-[340px] h-[480px] rounded-r-lg shadow-[30px_40px_60px_-15px_rgba(0,0,0,0.7)] border-y border-r border-white/10 flex flex-col justify-between overflow-hidden transform rotate-2 group-hover:rotate-0 transition-all duration-500" style={{ backgroundImage: `url('${section?.images.manual || '/assets/manual.jpg.png'}')`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
+              <div className="relative w-[340px] h-[480px] rounded-r-lg shadow-[30px_40px_60px_-15px_rgba(0,0,0,0.7)] border-y border-r border-white/10 flex flex-col justify-between overflow-hidden transition-all duration-500" style={{ backgroundImage: `url('${section?.images.manual || '/assets/manual.jpg.png'}')`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
               </div>
             </div>
           </div>

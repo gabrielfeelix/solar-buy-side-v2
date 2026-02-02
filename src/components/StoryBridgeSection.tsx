@@ -31,6 +31,15 @@ export const StoryBridgeSection: React.FC = () => {
   return (
     <section className="bg-white text-slate-900 font-sans selection:bg-orange-100">
       <div className="max-w-7xl mx-auto px-6 py-24">
+        <div className="flex justify-center mb-16">
+          <a
+            href="#oferta"
+            className="inline-flex items-center justify-center px-8 py-4 bg-[#F97316] hover:bg-[#EA580C] text-white text-lg font-bold rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105"
+          >
+            Garanta sua vantagem competitiva
+          </a>
+        </div>
+
         <header className="max-w-4xl mx-auto text-center mb-24">
           <h2 className="text-4xl md:text-5xl font-black tracking-tight text-slate-900 mb-8 leading-tight">
             {section?.texts.title || 'A história de Rodrigo é apenas um exemplo do poder deste manual.'}

@@ -35,12 +35,12 @@ export const LegalPage: React.FC<LegalPageProps> = ({ title, sections }) => {
                 <h2 className="text-2xl md:text-3xl font-bold text-white">{section.heading}</h2>
               )}
               {section.paragraphs.map((paragraph, pIndex) => (
-                <p key={`${title}-${index}-${pIndex}`} className="text-slate-300 leading-relaxed text-base md:text-lg">
+                <p key={`${title}-${index}-${pIndex}`} className="text-slate-300 leading-relaxed text-base md:text-lg text-justify">
                   {paragraph}
                 </p>
               ))}
               {section.list && (
-                <ul className="list-disc list-inside space-y-2 text-slate-300 text-base md:text-lg">
+                <ul className="list-disc list-inside space-y-2 text-slate-300 text-base md:text-lg text-justify">
                   {section.list.map((item, itemIndex) => (
                     <li key={`${title}-${index}-list-${itemIndex}`}>{item}</li>
                   ))}

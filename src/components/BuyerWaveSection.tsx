@@ -203,16 +203,11 @@ export const BuyerWaveSection: React.FC = () => {
 
           <div className="mt-24 text-center">
             <button
-              className="group relative inline-flex items-center gap-8 bg-orange-600 hover:bg-orange-500 text-white pl-12 pr-4 py-5 rounded-full transition-all duration-300 shadow-2xl shadow-orange-600/30 active:scale-95"
+              className="group relative inline-flex items-center gap-6 bg-orange-600 hover:bg-orange-500 text-white px-8 py-5 rounded-full transition-all duration-300 shadow-2xl shadow-orange-600/30 active:scale-95"
               onClick={() => document.getElementById('oferta')?.scrollIntoView({ behavior: 'smooth' })}
               type="button"
             >
-              <div className="text-left">
-                <span className="block text-[10px] font-black opacity-80 uppercase tracking-[0.25em] mb-0.5">
-                  {section?.texts.ctaText1 || 'Começar agora'}
-                </span>
-                <span className="block text-xl font-bold tracking-tight">{section?.texts.ctaText2 || 'Acessar Guia Estratégico'}</span>
-              </div>
+              <span className="text-xl font-bold tracking-tight uppercase">ACESSAR GUIA ESTRATÉGICO AGORA</span>
               <div className="w-14 h-14 bg-white/20 rounded-full flex items-center justify-center group-hover:translate-x-1 transition-transform">
                 <ArrowRight size={28} />
               </div>

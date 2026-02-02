@@ -165,10 +165,19 @@ export const VideoSection: React.FC = () => {
                     padding-top: 56.25%;
                   }
                 `}</style>
-                <WistiaPlayer media-id="u0jf5yyoda" aspect="1.7777777777777777" autoPlay="true" preload="metadata"></WistiaPlayer>
+                <WistiaPlayer media-id="u0jf5yyoda" aspect="1.7777777777777777" autoPlay="true" preload="metadata" poster-image="/assets/manualdecompra1.png"></WistiaPlayer>
               </div>
             )}
           </div>
+        </div>
+
+        <div className="flex justify-center mt-12">
+          <a
+            href="#oferta"
+            className="inline-flex items-center justify-center px-8 py-4 bg-[#F97316] hover:bg-[#EA580C] text-white text-lg font-bold rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105"
+          >
+            Quero sair na frente e vender mais
+          </a>
         </div>
       </div>
     </section>

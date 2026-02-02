@@ -134,7 +134,7 @@ export const initialContent: SectionContent[] = [
       text2: '"Em um mês, fechei 5 sistemas novos. O mais gratificante, porém, foi a conexão. Deixei de ser apenas um vendedor e me tornei um verdadeiro parceiro para meus clientes."',
       calloutTitle: 'Faça como ele',
       calloutText: 'Imersão no Manual de Compra Solar Buy-Side: pense como seu cliente e torne-se um Vendedor de Alta Performance!',
-      name: 'Rodrigo M.',
+      name: 'Rodrigo',
       role: 'Integrador Solar, SP',
       metric: '+5 Sistemas',
       metricLabel: 'Fechados em 30 dias',

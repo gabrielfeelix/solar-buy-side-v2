@@ -16,7 +16,7 @@ export const TestimonialsSection: React.FC = () => {
             <div className="relative aspect-[3/4] bg-slate-900 rounded-2xl overflow-hidden shadow-2xl">
               <img
                 src={rodrigoImage}
-                alt="Rodrigo M."
+                alt="Rodrigo"
                 className="absolute inset-0 h-full w-full object-cover"
                 loading="lazy"
               />
@@ -26,7 +26,7 @@ export const TestimonialsSection: React.FC = () => {
               </div>
               <div className="absolute bottom-8 left-8">
                 <Quote className="w-12 h-12 text-[#F97316] mb-4 fill-current" />
-                <p className="text-white font-bold text-lg">{section?.texts.authorName || 'Rodrigo M.'}</p>
+                <p className="text-white font-bold text-lg">{section?.texts.authorName || 'Rodrigo'}</p>
                 <p className="text-slate-400 text-sm">{section?.texts.authorRole || 'Integrador Solar, SP'}</p>
               </div>
             </div>

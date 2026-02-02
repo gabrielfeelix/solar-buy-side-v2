@@ -82,7 +82,7 @@ export const NewsletterSection: React.FC = () => {
                 )}
               </h2>
               <p className="text-lg text-slate-400 max-w-2xl mx-auto">
-                {section?.texts.subtitle || 'Cadastre seu e-mail para receber informações exclusivas, atualizações e conteúdos sobre o mercado solar.'}
+                {section?.texts.subtitle || 'Cadastre seu e-mail para receber lançamentos exclusivos, atualizações e conteúdos sobre o mercado solar.'}
               </p>
             </div>
 

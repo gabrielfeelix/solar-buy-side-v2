@@ -19,8 +19,8 @@ export const SolarHeader: React.FC = () => {
     <header className="fixed top-0 left-0 right-0 z-50 bg-[#020617]/95 backdrop-blur-md border-b border-white/10 shadow-lg">
       <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
         <a href="#hero" className="flex items-center gap-3 flex-nowrap">
-          <img src="/assets/LOGOSOLARBUYSIDE3.png" alt="Solar Buy-Side" className="h-10 sm:h-12 w-auto flex-shrink-0" />
-          <div className="flex flex-col leading-tight">
+          <img src="/assets/LOGOSOLARBUYSIDE3.png" alt="Solar Buy-Side" className="h-14 sm:h-16 w-auto flex-shrink-0" />
+          <div className="flex items-baseline gap-1 leading-tight whitespace-nowrap">
             <span className="text-white text-lg sm:text-xl font-bold tracking-tight typing-animation-solar" style={{ textShadow: '0 2px 4px rgba(0,0,0,0.3)' }}>
               Solar
             </span>
