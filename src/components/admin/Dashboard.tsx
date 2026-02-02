@@ -36,6 +36,7 @@ type Metrics = {
 }
 
 type PeriodFilter = 'today' | 'yesterday' | 'last7days' | 'last30days' | 'custom'
+type SortType = 'default' | 'visitors' | 'time' | 'alphabetical'
 
 export const Dashboard: React.FC = () => {
   const [metrics, setMetrics] = useState<Metrics | null>(null)
@@ -44,6 +45,7 @@ export const Dashboard: React.FC = () => {
   const [period, setPeriod] = useState<PeriodFilter>('last30days')
   const [customStart, setCustomStart] = useState('')
   const [customEnd, setCustomEnd] = useState('')
+  const [sortType, setSortType] = useState<SortType>('default')
 
   useEffect(() => {
     fetchMetrics()
@@ -211,6 +213,27 @@ export const Dashboard: React.FC = () => {
       cta: 'CTA Final'
     }
     return names[sectionName] || sectionName
+  }
+
+  const getSortedSections = () => {
+    if (!metrics) return []
+
+    const sections = [...metrics.section_funnel]
+
+    switch (sortType) {
+      case 'visitors':
+        return sections.sort((a, b) => b.unique_visitors - a.unique_visitors)
+      case 'time':
+        return sections.sort((a, b) => b.avg_time_seconds - a.avg_time_seconds)
+      case 'alphabetical':
+        return sections.sort((a, b) =>
+          getSectionDisplayName(a.section_name).localeCompare(getSectionDisplayName(b.section_name))
+        )
+      case 'default':
+      default:
+        // Mantém a ordem original (ordem da landing page)
+        return sections
+    }
   }
 
   const getPeriodLabel = () => {
@@ -385,10 +408,24 @@ export const Dashboard: React.FC = () => {
 
       {/* Section Funnel */}
       <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-6">
-        <h3 className="text-lg font-bold text-slate-800 mb-2">Funil de Conversão por Seção</h3>
-        <p className="text-slate-600 text-sm mb-4">Acompanhe quantos visitantes chegam em cada seção do site</p>
-        <div className="space-y-3">
-          {metrics.section_funnel.map((section, index) => {
+        <div className="flex items-center justify-between mb-2">
+          <div>
+            <h3 className="text-lg font-bold text-slate-800">Funil de Conversão por Seção</h3>
+            <p className="text-slate-600 text-sm mt-1">Acompanhe quantos visitantes chegam em cada seção do site</p>
+          </div>
+          <select
+            value={sortType}
+            onChange={(e) => setSortType(e.target.value as SortType)}
+            className="px-4 py-2 bg-white border border-slate-300 rounded-lg text-slate-700 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-blue-500"
+          >
+            <option value="default">Ordem da Landing Page</option>
+            <option value="visitors">Mais Visitantes</option>
+            <option value="time">Maior Tempo Médio</option>
+            <option value="alphabetical">Ordem Alfabética</option>
+          </select>
+        </div>
+        <div className="space-y-3 mt-4">
+          {getSortedSections().map((section, index) => {
             const percentage = metrics.total_visitors > 0
               ? ((section.unique_visitors / metrics.total_visitors) * 100).toFixed(1)
               : '0'
