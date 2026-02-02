@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Download, Mail, BookOpen } from 'lucide-react'
+import { Download, Mail, BookOpen, MessageCircle } from 'lucide-react'
 import { API_URL } from '../../utils/api'
 
 type EbookLead = {
@@ -173,7 +173,22 @@ export const Leads: React.FC = () => {
                       {lead.nome} {lead.sobrenome}
                     </td>
                     <td className="py-3 px-4 text-slate-800">{lead.email}</td>
-                    <td className="py-3 px-4 text-slate-800">{lead.celular}</td>
+                    <td className="py-3 px-4 text-slate-800">
+                      <div className="flex items-center gap-2">
+                        <span>{lead.celular}</span>
+                        {lead.celular && (
+                          <a
+                            href={`https://wa.me/55${lead.celular.replace(/\D/g, '')}`}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-green-600 hover:text-green-700 transition-colors"
+                            title="Abrir WhatsApp"
+                          >
+                            <MessageCircle size={18} />
+                          </a>
+                        )}
+                      </div>
+                    </td>
                     <td className="py-3 px-4 text-slate-800">
                       {new Date(lead.downloaded_at).toLocaleString('pt-BR')}
                     </td>

@@ -204,13 +204,23 @@ export const Dashboard: React.FC = () => {
 
   const getSectionDisplayName = (sectionName: string) => {
     const names: { [key: string]: string } = {
-      hero: 'Início (Hero)',
-      benefits: 'Benefícios',
-      solution: 'Solução',
-      results: 'Resultados',
-      pricing: 'Preços',
-      faq: 'FAQ',
-      cta: 'CTA Final'
+      'hero': 'Seção 1: Hero',
+      'context': 'Seção 2: Contexto',
+      'video': 'Seção 3: Vídeo',
+      'audience': 'Seção 4: Audiência',
+      'manual-strategic': 'Seção 5: Manual Estratégico',
+      'testimonials': 'Seção 6: Depoimentos',
+      'story-bridge': 'Seção 7: Ponte História',
+      'seller-code': 'Seção 8: Código do Vendedor',
+      'pricing': 'Seção 9: Oferta',
+      'buyer-wave': 'Seção 10: Onda do Comprador',
+      'authority': 'Seção 11: Autoridade',
+      'lead-magnet': 'Seção 12: Lead Magnet',
+      'newsletter': 'Seção 13: Newsletter',
+      'faq': 'Seção 14: FAQ',
+      'privacy-policy': 'Seção 15: Política de Privacidade',
+      'terms-of-use': 'Seção 16: Termos de Uso',
+      'antipiracy': 'Seção 17: Medidas Antipiratarias'
     }
     return names[sectionName] || sectionName
   }
