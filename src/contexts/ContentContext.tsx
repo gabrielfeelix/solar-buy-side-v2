@@ -1,6 +1,8 @@
-import React, { createContext, useContext, useState } from 'react'
+import React, { createContext, useContext, useState, useEffect } from 'react'
 import type { ReactNode } from 'react'
 import { initialContent } from './ContentData'
+
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000'
 
 export interface SectionContent {
   id: string
@@ -48,7 +50,49 @@ export const ContentProvider: React.FC<{ children: ReactNode }> = ({ children })
     return saved ? JSON.parse(saved) : { whatsappNumber: '', purchaseLink: '' }
   })
 
-  const updateText = (sectionId: string, key: string, value: string) => {
+  // Load content from backend on mount
+  useEffect(() => {
+    const loadContent = async () => {
+      try {
+        // Load sections
+        const sectionsRes = await fetch(`${API_URL}/api/content/sections`)
+        if (sectionsRes.ok) {
+          const sectionsData = await sectionsRes.json()
+          if (sectionsData.success && sectionsData.data.length > 0) {
+            setContent(sectionsData.data)
+            localStorage.setItem('cms-content', JSON.stringify(sectionsData.data))
+          }
+        }
+
+        // Load global assets
+        const assetsRes = await fetch(`${API_URL}/api/content/assets`)
+        if (assetsRes.ok) {
+          const assetsData = await assetsRes.json()
+          if (assetsData.success && Object.keys(assetsData.data).length > 0) {
+            setGlobalAssets(assetsData.data)
+            localStorage.setItem('cms-global-assets', JSON.stringify(assetsData.data))
+          }
+        }
+
+        // Load global settings
+        const settingsRes = await fetch(`${API_URL}/api/content/settings`)
+        if (settingsRes.ok) {
+          const settingsData = await settingsRes.json()
+          if (settingsData.success && Object.keys(settingsData.data).length > 0) {
+            setGlobalSettings(settingsData.data)
+            localStorage.setItem('cms-global-settings', JSON.stringify(settingsData.data))
+          }
+        }
+      } catch (error) {
+        console.debug('Using cached content:', error)
+        // Keep using localStorage/initialContent on error
+      }
+    }
+
+    loadContent()
+  }, [])
+
+  const updateText = async (sectionId: string, key: string, value: string) => {
     setContent((prev) => {
       const updated = prev.map((section) =>
         section.id === sectionId
@@ -56,11 +100,30 @@ export const ContentProvider: React.FC<{ children: ReactNode }> = ({ children })
           : section
       )
       localStorage.setItem('cms-content', JSON.stringify(updated))
+
+      // Save to backend
+      const section = updated.find(s => s.id === sectionId)
+      if (section) {
+        const token = localStorage.getItem('admin-token')
+        fetch(`${API_URL}/api/content/sections/${sectionId}`, {
+          method: 'PUT',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+          },
+          body: JSON.stringify({
+            section_name: section.name,
+            texts: section.texts,
+            images: section.images
+          })
+        }).catch(err => console.debug('Failed to save to backend:', err))
+      }
+
       return updated
     })
   }
 
-  const updateImage = (sectionId: string, key: string, value: string) => {
+  const updateImage = async (sectionId: string, key: string, value: string) => {
     setContent((prev) => {
       const updated = prev.map((section) =>
         section.id === sectionId
@@ -68,22 +131,65 @@ export const ContentProvider: React.FC<{ children: ReactNode }> = ({ children })
           : section
       )
       localStorage.setItem('cms-content', JSON.stringify(updated))
+
+      // Save to backend
+      const section = updated.find(s => s.id === sectionId)
+      if (section) {
+        const token = localStorage.getItem('admin-token')
+        fetch(`${API_URL}/api/content/sections/${sectionId}`, {
+          method: 'PUT',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+          },
+          body: JSON.stringify({
+            section_name: section.name,
+            texts: section.texts,
+            images: section.images
+          })
+        }).catch(err => console.debug('Failed to save to backend:', err))
+      }
+
       return updated
     })
   }
 
-  const updateGlobalAsset = (key: keyof GlobalAssets, value: string) => {
+  const updateGlobalAsset = async (key: keyof GlobalAssets, value: string) => {
     setGlobalAssets((prev) => {
       const updated = { ...prev, [key]: value }
       localStorage.setItem('cms-global-assets', JSON.stringify(updated))
+
+      // Save to backend
+      const token = localStorage.getItem('admin-token')
+      fetch(`${API_URL}/api/content/assets`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`
+        },
+        body: JSON.stringify({ key, value })
+      }).catch(err => console.debug('Failed to save to backend:', err))
+
       return updated
     })
   }
 
-  const updateGlobalSetting = (key: keyof GlobalSettings, value: string) => {
+  const updateGlobalSetting = async (key: keyof GlobalSettings, value: string) => {
     setGlobalSettings((prev) => {
       const updated = { ...prev, [key]: value }
       localStorage.setItem('cms-global-settings', JSON.stringify(updated))
+
+      // Save to backend
+      const token = localStorage.getItem('admin-token')
+      fetch(`${API_URL}/api/content/settings`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`
+        },
+        body: JSON.stringify({ key, value })
+      }).catch(err => console.debug('Failed to save to backend:', err))
+
       return updated
     })
   }
