@@ -12,11 +12,6 @@ export const AdminTabs: React.FC = () => {
   const [activeTab, setActiveTab] = useState<Tab>('dashboard')
   const { logout } = useAuth()
 
-  // If editor tab is active, render the full AdminPanel (which has its own header)
-  if (activeTab === 'editor') {
-    return <AdminPanel />
-  }
-
   return (
     <div className="min-h-screen bg-slate-50">
       {/* Header */}
@@ -62,10 +57,17 @@ export const AdminTabs: React.FC = () => {
 
             <button
               onClick={() => setActiveTab('editor')}
-              className="flex items-center gap-2 px-4 py-3 font-medium transition-colors relative text-slate-600 hover:text-slate-800"
+              className={`flex items-center gap-2 px-4 py-3 font-medium transition-colors relative ${
+                activeTab === 'editor'
+                  ? 'text-blue-600'
+                  : 'text-slate-600 hover:text-slate-800'
+              }`}
             >
               <Edit3 size={18} />
               <span>Edição</span>
+              {activeTab === 'editor' && (
+                <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-blue-600" />
+              )}
             </button>
 
             <button
@@ -102,11 +104,17 @@ export const AdminTabs: React.FC = () => {
       </header>
 
       {/* Content */}
-      <div className="max-w-7xl mx-auto p-6">
-        {activeTab === 'dashboard' && <Dashboard />}
-        {activeTab === 'leads' && <Leads />}
-        {activeTab === 'users' && <Users />}
-      </div>
+      {activeTab === 'editor' ? (
+        <div className="bg-[#020617]">
+          <AdminPanel hideHeader={true} />
+        </div>
+      ) : (
+        <div className="max-w-7xl mx-auto p-6">
+          {activeTab === 'dashboard' && <Dashboard />}
+          {activeTab === 'leads' && <Leads />}
+          {activeTab === 'users' && <Users />}
+        </div>
+      )}
     </div>
   )
 }

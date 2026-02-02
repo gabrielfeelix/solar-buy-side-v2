@@ -6,7 +6,11 @@ import { AdminPreview } from './AdminPreview'
 
 type ViewMode = 'desktop' | 'tablet' | 'mobile'
 
-export const AdminPanel: React.FC = () => {
+interface AdminPanelProps {
+  hideHeader?: boolean
+}
+
+export const AdminPanel: React.FC<AdminPanelProps> = ({ hideHeader = false }) => {
   const { logout } = useAuth()
   const { content, globalAssets, globalSettings, updateText, updateImage, updateGlobalAsset, updateGlobalSetting } = useContent()
   const [selectedSection, setSelectedSection] = useState(content[0]?.id || 'hero')
@@ -158,28 +162,30 @@ export const AdminPanel: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-[#020617] text-white pb-24">
-      <header className="bg-white/5 backdrop-blur-xl border-b border-white/10 sticky top-0 z-50">
-        <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-          <div className="flex items-center gap-4">
-            <a
-              href="/"
-              className="flex items-center gap-2 text-slate-400 hover:text-[#F97316] transition-colors"
+      {!hideHeader && (
+        <header className="bg-white/5 backdrop-blur-xl border-b border-white/10 sticky top-0 z-50">
+          <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+            <div className="flex items-center gap-4">
+              <a
+                href="/"
+                className="flex items-center gap-2 text-slate-400 hover:text-[#F97316] transition-colors"
+              >
+                <Home className="w-5 h-5" />
+                <span className="text-sm font-medium">Ver Site</span>
+              </a>
+              <div className="h-6 w-px bg-white/10"></div>
+              <h1 className="text-xl font-bold">Painel de Administração</h1>
+            </div>
+            <button
+              onClick={logout}
+              className="flex items-center gap-2 bg-red-500/10 hover:bg-red-500/20 border border-red-500/20 text-red-400 px-4 py-2 rounded-xl transition-all"
             >
-              <Home className="w-5 h-5" />
-              <span className="text-sm font-medium">Ver Site</span>
-            </a>
-            <div className="h-6 w-px bg-white/10"></div>
-            <h1 className="text-xl font-bold">Painel de Administração</h1>
+              <LogOut className="w-4 h-4" />
+              <span className="text-sm font-medium">Sair</span>
+            </button>
           </div>
-          <button
-            onClick={logout}
-            className="flex items-center gap-2 bg-red-500/10 hover:bg-red-500/20 border border-red-500/20 text-red-400 px-4 py-2 rounded-xl transition-all"
-          >
-            <LogOut className="w-4 h-4" />
-            <span className="text-sm font-medium">Sair</span>
-          </button>
-        </div>
-      </header>
+        </header>
+      )}
 
       <div className="max-w-7xl mx-auto p-6">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
