@@ -82,82 +82,92 @@ exports.getMetrics = async (req, res) => {
     // Get date range from query params or default to last 30 days
     const { start_date, end_date } = req.query;
 
-    let dateCondition = 'first_seen >= DATE_SUB(NOW(), INTERVAL 30 DAY)';
-    let dateConditionEvents = 'timestamp >= DATE_SUB(NOW(), INTERVAL 30 DAY)';
-    const params = [];
-    const paramsEvents = [];
+    // Definir período de consulta
+    let sessionWhere, eventsWhere, sessionParams, eventsParams;
 
     if (start_date && end_date) {
-      dateCondition = 'first_seen >= ? AND first_seen <= DATE_ADD(?, INTERVAL 1 DAY)';
-      dateConditionEvents = 'timestamp >= ? AND timestamp <= DATE_ADD(?, INTERVAL 1 DAY)';
-      params.push(start_date, end_date);
-      paramsEvents.push(start_date, end_date);
+      sessionWhere = 'first_seen >= ? AND first_seen <= DATE_ADD(?, INTERVAL 1 DAY)';
+      eventsWhere = 'timestamp >= ? AND timestamp <= DATE_ADD(?, INTERVAL 1 DAY)';
+      sessionParams = [start_date, end_date];
+      eventsParams = [start_date, end_date];
+    } else {
+      sessionWhere = 'first_seen >= DATE_SUB(NOW(), INTERVAL 30 DAY)';
+      eventsWhere = 'timestamp >= DATE_SUB(NOW(), INTERVAL 30 DAY)';
+      sessionParams = [];
+      eventsParams = [];
     }
 
     // Total unique visitors
-    const [visitorsResult] = await db.query(`
-      SELECT COUNT(DISTINCT session_id) as total_visitors
-      FROM analytics_sessions
-      WHERE ${dateCondition}
-    `, params);
+    const [visitorsResult] = await db.query(
+      `SELECT COUNT(DISTINCT session_id) as total_visitors
+       FROM analytics_sessions
+       WHERE ${sessionWhere}`,
+      sessionParams
+    );
 
     // Average time on site
-    const [avgTimeResult] = await db.query(`
-      SELECT AVG(TIMESTAMPDIFF(SECOND, first_seen, last_seen)) as avg_time_seconds
-      FROM analytics_sessions
-      WHERE ${dateCondition}
-        AND TIMESTAMPDIFF(SECOND, first_seen, last_seen) > 0
-    `, params);
+    const [avgTimeResult] = await db.query(
+      `SELECT AVG(TIMESTAMPDIFF(SECOND, first_seen, last_seen)) as avg_time_seconds
+       FROM analytics_sessions
+       WHERE ${sessionWhere}
+         AND TIMESTAMPDIFF(SECOND, first_seen, last_seen) > 0`,
+      sessionParams
+    );
 
     // Average sections viewed per session
-    const [sectionsResult] = await db.query(`
-      SELECT AVG(section_count) as avg_sections
-      FROM (
-        SELECT user_session, COUNT(DISTINCT section_name) as section_count
-        FROM analytics_events
-        WHERE event_type = 'section_view'
-          AND ${dateConditionEvents}
-        GROUP BY user_session
-      ) as section_stats
-    `, paramsEvents);
+    const [sectionsResult] = await db.query(
+      `SELECT AVG(section_count) as avg_sections
+       FROM (
+         SELECT user_session, COUNT(DISTINCT section_name) as section_count
+         FROM analytics_events
+         WHERE event_type = 'section_view'
+           AND ${eventsWhere}
+         GROUP BY user_session
+       ) as section_stats`,
+      eventsParams
+    );
 
     // Ebook downloads
-    const [ebookResult] = await db.query(`
-      SELECT COUNT(*) as ebook_downloads
-      FROM analytics_events
-      WHERE event_type = 'ebook_download'
-        AND ${dateConditionEvents}
-    `, paramsEvents);
+    const [ebookResult] = await db.query(
+      `SELECT COUNT(*) as ebook_downloads
+       FROM analytics_events
+       WHERE event_type = 'ebook_download'
+         AND ${eventsWhere}`,
+      eventsParams
+    );
 
     // Newsletter subscriptions
-    const [newsletterResult] = await db.query(`
-      SELECT COUNT(*) as newsletter_subs
-      FROM analytics_events
-      WHERE event_type = 'newsletter_subscribe'
-        AND ${dateConditionEvents}
-    `, paramsEvents);
+    const [newsletterResult] = await db.query(
+      `SELECT COUNT(*) as newsletter_subs
+       FROM analytics_events
+       WHERE event_type = 'newsletter_subscribe'
+         AND ${eventsWhere}`,
+      eventsParams
+    );
 
     // Buy button clicks
-    const [buyResult] = await db.query(`
-      SELECT COUNT(*) as buy_clicks
-      FROM analytics_events
-      WHERE event_type = 'buy_click'
-        AND ${dateConditionEvents}
-    `, paramsEvents);
+    const [buyResult] = await db.query(
+      `SELECT COUNT(*) as buy_clicks
+       FROM analytics_events
+       WHERE event_type = 'buy_click'
+         AND ${eventsWhere}`,
+      eventsParams
+    );
 
     // Daily stats for chart
-    const [dailyStats] = await db.query(`
-      SELECT
-        DATE(timestamp) as date,
-        COUNT(DISTINCT user_session) as visitors,
-        SUM(CASE WHEN event_type = 'ebook_download' THEN 1 ELSE 0 END) as ebook_downloads,
-        SUM(CASE WHEN event_type = 'newsletter_subscribe' THEN 1 ELSE 0 END) as newsletter_subs,
-        SUM(CASE WHEN event_type = 'buy_click' THEN 1 ELSE 0 END) as buy_clicks
-      FROM analytics_events
-      WHERE ${dateConditionEvents}
-      GROUP BY DATE(timestamp)
-      ORDER BY date ASC
-    `, paramsEvents);
+    const [dailyStats] = await db.query(
+      `SELECT
+         DATE(timestamp) as date,
+         COUNT(DISTINCT user_session) as visitors,
+         SUM(CASE WHEN event_type = 'ebook_download' THEN 1 ELSE 0 END) as ebook_downloads,
+         SUM(CASE WHEN event_type = 'newsletter_subscribe' THEN 1 ELSE 0 END) as newsletter_subs,
+         SUM(CASE WHEN event_type = 'buy_click' THEN 1 ELSE 0 END) as buy_clicks
+       FROM analytics_events
+       WHERE ${eventsWhere}
+       GROUP BY DATE(timestamp)
+       ORDER BY date ASC`,
+      eventsParams
+    );
 
     res.status(200).json({
       success: true,
