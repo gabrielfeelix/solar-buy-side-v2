@@ -17,10 +17,17 @@ dist
 dist-ssr
 *.local
 
-# Environment variables
+# Environment variables - NEVER commit these
 .env
+.env.*
 .env.local
-.env.*.local
+.env.production
+.env.development
+*.local
+secrets.*
+.my.cnf
+admin_passwords.*
+backend/.local/
 
 # IDE
 .vscode/*

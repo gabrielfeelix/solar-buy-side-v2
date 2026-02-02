@@ -1,6 +1,9 @@
 import React, { useState } from 'react'
 import { Mail, CheckCircle2 } from 'lucide-react'
 import { useContent } from '../contexts/ContentContext'
+import { trackNewsletterSubscribe } from '../utils/analytics'
+
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000'
 
 export const NewsletterSection: React.FC = () => {
   const { getSection } = useContent()
@@ -12,7 +15,28 @@ export const NewsletterSection: React.FC = () => {
     e.preventDefault()
     if (email) {
       try {
-        // Enviar para FormSubmit
+        // Salvar no banco de dados
+        const response = await fetch(`${API_URL}/api/newsletter/subscribe`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ email }),
+        })
+
+        if (!response.ok) {
+          const data = await response.json()
+          if (response.status === 409) {
+            alert('Este email já está cadastrado!')
+            return
+          }
+          throw new Error(data.message || 'Erro ao cadastrar')
+        }
+
+        // Track analytics event
+        trackNewsletterSubscribe()
+
+        // Enviar para FormSubmit (email notification)
         const formData = new FormData()
         formData.append('email', email)
         formData.append('_subject', '🔔 Novo Cadastro Newsletter - Solar Buy-Side')

@@ -3,38 +3,46 @@ import type { ReactNode } from 'react'
 
 interface AuthContextType {
   isAuthenticated: boolean
-  login: (email: string, password: string) => boolean
+  login: (email: string, password: string) => Promise<boolean>
   logout: () => void
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined)
 
-const ADMIN_CREDENTIALS = [
-  { email: 'francis_poloni@yahoo.com.br', password: 'Nerac47600@' },
-  { email: 'gab.feelix@gmail.com', password: 'gafe3622' },
-]
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000'
 
 export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   const [isAuthenticated, setIsAuthenticated] = useState<boolean>(() => {
-    return localStorage.getItem('admin-auth') === 'true'
+    return !!localStorage.getItem('admin-token')
   })
 
-  const login = (email: string, password: string): boolean => {
-    const isValid = ADMIN_CREDENTIALS.some(
-      (cred) => cred.email.toLowerCase() === email.toLowerCase() && cred.password === password
-    )
+  const login = async (email: string, password: string): Promise<boolean> => {
+    try {
+      const response = await fetch(`${API_URL}/api/auth/login`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email, password }),
+      })
 
-    if (isValid) {
-      setIsAuthenticated(true)
-      localStorage.setItem('admin-auth', 'true')
-      return true
+      const data = await response.json()
+
+      if (data.success && data.data.token) {
+        setIsAuthenticated(true)
+        localStorage.setItem('admin-token', data.data.token)
+        return true
+      }
+      return false
+    } catch (error) {
+      console.error('Login error:', error)
+      return false
     }
-    return false
   }
 
   const logout = () => {
     setIsAuthenticated(false)
-    localStorage.removeItem('admin-auth')
+    localStorage.removeItem('admin-token')
   }
 
   return (

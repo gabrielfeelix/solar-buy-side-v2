@@ -12,6 +12,7 @@ import {
   Sparkles,
 } from 'lucide-react'
 import { useContent } from '../contexts/ContentContext'
+import { trackBuyClick } from '../utils/analytics'
 
 type PricingSectionProps = {
   id?: string
@@ -202,6 +203,7 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ id }) => {
                     href={globalSettings.purchaseLink || '#oferta'}
                     target={globalSettings.purchaseLink ? '_blank' : undefined}
                     rel={globalSettings.purchaseLink ? 'noopener noreferrer' : undefined}
+                    onClick={trackBuyClick}
                     className="relative w-full group overflow-hidden bg-orange-600 hover:bg-orange-500 text-white font-black py-6 rounded-2xl shadow-xl shadow-orange-600/30 transition-all duration-300 active:scale-[0.98] flex items-center justify-center"
                   >
                     <div className="relative z-10 flex items-center gap-3">

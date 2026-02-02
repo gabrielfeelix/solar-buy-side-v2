@@ -22,8 +22,9 @@ import {
 } from './components'
 import { antipiracySections, privacySections, termsSections } from './legal/legalContent'
 import { AdminLogin } from './components/admin/AdminLogin'
-import { AdminPanel } from './components/admin/AdminPanel'
+import { AdminTabs } from './components/admin/AdminTabs'
 import { useAuth } from './contexts/AuthContext'
+import { trackPageView, observeSection } from './utils/analytics'
 
 function App() {
   const pathname = window.location.pathname.replace(/\/$/, '') || '/'
@@ -31,7 +32,7 @@ function App() {
 
   // Admin routes
   if (pathname === '/admin') {
-    return isAuthenticated ? <AdminPanel /> : <AdminLogin />
+    return isAuthenticated ? <AdminTabs /> : <AdminLogin />
   }
 
   const legalPages = {
@@ -54,6 +55,10 @@ function App() {
     if (legalPage) {
       return
     }
+
+    // Track page view
+    trackPageView()
+
     const targets = document.querySelectorAll('section > *:not(.no-reveal)')
     targets.forEach((target) => target.classList.add('reveal'))
 
@@ -70,6 +75,33 @@ function App() {
     )
 
     targets.forEach((target) => observer.observe(target))
+
+    // Track section views
+    const cleanupFunctions: (() => void)[] = []
+    const sections = [
+      'hero',
+      'contexto',
+      'video-section',
+      'audiencia',
+      'manual-strategic',
+      'depoimentos',
+      'story-bridge',
+      'seller-code',
+      'oferta',
+      'buyer-wave',
+      'authority',
+      'oferta-final',
+      'lead-magnet',
+      'newsletter',
+      'faq',
+    ]
+
+    sections.forEach((sectionId) => {
+      const element = document.getElementById(sectionId)
+      if (element) {
+        cleanupFunctions.push(observeSection(element, sectionId))
+      }
+    })
 
     // Listener para mensagens do iframe do admin
     const handleMessage = (event: MessageEvent) => {
@@ -88,6 +120,7 @@ function App() {
     return () => {
       observer.disconnect()
       window.removeEventListener('message', handleMessage)
+      cleanupFunctions.forEach((cleanup) => cleanup())
     }
   }, [legalPage])
 

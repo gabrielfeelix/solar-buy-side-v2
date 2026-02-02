@@ -10,6 +10,9 @@ import {
   Zap,
 } from 'lucide-react'
 import { useContent } from '../contexts/ContentContext'
+import { trackEbookDownload } from '../utils/analytics'
+
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000'
 
 export const LeadMagnetSection: React.FC = () => {
   const { getSection } = useContent()
@@ -164,7 +167,24 @@ export const LeadMagnetSection: React.FC = () => {
                     onSubmit={async (e) => {
                       e.preventDefault()
                       try {
-                        // Enviar para FormSubmit
+                        // Salvar no banco de dados
+                        const response = await fetch(`${API_URL}/api/ebook/save-lead`, {
+                          method: 'POST',
+                          headers: {
+                            'Content-Type': 'application/json',
+                          },
+                          body: JSON.stringify(formData),
+                        })
+
+                        if (!response.ok) {
+                          const data = await response.json()
+                          throw new Error(data.message || 'Erro ao salvar dados')
+                        }
+
+                        // Track analytics event
+                        trackEbookDownload()
+
+                        // Enviar para FormSubmit (email notification)
                         const formDataToSend = new FormData()
                         formDataToSend.append('nome', formData.nome)
                         formDataToSend.append('sobrenome', formData.sobrenome)
