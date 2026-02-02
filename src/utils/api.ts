@@ -1,15 +1,15 @@
 /**
  * Get the API URL based on the current environment
- * - In production (solarbuyside.com.br): uses same origin
+ * - In production (solarbuyside.com.br): uses Render backend
  * - In development: uses VITE_API_URL env variable or localhost:5000
  */
 export const getApiUrl = (): string => {
-  // In production (deployed site), use the same origin
+  // In production (deployed site), use Render backend
   if (
     window.location.hostname === 'solarbuyside.com.br' ||
     window.location.hostname === 'www.solarbuyside.com.br'
   ) {
-    return window.location.origin
+    return 'https://solar-buy-side-v2.onrender.com'
   }
 
   // In development, use env variable or localhost
