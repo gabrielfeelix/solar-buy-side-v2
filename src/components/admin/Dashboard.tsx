@@ -27,6 +27,12 @@ type Metrics = {
     newsletter_subs: number
     buy_clicks: number
   }>
+  section_funnel: Array<{
+    section_name: string
+    unique_visitors: number
+    total_views: number
+    avg_time_seconds: number
+  }>
 }
 
 type PeriodFilter = 'today' | 'yesterday' | 'last7days' | 'last30days' | 'custom'
@@ -107,19 +113,38 @@ export const Dashboard: React.FC = () => {
   const exportToCSV = () => {
     if (!metrics) return
 
-    const headers = ['Data', 'Visitantes', 'Ebook', 'Newsletter', 'Compras']
-    const rows = metrics.daily_stats.map(stat => [
+    // Métricas gerais
+    const summary = [
+      'RESUMO DE ANALYTICS',
+      `Período: ${getPeriodLabel()}`,
+      '',
+      'MÉTRICAS GERAIS',
+      `Visitantes Únicos,${metrics.total_visitors}`,
+      `Tempo Médio no Site,${formatTime(metrics.avg_time_on_site)}`,
+      `Seções Vistas (média),${metrics.avg_sections_depth}`,
+      `Taxa de Conversão,${calculateConversionRate()}%`,
+      `Downloads Ebook,${metrics.ebook_downloads}`,
+      `Inscritos Newsletter,${metrics.newsletter_subs}`,
+      `Cliques Comprar,${metrics.buy_clicks}`,
+      '',
+      'FUNIL DE SEÇÕES',
+      'Seção,Visitantes Únicos,Visualizações,Tempo Médio'
+    ]
+
+    const sectionRows = metrics.section_funnel.map(s =>
+      `${getSectionDisplayName(s.section_name)},${s.unique_visitors},${s.total_views},${formatTime(s.avg_time_seconds)}`
+    )
+
+    const dailyHeaders = ['', 'ESTATÍSTICAS DIÁRIAS', 'Data,Visitantes,Ebook,Newsletter,Compras']
+    const dailyRows = metrics.daily_stats.map(stat => [
       new Date(stat.date).toLocaleDateString('pt-BR'),
       stat.visitors,
       stat.ebook_downloads,
       stat.newsletter_subs,
       stat.buy_clicks
-    ])
+    ].join(','))
 
-    const csvContent = [
-      headers.join(','),
-      ...rows.map(row => row.join(','))
-    ].join('\n')
+    const csvContent = [...summary, ...sectionRows, ...dailyHeaders, ...dailyRows].join('\n')
 
     const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' })
     const link = document.createElement('a')
@@ -131,22 +156,40 @@ export const Dashboard: React.FC = () => {
   const exportToExcel = () => {
     if (!metrics) return
 
-    // Simples export usando CSV com extensão .xls
-    const headers = ['Data', 'Visitantes', 'Ebook', 'Newsletter', 'Compras']
-    const rows = metrics.daily_stats.map(stat => [
+    // Criar conteúdo estruturado para Excel
+    const summary = [
+      'RESUMO DE ANALYTICS',
+      `Período:\t${getPeriodLabel()}`,
+      '',
+      'MÉTRICAS GERAIS',
+      `Visitantes Únicos\t${metrics.total_visitors}`,
+      `Tempo Médio no Site\t${formatTime(metrics.avg_time_on_site)}`,
+      `Seções Vistas (média)\t${metrics.avg_sections_depth}`,
+      `Taxa de Conversão\t${calculateConversionRate()}%`,
+      `Downloads Ebook\t${metrics.ebook_downloads}`,
+      `Inscritos Newsletter\t${metrics.newsletter_subs}`,
+      `Cliques Comprar\t${metrics.buy_clicks}`,
+      '',
+      'FUNIL DE SEÇÕES',
+      'Seção\tVisitantes Únicos\tVisualizações\tTempo Médio'
+    ]
+
+    const sectionRows = metrics.section_funnel.map(s =>
+      `${getSectionDisplayName(s.section_name)}\t${s.unique_visitors}\t${s.total_views}\t${formatTime(s.avg_time_seconds)}`
+    )
+
+    const dailyHeaders = ['', 'ESTATÍSTICAS DIÁRIAS', 'Data\tVisitantes\tEbook\tNewsletter\tCompras']
+    const dailyRows = metrics.daily_stats.map(stat => [
       new Date(stat.date).toLocaleDateString('pt-BR'),
       stat.visitors,
       stat.ebook_downloads,
       stat.newsletter_subs,
       stat.buy_clicks
-    ])
+    ].join('\t'))
 
-    const csvContent = [
-      headers.join('\t'),
-      ...rows.map(row => row.join('\t'))
-    ].join('\n')
+    const excelContent = [...summary, ...sectionRows, ...dailyHeaders, ...dailyRows].join('\n')
 
-    const blob = new Blob([csvContent], { type: 'application/vnd.ms-excel' })
+    const blob = new Blob([excelContent], { type: 'application/vnd.ms-excel' })
     const link = document.createElement('a')
     link.href = URL.createObjectURL(blob)
     link.download = `analytics_${period}_${new Date().toISOString().split('T')[0]}.xls`
@@ -154,7 +197,20 @@ export const Dashboard: React.FC = () => {
   }
 
   const exportToPDF = () => {
-    alert('Exportação PDF será implementada em breve! Por enquanto, use Ctrl+P ou Cmd+P para salvar como PDF.')
+    window.print()
+  }
+
+  const getSectionDisplayName = (sectionName: string) => {
+    const names: { [key: string]: string } = {
+      hero: 'Início (Hero)',
+      benefits: 'Benefícios',
+      solution: 'Solução',
+      results: 'Resultados',
+      pricing: 'Preços',
+      faq: 'FAQ',
+      cta: 'CTA Final'
+    }
+    return names[sectionName] || sectionName
   }
 
   const getPeriodLabel = () => {
@@ -190,42 +246,49 @@ export const Dashboard: React.FC = () => {
       value: metrics.total_visitors,
       icon: <Users className="text-blue-500" size={24} />,
       subtitle: getPeriodLabel(),
+      helpText: 'Total de sessões únicas no período selecionado',
     },
     {
       title: 'Tempo Médio',
       value: formatTime(metrics.avg_time_on_site),
       icon: <Clock className="text-green-500" size={24} />,
       subtitle: 'No site',
+      helpText: 'Tempo médio que os visitantes ficam navegando no site',
     },
     {
       title: 'Seções Vistas',
       value: metrics.avg_sections_depth.toFixed(1),
       icon: <Eye className="text-purple-500" size={24} />,
       subtitle: 'Média por visita',
+      helpText: 'Número médio de seções visualizadas por sessão',
     },
     {
       title: 'Taxa de Conversão',
       value: `${calculateConversionRate()}%`,
       icon: <Percent className="text-pink-500" size={24} />,
       subtitle: 'Visitantes → Leads',
+      helpText: 'Percentual de visitantes que se tornaram leads (ebook ou newsletter)',
     },
     {
       title: 'Downloads Ebook',
       value: metrics.ebook_downloads,
       icon: <Download className="text-orange-500" size={24} />,
       subtitle: getPeriodLabel(),
+      helpText: 'Total de downloads do ebook no período',
     },
     {
       title: 'Inscritos Newsletter',
       value: metrics.newsletter_subs,
       icon: <Mail className="text-cyan-500" size={24} />,
       subtitle: getPeriodLabel(),
+      helpText: 'Total de inscrições na newsletter no período',
     },
     {
       title: 'Cliques Comprar',
       value: metrics.buy_clicks,
       icon: <ShoppingCart className="text-green-600" size={24} />,
       subtitle: getPeriodLabel(),
+      helpText: 'Total de cliques no botão de compra no período',
     },
   ]
 
@@ -272,7 +335,7 @@ export const Dashboard: React.FC = () => {
           )}
 
           {/* Botões de Exportação */}
-          <div className="flex items-center gap-2 border-l border-slate-300 pl-3">
+          <div className="flex items-center gap-2 border-l border-slate-300 pl-3 no-print">
             <button
               onClick={exportToCSV}
               className="flex items-center gap-2 px-4 py-2 bg-green-600 hover:bg-green-700 text-white rounded-lg transition-colors font-medium"
@@ -314,9 +377,55 @@ export const Dashboard: React.FC = () => {
             </div>
             <h3 className="text-slate-600 text-sm font-medium mb-1">{card.title}</h3>
             <p className="text-3xl font-bold text-slate-800 mb-1">{card.value}</p>
-            <p className="text-slate-500 text-xs">{card.subtitle}</p>
+            <p className="text-slate-500 text-xs mb-2">{card.subtitle}</p>
+            <p className="text-slate-400 text-xs italic">{card.helpText}</p>
           </div>
         ))}
+      </div>
+
+      {/* Section Funnel */}
+      <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-6">
+        <h3 className="text-lg font-bold text-slate-800 mb-2">Funil de Conversão por Seção</h3>
+        <p className="text-slate-600 text-sm mb-4">Acompanhe quantos visitantes chegam em cada seção do site</p>
+        <div className="space-y-3">
+          {metrics.section_funnel.map((section, index) => {
+            const percentage = metrics.total_visitors > 0
+              ? ((section.unique_visitors / metrics.total_visitors) * 100).toFixed(1)
+              : '0'
+            return (
+              <div key={section.section_name} className="relative">
+                <div className="flex items-center justify-between mb-1">
+                  <div className="flex items-center gap-2">
+                    <span className="text-sm font-medium text-slate-700 w-8">{index + 1}.</span>
+                    <span className="text-sm font-semibold text-slate-800">
+                      {getSectionDisplayName(section.section_name)}
+                    </span>
+                  </div>
+                  <div className="flex items-center gap-4">
+                    <span className="text-sm text-slate-600">
+                      <strong>{section.unique_visitors}</strong> visitantes
+                    </span>
+                    <span className="text-sm text-slate-600">
+                      <strong>{section.total_views}</strong> views
+                    </span>
+                    <span className="text-sm text-slate-600">
+                      Tempo: <strong>{formatTime(section.avg_time_seconds)}</strong>
+                    </span>
+                    <span className="text-sm font-bold text-blue-600">
+                      {percentage}%
+                    </span>
+                  </div>
+                </div>
+                <div className="w-full bg-slate-100 rounded-full h-2">
+                  <div
+                    className="bg-gradient-to-r from-blue-500 to-blue-600 h-2 rounded-full transition-all"
+                    style={{ width: `${percentage}%` }}
+                  />
+                </div>
+              </div>
+            )
+          })}
+        </div>
       </div>
 
       {/* Simple Daily Stats Table */}
@@ -349,6 +458,31 @@ export const Dashboard: React.FC = () => {
           </table>
         </div>
       </div>
+
+      {/* Print styles for PDF export */}
+      <style>{`
+        @media print {
+          body * {
+            visibility: hidden;
+          }
+          .space-y-8, .space-y-8 * {
+            visibility: visible;
+          }
+          .space-y-8 {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+          }
+          button, .no-print {
+            display: none !important;
+          }
+          .bg-white {
+            box-shadow: none !important;
+            border: 1px solid #e2e8f0 !important;
+          }
+        }
+      `}</style>
     </div>
   )
 }
