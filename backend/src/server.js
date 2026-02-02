@@ -11,6 +11,7 @@ const ebookRoutes = require('./routes/ebook');
 const contentRoutes = require('./routes/content');
 const analyticsRoutes = require('./routes/analyticsRoutes');
 const adminRoutes = require('./routes/adminRoutes');
+const usersRoutes = require('./routes/usersRoutes');
 
 // Create Express app
 const app = express();
@@ -89,6 +90,7 @@ app.use('/api/ebook', publicLimiter, ebookRoutes);
 app.use('/api/content', contentRoutes);
 app.use('/api/analytics', globalLimiter, analyticsRoutes);
 app.use('/api/admin', authLimiter, adminRoutes);
+app.use('/api/users', authLimiter, usersRoutes);
 
 // 404 handler
 app.use((req, res) => {

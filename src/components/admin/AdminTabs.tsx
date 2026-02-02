@@ -1,11 +1,12 @@
 import React, { useState } from 'react'
-import { LogOut, Home, BarChart3, Edit3, Users } from 'lucide-react'
+import { LogOut, Home, BarChart3, Edit3, Users as UsersIcon, UserCog } from 'lucide-react'
 import { useAuth } from '../../contexts/AuthContext'
 import { Dashboard } from './Dashboard'
 import { Leads } from './Leads'
+import { Users } from './Users'
 import { AdminPanel } from './AdminPanel'
 
-type Tab = 'dashboard' | 'editor' | 'leads'
+type Tab = 'dashboard' | 'editor' | 'leads' | 'users'
 
 export const AdminTabs: React.FC = () => {
   const [activeTab, setActiveTab] = useState<Tab>('dashboard')
@@ -75,9 +76,24 @@ export const AdminTabs: React.FC = () => {
                   : 'text-slate-600 hover:text-slate-800'
               }`}
             >
-              <Users size={18} />
+              <UsersIcon size={18} />
               <span>Leads</span>
               {activeTab === 'leads' && (
+                <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-blue-600" />
+              )}
+            </button>
+
+            <button
+              onClick={() => setActiveTab('users')}
+              className={`flex items-center gap-2 px-4 py-3 font-medium transition-colors relative ${
+                activeTab === 'users'
+                  ? 'text-blue-600'
+                  : 'text-slate-600 hover:text-slate-800'
+              }`}
+            >
+              <UserCog size={18} />
+              <span>Usuários</span>
+              {activeTab === 'users' && (
                 <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-blue-600" />
               )}
             </button>
@@ -89,6 +105,7 @@ export const AdminTabs: React.FC = () => {
       <div className="max-w-7xl mx-auto p-6">
         {activeTab === 'dashboard' && <Dashboard />}
         {activeTab === 'leads' && <Leads />}
+        {activeTab === 'users' && <Users />}
       </div>
     </div>
   )
