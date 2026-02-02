@@ -169,6 +169,39 @@ exports.getMetrics = async (req, res) => {
       eventsParams
     );
 
+    // Section funnel stats
+    const [sectionStats] = await db.query(
+      `SELECT
+         section_name,
+         COUNT(DISTINCT user_session) as unique_visitors,
+         COUNT(*) as total_views,
+         AVG(TIMESTAMPDIFF(SECOND,
+           (SELECT MIN(e2.timestamp) FROM analytics_events e2
+            WHERE e2.user_session = analytics_events.user_session
+            AND e2.section_name = analytics_events.section_name),
+           (SELECT MAX(e2.timestamp) FROM analytics_events e2
+            WHERE e2.user_session = analytics_events.user_session
+            AND e2.section_name = analytics_events.section_name)
+         )) as avg_time_seconds
+       FROM analytics_events
+       WHERE event_type = 'section_view'
+         AND section_name IS NOT NULL
+         AND ${eventsWhere}
+       GROUP BY section_name
+       ORDER BY
+         CASE section_name
+           WHEN 'hero' THEN 1
+           WHEN 'benefits' THEN 2
+           WHEN 'solution' THEN 3
+           WHEN 'results' THEN 4
+           WHEN 'pricing' THEN 5
+           WHEN 'faq' THEN 6
+           WHEN 'cta' THEN 7
+           ELSE 8
+         END`,
+      eventsParams
+    );
+
     res.status(200).json({
       success: true,
       data: {
@@ -178,7 +211,13 @@ exports.getMetrics = async (req, res) => {
         ebook_downloads: ebookResult[0].ebook_downloads || 0,
         newsletter_subs: newsletterResult[0].newsletter_subs || 0,
         buy_clicks: buyResult[0].buy_clicks || 0,
-        daily_stats: dailyStats
+        daily_stats: dailyStats,
+        section_funnel: sectionStats.map(s => ({
+          section_name: s.section_name,
+          unique_visitors: s.unique_visitors || 0,
+          total_views: s.total_views || 0,
+          avg_time_seconds: Math.round(s.avg_time_seconds || 0)
+        }))
       }
     });
   } catch (error) {
