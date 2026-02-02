@@ -105,7 +105,7 @@ export const AdminTabs: React.FC = () => {
 
       {/* Content */}
       {activeTab === 'editor' ? (
-        <div className="bg-[#020617]">
+        <div className="max-w-7xl mx-auto p-6">
           <AdminPanel hideHeader={true} />
         </div>
       ) : (
