@@ -167,7 +167,7 @@ export const LeadMagnetSection: React.FC = () => {
                       e.preventDefault()
                       try {
                         // Salvar no banco de dados
-                        const response = await fetch(`${API_URL}/api/ebook/save-lead`, {
+                        const response = await fetch(`${API_URL}/api/ebook/lead`, {
                           method: 'POST',
                           headers: {
                             'Content-Type': 'application/json',
