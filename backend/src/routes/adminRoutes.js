@@ -3,10 +3,10 @@ const router = express.Router();
 const analyticsController = require('../controllers/analyticsController');
 const ebookController = require('../controllers/ebookController');
 const newsletterController = require('../controllers/newsletterController');
-const verifyToken = require('../middleware/verifyToken');
+const authMiddleware = require('../middlewares/auth');
 
 // All admin routes require JWT authentication
-router.use(verifyToken);
+router.use(authMiddleware);
 
 // Analytics metrics
 router.get('/metrics', analyticsController.getMetrics);
