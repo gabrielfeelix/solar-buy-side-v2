@@ -132,7 +132,7 @@ export const ManualStrategicSection: React.FC = () => {
               <Card
                 Icon={Users}
                 title={section?.texts.sellCard2Title || 'Postura consultiva'}
-                desc={section?.texts.sellCard2Desc || 'Pare de competir por preço. Ajude o cliente a decidir bem e construa uma relação de parceria e confiança.'}
+                desc={section?.texts.sellCard2Desc || 'Compreende o que realmente pesa na decisão, não apenas suas objeções e motivações.'}
               />
               <Card
                 Icon={TrendingUp}
@@ -156,8 +156,8 @@ export const ManualStrategicSection: React.FC = () => {
               />
               <Card
                 Icon={BarChart3}
-                title={section?.texts.focusCard2Title || 'Cenário financeiro sólido'}
-                desc={section?.texts.focusCard2Desc || 'Domine a venda. Conquiste autoridade e crie conexões reais para fechar mais negócios.'}
+                title={section?.texts.focusCard2Title || 'Domine a Venda'}
+                desc={section?.texts.focusCard2Desc || 'Conquiste autoridade e crie conexões reais para fechar mais negócios.'}
               />
               <Card
                 Icon={MinusCircle}
