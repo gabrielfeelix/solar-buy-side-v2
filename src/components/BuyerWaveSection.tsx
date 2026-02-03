@@ -35,7 +35,7 @@ const testimonials = [
   },
   {
     name: 'Lucineide',
-    role: 'Particular',
+    role: 'Comprador',
     location: 'Recife, PE',
     avatar: '/assets/Lucineide 1.png',
     objectPosition: '55% 20%',
@@ -47,7 +47,7 @@ const testimonials = [
   },
   {
     name: 'Carlos',
-    role: 'Particular',
+    role: 'Comprador',
     location: 'Belo Horizonte, MG',
     avatar: '/assets/Carlos.png',
     reviewTitle: 'O Manual Buy-Side abriu meus olhos para os riscos',
@@ -143,8 +143,8 @@ export const BuyerWaveSection: React.FC = () => {
         <div className="max-w-6xl mx-auto">
           <div className="flex justify-between items-end mb-10">
             <div>
-              <h2 className="text-3xl md:text-5xl font-bold tracking-tight mb-2">{section?.texts.testimonialsTitle || 'A voz de quem aprendeu.'}</h2>
-              <p className="text-lg text-[#86868B]">{section?.texts.testimonialsSubtitle || 'Relatos reais de compradores preparados.'}</p>
+              <h2 className="text-3xl md:text-5xl font-bold tracking-tight mb-2">{section?.texts.testimonialsTitle || 'As vozes de quem aprendeu'}</h2>
+              <p className="text-lg text-[#86868B]">{section?.texts.testimonialsSubtitle || 'Relatos de compradores informados e preparados'}</p>
             </div>
             <div className="flex gap-3">
               <button
@@ -188,12 +188,12 @@ export const BuyerWaveSection: React.FC = () => {
                   {testimonials[activeTestimonial].reviewTitle}
                 </h4>
 
-                <p className="text-base md:text-xl text-[#424245] leading-relaxed font-light">
+                <p className="text-base md:text-xl text-[#424245] leading-relaxed font-light text-justify">
                   {testimonials[activeTestimonial].quote}
                 </p>
 
                 <div className="pt-4 md:pt-6 border-t border-[#F5F5F7]">
-                  <p className="text-lg md:text-2xl font-bold tracking-tight text-[#1D1D1F] leading-snug">
+                  <p className="text-lg md:text-2xl font-bold tracking-tight text-[#1D1D1F] leading-snug text-justify">
                     "{testimonials[activeTestimonial].highlight}"
                   </p>
                 </div>
