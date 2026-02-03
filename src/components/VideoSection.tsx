@@ -1,5 +1,5 @@
 ﻿import React, { useEffect, useState } from 'react'
-import { AlertCircle, Map as MapIcon, Monitor, Play, Search, ShieldAlert } from 'lucide-react'
+import { AlertCircle, ArrowRight, Map as MapIcon, Monitor, Play, Search, ShieldAlert } from 'lucide-react'
 import { useContent } from '../contexts/ContentContext'
 
 export const VideoSection: React.FC = () => {
@@ -165,7 +165,7 @@ export const VideoSection: React.FC = () => {
                     padding-top: 56.25%;
                   }
                 `}</style>
-                <WistiaPlayer media-id="u0jf5yyoda" aspect="1.7777777777777777" autoPlay="true" preload="metadata" poster-image="/assets/manualdecompra1.png"></WistiaPlayer>
+                <WistiaPlayer media-id="u0jf5yyoda" aspect="1.7777777777777777" autoPlay="true" preload="none" silentAutoPlay="false"></WistiaPlayer>
               </div>
             )}
           </div>
@@ -174,9 +174,10 @@ export const VideoSection: React.FC = () => {
         <div className="flex justify-center mt-12">
           <a
             href="#oferta"
-            className="inline-flex items-center justify-center px-8 py-4 bg-[#F97316] hover:bg-[#EA580C] text-white text-lg font-bold rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105"
+            className="inline-flex items-center justify-center gap-3 px-10 py-5 bg-[#F97316] hover:bg-[#EA580C] text-white text-xl font-bold rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105"
           >
             Quero sair na frente e vender mais
+            <ArrowRight className="w-6 h-6" />
           </a>
         </div>
       </div>
