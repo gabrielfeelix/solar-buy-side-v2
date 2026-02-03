@@ -434,8 +434,13 @@ export const Dashboard: React.FC = () => {
         </div>
         <div className="space-y-3 mt-4">
           {getSortedSections().map((section, index) => {
-            const percentage = metrics.total_visitors > 0
-              ? ((section.unique_visitors / metrics.total_visitors) * 100).toFixed(1)
+            // Calcular porcentagem relativa entre as seções (soma de todas = 100%)
+            const totalSectionVisitors = metrics.section_funnel.reduce(
+              (sum, s) => sum + s.unique_visitors,
+              0
+            )
+            const percentage = totalSectionVisitors > 0
+              ? ((section.unique_visitors / totalSectionVisitors) * 100).toFixed(1)
               : '0'
             return (
               <div key={section.section_name} className="relative">

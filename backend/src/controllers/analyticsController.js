@@ -34,23 +34,24 @@ exports.trackEvent = async (req, res) => {
     const ipAddress = req.ip || req.connection.remoteAddress;
     const userAgent = req.headers['user-agent'];
 
-    // Upsert analytics_sessions
+    // Upsert analytics_sessions (usando timezone de Brasília - BRT/GMT-3)
     // Only increment pages_visited for page_view events
+    const brazilTime = `CONVERT_TZ(NOW(), '+00:00', '-03:00')`;
     if (event_type === 'page_view') {
       await db.query(`
         INSERT INTO analytics_sessions (session_id, first_seen, last_seen, pages_visited, ip_address, user_agent)
-        VALUES (?, NOW(), NOW(), 1, ?, ?)
+        VALUES (?, ${brazilTime}, ${brazilTime}, 1, ?, ?)
         ON DUPLICATE KEY UPDATE
-          last_seen = NOW(),
+          last_seen = ${brazilTime},
           pages_visited = pages_visited + 1
       `, [session_id, ipAddress, userAgent]);
     } else {
       // For other events, just update last_seen without incrementing pages_visited
       await db.query(`
         INSERT INTO analytics_sessions (session_id, first_seen, last_seen, pages_visited, ip_address, user_agent)
-        VALUES (?, NOW(), NOW(), 0, ?, ?)
+        VALUES (?, ${brazilTime}, ${brazilTime}, 0, ?, ?)
         ON DUPLICATE KEY UPDATE
-          last_seen = NOW()
+          last_seen = ${brazilTime}
       `, [session_id, ipAddress, userAgent]);
     }
 
@@ -91,8 +92,9 @@ exports.getMetrics = async (req, res) => {
       sessionParams = [start_date, end_date];
       eventsParams = [start_date, end_date];
     } else {
-      sessionWhere = 'first_seen >= DATE_SUB(NOW(), INTERVAL 30 DAY)';
-      eventsWhere = 'timestamp >= DATE_SUB(NOW(), INTERVAL 30 DAY)';
+      // Últimos 30 dias usando timezone de Brasília
+      sessionWhere = 'first_seen >= DATE_SUB(CONVERT_TZ(NOW(), \'+00:00\', \'-03:00\'), INTERVAL 30 DAY)';
+      eventsWhere = 'timestamp >= DATE_SUB(CONVERT_TZ(NOW(), \'+00:00\', \'-03:00\'), INTERVAL 30 DAY)';
       sessionParams = [];
       eventsParams = [];
     }
@@ -154,17 +156,17 @@ exports.getMetrics = async (req, res) => {
       eventsParams
     );
 
-    // Daily stats for chart
+    // Daily stats for chart (usando timezone de Brasília - BRT/GMT-3)
     const [dailyStats] = await db.query(
       `SELECT
-         DATE(timestamp) as date,
+         DATE(CONVERT_TZ(timestamp, '+00:00', '-03:00')) as date,
          COUNT(DISTINCT user_session) as visitors,
          SUM(CASE WHEN event_type = 'ebook_download' THEN 1 ELSE 0 END) as ebook_downloads,
          SUM(CASE WHEN event_type = 'newsletter_subscribe' THEN 1 ELSE 0 END) as newsletter_subs,
          SUM(CASE WHEN event_type = 'buy_click' THEN 1 ELSE 0 END) as buy_clicks
        FROM analytics_events
        WHERE ${eventsWhere}
-       GROUP BY DATE(timestamp)
+       GROUP BY DATE(CONVERT_TZ(timestamp, '+00:00', '-03:00'))
        ORDER BY date ASC`,
       eventsParams
     );
