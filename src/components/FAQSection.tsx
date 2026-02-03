@@ -111,8 +111,8 @@ export const FAQSection: React.FC = () => {
                     }`}
                   />
                 </button>
-                <div className={`overflow-hidden transition-all duration-300 ${openFaq === index ? 'max-h-[2400px]' : 'max-h-0'}`}>
-                  <div className="p-6 pt-0 text-[#6e6e73] leading-relaxed whitespace-pre-line">
+                <div className={`overflow-hidden transition-all duration-300 ${openFaq === index ? 'max-h-[5000px]' : 'max-h-0'}`}>
+                  <div className="p-6 pt-0 text-[#6e6e73] leading-relaxed whitespace-pre-line text-justify max-h-[600px] overflow-y-auto">
                     {item.answer}
                   </div>
                 </div>
