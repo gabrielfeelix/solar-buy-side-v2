@@ -172,7 +172,15 @@ exports.getMetrics = async (req, res) => {
       eventsParams
     );
 
-    // Section funnel stats
+    // Section funnel stats - usando subquery para calcular tempo corretamente
+    const timeCondition = eventsParams.length > 0
+      ? `AND DATE(e2.timestamp) >= ? AND DATE(e2.timestamp) <= ?`
+      : `AND e2.timestamp >= DATE_SUB(CONVERT_TZ(NOW(), '+00:00', '-03:00'), INTERVAL 30 DAY)`;
+
+    const sectionStatsParams = eventsParams.length > 0
+      ? [...eventsParams, ...eventsParams, ...eventsParams] // 3x porque temos 3 WHERE com filtro de data
+      : [];
+
     const [sectionStats] = await db.query(
       `SELECT
          section_name,
@@ -181,10 +189,12 @@ exports.getMetrics = async (req, res) => {
          AVG(TIMESTAMPDIFF(SECOND,
            (SELECT MIN(e2.timestamp) FROM analytics_events e2
             WHERE e2.user_session = analytics_events.user_session
-            AND e2.section_name = analytics_events.section_name),
+            AND e2.section_name = analytics_events.section_name
+            ${timeCondition}),
            (SELECT MAX(e2.timestamp) FROM analytics_events e2
             WHERE e2.user_session = analytics_events.user_session
-            AND e2.section_name = analytics_events.section_name)
+            AND e2.section_name = analytics_events.section_name
+            ${timeCondition})
          )) as avg_time_seconds
        FROM analytics_events
        WHERE event_type = 'section_view'
@@ -210,7 +220,7 @@ exports.getMetrics = async (req, res) => {
            WHEN 'faq' THEN 15
            ELSE 16
          END`,
-      eventsParams
+      sectionStatsParams
     );
 
     res.status(200).json({
