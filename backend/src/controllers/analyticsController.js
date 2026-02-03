@@ -87,8 +87,9 @@ exports.getMetrics = async (req, res) => {
     let sessionWhere, eventsWhere, sessionParams, eventsParams;
 
     if (start_date && end_date) {
-      sessionWhere = 'first_seen >= ? AND first_seen <= DATE_ADD(?, INTERVAL 1 DAY)';
-      eventsWhere = 'timestamp >= ? AND timestamp <= DATE_ADD(?, INTERVAL 1 DAY)';
+      // Comparar apenas as datas (ignorando hora) já que os timestamps estão em BRT
+      sessionWhere = 'DATE(first_seen) >= ? AND DATE(first_seen) <= ?';
+      eventsWhere = 'DATE(timestamp) >= ? AND DATE(timestamp) <= ?';
       sessionParams = [start_date, end_date];
       eventsParams = [start_date, end_date];
     } else {

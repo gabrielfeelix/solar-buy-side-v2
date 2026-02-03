@@ -51,6 +51,18 @@ export const Dashboard: React.FC = () => {
     fetchMetrics()
   }, [period, customStart, customEnd])
 
+  // Função para obter data no timezone de Brasília (GMT-3)
+  const getBrazilDate = (daysOffset = 0) => {
+    const now = new Date()
+    const brazilTime = new Date(now.getTime() + daysOffset * 86400000)
+    // Converter para timezone de Brasília (GMT-3)
+    const brazilOffset = -3 * 60 // -3 horas em minutos
+    const localOffset = brazilTime.getTimezoneOffset() // offset local em minutos
+    const diff = localOffset - brazilOffset
+    brazilTime.setMinutes(brazilTime.getMinutes() + diff)
+    return brazilTime.toISOString().split('T')[0]
+  }
+
   const fetchMetrics = async () => {
     try {
       setLoading(true)
@@ -60,16 +72,16 @@ export const Dashboard: React.FC = () => {
       const params = new URLSearchParams()
 
       if (period === 'today') {
-        const today = new Date().toISOString().split('T')[0]
+        const today = getBrazilDate()
         params.append('start_date', today)
         params.append('end_date', today)
       } else if (period === 'yesterday') {
-        const yesterday = new Date(Date.now() - 86400000).toISOString().split('T')[0]
+        const yesterday = getBrazilDate(-1)
         params.append('start_date', yesterday)
         params.append('end_date', yesterday)
       } else if (period === 'last7days') {
-        const start = new Date(Date.now() - 7 * 86400000).toISOString().split('T')[0]
-        const end = new Date().toISOString().split('T')[0]
+        const start = getBrazilDate(-7)
+        const end = getBrazilDate()
         params.append('start_date', start)
         params.append('end_date', end)
       } else if (period === 'custom' && customStart && customEnd) {
