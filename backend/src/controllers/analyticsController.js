@@ -172,37 +172,41 @@ exports.getMetrics = async (req, res) => {
       eventsParams
     );
 
-    // Section funnel stats - usando subquery para calcular tempo corretamente
-    const timeCondition = eventsParams.length > 0
-      ? `AND DATE(e2.timestamp) >= ? AND DATE(e2.timestamp) <= ?`
-      : `AND e2.timestamp >= DATE_SUB(CONVERT_TZ(NOW(), '+00:00', '-03:00'), INTERVAL 30 DAY)`;
-
-    const sectionStatsParams = eventsParams.length > 0
-      ? [...eventsParams, ...eventsParams, ...eventsParams] // 3x porque temos 3 WHERE com filtro de data
-      : [];
-
+    // Section funnel stats - calcular tempo como diferença entre seção atual e próxima seção
+    // Usar uma subquery para obter o próximo evento e calcular a diferença
     const [sectionStats] = await db.query(
       `SELECT
-         section_name,
-         COUNT(DISTINCT user_session) as unique_visitors,
-         COUNT(*) as total_views,
-         AVG(TIMESTAMPDIFF(SECOND,
-           (SELECT MIN(e2.timestamp) FROM analytics_events e2
-            WHERE e2.user_session = analytics_events.user_session
-            AND e2.section_name = analytics_events.section_name
-            ${timeCondition}),
-           (SELECT MAX(e2.timestamp) FROM analytics_events e2
-            WHERE e2.user_session = analytics_events.user_session
-            AND e2.section_name = analytics_events.section_name
-            ${timeCondition})
-         )) as avg_time_seconds
-       FROM analytics_events
-       WHERE event_type = 'section_view'
-         AND section_name IS NOT NULL
-         AND ${eventsWhere}
-       GROUP BY section_name
+         e1.section_name,
+         COUNT(DISTINCT e1.user_session) as unique_visitors,
+         COUNT(e1.id) as total_views,
+         AVG(
+           CASE
+             WHEN e2.timestamp IS NOT NULL
+             THEN TIMESTAMPDIFF(SECOND, e1.timestamp, e2.timestamp)
+             ELSE NULL
+           END
+         ) as avg_time_seconds
+       FROM analytics_events e1
+       LEFT JOIN analytics_events e2 ON (
+         e2.user_session = e1.user_session
+         AND e2.event_type = 'section_view'
+         AND e2.timestamp > e1.timestamp
+         AND e2.id = (
+           SELECT MIN(e3.id)
+           FROM analytics_events e3
+           WHERE e3.user_session = e1.user_session
+             AND e3.event_type = 'section_view'
+             AND e3.timestamp > e1.timestamp
+             AND ${eventsWhere.replace(/timestamp/g, 'e3.timestamp')}
+         )
+         AND ${eventsWhere.replace(/timestamp/g, 'e2.timestamp')}
+       )
+       WHERE e1.event_type = 'section_view'
+         AND e1.section_name IS NOT NULL
+         AND ${eventsWhere.replace(/timestamp/g, 'e1.timestamp')}
+       GROUP BY e1.section_name
        ORDER BY
-         CASE section_name
+         CASE e1.section_name
            WHEN 'hero' THEN 1
            WHEN 'contexto' THEN 2
            WHEN 'video-section' THEN 3
@@ -220,7 +224,7 @@ exports.getMetrics = async (req, res) => {
            WHEN 'faq' THEN 15
            ELSE 16
          END`,
-      sectionStatsParams
+      [...eventsParams, ...eventsParams, ...eventsParams] // 3x porque temos 3 WHERE clauses
     );
 
     res.status(200).json({
