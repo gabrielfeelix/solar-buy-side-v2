@@ -64,4 +64,4 @@ backup_before_deploy_*/
 deploy-logs/
 
 # Build artifacts
-hostgator-dist/
+# hostgator-dist/ - comentado para permitir versionamento do build de produção
