@@ -27,8 +27,8 @@ export const VideoSection: React.FC = () => {
       document.body.appendChild(script)
     }
 
-    // Marca como pronto após um pequeno delay
-    setTimeout(() => setPlayerReady(true), 100)
+    // Marca como pronto após delay maior para garantir que o vídeo está carregado
+    setTimeout(() => setPlayerReady(true), 800)
   }, [showPlayer])
 
   return (
@@ -163,10 +163,28 @@ export const VideoSection: React.FC = () => {
                 <style>{`
                   wistia-player {
                     opacity: ${playerReady ? '1' : '0'} !important;
-                    transition: opacity 0.3s ease-in-out;
+                    transition: opacity 1s ease-in-out !important;
                   }
                   wistia-player::part(poster) {
                     display: none !important;
+                    opacity: 0 !important;
+                  }
+                  wistia-player::part(thumbnail) {
+                    display: none !important;
+                    opacity: 0 !important;
+                  }
+                  wistia-player[media-id="u0jf5yyoda"]::before {
+                    content: '';
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    background: black;
+                    z-index: 9999;
+                    opacity: ${playerReady ? '0' : '1'};
+                    transition: opacity 1s ease-in-out;
+                    pointer-events: none;
                   }
                 `}</style>
                 <WistiaPlayer
@@ -177,6 +195,7 @@ export const VideoSection: React.FC = () => {
                   playButton="false"
                   controlsVisibleOnLoad="true"
                   silentAutoPlay="false"
+                  posterUrl=""
                 ></WistiaPlayer>
               </div>
             )}
