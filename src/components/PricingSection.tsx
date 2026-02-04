@@ -153,25 +153,20 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ id }) => {
               </div>
             </div>
 
-            <div className="group relative p-8 bg-white/[0.03] border border-white/10 rounded-[32px] hover:bg-white/[0.06] transition-all duration-300">
-              <div className="relative flex items-start gap-6">
-                <div className="flex-shrink-0 w-14 h-14 rounded-2xl bg-orange-500/10 flex items-center justify-center text-orange-500 group-hover:scale-110 transition-all duration-500">
-                  <Target size={28} />
-                </div>
-
-                <div className="flex-1 space-y-3">
-                  <div className="inline-flex items-center px-3 py-1 rounded-full bg-orange-500/10 border border-orange-500/20 text-orange-400 text-[9px] font-black uppercase tracking-widest">
-                    {section?.texts.bonusBadge || 'BÔNUS EXCLUSIVO'}
-                  </div>
-
-                  <h4 className="text-2xl font-black text-white leading-tight">
-                    {section?.texts.bonusTitle || 'Código de Vendedor Consultivo'}
-                  </h4>
-
-                  <p className="text-base text-slate-400 leading-relaxed">
-                    {section?.texts.bonusSubtitle || 'Você vendendo decisão, não preço'}
-                  </p>
-                </div>
+            <div className="group relative p-6 bg-white/[0.03] border border-white/10 rounded-[24px] hover:bg-white/[0.06] transition-all duration-300">
+              <div className="mb-4 p-3 bg-blue-500/10 w-fit rounded-xl group-hover:scale-110 transition-transform">
+                <Target className="text-orange-500" size={28} />
+              </div>
+              <div className="space-y-1">
+                <span className="text-[10px] font-black text-slate-200/90 tracking-widest">
+                  {section?.texts.bonusBadge || 'BÔNUS EXCLUSIVO'}
+                </span>
+                <h4 className="font-bold text-lg leading-tight">
+                  {section?.texts.bonusTitle || 'Código de Vendedor Consultivo'}
+                </h4>
+                <p className="text-sm text-slate-500 leading-relaxed">
+                  {section?.texts.bonusSubtitle || 'Você vendendo decisão, não preço'}
+                </p>
               </div>
             </div>
           </div>
