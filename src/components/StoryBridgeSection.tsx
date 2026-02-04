@@ -45,7 +45,7 @@ export const StoryBridgeSection: React.FC = () => {
             <img
               src={section?.images.manualImage || '/assets/mockup manual 999.png'}
               alt="Manual de Compra Solar Buy-Side"
-              className="w-full h-auto"
+              className="w-full h-auto transform scale-[1.2]"
               style={{ maxWidth: 'none' }}
             />
           </div>
