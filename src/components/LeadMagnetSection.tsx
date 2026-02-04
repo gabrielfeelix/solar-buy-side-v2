@@ -58,6 +58,15 @@ export const LeadMagnetSection: React.FC = () => {
 
       <div className="max-w-7xl mx-auto relative z-10">
         <div className="flex flex-col lg:flex-row items-center gap-16 lg:gap-12">
+          {/* Imagem aparece primeiro no mobile, depois no desktop */}
+          <div className="flex-1 flex justify-center items-center lg:hidden">
+            <img
+              src={section?.images.ebook || '/assets/e-book-solar.jpeg'}
+              alt="E-book Solar Buy-Side"
+              className="w-[420px] max-w-full h-auto"
+            />
+          </div>
+
           <div className="flex-[1.2] space-y-8">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-orange-50 border border-orange-100 text-orange-700 text-xs font-bold uppercase tracking-widest">
               <Zap size={14} fill="currentColor" />
@@ -107,7 +116,8 @@ export const LeadMagnetSection: React.FC = () => {
             </div>
           </div>
 
-          <div className="flex-1 flex justify-center items-center">
+          {/* Imagem no desktop apenas */}
+          <div className="flex-1 justify-center items-center hidden lg:flex">
             <img
               src={section?.images.ebook || '/assets/e-book-solar.jpeg'}
               alt="E-book Solar Buy-Side"
