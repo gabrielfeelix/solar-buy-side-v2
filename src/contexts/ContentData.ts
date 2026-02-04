@@ -304,7 +304,7 @@ export const initialContent: SectionContent[] = [
     texts: {
       title: 'Fique por dentro das novidades',
       highlightWord: 'novidades',
-      subtitle: 'Cadastre seu e-mail para receber informações exclusivas, atualizações e conteúdos sobre o mercado solar.',
+      subtitle: 'Cadastre seu e-mail para receber lançamentos exclusivos, atualizações e conteúdos sobre o mercado solar.',
       placeholder: 'seu@email.com',
       ctaButton: 'Cadastrar',
       successButton: 'Cadastrado!',
