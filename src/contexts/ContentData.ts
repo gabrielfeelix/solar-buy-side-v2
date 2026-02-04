@@ -102,7 +102,7 @@ export const initialContent: SectionContent[] = [
       description2: 'Ao proporcionar uma imersão na jornada de compra sob a ótica do comprador, este manual oferece uma compreensão estratégica dos critérios, motivações e desafios enfrentados pelo lado comprador (Buy-Side).',
       description3: 'Ao dominar o conceito Buy-Side, vendedores estarão aptos a lapidar sua abordagem comercial, entregar valor real, distanciar-se da briga por preço e elevar sua credibilidade no relacionamento com os clientes.',
       ctaButton: 'QUERO ME DESTACAR NO MERCADO',
-      section2Title: 'Veja os resultados concretos que você pode alcançar ao aplicar o Manual Solar Buy-Side no seu processo de venda.',
+      section2Title: '',
       section2Subtitle: '',
       sellSideHeader: 'O que o vendedor vai dominar',
       sellCard1Title: 'Dores reais do cliente',
@@ -235,7 +235,7 @@ export const initialContent: SectionContent[] = [
     name: 'Onda do Comprador',
     texts: {
       badge: 'MANUAL DO COMPRADOR',
-      title: 'Descubra o que o manual ensina aos compradores e entenda as novas regras do jogo',
+      title: '',
       subtitle: 'Compradores estão evoluindo. Veja o que eles estarão aprendendo em breve.',
       card1Title: 'O que o comprador vai dominar?',
       card1Item1: 'Conceitos essenciais para uma compra técnica e segura',
