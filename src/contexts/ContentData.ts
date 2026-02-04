@@ -191,9 +191,9 @@ export const initialContent: SectionContent[] = [
     name: 'Oferta',
     texts: {
       badge: 'Pré-venda profissional por tempo limitado',
-      title: 'NÃO PERCA TEMPO NEM',
-      titleHighlight: 'POSIÇÃO NO MERCADO.',
-      subtitle: 'O mercado solar não perdoa quem fica para trás. Garanta o método que os grandes players usam para dominar o Buy-Side.',
+      title: '',
+      titleHighlight: '',
+      subtitle: '',
       sectionTitle: 'VEJA TUDO QUE VOCÊ RECEBE:',
       feature1Tag: 'VITALÍCIO',
       feature1Title: 'Manual Solar Buy-Side',

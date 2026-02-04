@@ -93,14 +93,27 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ id }) => {
           </div>
 
           <h2 className="text-5xl md:text-7xl font-black tracking-tighter leading-[0.95]">
-            {section?.texts.title || 'NÃO PERCA TEMPO NEM'} <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-blue-200 to-blue-500">
-              {section?.texts.titleHighlight || 'POSIÇÃO NO MERCADO.'}
-            </span>
+            {section?.texts.title && section.texts.title.trim() !== '' ? (
+              section.texts.title
+            ) : (
+              <>
+                ATENÇÃO:{' '}
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-blue-200 to-blue-500">
+                  O TEMPO ESTÁ CORRENDO
+                </span>{' '}
+                E QUEM{' '}
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-blue-200 to-blue-500">
+                  AGIR PRIMEIRO
+                </span>
+                , VENDE MAIS.
+              </>
+            )}
           </h2>
 
           <p className="text-xl text-slate-400 max-w-2xl mx-auto font-medium">
-            {section?.texts.subtitle || 'O mercado solar não perdoa quem fica para trás. Garanta o método que os grandes players usam para dominar o Buy-Side.'}
+            {section?.texts.subtitle && section.texts.subtitle.trim() !== ''
+              ? section.texts.subtitle
+              : 'Em um mercado competitivo, sua vantagem é o conhecimento.'}
           </p>
         </div>
 
