@@ -12,7 +12,7 @@ import { useContent } from '../contexts/ContentContext'
 const testimonials = [
   {
     name: 'Rogério',
-    role: 'Comprador',
+    role: 'Particular',
     location: 'Campinas, SP',
     avatar: '/assets/Rogerio.png',
     reviewTitle: 'O manual valeu cada página.',
@@ -35,7 +35,7 @@ const testimonials = [
   },
   {
     name: 'Lucineide',
-    role: 'Comprador',
+    role: 'Particular',
     location: 'Recife, PE',
     avatar: '/assets/Lucineide 1.png',
     objectPosition: '55% 20%',
@@ -47,7 +47,7 @@ const testimonials = [
   },
   {
     name: 'Carlos',
-    role: 'Comprador',
+    role: 'Particular',
     location: 'Belo Horizonte, MG',
     avatar: '/assets/Carlos.png',
     reviewTitle: 'O Manual Buy-Side abriu meus olhos para os riscos',
