@@ -26,6 +26,7 @@ type Countdown = {
 export const PricingSection: React.FC<PricingSectionProps> = ({ id }) => {
   const { getSection, globalSettings } = useContent()
   const section = getSection('pricing')
+  const isFirstSection = id === 'oferta'
 
   const features = [
     {
@@ -95,6 +96,13 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ id }) => {
           <h2 className="text-5xl md:text-7xl font-black tracking-tighter leading-[0.95]">
             {section?.texts.title && section.texts.title.trim() !== '' ? (
               section.texts.title
+            ) : isFirstSection ? (
+              <>
+                NÃO PERCA TEMPO NEM <br />
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-blue-200 to-blue-500">
+                  POSIÇÃO NO MERCADO.
+                </span>
+              </>
             ) : (
               <>
                 ATENÇÃO: O TEMPO ESTÁ{' '}
@@ -112,7 +120,9 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ id }) => {
           <p className="text-xl text-slate-400 max-w-2xl mx-auto font-medium">
             {section?.texts.subtitle && section.texts.subtitle.trim() !== ''
               ? section.texts.subtitle
-              : 'Em um mercado competitivo, sua vantagem é o conhecimento.'}
+              : isFirstSection
+                ? 'O mercado solar não perdoa quem fica para trás. Garanta o método que os grandes players usam para dominar o Buy-Side.'
+                : 'Em um mercado competitivo, sua vantagem é o conhecimento.'}
           </p>
         </div>
 
