@@ -40,16 +40,17 @@ export const StoryBridgeSection: React.FC = () => {
           </p>
         </header>
 
-        <div className="grid lg:grid-cols-12 gap-28 items-center">
-          <div className="lg:col-span-5 flex justify-center lg:justify-end">
+        <div className="grid lg:grid-cols-12 gap-16 items-center">
+          <div className="lg:col-span-6 flex justify-center lg:justify-start">
             <img
               src={section?.images.manualImage || '/assets/mockup manual 999.png'}
               alt="Manual de Compra Solar Buy-Side"
-              className="w-full max-w-[630px] lg:max-w-[750px] h-auto"
+              className="w-full h-auto"
+              style={{ maxWidth: 'none' }}
             />
           </div>
 
-          <div className="lg:col-span-7">
+          <div className="lg:col-span-6">
             <div className="grid sm:grid-cols-2 gap-8">
               {features.map((feature) => (
                 <div key={feature.title} className="flex flex-col gap-4 p-2">
