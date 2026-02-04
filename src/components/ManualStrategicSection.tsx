@@ -109,11 +109,19 @@ export const ManualStrategicSection: React.FC = () => {
 
         <div className="mt-16 max-w-4xl">
           <h2 className="text-4xl md:text-6xl font-black text-white leading-[1.1] tracking-tighter mb-8">
-            {section?.texts.section2Title || 'Descubra o que o manual ensina aos compradores e entenda as novas regras do jogo'}
+            {section?.texts.section2Title ? (
+              section.texts.section2Title
+            ) : (
+              <>
+                Veja os <span className="text-[#F97316]">resultados concretos</span> que você pode alcançar ao aplicar o <span className="text-[#F97316]">Manual Solar Buy-Side</span> no seu processo de venda.
+              </>
+            )}
           </h2>
-          <p className="text-xl md:text-2xl text-slate-400 font-medium">
-            {section?.texts.section2Subtitle || 'Veja os resultados concretos que você pode alcançar ao aplicar o Manual Solar Buy-Side no seu processo de venda.'}
-          </p>
+          {section?.texts.section2Subtitle && (
+            <p className="text-xl md:text-2xl text-slate-400 font-medium">
+              {section.texts.section2Subtitle}
+            </p>
+          )}
         </div>
 
         <div className="mt-16 grid grid-cols-1 lg:grid-cols-2 gap-20">
