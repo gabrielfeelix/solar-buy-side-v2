@@ -97,15 +97,14 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ id }) => {
               section.texts.title
             ) : (
               <>
-                ATENÇÃO:{' '}
+                ATENÇÃO: O TEMPO ESTÁ{' '}
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-blue-200 to-blue-500">
-                  O TEMPO ESTÁ CORRENDO
+                  CORRENDO
                 </span>{' '}
-                E QUEM{' '}
+                E QUEM AGIR PRIMEIRO,{' '}
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-blue-200 to-blue-500">
-                  AGIR PRIMEIRO
+                  VENDE MAIS.
                 </span>
-                , VENDE MAIS.
               </>
             )}
           </h2>
