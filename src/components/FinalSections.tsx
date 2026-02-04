@@ -156,13 +156,12 @@ export const FinalSections: React.FC = () => {
 
           {/* Seção de Urgência */}
           <div className="bg-gradient-to-r from-danger-red/20 to-warning-orange/20 border-2 border-danger-red rounded-2xl p-8 sm:p-12">
-            <div className="flex items-center justify-center gap-3 mb-6">
-              <AlertTriangle className="w-12 h-12 text-danger-red animate-pulse" />
-              <h3 className="text-2xl sm:text-3xl font-bold text-text-primary">ATENÇÃO:</h3>
-            </div>
+            <h3 className="text-3xl sm:text-4xl font-black text-text-primary text-center mb-6 leading-tight">
+              ATENÇÃO: <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-blue-200 to-blue-500">O TEMPO ESTÁ CORRENDO</span> E QUEM <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-blue-200 to-blue-500">AGIR PRIMEIRO</span>, VENDE MAIS.
+            </h3>
 
-            <p className="text-xl text-text-primary text-center mb-8">
-              O tempo está correndo e quem agir primeiro, vende mais.
+            <p className="text-lg text-text-secondary text-center mb-8">
+              Em um mercado competitivo, sua vantagem é o conhecimento.
             </p>
 
             <div className="w-full h-px bg-gradient-to-r from-transparent via-danger-red to-transparent my-8"></div>
@@ -170,10 +169,6 @@ export const FinalSections: React.FC = () => {
             <div className="flex items-center justify-center mb-6">
               <Clock className="w-16 h-16 text-warning-orange animate-pulse" />
             </div>
-
-            <p className="text-lg text-text-primary text-center mb-6">
-              Em um mercado competitivo, sua vantagem é o conhecimento.
-            </p>
 
             <p className="text-lg font-bold text-text-primary text-center mb-4">
               NÃO ESPERE até que:
