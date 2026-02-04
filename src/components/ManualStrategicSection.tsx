@@ -143,7 +143,7 @@ export const ManualStrategicSection: React.FC = () => {
               <Card
                 Icon={Users}
                 title={section?.texts.sellCard2Title || 'Postura consultiva'}
-                desc={section?.texts.sellCard2Desc || 'Compreende o que realmente pesa na decisão, não apenas suas objeções e motivações.'}
+                desc={section?.texts.sellCard2Desc || 'Compreende o que realmente pesa na decisão, não apenas o que ele diz na reunião.'}
               />
               <Card
                 Icon={TrendingUp}

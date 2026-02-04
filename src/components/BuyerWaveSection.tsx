@@ -84,7 +84,7 @@ export const BuyerWaveSection: React.FC = () => {
           <span className="text-orange-600 font-semibold mb-3 block uppercase text-xs tracking-[0.2em]">
             {section?.texts.badge || 'Guia do Comprador'}
           </span>
-          <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-6">
+          <h2 className="text-3xl md:text-5xl font-bold tracking-tight mb-6">
             {section?.texts.title && section.texts.title.trim() !== '' ? (
               section.texts.title
             ) : (
