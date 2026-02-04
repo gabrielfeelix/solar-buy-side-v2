@@ -44,33 +44,32 @@ export const HeroSectionPotato: React.FC = () => {
 
       <div className="relative z-10 max-w-5xl mx-auto text-center px-6">
         {/* Frase Destacada no Topo */}
-        <div className="mb-12 relative group">
-          <div className="absolute -inset-2 bg-gradient-to-r from-[#F97316]/20 via-[#F97316]/40 to-[#F97316]/20 rounded-lg blur-xl opacity-70 group-hover:opacity-100 transition-opacity duration-500"></div>
-          <div className="relative">
-            <div className="inline-block">
-              <div className="flex items-center gap-3 px-6 py-3 rounded-lg bg-gradient-to-r from-[#F97316]/10 via-[#F97316]/20 to-[#F97316]/10 border border-[#F97316]/30 backdrop-blur-sm shadow-[0_0_30px_rgba(249,115,22,0.3)]">
-                <div className="flex gap-1">
-                  <span className="h-1.5 w-1.5 rounded-full bg-[#F97316] animate-pulse"></span>
-                  <span className="h-1.5 w-1.5 rounded-full bg-[#F97316] animate-pulse" style={{ animationDelay: '0.2s' }}></span>
-                  <span className="h-1.5 w-1.5 rounded-full bg-[#F97316] animate-pulse" style={{ animationDelay: '0.4s' }}></span>
-                </div>
-                <span className="text-base md:text-lg font-bold text-white tracking-wide">
-                  Venda mais sistemas solares com método
-                </span>
-                <div className="flex gap-1">
-                  <span className="h-1.5 w-1.5 rounded-full bg-[#F97316] animate-pulse" style={{ animationDelay: '0.4s' }}></span>
-                  <span className="h-1.5 w-1.5 rounded-full bg-[#F97316] animate-pulse" style={{ animationDelay: '0.2s' }}></span>
-                  <span className="h-1.5 w-1.5 rounded-full bg-[#F97316] animate-pulse"></span>
-                </div>
-              </div>
-            </div>
-          </div>
+        <div className="mb-20 animate-fade-in-down">
+          <span className="text-base md:text-lg font-semibold text-white/90 tracking-wide">
+            Venda mais sistemas solares com método
+          </span>
         </div>
 
         <div className="inline-flex items-center gap-3 mb-8 px-4 py-1.5 rounded-full bg-white/5 border border-white/10 backdrop-blur-sm">
           <span className="flex h-2 w-2 rounded-full bg-[#F97316] animate-pulse"></span>
           <span className="text-xs font-mono font-bold text-white tracking-widest uppercase">{section?.texts.badge || 'Inteligência de Mercado 2026'}</span>
         </div>
+
+        <style>{`
+          @keyframes fade-in-down {
+            0% {
+              opacity: 0;
+              transform: translateY(-10px);
+            }
+            100% {
+              opacity: 1;
+              transform: translateY(0);
+            }
+          }
+          .animate-fade-in-down {
+            animation: fade-in-down 0.8s ease-out;
+          }
+        `}</style>
 
         <h1 className="text-4xl md:text-[64px] font-bold text-white leading-[1.05] tracking-tight mb-8">
           {section?.texts.title1 || 'Transforme-se no'}<br />
