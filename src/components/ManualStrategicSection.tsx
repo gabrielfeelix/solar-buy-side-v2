@@ -97,12 +97,12 @@ export const ManualStrategicSection: React.FC = () => {
 
           <div className="lg:col-span-5 sticky top-16 flex justify-center lg:justify-end pt-12">
             <div className="relative group">
-              <div className="absolute -inset-20 bg-orange-500/50 blur-[120px] rounded-full group-hover:bg-orange-500/60 transition-colors duration-700"></div>
+              <div className="absolute -inset-20 bg-orange-500/50 blur-[120px] rounded-full group-hover:bg-orange-500/60 transition-colors duration-700 -z-10"></div>
 
               <img
                 src={section?.images.manual || '/assets/manual.jpg.png'}
                 alt="Manual Solar Buy-Side"
-                className="w-[420px] max-w-full h-auto"
+                className="w-[420px] max-w-full h-auto relative z-10"
               />
             </div>
           </div>
