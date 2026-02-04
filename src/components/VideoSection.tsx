@@ -6,6 +6,7 @@ export const VideoSection: React.FC = () => {
   const { getSection } = useContent()
   const section = getSection('video')
   const [showPlayer, setShowPlayer] = useState(false)
+  const [playerReady, setPlayerReady] = useState(false)
   const WistiaPlayer = 'wistia-player' as React.ElementType
 
   useEffect(() => {
@@ -25,6 +26,9 @@ export const VideoSection: React.FC = () => {
       script.type = 'module'
       document.body.appendChild(script)
     }
+
+    // Marca como pronto após um pequeno delay
+    setTimeout(() => setPlayerReady(true), 100)
   }, [showPlayer])
 
   return (
@@ -156,6 +160,15 @@ export const VideoSection: React.FC = () => {
               </>
             ) : (
               <div className="absolute inset-0 bg-black">
+                <style>{`
+                  wistia-player {
+                    opacity: ${playerReady ? '1' : '0'} !important;
+                    transition: opacity 0.3s ease-in-out;
+                  }
+                  wistia-player::part(poster) {
+                    display: none !important;
+                  }
+                `}</style>
                 <WistiaPlayer
                   media-id="u0jf5yyoda"
                   aspect="1.7777777777777777"
