@@ -157,11 +157,12 @@ export const FinalSections: React.FC = () => {
           {/* Seção de Urgência */}
           <div className="bg-gradient-to-r from-danger-red/20 to-warning-orange/20 border-2 border-danger-red rounded-2xl p-8 sm:p-12">
             <h3 className="text-3xl sm:text-4xl font-black text-text-primary text-center mb-6 leading-tight">
-              ATENÇÃO: <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-blue-200 to-blue-500">O TEMPO ESTÁ CORRENDO</span> E QUEM <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-blue-200 to-blue-500">AGIR PRIMEIRO</span>, VENDE MAIS.
+              NÃO PERCA TEMPO NEM <br />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-blue-200 to-blue-500">POSIÇÃO NO MERCADO.</span>
             </h3>
 
             <p className="text-lg text-text-secondary text-center mb-8">
-              Em um mercado competitivo, sua vantagem é o conhecimento.
+              O mercado solar não perdoa quem fica para trás. Garanta o método que os grandes players usam para dominar o Buy-Side.
             </p>
 
             <div className="w-full h-px bg-gradient-to-r from-transparent via-danger-red to-transparent my-8"></div>
