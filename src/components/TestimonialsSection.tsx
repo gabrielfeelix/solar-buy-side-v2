@@ -77,7 +77,7 @@ export const TestimonialsSection: React.FC = () => {
             href="#oferta"
             className="inline-flex items-center justify-center gap-3 px-10 py-5 bg-[#F97316] hover:bg-[#EA580C] text-white text-xl font-bold rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105"
           >
-            Garanta sua vantagem competitiva
+            Quero fechar mais projetos solares
             <ArrowRight className="w-6 h-6" />
           </a>
         </div>
