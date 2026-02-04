@@ -109,7 +109,7 @@ export const ManualStrategicSection: React.FC = () => {
 
         <div className="relative mt-16 max-w-4xl z-10">
           <h2 className="text-4xl md:text-6xl font-black text-white leading-[1.1] tracking-tighter mb-8">
-            {section?.texts.section2Title ? (
+            {section?.texts.section2Title && section.texts.section2Title.trim() !== '' ? (
               section.texts.section2Title
             ) : (
               <>
