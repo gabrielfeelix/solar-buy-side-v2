@@ -143,11 +143,9 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ id }) => {
               </div>
             </div>
 
-            <div className="group relative p-8 bg-gradient-to-br from-orange-900/20 via-orange-800/10 to-transparent border border-orange-500/20 rounded-[32px] hover:border-orange-500/40 transition-all duration-300">
-              <div className="absolute inset-0 bg-orange-500/0 group-hover:bg-orange-500/5 rounded-[32px] transition-colors"></div>
-
+            <div className="group relative p-8 bg-white/[0.03] border border-white/10 rounded-[32px] hover:bg-white/[0.06] transition-all duration-300">
               <div className="relative flex items-start gap-6">
-                <div className="flex-shrink-0 w-14 h-14 rounded-2xl bg-orange-500/10 flex items-center justify-center text-orange-500 group-hover:scale-110 group-hover:bg-orange-500 group-hover:text-white transition-all duration-500">
+                <div className="flex-shrink-0 w-14 h-14 rounded-2xl bg-orange-500/10 flex items-center justify-center text-orange-500 group-hover:scale-110 transition-all duration-500">
                   <Target size={28} />
                 </div>
 

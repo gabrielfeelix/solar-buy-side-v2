@@ -158,13 +158,6 @@ export const VideoSection: React.FC = () => {
 
             {showPlayer && (
               <div className="absolute inset-0">
-                <style>{`
-                  wistia-player[media-id='u0jf5yyoda']:not(:defined) {
-                    background: center / cover no-repeat url('/assets/manualdecompra1.png');
-                    display: block;
-                    padding-top: 56.25%;
-                  }
-                `}</style>
                 <WistiaPlayer media-id="u0jf5yyoda" aspect="1.7777777777777777" autoPlay="true" preload="none" silentAutoPlay="false"></WistiaPlayer>
               </div>
             )}
