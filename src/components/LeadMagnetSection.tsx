@@ -107,9 +107,7 @@ export const LeadMagnetSection: React.FC = () => {
             </div>
           </div>
 
-          <div
-            className="flex-1 z-10 w-full max-w-[420px]"
-          >
+          <div className="flex-1 flex justify-center items-center">
             <img
               src={section?.images.ebook || '/assets/e-book-solar.jpeg'}
               alt="E-book Solar Buy-Side"
