@@ -89,15 +89,15 @@ export const ManualStrategicSection: React.FC = () => {
                 className="text-base md:text-lg px-10 py-4"
                 onClick={() => document.getElementById('oferta')?.scrollIntoView({ behavior: 'smooth' })}
               >
-                {section?.texts.ctaButton || 'QUERO ME DESTACAR NO MERCADO'}
+                {section?.texts.ctaButton || 'QUERO VENDER COM ESTRATÉGIA AVANÇADA'}
                 <ArrowRight size={20} />
               </ButtonPrimary>
             </div>
           </div>
 
-          <div className="lg:col-span-5 sticky top-16 flex justify-end pt-12">
+          <div className="lg:col-span-5 sticky top-16 flex justify-center lg:justify-end pt-12">
             <div className="relative group">
-              <div className="absolute -inset-20 bg-orange-500/20 blur-[120px] rounded-full group-hover:bg-orange-500/30 transition-colors duration-700"></div>
+              <div className="absolute -inset-20 bg-orange-500/50 blur-[120px] rounded-full group-hover:bg-orange-500/60 transition-colors duration-700"></div>
 
               <div className="relative w-[340px] h-[480px] rounded-r-lg shadow-[30px_40px_60px_-15px_rgba(0,0,0,0.7)] border-y border-r border-white/10 flex flex-col justify-between overflow-hidden transition-all duration-500" style={{ backgroundImage: `url('${section?.images.manual || '/assets/manual.jpg.png'}')`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
               </div>
