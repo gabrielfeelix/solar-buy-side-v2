@@ -50,7 +50,7 @@ export const FinalSections: React.FC = () => {
 
                 <p className="text-text-muted mb-4">Faça como ele:</p>
                 <button className="btn-secondary w-full">
-                  IMERSÃO NO MANUAL BUY-SIDE
+                  QUERO FECHAR MAIS PROJETOS SOLARES
                   <ChevronRight size={18} />
                 </button>
               </div>

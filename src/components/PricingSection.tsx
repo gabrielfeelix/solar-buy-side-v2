@@ -1,4 +1,4 @@
-﻿import React, { useState, useEffect } from 'react'
+﻿import React from 'react'
 import {
   ArrowRight,
   BookOpen,
@@ -16,11 +16,6 @@ import { trackBuyClick } from '../utils/analytics'
 
 type PricingSectionProps = {
   id?: string
-}
-
-type Countdown = {
-  min: number
-  sec: number
 }
 
 export const PricingSection: React.FC<PricingSectionProps> = ({ id }) => {
@@ -54,22 +49,6 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ id }) => {
       tag: section?.texts.feature4Tag || 'EXCLUSIVO',
     },
   ]
-  const [timeLeft, setTimeLeft] = useState<Countdown>({ min: 11, sec: 42 })
-
-  // Countdown: -1 segundo
-  useEffect(() => {
-    const countdownInterval = setInterval(() => {
-      setTimeLeft((prev) => {
-        if (prev.sec > 0) {
-          return { ...prev, sec: prev.sec - 1 }
-        } else if (prev.min > 0) {
-          return { min: prev.min - 1, sec: 59 }
-        }
-        return prev
-      })
-    }, 1000)
-    return () => clearInterval(countdownInterval)
-  }, [])
 
   return (
     <section id={id} className="relative overflow-hidden bg-[#010413] text-white font-sans selection:bg-orange-500/30">
@@ -215,7 +194,7 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ id }) => {
                     className="relative w-full group overflow-hidden bg-orange-600 hover:bg-orange-500 text-white font-black py-6 rounded-2xl shadow-xl shadow-orange-600/30 transition-all duration-300 active:scale-[0.98] flex items-center justify-center"
                   >
                     <div className="relative z-10 flex items-center gap-3">
-                      <span className="text-lg uppercase tracking-tight">{section?.texts.ctaButton || 'GARANTIR MINHA UNIDADE'}</span>
+                      <span className="text-lg uppercase tracking-tight">{section?.texts.ctaButton || 'ACESSAR O MANUAL AGORA'}</span>
                       <ArrowRight size={22} className="group-hover:translate-x-1 transition-transform" />
                     </div>
                     <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
@@ -261,14 +240,6 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ id }) => {
                     />
                   </div>
 
-                  <div className="flex justify-between items-center text-slate-400 pt-4">
-                    <span className="text-[10px] font-black uppercase tracking-widest">{section?.texts.timerLabel || 'Sua oferta expira em:'}</span>
-                    <div className="flex gap-1 text-slate-900 font-black tabular-nums">
-                      <span>{timeLeft.min < 10 ? `0${timeLeft.min}` : timeLeft.min}</span>
-                      <span className="animate-pulse">:</span>
-                      <span>{timeLeft.sec < 10 ? `0${timeLeft.sec}` : timeLeft.sec}</span>
-                    </div>
-                  </div>
                 </div>
               </div>
             </div>

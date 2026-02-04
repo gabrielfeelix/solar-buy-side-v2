@@ -99,8 +99,11 @@ export const ManualStrategicSection: React.FC = () => {
             <div className="relative group">
               <div className="absolute -inset-20 bg-orange-500/50 blur-[120px] rounded-full group-hover:bg-orange-500/60 transition-colors duration-700"></div>
 
-              <div className="relative w-[340px] h-[480px] rounded-r-lg shadow-[30px_40px_60px_-15px_rgba(0,0,0,0.7)] border-y border-r border-white/10 flex flex-col justify-between overflow-hidden transition-all duration-500" style={{ backgroundImage: `url('${section?.images.manual || '/assets/manual.jpg.png'}')`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
-              </div>
+              <img
+                src={section?.images.manual || '/assets/manual.jpg.png'}
+                alt="Manual Solar Buy-Side"
+                className="w-[420px] max-w-full h-auto"
+              />
             </div>
           </div>
         </div>
@@ -135,7 +138,7 @@ export const ManualStrategicSection: React.FC = () => {
               <Card
                 Icon={Target}
                 title={section?.texts.sellCard1Title || 'Dores reais do cliente'}
-                desc={section?.texts.sellCard1Desc || 'Suas objeções e motivações'}
+                desc={section?.texts.sellCard1Desc || 'Compreende o que realmente pesa na decisão, não apenas o que ele diz na reunião.'}
               />
               <Card
                 Icon={Users}

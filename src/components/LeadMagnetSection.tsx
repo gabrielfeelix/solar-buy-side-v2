@@ -40,7 +40,6 @@ export const LeadMagnetSection: React.FC = () => {
     },
   ]
 
-  const [hovered, setHovered] = useState(false)
   const [showModal, setShowModal] = useState(false)
   const [formData, setFormData] = useState({
     nome: '',
@@ -109,25 +108,13 @@ export const LeadMagnetSection: React.FC = () => {
           </div>
 
           <div
-            className="flex-1 z-10 perspective-[1000px] w-full max-w-[400px]"
-            onMouseEnter={() => setHovered(true)}
-            onMouseLeave={() => setHovered(false)}
+            className="flex-1 z-10 w-full max-w-[420px]"
           >
-            <div
-              className={`relative transform transition-all duration-700 ${
-                hovered ? 'hover:rotate-y-[-10deg]' : ''
-              } rotate-y-[-20deg] rotate-x-[5deg]`}
-            >
-              <div className="absolute -bottom-10 left-10 right-0 h-10 bg-black/60 blur-[40px] rounded-full"></div>
-
-              <div className="aspect-[3/4.2] w-full rounded-r-xl shadow-2xl relative overflow-hidden">
-                <img
-                  src={section?.images.ebook || '/assets/e-book-solar.jpeg'}
-                  alt="E-book Solar Buy-Side"
-                  className="w-full h-full object-cover"
-                />
-              </div>
-            </div>
+            <img
+              src={section?.images.ebook || '/assets/e-book-solar.jpeg'}
+              alt="E-book Solar Buy-Side"
+              className="w-[420px] max-w-full h-auto"
+            />
           </div>
         </div>
       </div>

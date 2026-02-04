@@ -110,7 +110,7 @@ export const SellerCodeSection: React.FC = () => {
 
               <div className="pl-6 border-l-2 border-slate-100">
                 <p className="text-lg md:text-xl text-slate-500 font-normal leading-relaxed">
-                  {section?.texts.subtitle || 'O sucesso do Rodrigo não foi por acaso. Além de aplicar o Manual Solar Buy-Side, ele dominou a estratégia que inverte o jogo: aprender a pensar como um comprador profissional para dominar a venda.'}
+                  {section?.texts.subtitle || 'O sucesso do Rodrigo não foi por acaso. Além de aplicar o Manual Solar Buy-Side, ele dominou a estratégia que inverte o jogo: aprender a pensar como um comprador para dominar a venda.'}
                 </p>
               </div>
             </div>
