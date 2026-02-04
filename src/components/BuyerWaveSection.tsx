@@ -89,7 +89,7 @@ export const BuyerWaveSection: React.FC = () => {
               section.texts.title
             ) : (
               <>
-                Descubra o que o <span className="text-[#F97316]">manual ensina</span> aos compradores e entenda as <span className="text-[#F97316]">novas regras do jogo</span>
+                Descubra o que o manual ensina aos <span className="text-[#F97316]">compradores</span> e entenda as <span className="text-[#F97316]">novas regras</span> do jogo
               </>
             )}
           </h2>
