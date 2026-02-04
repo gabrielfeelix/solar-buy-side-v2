@@ -167,7 +167,7 @@ export const initialContent: SectionContent[] = [
     name: 'Código do Vendedor',
     texts: {
       title: 'O Segredo por trás dos resultados: O Código do Vendedor Consultivo',
-      subtitle: 'O sucesso do Rodrigo não foi por acaso. Além de aplicar o Manual Solar Buy-Side, ele dominou a estratégia que inverte o jogo: aprender a pensar como um comprador profissional para dominar a venda.',
+      subtitle: 'O sucesso do Rodrigo não foi por acaso. Além de aplicar o Manual Solar Buy-Side, ele dominou a estratégia que inverte o jogo: aprender a pensar como um comprador para dominar a venda.',
       bonusBadge: 'Oferta Especial',
       bonusTitle: '[BÔNUS EXCLUSIVO]',
       ebookTitle: 'E-book: O Código do Vendedor Consultivo',
