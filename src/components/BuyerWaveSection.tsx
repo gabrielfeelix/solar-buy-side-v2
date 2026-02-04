@@ -84,7 +84,15 @@ export const BuyerWaveSection: React.FC = () => {
           <span className="text-orange-600 font-semibold mb-3 block uppercase text-xs tracking-[0.2em]">
             {section?.texts.badge || 'Guia do Comprador'}
           </span>
-          <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-6">{section?.texts.title || 'O que está em jogo?'}</h2>
+          <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-6">
+            {section?.texts.title ? (
+              section.texts.title
+            ) : (
+              <>
+                Descubra o que o <span className="text-[#F97316]">manual ensina</span> aos compradores e entenda as <span className="text-[#F97316]">novas regras do jogo</span>
+              </>
+            )}
+          </h2>
           <p className="text-xl text-[#86868B] max-w-2xl mx-auto leading-relaxed">
             {section?.texts.subtitle || 'Compradores estão evoluindo. Veja o que eles estarão aprendendo em breve.'}
           </p>
