@@ -45,7 +45,7 @@ export const HeroSectionPotato: React.FC = () => {
       <div className="relative z-10 max-w-5xl mx-auto text-center px-6">
         {/* Frase Destacada no Topo */}
         <div className="mb-20 animate-fade-in-down">
-          <span className="text-base md:text-lg font-semibold text-white/90 tracking-wide">
+          <span className="text-xl md:text-2xl font-semibold text-white/90 tracking-wide">
             Venda mais sistemas solares com método
           </span>
         </div>
