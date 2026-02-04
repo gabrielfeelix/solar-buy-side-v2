@@ -113,7 +113,7 @@ export const ManualStrategicSection: React.FC = () => {
               section.texts.section2Title
             ) : (
               <>
-                Veja os <span className="text-[#F97316]">resultados concretos</span> que você pode <span className="text-[#F97316]">alcançar</span> ao aplicar o <span className="text-[#F97316]">Manual Solar Buy-Side</span> no seu <span className="text-[#F97316]">processo de venda</span>.
+                Veja os resultados <span className="text-[#F97316]">concretos</span> que você pode alcançar ao aplicar o <span className="text-[#F97316]">Manual Solar Buy-Side</span> no seu processo de venda.
               </>
             )}
           </h2>
