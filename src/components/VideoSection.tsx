@@ -123,7 +123,7 @@ export const VideoSection: React.FC = () => {
               }
             }}
           >
-            {!showPlayer && (
+            {!showPlayer ? (
               <>
                 <div className="absolute inset-0 bg-[url('/assets/manualdecompra1.png')] bg-cover bg-center opacity-90 transition-transform duration-700 group-hover:scale-105"></div>
 
@@ -154,11 +154,17 @@ export const VideoSection: React.FC = () => {
                   </div>
                 </div>
               </>
-            )}
-
-            {showPlayer && (
-              <div className="absolute inset-0">
-                <WistiaPlayer media-id="u0jf5yyoda" aspect="1.7777777777777777" autoPlay="true" preload="none" silentAutoPlay="false"></WistiaPlayer>
+            ) : (
+              <div className="absolute inset-0 bg-black">
+                <WistiaPlayer
+                  media-id="u0jf5yyoda"
+                  aspect="1.7777777777777777"
+                  autoPlay="true"
+                  preload="metadata"
+                  playButton="false"
+                  controlsVisibleOnLoad="true"
+                  silentAutoPlay="false"
+                ></WistiaPlayer>
               </div>
             )}
           </div>

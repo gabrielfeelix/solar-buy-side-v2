@@ -145,7 +145,7 @@ export const SellerCodeSection: React.FC = () => {
 
                 {/* O Livro */}
                 <img
-                  src={section?.images.bookImage || '/assets/o-codigo-oficial-4.png'}
+                  src={section?.images.bookImage || '/assets/MOCKUP_3.png'}
                   alt="O Codigo Oficial"
                   className="w-full h-auto"
                 />
@@ -207,7 +207,7 @@ export const SellerCodeSection: React.FC = () => {
 
               {/* O Livro */}
               <img
-                src={section?.images.bookImage || '/assets/o-codigo-oficial-4.png'}
+                src={section?.images.bookImage || '/assets/MOCKUP_3.png'}
                 alt="O Codigo Oficial"
                 className="w-[420px] max-w-full h-auto"
               />
