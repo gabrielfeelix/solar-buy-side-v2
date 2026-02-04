@@ -7,9 +7,9 @@ import {
   Layers,
   Lock as LockIcon,
   Map as MapIcon,
-  Package,
   ShieldCheck,
   Sparkles,
+  Target,
 } from 'lucide-react'
 import { useContent } from '../contexts/ContentContext'
 import { trackBuyClick } from '../utils/analytics'
@@ -53,17 +53,7 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ id }) => {
       tag: section?.texts.feature4Tag || 'EXCLUSIVO',
     },
   ]
-  const stockLimit = 1000
-  const [stockCurrent, setStockCurrent] = useState(742)
   const [timeLeft, setTimeLeft] = useState<Countdown>({ min: 11, sec: 42 })
-
-  // Counter: +1 a cada 4 segundos
-  useEffect(() => {
-    const counterInterval = setInterval(() => {
-      setStockCurrent((prev) => (prev < stockLimit ? prev + 1 : prev))
-    }, 4000)
-    return () => clearInterval(counterInterval)
-  }, [])
 
   // Countdown: -1 segundo
   useEffect(() => {
@@ -141,25 +131,28 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ id }) => {
               </div>
             </div>
 
-            <div className="p-8 bg-gradient-to-br from-blue-900/20 to-transparent border border-blue-500/20 rounded-[32px] space-y-4">
-              <div className="flex justify-between items-end">
-                <div className="flex items-center gap-2 text-orange-500 font-black text-sm uppercase tracking-tighter">
-                  <Package size={18} />
-                  {section?.texts.stockTitle || 'Apenas 1.000 unidades na Pré-venda'}
+            <div className="group relative p-8 bg-gradient-to-br from-orange-900/20 via-orange-800/10 to-transparent border border-orange-500/20 rounded-[32px] hover:border-orange-500/40 transition-all duration-300">
+              <div className="absolute inset-0 bg-orange-500/0 group-hover:bg-orange-500/5 rounded-[32px] transition-colors"></div>
+
+              <div className="relative flex items-start gap-6">
+                <div className="flex-shrink-0 w-14 h-14 rounded-2xl bg-orange-500/10 flex items-center justify-center text-orange-500 group-hover:scale-110 group-hover:bg-orange-500 group-hover:text-white transition-all duration-500">
+                  <Target size={28} />
                 </div>
-                <span className="text-xs text-slate-500 font-bold uppercase tracking-widest">
-                  {stockCurrent} / {stockLimit} Vendidos
-                </span>
+
+                <div className="flex-1 space-y-3">
+                  <div className="inline-flex items-center px-3 py-1 rounded-full bg-orange-500/10 border border-orange-500/20 text-orange-400 text-[9px] font-black uppercase tracking-widest">
+                    {section?.texts.bonusBadge || 'BÔNUS EXCLUSIVO'}
+                  </div>
+
+                  <h4 className="text-2xl font-black text-white leading-tight">
+                    {section?.texts.bonusTitle || 'Código de Vendedor Consultivo'}
+                  </h4>
+
+                  <p className="text-base text-slate-400 leading-relaxed">
+                    {section?.texts.bonusSubtitle || 'Você vendendo decisão, não preço'}
+                  </p>
+                </div>
               </div>
-              <div className="h-3 bg-white/5 rounded-full overflow-hidden p-[2px]">
-                <div
-                  className="h-full bg-gradient-to-r from-orange-600 to-orange-400 rounded-full transition-all duration-1000 shadow-[0_0_15px_rgba(249,115,22,0.4)]"
-                  style={{ width: `${(stockCurrent / stockLimit) * 100}%` }}
-                ></div>
-              </div>
-              <p className="text-center text-[11px] text-slate-500 font-medium">
-                {section?.texts.stockWarning || '*O preço subirá para R$ 1.497,00 assim que o lote de pré-venda esgotar.'}
-              </p>
             </div>
           </div>
 
