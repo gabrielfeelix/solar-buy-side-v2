@@ -28,7 +28,7 @@ export const HeroSectionPotato: React.FC = () => {
   }
 
   return (
-    <section id="hero" className="relative min-h-screen flex flex-col justify-center items-center overflow-hidden border-b border-white/5 bg-[#020617]" style={{ paddingTop: 'max(6rem, 12vh)' }}>
+    <section id="hero" className="relative min-h-screen flex flex-col justify-center items-center overflow-hidden border-b border-white/5 bg-[#020617]" style={{ paddingTop: 'clamp(5rem, 8vw, 15vh)' }}>
       <div className="absolute inset-0 pointer-events-none">
         <div
           className="absolute inset-0 opacity-[0.03]"
