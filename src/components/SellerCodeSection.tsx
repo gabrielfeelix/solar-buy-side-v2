@@ -139,7 +139,7 @@ export const SellerCodeSection: React.FC = () => {
 
             {/* O LIVRO NO MOBILE - aparece aqui após o bônus */}
             <div className="lg:hidden flex justify-center py-8">
-              <div className="relative group w-full max-w-[280px]" style={{ perspective: '2000px' }}>
+              <div className="relative group w-full max-w-sm" style={{ perspective: '2000px' }}>
                 {/* Efeito de Sombra Colorida (Aura) */}
                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-orange-200/30 blur-[120px] rounded-full pointer-events-none opacity-60"></div>
 
@@ -209,7 +209,7 @@ export const SellerCodeSection: React.FC = () => {
               <img
                 src={section?.images.bookImage || '/assets/MOCKUP_3 (1).PNG'}
                 alt="O Codigo Oficial"
-                className="w-[340px] max-w-full h-auto"
+                className="w-[480px] max-w-full h-auto"
               />
 
 
