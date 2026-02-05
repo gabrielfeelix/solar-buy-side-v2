@@ -28,7 +28,7 @@ export const HeroSectionPotato: React.FC = () => {
   }
 
   return (
-    <section id="hero" className="relative min-h-screen flex flex-col justify-center items-center overflow-hidden border-b border-white/5 pt-32 md:pt-40 lg:pt-16 bg-[#020617]">
+    <section id="hero" className="relative min-h-screen flex flex-col justify-center items-center overflow-hidden border-b border-white/5 bg-[#020617]" style={{ paddingTop: 'max(6rem, 12vh)' }}>
       <div className="absolute inset-0 pointer-events-none">
         <div
           className="absolute inset-0 opacity-[0.03]"
@@ -44,7 +44,7 @@ export const HeroSectionPotato: React.FC = () => {
 
       <div className="relative z-10 max-w-5xl mx-auto text-center px-6">
         {/* Frase Destacada no Topo */}
-        <div className="mb-12 md:mb-16 lg:mb-20 animate-fade-in-down">
+        <div className="mb-16 lg:mb-20 animate-fade-in-down">
           <span className="text-xl md:text-2xl font-semibold text-white/90 tracking-wide">
             Venda mais sistemas solares com método
           </span>
