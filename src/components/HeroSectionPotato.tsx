@@ -46,7 +46,7 @@ export const HeroSectionPotato: React.FC = () => {
         {/* Frase Destacada no Topo */}
         <div className="mb-16 lg:mb-20 animate-fade-in-down">
           <span className="text-xl md:text-2xl font-semibold text-white/90 tracking-wide">
-            Venda mais sistemas solares com método
+            Venda mais sistemas solares dominando o método Buy-Side
           </span>
         </div>
 
