@@ -94,7 +94,7 @@ export const LeadMagnetSection: React.FC = () => {
                     <h3 className="text-lg font-bold text-[#1d1d1f] group-hover:text-orange-600 transition-colors">
                       {feature.title}
                     </h3>
-                    {feature.desc ? <p className="text-[#86868b] text-sm leading-snug">{feature.desc}</p> : null}
+                    {feature.desc ? <p className="text-[#86868b] text-base leading-snug">{feature.desc}</p> : null}
                   </div>
                 </div>
               ))}

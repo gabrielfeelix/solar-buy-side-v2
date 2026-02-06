@@ -25,7 +25,7 @@ const Card: React.FC<CardProps> = ({ Icon, title, desc }) => {
 
       <div className="space-y-2 relative">
         <h4 className="text-lg font-bold text-white group-hover:text-[#F97316] transition-colors">{title}</h4>
-        <p className="text-sm text-slate-400 leading-relaxed">{desc}</p>
+        <p className="text-base text-slate-400 leading-relaxed">{desc}</p>
       </div>
     </div>
   )

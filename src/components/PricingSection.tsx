@@ -126,7 +126,7 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ id }) => {
                     <div className="space-y-1">
                       <span className="text-[10px] font-black text-slate-200/90 tracking-widest">{item.tag}</span>
                       <h4 className="font-bold text-lg leading-tight">{item.title}</h4>
-                      <p className="text-sm text-slate-500 leading-relaxed">{item.desc}</p>
+                      <p className="text-base text-slate-500 leading-relaxed">{item.desc}</p>
                     </div>
                   </div>
                 ))}

@@ -56,7 +56,7 @@ export const StoryBridgeSection: React.FC = () => {
                   <div className="p-3 bg-slate-50 rounded-xl w-fit">{feature.icon}</div>
                   <div>
                     <h4 className="text-lg font-bold text-slate-900 mb-2 leading-tight">{feature.title}</h4>
-                    <p className="text-slate-500 leading-relaxed text-sm font-medium">{feature.desc}</p>
+                    <p className="text-slate-500 leading-relaxed text-base font-medium">{feature.desc}</p>
                   </div>
                 </div>
               ))}

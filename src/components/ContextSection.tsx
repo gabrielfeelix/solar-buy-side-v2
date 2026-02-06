@@ -61,7 +61,7 @@ export const ContextSection: React.FC = () => {
               </div>
               <div>
                 <h4 className="font-bold text-slate-900 mb-1">{item.title}</h4>
-                <p className="text-sm text-slate-500 leading-snug">{item.desc}</p>
+                <p className="text-base text-slate-500 leading-snug">{item.desc}</p>
               </div>
             </div>
           ))}
