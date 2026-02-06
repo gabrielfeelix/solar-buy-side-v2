@@ -187,7 +187,7 @@ export const SellerCodeSection: React.FC = () => {
                             }`}
                           />
                         </h5>
-                        <p className="text-base text-slate-500 leading-relaxed max-w-lg">{item.desc}</p>
+                        <p className="text-lg text-slate-500 leading-relaxed max-w-lg">{item.desc}</p>
                       </div>
                     </div>
                   </div>
