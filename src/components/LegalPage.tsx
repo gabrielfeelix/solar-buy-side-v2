@@ -24,7 +24,7 @@ export const LegalPage: React.FC<LegalPageProps> = ({ title, sections }) => {
           Voltar
         </a>
 
-        <h1 className="mt-6 text-[44px] sm:text-[52px] md:text-[52px] font-black text-orange-500 leading-[1.05]">
+        <h1 className="mt-6 text-[44px] sm:text-[50px] md:text-[50px] font-black text-orange-500 leading-[1.05]">
           {title}
         </h1>
 

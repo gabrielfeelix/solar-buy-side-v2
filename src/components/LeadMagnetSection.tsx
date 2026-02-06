@@ -64,7 +64,7 @@ export const LeadMagnetSection: React.FC = () => {
               {section?.texts.badge || 'Conteúdo Exclusivo'}
             </div>
 
-            <h2 className="text-5xl md:text-[52px] font-black tracking-tight leading-[0.95] text-[#1d1d1f]">
+            <h2 className="text-5xl md:text-[50px] font-black tracking-tight leading-[0.95] text-[#1d1d1f]">
               Ainda tem dúvidas sobre o impacto do{' '}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-600 to-orange-400">
                 Manual Buy-Side?
@@ -88,7 +88,7 @@ export const LeadMagnetSection: React.FC = () => {
 
             <div className="grid sm:grid-cols-1 md:grid-cols-1 gap-6 pt-4">
               {features.map((feature) => (
-                <div key={feature.title} className="flex gap-4 group cursor-default">
+                <div key={feature.title} className="flex items-center gap-4 group cursor-default">
                   <div className="flex-shrink-0 w-12 h-12 rounded-2xl bg-white shadow-sm border border-gray-100 flex items-center justify-center group-hover:shadow-md group-hover:border-orange-200 transition-all duration-300">
                     {feature.icon}
                   </div>

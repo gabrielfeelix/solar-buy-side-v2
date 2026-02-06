@@ -104,7 +104,7 @@ export const SellerCodeSection: React.FC = () => {
           <div className="lg:col-span-7 space-y-20">
             {/* Header Narrativo */}
             <div className="space-y-8">
-              <h2 className="text-4xl md:text-[52px] font-medium tracking-tight leading-[1.05] text-slate-900">
+              <h2 className="text-4xl md:text-[50px] font-medium tracking-tight leading-[1.05] text-slate-900">
                 O Segredo por trás dos resultados: <span className="text-[#F97316]">O Código do Vendedor Consultivo</span>
               </h2>
 

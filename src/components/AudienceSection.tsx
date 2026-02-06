@@ -49,7 +49,7 @@ export const AudienceSection: React.FC = () => {
     <section id="audiencia" className="bg-white text-slate-900 font-sans selection:bg-orange-100 selection:text-orange-900 antialiased">
       <div className="max-w-6xl mx-auto px-6 py-16">
         <div className="max-w-3xl mb-16">
-          <h2 className="text-4xl md:text-[52px] font-black tracking-tight text-slate-900 mb-6">
+          <h2 className="text-4xl md:text-[50px] font-black tracking-tight text-slate-900 mb-6">
             {section?.texts.title || 'Quem REALMENTE precisa desse conhecimento?'}
           </h2>
           <p className="text-xl md:text-2xl text-slate-500 font-medium leading-relaxed">

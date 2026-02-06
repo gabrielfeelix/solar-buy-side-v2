@@ -38,7 +38,7 @@ export const TestimonialsSection: React.FC = () => {
           </div>
 
           <div className="lg:col-span-7">
-            <h2 className="text-4xl md:text-[52px] font-black tracking-tight text-[#0F172A] leading-[1.1] mb-6">
+            <h2 className="text-4xl md:text-[50px] font-black tracking-tight text-[#0F172A] leading-[1.1] mb-6">
               {section?.texts.title || '"Em um mês fechei 5 sistemas novos"'}
             </h2>
             <p className="text-xl md:text-2xl text-slate-500 font-medium mb-6">
