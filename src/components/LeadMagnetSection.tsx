@@ -78,7 +78,7 @@ export const LeadMagnetSection: React.FC = () => {
             {/* Imagem aparece após o subtitle no mobile */}
             <div className="flex justify-center items-center lg:hidden">
               <img
-                src={section?.images.ebook || '/assets/e-book-solar.jpeg'}
+                src={section?.images.ebook || '/assets/Capa do Vendedor E-book  - OF.png'}
                 alt="E-book Solar Buy-Side"
                 className="w-[420px] max-w-full h-auto"
               />
