@@ -85,7 +85,7 @@ export const AudienceSection: React.FC = () => {
                   {profile.bullets.map((bullet) => (
                     <div key={bullet} className="flex items-center gap-3">
                       <CheckCircle2 className="w-5 h-5 text-orange-500" />
-                      <span className="text-sm font-semibold text-[#1d1d1f]">{bullet}</span>
+                      <span className="text-base font-semibold text-[#1d1d1f]">{bullet}</span>
                     </div>
                   ))}
                 </div>

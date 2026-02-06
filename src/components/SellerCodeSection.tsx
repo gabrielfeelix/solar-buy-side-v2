@@ -125,7 +125,7 @@ export const SellerCodeSection: React.FC = () => {
                   <span className="block text-[10px] font-bold text-slate-400 uppercase tracking-widest">
                     {section?.texts.badge || 'Oferta Especial'}
                   </span>
-                  <span className="block text-sm font-bold text-slate-900 uppercase tracking-tight">
+                  <span className="block text-base font-bold text-slate-900 uppercase tracking-tight">
                     {section?.texts.badgeHighlight || ''}
                   </span>
                 </div>

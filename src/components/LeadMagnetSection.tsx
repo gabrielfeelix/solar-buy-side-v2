@@ -77,7 +77,7 @@ export const LeadMagnetSection: React.FC = () => {
 
             {/* Imagem aparece após o subtitle no mobile */}
             <div className="flex justify-center items-center lg:hidden">
-              <div className="w-full max-w-[350px]">
+              <div className="w-full max-w-[400px]">
                 <img
                   src={section?.images.ebook || '/assets/Capa do Vendedor E-book  - OF.png'}
                   alt="E-book Solar Buy-Side"
@@ -123,7 +123,7 @@ export const LeadMagnetSection: React.FC = () => {
             <img
               src={section?.images.ebook || '/assets/Capa do Vendedor E-book  - OF.png'}
               alt="E-book Solar Buy-Side"
-              className="w-[440px] max-w-full h-auto"
+              className="w-[500px] max-w-full h-auto"
             />
           </div>
         </div>
@@ -155,7 +155,7 @@ export const LeadMagnetSection: React.FC = () => {
               {!submitted ? (
                 <>
                   <h3 className="text-2xl font-bold text-[#1d1d1f] mb-2">{section?.texts.modalTitle || 'Baixe seu E-book'}</h3>
-                  <p className="text-[#86868b] text-sm mb-6">
+                  <p className="text-[#86868b] text-base mb-6">
                     {section?.texts.modalSubtitle || 'Preencha seus dados para receber o E-book Manual Solar Buy-Side'}
                   </p>
 

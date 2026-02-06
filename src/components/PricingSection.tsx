@@ -144,7 +144,7 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ id }) => {
                 <h4 className="font-bold text-lg leading-tight">
                   {section?.texts.bonusTitle || 'Código de Vendedor Consultivo'}
                 </h4>
-                <p className="text-sm text-slate-500 leading-relaxed">
+                <p className="text-base text-slate-500 leading-relaxed">
                   {section?.texts.bonusSubtitle || 'Você vendendo decisão, não preço'}
                 </p>
               </div>
