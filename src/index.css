@@ -172,8 +172,8 @@ button, a[role="button"], [role="button"] {
   }
 }
 
-/* Garantir que grids de 12 colunas sejam mais flexíveis */
-@media (max-width: 1200px) {
+/* Garantir que grids de 12 colunas sejam mais flexíveis APENAS em mobile */
+@media (max-width: 1023px) {
   .lg\:grid-cols-12 {
     grid-template-columns: 1fr !important;
   }
