@@ -31,7 +31,7 @@ export const StoryBridgeSection: React.FC = () => {
   return (
     <section className="bg-white text-slate-900 font-sans selection:bg-orange-100">
       <div className="max-w-7xl mx-auto px-6 py-8">
-        <header className="max-w-4xl mx-auto text-center mb-4">
+        <header className="max-w-4xl mx-auto text-center mb-8">
           <h2 className="text-4xl md:text-5xl font-black tracking-tight text-slate-900 mb-8 leading-tight">
             {section?.texts.title || 'A história de Rodrigo é apenas um exemplo do poder deste manual.'}
           </h2>
