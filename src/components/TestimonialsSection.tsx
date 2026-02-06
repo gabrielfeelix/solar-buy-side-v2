@@ -47,7 +47,7 @@ export const TestimonialsSection: React.FC = () => {
             <p className="text-sm md:text-base font-medium text-slate-400 mb-10">
               {section?.texts.intro || 'Veja a experiência de Rodrigo, Integrador de São Paulo'}
             </p>
-            <div className="space-y-6 text-base md:text-lg text-slate-600 leading-relaxed font-medium">
+            <div className="space-y-6 text-lg md:text-xl text-slate-600 leading-relaxed font-medium">
               <p>
                 {section?.texts.quote1 || '"Eu sofria com a concorrência acirrada e a baixa conversão. O Manual Solar Buy-Side me mostrou como entender a perspectiva do cliente, e isso mudou o jogo."'}
               </p>

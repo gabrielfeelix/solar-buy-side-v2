@@ -56,7 +56,7 @@ export const AuthoritySection: React.FC = () => {
                 <p className="text-[#F97316] font-bold tracking-widest text-xs uppercase mb-2">{section?.texts.person1Badge || 'Especialista'}</p>
                 <h3 className="text-3xl font-bold">{section?.texts.person1Name || 'Francis Poloni'}</h3>
               </div>
-              <p className="text-slate-400 text-base leading-relaxed">
+              <p className="text-slate-400 text-lg leading-relaxed">
                 {section?.texts.person1Desc || 'Atua desde 2018 no setor de integração fotovoltaica e consultoria onde assessorou tanto no lado do comprador (Buy-Side) quanto no lado do vendedor (Sell-Side), ajudando na tomada de decisões inteligentes e seguras.'}
               </p>
               <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-900/30 border border-blue-500/30 text-blue-400 text-xs font-bold uppercase tracking-widest">
@@ -85,7 +85,7 @@ export const AuthoritySection: React.FC = () => {
                 <p className="text-[#F97316] font-bold tracking-widest text-xs uppercase mb-2">{section?.texts.person2Badge || 'Especialista'}</p>
                 <h3 className="text-3xl font-bold">{section?.texts.person2Name || 'Ovídio Collesi'}</h3>
               </div>
-              <p className="text-slate-400 text-base leading-relaxed">
+              <p className="text-slate-400 text-lg leading-relaxed">
                 {section?.texts.person2Desc || 'Com vasta experiência em venda e pós venda no setor de energia solar fotovoltaica desde 2020, teve passagens por marketplaces, distribuidores, integração solar e certificadora, trazendo uma visão completa do lado do vendedor e do suporte técnico.'}
               </p>
               <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-orange-900/30 border border-orange-500/30 text-orange-400 text-xs font-bold uppercase tracking-widest">
