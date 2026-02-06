@@ -56,7 +56,7 @@ export const ManualStrategicSection: React.FC = () => {
       <div className="relative max-w-6xl mx-auto px-6 py-32">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
           <div className="lg:col-span-7 flex flex-col min-h-[600px]">
-            <div className="space-y-6">
+            <div className="space-y-6 fade-in">
               <span className="inline-flex items-center px-3 py-1 rounded-full bg-orange-500/10 border border-orange-500/20 text-orange-300 text-[10px] font-bold uppercase tracking-widest">
                 {section?.texts.badge || 'A ferramenta estratégica'}
               </span>
@@ -70,7 +70,7 @@ export const ManualStrategicSection: React.FC = () => {
               </div>
             </div>
 
-            <div className="mt-12 max-w-2xl">
+            <div className="mt-12 max-w-2xl fade-in-delay-1">
               <div className="space-y-6 text-lg text-slate-300 leading-relaxed font-medium" style={{ textAlign: 'justify' }}>
                 <p>
                   {section?.texts.description1 || 'O Manual de Compra Solar Buy-Side é uma leitura essencial para profissionais do setor de vendas (Sell-Side) que desejam se destacar em um mercado ultracompetitivo.'}
@@ -84,7 +84,7 @@ export const ManualStrategicSection: React.FC = () => {
               </div>
             </div>
 
-            <div className="mt-auto pt-12">
+            <div className="mt-auto pt-12 fade-in-delay-2">
               <ButtonPrimary
                 className="text-base md:text-lg px-10 py-4"
                 onClick={() => document.getElementById('oferta')?.scrollIntoView({ behavior: 'smooth' })}
@@ -95,7 +95,7 @@ export const ManualStrategicSection: React.FC = () => {
             </div>
           </div>
 
-          <div className="lg:col-span-5 sticky top-16 flex justify-center lg:justify-end pt-12">
+          <div className="lg:col-span-5 sticky top-16 flex justify-center lg:justify-end pt-12 fade-in-delay-3">
             <div className="relative group">
               <div className="absolute -inset-20 bg-orange-500/50 blur-[120px] rounded-full group-hover:bg-orange-500/60 transition-colors duration-700 -z-10"></div>
 
