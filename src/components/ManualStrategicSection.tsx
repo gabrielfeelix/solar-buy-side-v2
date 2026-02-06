@@ -100,7 +100,7 @@ export const ManualStrategicSection: React.FC = () => {
               <div className="absolute -inset-20 bg-orange-500/50 blur-[120px] rounded-full group-hover:bg-orange-500/60 transition-colors duration-700 -z-10"></div>
 
               <img
-                src={'/assets/Capa Vendedor Manual 05.02.2026 (3)_page-0001.jpg'}
+                src={'/assets/Capa-manual-buy-side-definitiva.png'}
                 alt="Manual Solar Buy-Side"
                 className="w-[420px] max-w-full h-auto relative z-10"
               />
