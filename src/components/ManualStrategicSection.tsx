@@ -55,7 +55,7 @@ export const ManualStrategicSection: React.FC = () => {
 
       <div className="relative max-w-6xl mx-auto px-6 py-32">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
-          <div className="lg:col-span-7 flex flex-col min-h-[600px]">
+          <div className="lg:col-span-7 flex flex-col min-h-[600px] relative z-10">
             <div className="space-y-6 fade-in">
               <span className="inline-flex items-center px-3 py-1 rounded-full bg-orange-500/10 border border-orange-500/20 text-orange-300 text-[10px] font-bold uppercase tracking-widest">
                 {section?.texts.badge || 'A ferramenta estratégica'}
@@ -102,7 +102,7 @@ export const ManualStrategicSection: React.FC = () => {
               <img
                 src={'/assets/Capa-manual-buy-side-definitiva.png'}
                 alt="Manual Solar Buy-Side"
-                className="w-[520px] max-w-full h-auto relative z-10"
+                className="w-[600px] max-w-full h-auto relative"
               />
             </div>
           </div>
