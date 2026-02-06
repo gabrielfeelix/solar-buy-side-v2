@@ -27,7 +27,7 @@ export const SellerCodeSection: React.FC = () => {
     },
     {
       title: section?.texts.item4Title || 'Postura Consultiva de Elite',
-      desc: section?.texts.item4Desc || 'Prepare-se para fechar contratos com clientes técnicos e criteriosos que costumam ignorar vendedores comuns.',
+      desc: section?.texts.item4Desc || 'Não dispute por preço, dispute por valor. Ajude o cliente a decidir com segurança e fortaleça uma relação de longo prazo.',
       icon: <UserCheck size={20} />,
     },
   ]
