@@ -58,15 +58,6 @@ export const LeadMagnetSection: React.FC = () => {
 
       <div className="max-w-7xl mx-auto relative z-10">
         <div className="flex flex-col lg:flex-row items-center gap-16 lg:gap-12">
-          {/* Imagem aparece primeiro no mobile, depois no desktop */}
-          <div className="flex-1 flex justify-center items-center lg:hidden">
-            <img
-              src={section?.images.ebook || '/assets/e-book-solar.jpeg'}
-              alt="E-book Solar Buy-Side"
-              className="w-[420px] max-w-full h-auto"
-            />
-          </div>
-
           <div className="flex-[1.2] space-y-8">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-orange-50 border border-orange-100 text-orange-700 text-xs font-bold uppercase tracking-widest">
               <Zap size={14} fill="currentColor" />
@@ -83,6 +74,15 @@ export const LeadMagnetSection: React.FC = () => {
             <p className="max-w-xl text-xl md:text-2xl text-[#6e6e73] font-medium leading-relaxed">
               {section?.texts.subtitle || 'Garanta agora seu e-book grátis e entenda por que a imersão Solar Buy-Side faz vendedores venderem mais e melhor.'}
             </p>
+
+            {/* Imagem aparece após o subtitle no mobile */}
+            <div className="flex justify-center items-center lg:hidden">
+              <img
+                src={section?.images.ebook || '/assets/e-book-solar.jpeg'}
+                alt="E-book Solar Buy-Side"
+                className="w-[420px] max-w-full h-auto"
+              />
+            </div>
 
             <div className="grid sm:grid-cols-1 md:grid-cols-1 gap-6 pt-4">
               {features.map((feature) => (
