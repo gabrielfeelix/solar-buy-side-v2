@@ -108,7 +108,7 @@ export const initialContent: SectionContent[] = [
       sellCard1Title: 'Dores reais do cliente',
       sellCard1Desc: 'Compreende o que realmente pesa na decisão, não apenas o que ele diz na reunião.',
       sellCard2Title: 'Postura consultiva',
-      sellCard2Desc: 'Compreende o que realmente pesa na decisão, não apenas suas objeções e motivações.',
+      sellCard2Desc: 'Não dispute por preço, dispute por valor. Ajude o cliente a decidir com segurança e fortaleça uma relação de longo prazo.',
       sellCard3Title: 'Valor técnico e econômico',
       sellCard3Desc: 'Demonstra, de forma fundamentada, como o valor técnico da solução se converte em benefício econômico.',
       focusHeader: 'Principais focos e habilidades',
