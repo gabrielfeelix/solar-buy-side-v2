@@ -61,7 +61,7 @@ export const ManualStrategicSection: React.FC = () => {
                 {section?.texts.badge || 'A ferramenta estratégica'}
               </span>
               <div className="space-y-4">
-                <h2 className="text-4xl md:text-6xl font-black tracking-tight text-white">
+                <h2 className="text-4xl md:text-[52px] font-black tracking-tight text-white">
                   {section?.texts.title || 'Manual Solar Buy-Side'}
                 </h2>
                 <p className="text-xl md:text-2xl text-slate-300 font-medium leading-relaxed max-w-md border-l-2 border-orange-500 pl-4">
@@ -111,7 +111,7 @@ export const ManualStrategicSection: React.FC = () => {
         <div className="relative mt-16 w-full h-px bg-gradient-to-r from-transparent via-orange-500/20 to-transparent -z-10"></div>
 
         <div className="relative mt-16 max-w-4xl z-10">
-          <h2 className="text-4xl md:text-6xl font-black text-white leading-[1.1] tracking-tighter mb-8">
+          <h2 className="text-4xl md:text-[52px] font-black text-white leading-[1.1] tracking-tighter mb-8">
             {section?.texts.section2Title && section.texts.section2Title.trim() !== '' ? (
               section.texts.section2Title
             ) : (

@@ -45,7 +45,7 @@ export const ContextSection: React.FC = () => {
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-50 border border-slate-100 text-[#F97316] text-[10px] font-bold uppercase tracking-widest mb-6">
             <Layout className="w-3 h-3" /> {section?.texts.badge || 'Vision 2026'}
           </div>
-          <h2 className="text-4xl md:text-6xl font-black tracking-tight text-slate-900 mb-6">
+          <h2 className="text-4xl md:text-[52px] font-black tracking-tight text-slate-900 mb-6">
             Panorama <span className="text-[#cbd5e1]">2026</span>
           </h2>
           <p className="text-xl md:text-2xl text-slate-500 font-medium leading-tight italic">

@@ -72,7 +72,7 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ id }) => {
             {section?.texts.badge || 'Pré-venda profissional por tempo limitado'}
           </div>
 
-          <h2 className="text-5xl md:text-7xl font-black tracking-tighter leading-[0.95]">
+          <h2 className="text-5xl md:text-[52px] font-black tracking-tighter leading-[0.95]">
             {section?.texts.title && section.texts.title.trim() !== '' ? (
               section.texts.title
             ) : isFirstSection ? (
