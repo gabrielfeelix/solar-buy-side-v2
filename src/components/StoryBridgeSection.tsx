@@ -43,7 +43,7 @@ export const StoryBridgeSection: React.FC = () => {
         <div className="grid lg:grid-cols-12 gap-16 items-center">
           <div className="lg:col-span-6 flex justify-center lg:justify-start">
             <img
-              src={'/assets/manual mockup final 9.png'}
+              src={'/assets/Manual de Compra -OF.png'}
               alt="Manual de Compra Solar Buy-Side"
               className="w-[510px] max-w-full h-auto"
             />
