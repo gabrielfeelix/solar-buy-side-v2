@@ -97,7 +97,7 @@ export const ContextSection: React.FC = () => {
 
               <div className="flex flex-wrap gap-y-3 gap-x-6">
                 {checks.map((item, i) => (
-                  <div key={i} className="flex items-center gap-2 text-sm font-bold text-slate-700">
+                  <div key={i} className="flex items-center gap-2 text-base font-bold text-slate-700">
                     <CheckCircle2 className="w-4 h-4 text-[#F97316]" /> {item}
                   </div>
                 ))}
@@ -106,7 +106,7 @@ export const ContextSection: React.FC = () => {
 
             <div className="lg:col-span-2 flex flex-col items-center lg:items-end">
               <button
-                className="group relative bg-slate-900 hover:bg-[#F97316] text-white px-8 py-5 rounded-full font-bold text-sm transition-all duration-300 flex items-center gap-3 shadow-lg shadow-slate-200 hover:shadow-[#F97316]/20 min-h-[44px]"
+                className="group relative bg-slate-900 hover:bg-[#F97316] text-white px-8 py-5 rounded-full font-bold text-base transition-all duration-300 flex items-center gap-3 shadow-lg shadow-slate-200 hover:shadow-[#F97316]/20 min-h-[44px]"
                 onClick={() => document.getElementById('oferta')?.scrollIntoView({ behavior: 'smooth' })}
                 type="button"
               >

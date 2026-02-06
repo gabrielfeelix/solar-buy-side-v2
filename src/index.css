@@ -164,3 +164,17 @@ button, a[role="button"], [role="button"] {
     line-height: 1.6;
   }
 }
+
+/* Empilhar colunas em telas médias (zoom 150% em desktop 1920px = ~1280px efetivo) */
+@media (max-width: 1400px) {
+  .lg\:grid-cols-2 {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* Garantir que grids de 12 colunas sejam mais flexíveis */
+@media (max-width: 1200px) {
+  .lg\:grid-cols-12 {
+    grid-template-columns: 1fr !important;
+  }
+}

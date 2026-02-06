@@ -53,7 +53,7 @@ export const HeroSection: React.FC = () => {
         </p>
 
         {/* Card de Alerta Glassmorphism */}
-        <div className="glass-card max-w-3xl mx-auto p-8 sm:p-12 border-l-4 border-warning-orange mb-12">
+        <div className="glass-card max-w-3xl mx-auto p-8 sm:p-12 border-l-4 border-warning-orange mb-8">
           <div className="flex items-start gap-4 mb-6">
             <div className="flex-shrink-0">
               <AlertTriangle className="w-12 h-12 text-warning-orange" />
@@ -118,7 +118,7 @@ export const HeroSection: React.FC = () => {
         {/* CTA Principal */}
         <button
           onClick={scrollToVideo}
-          className="btn-primary text-lg px-8 py-5 mb-12 min-h-[44px]"
+          className="btn-primary text-lg px-8 py-5 mb-8 min-h-[44px]"
         >
           QUERO ESTAR NA FRENTE DA CONCORRÊNCIA AGORA
           <ChevronRight size={20} className="ml-2" />

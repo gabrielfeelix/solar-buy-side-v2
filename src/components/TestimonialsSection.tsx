@@ -27,7 +27,7 @@ export const TestimonialsSection: React.FC = () => {
               <div className="absolute bottom-8 left-8">
                 <Quote className="w-12 h-12 text-[#F97316] mb-4 fill-current" />
                 <p className="text-white font-bold text-lg">{section?.texts.authorName || 'Rodrigo'}</p>
-                <p className="text-slate-400 text-sm">{section?.texts.authorRole || 'Integrador Solar, SP'}</p>
+                <p className="text-slate-400 text-base">{section?.texts.authorRole || 'Integrador Solar, SP'}</p>
               </div>
             </div>
             <div className="absolute -right-8 top-12 bg-white p-6 rounded-xl shadow-xl border border-slate-100 hidden md:block">
@@ -44,7 +44,7 @@ export const TestimonialsSection: React.FC = () => {
             <p className="text-xl md:text-2xl text-slate-500 font-medium mb-6">
               {section?.texts.subtitle || 'Os benefícios são claros, e a prática comprova.'}
             </p>
-            <p className="text-sm md:text-base font-medium text-slate-400 mb-10">
+            <p className="text-base md:text-lg font-medium text-slate-400 mb-10">
               {section?.texts.intro || 'Veja a experiência de Rodrigo, Integrador de São Paulo'}
             </p>
             <div className="space-y-6 text-lg md:text-xl text-slate-600 leading-relaxed font-medium">
@@ -60,8 +60,8 @@ export const TestimonialsSection: React.FC = () => {
               <div className="flex items-start gap-3">
                 <CheckCircle2 className="w-5 h-5 text-[#F97316] mt-1 flex-shrink-0" />
                 <div>
-                  <h4 className="font-bold text-[#0F172A] text-sm uppercase mb-1">{section?.texts.ctaTitle || 'Faça como ele'}</h4>
-                  <p className="text-slate-600 text-sm italic">
+                  <h4 className="font-bold text-[#0F172A] text-base uppercase mb-1">{section?.texts.ctaTitle || 'Faça como ele'}</h4>
+                  <p className="text-slate-600 text-base italic">
                     <span className="block mt-2 font-semibold text-[#0F172A] not-italic">
                       {section?.texts.ctaText || 'Imersão no Manual de Compra Solar Buy-Side: pense como seu cliente e torne-se um Vendedor de Alta Performance!'}
                     </span>

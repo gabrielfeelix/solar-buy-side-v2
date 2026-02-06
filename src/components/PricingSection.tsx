@@ -169,7 +169,7 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ id }) => {
                 </div>
                 <div className="mb-10">
                   <div className="space-y-1">
-                    <p className="text-slate-400 text-sm font-bold line-through">{section?.texts.priceFrom || 'De R$ 997,00 por apenas:'}</p>
+                    <p className="text-slate-400 text-base font-bold line-through">{section?.texts.priceFrom || 'De R$ 997,00 por apenas:'}</p>
                     <div className="flex flex-col">
                       <div className="flex items-start">
                         <span className="text-xl font-bold mt-2 mr-1">12x de</span>
@@ -179,7 +179,7 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ id }) => {
                           <span className="text-2xl font-black mt-2">{section?.texts.priceCents || ',38'}</span>
                         </div>
                       </div>
-                      <p className="text-slate-500 text-sm font-medium mt-2">
+                      <p className="text-slate-500 text-base font-medium mt-2">
                         {section?.texts.priceUpfront || 'Ou R$ 597,00 à vista no PIX'}
                       </p>
                     </div>
