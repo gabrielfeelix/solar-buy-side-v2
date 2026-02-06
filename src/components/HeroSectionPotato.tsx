@@ -79,7 +79,7 @@ export const HeroSectionPotato: React.FC = () => {
           </span>
         </h1>
 
-        <p className="text-2xl md:text-[32px] text-slate-300 max-w-2xl mx-auto leading-relaxed mb-4 font-light">
+        <p className="text-2xl md:text-[32px] text-slate-300 max-w-2xl mx-auto leading-snug mb-4 font-light">
           {section?.texts.subtitle1 || 'Aprenda como o seu cliente pensa e fuja da guerra de preços com o'}
         </p>
         <p className="text-2xl md:text-[40px] text-white max-w-2xl mx-auto leading-relaxed mb-12 font-light">
