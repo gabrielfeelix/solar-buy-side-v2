@@ -8,7 +8,7 @@ export const TestimonialsSection: React.FC = () => {
 
   const rodrigoImage = section?.images.testimonialImage || '/assets/Integrador_Rodrigo_SP.png'
   return (
-    <section className="py-24 bg-white relative overflow-hidden">
+    <section className="py-16 bg-white relative overflow-hidden">
       <div className="absolute right-0 top-0 h-full w-1/3 bg-slate-50 hidden lg:block"></div>
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         <div className="grid lg:grid-cols-12 gap-16 items-center">

@@ -97,7 +97,7 @@ export const SellerCodeSection: React.FC = () => {
 
   return (
     <section className="bg-white text-slate-900 font-sans">
-      <div className="max-w-7xl mx-auto px-6 py-20 lg:py-32 no-reveal">
+      <div className="max-w-7xl mx-auto px-6 py-12 lg:py-20 no-reveal">
         {/* CONTAINER GERAL */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24">
           {/* COLUNA ESQUERDA: NARRATIVA E LISTA */}
