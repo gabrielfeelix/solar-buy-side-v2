@@ -88,6 +88,7 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ id }) => {
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-blue-200 to-blue-500">
                   CORRENDO
                 </span>{' '}
+                <br />
                 E QUEM AGIR PRIMEIRO,{' '}
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-blue-200 to-blue-500">
                   VENDE MAIS.
