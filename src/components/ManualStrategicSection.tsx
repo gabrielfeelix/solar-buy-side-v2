@@ -102,7 +102,7 @@ export const ManualStrategicSection: React.FC = () => {
               <img
                 src={'/assets/Capa-manual-buy-side-definitiva.png'}
                 alt="Manual Solar Buy-Side"
-                className="w-[680px] max-w-full h-auto relative"
+                className="w-[750px] max-w-full h-auto relative"
               />
             </div>
           </div>
