@@ -80,7 +80,7 @@ export const LeadMagnetSection: React.FC = () => {
               <img
                 src={section?.images.ebook || '/assets/Capa do Vendedor E-book  - OF.png'}
                 alt="E-book Solar Buy-Side"
-                className="w-[420px] max-w-full h-auto"
+                className="w-[520px] max-w-full h-auto"
               />
             </div>
 
@@ -121,7 +121,7 @@ export const LeadMagnetSection: React.FC = () => {
             <img
               src={section?.images.ebook || '/assets/Capa do Vendedor E-book  - OF.png'}
               alt="E-book Solar Buy-Side"
-              className="w-[420px] max-w-full h-auto"
+              className="w-[520px] max-w-full h-auto"
             />
           </div>
         </div>
