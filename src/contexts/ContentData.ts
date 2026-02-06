@@ -295,7 +295,7 @@ export const initialContent: SectionContent[] = [
       successMessage: 'Confira seu e-mail para baixar o E-book Manual Solar Buy-Side',
     },
     images: {
-      ebook: '/assets/Capa do Vendedor E-book  - OF.png',
+      ebook: '/assets/e-book-solar.jpeg',
     },
   },
   {

@@ -77,13 +77,11 @@ export const LeadMagnetSection: React.FC = () => {
 
             {/* Imagem aparece após o subtitle no mobile */}
             <div className="flex justify-center items-center lg:hidden">
-              <div className="w-full max-w-[400px]">
-                <img
-                  src={section?.images.ebook || '/assets/Capa do Vendedor E-book  - OF.png'}
-                  alt="E-book Solar Buy-Side"
-                  className="w-full h-auto"
-                />
-              </div>
+              <img
+                src={section?.images.ebook || '/assets/e-book-solar.jpeg'}
+                alt="E-book Solar Buy-Side"
+                className="w-[420px] max-w-full h-auto"
+              />
             </div>
 
             <div className="grid sm:grid-cols-1 md:grid-cols-1 gap-6 pt-4">
@@ -121,9 +119,9 @@ export const LeadMagnetSection: React.FC = () => {
           {/* Imagem no desktop apenas */}
           <div className="flex-1 justify-center items-center hidden lg:flex">
             <img
-              src={section?.images.ebook || '/assets/Capa do Vendedor E-book  - OF.png'}
+              src={section?.images.ebook || '/assets/e-book-solar.jpeg'}
               alt="E-book Solar Buy-Side"
-              className="w-[500px] max-w-full h-auto"
+              className="w-[420px] max-w-full h-auto"
             />
           </div>
         </div>
