@@ -71,8 +71,8 @@ export const HeroSectionPotato: React.FC = () => {
           }
         `}</style>
 
-        <h1 className="text-4xl md:text-[64px] font-bold text-white leading-[1.05] tracking-tight mb-8">
-          {section?.texts.title1 || 'Transforme-se no'}<br />
+        <h1 className="text-[clamp(2rem,5vw,4rem)] md:text-[64px] font-bold text-white leading-[1.05] tracking-tight mb-8 break-words">
+          {section?.texts.title1 || 'Transforme-se no'}{' '}
           <span className="text-[#F97316]">
             {typed}
             <span className="ml-1 inline-block h-7 w-[2px] bg-[#F97316] align-middle animate-pulse"></span>
