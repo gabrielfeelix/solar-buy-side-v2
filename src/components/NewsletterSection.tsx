@@ -63,7 +63,7 @@ export const NewsletterSection: React.FC = () => {
   }
 
   return (
-    <section className="bg-white py-24 px-6">
+    <section className="bg-white py-16 px-6">
       <div className="max-w-4xl mx-auto">
         <div className="bg-gradient-to-br from-[#0F172A] via-[#1E293B] to-[#020617] rounded-[2.5rem] p-8 md:p-12 shadow-2xl relative overflow-hidden border border-white/10">
           {/* Efeito de fundo */}

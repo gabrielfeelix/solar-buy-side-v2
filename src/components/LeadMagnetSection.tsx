@@ -50,7 +50,7 @@ export const LeadMagnetSection: React.FC = () => {
   const [submitted, setSubmitted] = useState(false)
 
   return (
-    <section className="relative w-full bg-white py-24 md:py-40 px-6 overflow-hidden font-sans text-[#1d1d1f]">
+    <section className="relative w-full bg-white py-16 md:py-24 px-6 overflow-hidden font-sans text-[#1d1d1f]">
       <div className="absolute inset-0 [background-image:radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:40px_40px] opacity-[0.3] pointer-events-none"></div>
 
       <div className="absolute top-[-10%] right-[-5%] w-[500px] h-[500px] bg-orange-100/40 rounded-full blur-[120px] pointer-events-none"></div>
