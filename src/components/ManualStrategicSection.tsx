@@ -53,7 +53,7 @@ export const ManualStrategicSection: React.FC = () => {
         <div className="absolute bottom-[-10%] left-[-10%] w-[400px] h-[400px] bg-orange-500/5 blur-[100px] rounded-full"></div>
       </div>
 
-      <div className="relative z-10 max-w-6xl mx-auto px-6 py-32">
+      <div className="relative max-w-6xl mx-auto px-6 py-32">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
           <div className="lg:col-span-7 flex flex-col min-h-[600px]">
             <div className="space-y-6">
@@ -64,7 +64,7 @@ export const ManualStrategicSection: React.FC = () => {
                 <h2 className="text-4xl md:text-[50px] font-black tracking-tight text-white">
                   {section?.texts.title || 'Manual Solar Buy-Side'}
                 </h2>
-                <p className="text-xl md:text-2xl text-slate-300 font-medium leading-relaxed max-w-md border-l-2 border-orange-500 pl-4">
+                <p className="text-xl md:text-2xl text-slate-300 font-medium leading-relaxed max-w-sm border-l-2 border-orange-500 pl-4">
                   {section?.texts.subtitle || 'A ferramenta estratégica que todo vendedor do setor solar precisa ter.'}
                 </p>
               </div>
@@ -102,7 +102,7 @@ export const ManualStrategicSection: React.FC = () => {
               <img
                 src={'/assets/Capa-manual-buy-side-definitiva.png'}
                 alt="Manual Solar Buy-Side"
-                className="w-[420px] max-w-full h-auto relative z-10"
+                className="w-[520px] max-w-full h-auto relative z-10"
               />
             </div>
           </div>
@@ -110,7 +110,7 @@ export const ManualStrategicSection: React.FC = () => {
 
         <div className="relative mt-16 w-full h-px bg-gradient-to-r from-transparent via-orange-500/20 to-transparent -z-10"></div>
 
-        <div className="relative mt-16 max-w-4xl z-10">
+        <div className="relative mt-16 max-w-4xl">
           <h2 className="text-4xl md:text-[50px] font-black text-white leading-snug tracking-tight mb-8">
             {section?.texts.section2Title && section.texts.section2Title.trim() !== '' ? (
               section.texts.section2Title
