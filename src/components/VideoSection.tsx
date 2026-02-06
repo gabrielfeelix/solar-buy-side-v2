@@ -89,7 +89,7 @@ export const VideoSection: React.FC = () => {
               </div>
               <div className="flex-grow">
                 <div className="flex items-center gap-3 mb-4">
-                  <span className="text-[10px] font-black text-slate-400 tracking-widest uppercase">{card.id}</span>
+                  <span className="text-[10px] font-black text-slate-300 tracking-widest uppercase">{card.id}</span>
                   <div className="h-px w-6 bg-white/15"></div>
                   <span className="text-[10px] font-bold text-orange-600 uppercase tracking-widest">{card.tag}</span>
                 </div>
@@ -205,7 +205,7 @@ export const VideoSection: React.FC = () => {
         <div className="flex justify-center mt-12">
           <a
             href="#oferta"
-            className="inline-flex items-center justify-center gap-3 px-10 py-5 bg-[#F97316] hover:bg-[#EA580C] text-white text-xl font-bold rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105"
+            className="inline-flex items-center justify-center gap-3 px-10 py-5 bg-[#F97316] hover:bg-[#EA580C] text-white text-xl font-bold rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 min-h-[44px]"
           >
             Quero sair na frente e vender mais
             <ArrowRight className="w-6 h-6" />

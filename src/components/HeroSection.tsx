@@ -97,7 +97,7 @@ export const HeroSection: React.FC = () => {
 
           {/* Alerta Destacado */}
           <div className="bg-warning-orange/5 border border-warning-orange/30 rounded-xl p-6 mb-6 hover:border-warning-orange/50 transition-all duration-300">
-            <p className="text-sm text-text-muted mb-2">⚠️ E o alerta é claro:</p>
+            <p className="text-base text-text-muted mb-2">⚠️ E o alerta é claro:</p>
             <p className="text-lg font-bold text-text-primary">
               "Quem não entender essa nova jornada de compra
               <span className="text-warning-orange"> VAI PERDER VENDAS."</span>
@@ -108,7 +108,7 @@ export const HeroSection: React.FC = () => {
 
           {/* Boa Notícia */}
           <div className="bg-neon-green/10 border border-neon-green/30 rounded-xl p-6">
-            <p className="text-sm text-text-muted mb-2">✅ A boa notícia?</p>
+            <p className="text-base text-text-muted mb-2">✅ A boa notícia?</p>
             <p className="text-lg font-semibold text-text-primary">
               Ainda há tempo para reverter essa situação.
             </p>
@@ -118,7 +118,7 @@ export const HeroSection: React.FC = () => {
         {/* CTA Principal */}
         <button
           onClick={scrollToVideo}
-          className="btn-primary text-lg px-8 py-4 mb-12"
+          className="btn-primary text-lg px-8 py-5 mb-12 min-h-[44px]"
         >
           QUERO ESTAR NA FRENTE DA CONCORRÊNCIA AGORA
           <ChevronRight size={20} className="ml-2" />

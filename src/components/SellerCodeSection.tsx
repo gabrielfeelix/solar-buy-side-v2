@@ -122,7 +122,7 @@ export const SellerCodeSection: React.FC = () => {
                   <Sparkles size={14} />
                 </div>
                 <div>
-                  <span className="block text-[10px] font-bold text-slate-400 uppercase tracking-widest">
+                  <span className="block text-[10px] font-bold text-slate-500 uppercase tracking-widest">
                     {section?.texts.badge || 'Oferta Especial'}
                   </span>
                   <span className="block text-base font-bold text-slate-900 uppercase tracking-tight">
@@ -155,7 +155,7 @@ export const SellerCodeSection: React.FC = () => {
             {/* LISTA INTERATIVA (Apple Style Specs) */}
             <div>
               <div className="space-y-0" onMouseLeave={() => setHoveredIndex(null)}>
-                <h4 className="text-xs font-bold text-slate-400 uppercase tracking-widest mb-6 pb-2 border-b border-slate-100">
+                <h4 className="text-xs font-bold text-slate-500 uppercase tracking-widest mb-6 pb-2 border-b border-slate-100">
                   {section?.texts.listTitle || 'O que você vai dominar:'}
                 </h4>
 

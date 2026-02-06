@@ -140,3 +140,27 @@ h1, h2, h3, h4, h5, h6 {
     box-shadow: 0 22px 36px rgba(34, 197, 94, 0.35);
   }
 }
+
+/* Otimizações para zoom 125%/150% */
+@media (min-width: 1024px) {
+  /* Melhor empilhamento de colunas em zoom alto */
+  @supports (zoom: 1.25) {
+    .lg\:grid-cols-12 {
+      grid-gap: clamp(1rem, 2vw, 3rem);
+    }
+  }
+}
+
+/* Garantir que botões e áreas de toque sejam acessíveis */
+button, a[role="button"], [role="button"] {
+  min-height: 44px;
+  min-width: 44px;
+}
+
+/* Melhorar legibilidade em zoom alto */
+@media (min-width: 1280px) and (min-resolution: 1.25dppx) {
+  body {
+    font-size: 16px;
+    line-height: 1.6;
+  }
+}

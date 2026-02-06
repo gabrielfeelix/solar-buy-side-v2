@@ -38,7 +38,7 @@ export const TestimonialsSection: React.FC = () => {
           </div>
 
           <div className="lg:col-span-7">
-            <h2 className="text-4xl md:text-[50px] font-black tracking-tight text-[#0F172A] leading-[1.1] mb-6">
+            <h2 className="text-4xl md:text-[50px] font-black tracking-tight text-[#0F172A] leading-snug mb-6">
               {section?.texts.title || '"Em um mês fechei 5 sistemas novos"'}
             </h2>
             <p className="text-xl md:text-2xl text-slate-500 font-medium mb-6">
@@ -75,7 +75,7 @@ export const TestimonialsSection: React.FC = () => {
         <div className="flex justify-center mt-16">
           <a
             href="#oferta"
-            className="inline-flex items-center justify-center gap-3 px-10 py-5 bg-[#F97316] hover:bg-[#EA580C] text-white text-xl font-bold rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105"
+            className="inline-flex items-center justify-center gap-3 px-10 py-5 bg-[#F97316] hover:bg-[#EA580C] text-white text-xl font-bold rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 min-h-[44px]"
           >
             Quero fechar mais projetos solares
             <ArrowRight className="w-6 h-6" />

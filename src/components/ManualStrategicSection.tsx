@@ -57,7 +57,7 @@ export const ManualStrategicSection: React.FC = () => {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
           <div className="lg:col-span-7 flex flex-col min-h-[600px]">
             <div className="space-y-6">
-              <span className="inline-flex items-center px-3 py-1 rounded-full bg-orange-500/10 border border-orange-500/20 text-orange-400 text-[10px] font-bold uppercase tracking-widest">
+              <span className="inline-flex items-center px-3 py-1 rounded-full bg-orange-500/10 border border-orange-500/20 text-orange-300 text-[10px] font-bold uppercase tracking-widest">
                 {section?.texts.badge || 'A ferramenta estratégica'}
               </span>
               <div className="space-y-4">
@@ -111,7 +111,7 @@ export const ManualStrategicSection: React.FC = () => {
         <div className="relative mt-16 w-full h-px bg-gradient-to-r from-transparent via-orange-500/20 to-transparent -z-10"></div>
 
         <div className="relative mt-16 max-w-4xl z-10">
-          <h2 className="text-4xl md:text-[50px] font-black text-white leading-[1.1] tracking-tighter mb-8">
+          <h2 className="text-4xl md:text-[50px] font-black text-white leading-snug tracking-tighter mb-8">
             {section?.texts.section2Title && section.texts.section2Title.trim() !== '' ? (
               section.texts.section2Title
             ) : (

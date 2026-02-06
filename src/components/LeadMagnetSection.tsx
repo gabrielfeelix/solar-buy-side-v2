@@ -111,7 +111,7 @@ export const LeadMagnetSection: React.FC = () => {
                 <span className="mr-3">{section?.texts.ctaButton || 'Baixar E-book Gratuito'}</span>
                 <Download size={20} className="group-hover:translate-y-0.5 transition-transform" />
               </button>
-              <p className="mt-4 text-xs text-[#86868b] flex items-center gap-2">
+              <p className="mt-4 text-xs text-[#6e6e73] font-medium flex items-center gap-2">
                 <CheckCircle2 size={14} className="text-green-500" />
                 {section?.texts.ctaSubtext || 'PDF Interativo • 24 páginas • Acesso imediato'}
               </p>
@@ -145,8 +145,9 @@ export const LeadMagnetSection: React.FC = () => {
                 setShowModal(false)
                 setSubmitted(false)
               }}
-              className="absolute top-6 right-6 text-[#1d1d1f] hover:text-orange-600 transition-colors"
+              className="absolute top-4 right-4 p-2 text-[#1d1d1f] hover:text-orange-600 transition-colors min-w-[44px] min-h-[44px] flex items-center justify-center"
               type="button"
+              aria-label="Fechar"
             >
               <X size={24} />
             </button>
@@ -251,7 +252,7 @@ export const LeadMagnetSection: React.FC = () => {
 
                     <button
                       type="submit"
-                      className="w-full bg-orange-600 hover:bg-orange-500 text-white font-bold py-3 rounded-xl transition-colors mt-6"
+                      className="w-full bg-orange-600 hover:bg-orange-500 text-white font-bold py-4 rounded-xl transition-colors mt-6 min-h-[44px]"
                     >
                       {section?.texts.ctaButton || 'Baixar E-book Gratuito'}
                     </button>
@@ -273,7 +274,7 @@ export const LeadMagnetSection: React.FC = () => {
                       setShowModal(false)
                       setSubmitted(false)
                     }}
-                    className="w-full bg-orange-600 hover:bg-orange-500 text-white font-bold py-3 rounded-xl transition-colors mt-6"
+                    className="w-full bg-orange-600 hover:bg-orange-500 text-white font-bold py-4 rounded-xl transition-colors mt-6 min-h-[44px]"
                     type="button"
                   >
                     Fechar

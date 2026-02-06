@@ -72,7 +72,7 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ id }) => {
             {section?.texts.badge || 'Pré-venda profissional por tempo limitado'}
           </div>
 
-          <h2 className="text-5xl md:text-[50px] font-black tracking-tighter leading-[0.95]">
+          <h2 className="text-5xl md:text-[50px] font-black tracking-tighter leading-tight">
             {section?.texts.title && section.texts.title.trim() !== '' ? (
               section.texts.title
             ) : isFirstSection ? (
@@ -124,7 +124,7 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ id }) => {
                       {item.icon}
                     </div>
                     <div className="space-y-1">
-                      <span className="text-[10px] font-black text-slate-200/90 tracking-widest">{item.tag}</span>
+                      <span className="text-[10px] font-black text-slate-300 tracking-widest">{item.tag}</span>
                       <h4 className="font-bold text-lg leading-tight">{item.title}</h4>
                       <p className="text-base text-slate-500 leading-relaxed">{item.desc}</p>
                     </div>
@@ -138,7 +138,7 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ id }) => {
                 <Target className="text-orange-500" size={28} />
               </div>
               <div className="space-y-1">
-                <span className="text-[10px] font-black text-slate-200/90 tracking-widest">
+                <span className="text-[10px] font-black text-slate-300 tracking-widest">
                   {section?.texts.bonusBadge || 'BÔNUS EXCLUSIVO'}
                 </span>
                 <h4 className="font-bold text-lg leading-tight">
@@ -192,7 +192,7 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ id }) => {
                     target={globalSettings.purchaseLink ? '_blank' : undefined}
                     rel={globalSettings.purchaseLink ? 'noopener noreferrer' : undefined}
                     onClick={trackBuyClick}
-                    className="relative w-full group overflow-hidden bg-orange-600 hover:bg-orange-500 text-white font-black py-6 rounded-2xl shadow-xl shadow-orange-600/30 transition-all duration-300 active:scale-[0.98] flex items-center justify-center"
+                    className="relative w-full group overflow-hidden bg-orange-600 hover:bg-orange-500 text-white font-black py-6 rounded-2xl shadow-xl shadow-orange-600/30 transition-all duration-300 active:scale-[0.98] flex items-center justify-center min-h-[44px]"
                   >
                     <div className="relative z-10 flex items-center gap-3">
                       <span className="text-base md:text-lg uppercase tracking-tight text-center leading-tight">
