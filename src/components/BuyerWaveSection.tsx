@@ -147,7 +147,7 @@ export const BuyerWaveSection: React.FC = () => {
         </div>
       </div>
 
-      <div className="py-8 px-6 bg-[#FBFBFD]">
+      <div className="py-24 px-6 bg-[#FBFBFD]">
         <div className="max-w-6xl mx-auto">
           <div className="flex justify-between items-end mb-10">
             <div>
@@ -190,7 +190,7 @@ export const BuyerWaveSection: React.FC = () => {
               </div>
             </div>
 
-            <div className="w-full md:w-[62%] p-8 md:p-16 flex flex-col justify-start">
+            <div className="w-full md:w-[62%] p-8 flex flex-col justify-start">
               <div className="space-y-6 md:space-y-8">
                 <h4 className="text-xl md:text-3xl font-extrabold tracking-tight text-[#1D1D1F] leading-tight">
                   {testimonials[activeTestimonial].reviewTitle}
