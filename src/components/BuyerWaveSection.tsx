@@ -147,7 +147,7 @@ export const BuyerWaveSection: React.FC = () => {
         </div>
       </div>
 
-      <div className="py-24 px-6 bg-[#FBFBFD]">
+      <div className="py-8 px-6 bg-[#FBFBFD]">
         <div className="max-w-6xl mx-auto">
           <div className="flex justify-between items-end mb-10">
             <div>
