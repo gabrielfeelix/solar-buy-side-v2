@@ -47,18 +47,14 @@ export const HeroSectionPotato: React.FC = () => {
           O método Buy-Side ensina você a pensar como o cliente e vender decisão, não preço.
         </p>
 
-        {/* Main Product Card */}
-        <div className="max-w-2xl mx-auto">
-          <div className="relative bg-gradient-to-br from-[#F97316] to-orange-600 rounded-3xl p-1 shadow-2xl shadow-orange-500/20">
-            <div className="bg-[#0a1730] rounded-[calc(1.5rem-4px)] p-8 md:p-10">
-              <h2 className="text-3xl md:text-5xl font-bold text-[#F97316] mb-3 tracking-tight">
-                Manual Solar Buy-Side
-              </h2>
-              <p className="text-lg md:text-xl text-white border-b border-white/10 pb-4 mb-4">
-                Método baseado em inteligência de mercado
-              </p>
-            </div>
-          </div>
+        {/* Main Product Title */}
+        <div className="max-w-3xl mx-auto space-y-3">
+          <h2 className="text-4xl md:text-6xl font-bold text-[#F97316] tracking-tight">
+            Manual Solar Buy-Side
+          </h2>
+          <p className="text-xl md:text-2xl text-white font-medium">
+            Método baseado em inteligência de mercado
+          </p>
         </div>
 
         {/* Bonus Section */}
