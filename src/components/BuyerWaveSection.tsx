@@ -230,7 +230,7 @@ export const BuyerWaveSection: React.FC = () => {
             </div>
 
             <div className="w-full md:w-[62%] p-4 flex flex-col justify-start">
-              <div className="space-y-6 md:space-y-8">
+              <div className="space-y-4 md:space-y-5">
                 <h4 className="text-xl md:text-3xl font-extrabold tracking-tight text-[#1D1D1F] leading-tight">
                   {testimonials[activeTestimonial].reviewTitle}
                 </h4>
@@ -239,7 +239,7 @@ export const BuyerWaveSection: React.FC = () => {
                   {testimonials[activeTestimonial].quote}
                 </p>
 
-                <div className="pt-4 md:pt-6 border-t border-[#F5F5F7]">
+                <div className="pt-3 md:pt-4 border-t border-[#F5F5F7]">
                   <p className="text-lg md:text-2xl font-bold tracking-tight text-[#1D1D1F] leading-snug text-justify">
                     "{testimonials[activeTestimonial].highlight}"
                   </p>
