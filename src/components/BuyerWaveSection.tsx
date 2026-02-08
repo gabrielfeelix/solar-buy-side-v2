@@ -46,7 +46,7 @@ const testimonials = [
     name: 'Jorge Luiz',
     role: 'Empresário',
     location: 'Rio de Janeiro, RJ',
-    avatar: '/assets/jorge of.png',
+    avatar: '/assets/jorge of_cleanup.png',
     objectPosition: '50% 100%',
     reviewTitle: (
       <>
@@ -62,7 +62,7 @@ const testimonials = [
     name: 'Rogério',
     role: 'Particular',
     location: 'Campinas, SP',
-    avatar: '/assets/Rogerio.png',
+    avatar: '/assets/Rogerio_cleanup.png',
     objectPosition: '50% 100%',
     reviewTitle: (
       <>
