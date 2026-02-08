@@ -27,6 +27,34 @@ const testimonials = [
       'Mais que um guia, o Manual é o seguro que todo empresário precisa para investir com risco controlado.',
   },
   {
+    name: 'Guilherme',
+    role: 'Particular',
+    location: 'Santana de Parnaíba, SP',
+    avatar: '/assets/empresariomanualk.png',
+    objectPosition: '55% 20%',
+    reviewTitle: 'Decisão segura em investimento complexo.',
+    quote:
+      'Resido na região de São Paulo, em uma residência de grande porte, com elevado consumo elétrico e exposta a apagões frequentes, que podem durar horas ou dias. Para reduzir a fatura e garantir conforto energético, optei pela instalação de um sistema solar híbrido com baterias. Para embasar um investimento de alta complexidade técnica e valor, utilizei com sucesso o Manual de Compra Solar Buy-Side, que orientou todo o processo de avaliação e decisão.',
+    highlight:
+      'Para quem busca segurança e ganho de tempo, recomendo com total confiança.',
+  },
+  {
+    name: 'Jorge Luiz',
+    role: 'Empresário',
+    location: 'Rio de Janeiro, RJ',
+    avatar: '/assets/jorge of.png',
+    objectPosition: '55% 20%',
+    reviewTitle: (
+      <>
+        O manual foi o <span className="text-[#F97316]">divisor de águas</span>.
+      </>
+    ),
+    quote:
+      'Viver no Rio é aquilo: você tem que estar sempre ligado pra não cair em furada. Quando precisei cortar os custos fixos da minha metalúrgica, confesso que travei, porque de energia solar eu não entendia nada. O manual foi o divisor de águas; me deu o mapa da mina pra estudar as propostas e descartar de cara quem estava só no gogó. Investi R$ 188 mil com total segurança e o alívio já chegou no bolso.',
+    highlight:
+      'O Manual valeu demais! Recomendo mesmo!',
+  },
+  {
     name: 'Rogério',
     role: 'Particular',
     location: 'Campinas, SP',
@@ -40,22 +68,6 @@ const testimonials = [
       'Eu nunca tinha tido contato com energia solar e temia tomar a decisão errada, mas o conteúdo claro e estruturado mudou tudo. As 4 fases da jornada de compra foram essenciais e o índice interativo, com mais de 160 tópicos, sanou todas as minhas dúvidas instantaneamente. No fim, escolhi a empresa certa e o sistema ideal pelo preço justo, conduzindo a negociação com total autoridade e segurança.',
     highlight:
       'Sem exagero: o Manual Solar Buy-Side valeu cada página.',
-  },
-  {
-    name: 'Jorge Luiz',
-    role: 'Empresário',
-    location: 'Rio de Janeiro, RJ',
-    avatar: '/assets/Jorge.png',
-    objectPosition: '55% 20%',
-    reviewTitle: (
-      <>
-        O manual foi o <span className="text-[#F97316]">divisor de águas</span>.
-      </>
-    ),
-    quote:
-      'Viver no Rio é aquilo: você tem que estar sempre ligado pra não cair em furada. Quando precisei cortar os custos fixos da minha metalúrgica, confesso que travei, porque de energia solar eu não entendia nada. O manual foi o divisor de águas; me deu o mapa da mina pra estudar as propostas e descartar de cara quem estava só no gogó. Investi R$ 188 mil com total segurança e o alívio já chegou no bolso.',
-    highlight:
-      'O Manual valeu demais! Recomendo mesmo!',
   },
   {
     name: 'Lucineide',
@@ -87,18 +99,6 @@ const testimonials = [
       'Sou produtor rural em Sinop/MT e decidi instalar energia solar devido ao alto consumo na irrigação e maquinários. Com a expansão da lavoura, a conta de luz pesava muito. O Manual Solar Buy-Side foi essencial nesse processo: me ensinou a comparar propostas tecnicamente e evitar erros caros que eu nem conhecia. O conteúdo me deu a segurança necessária para realizar um investimento de R$ 248 mil.',
     highlight:
       'Realmente é uma ferramenta indispensável para quem busca eficiência no campo e proteção do capital.',
-  },
-  {
-    name: 'Guilherme',
-    role: 'Empresário',
-    location: 'Santana de Parnaíba, SP',
-    avatar: '/assets/empresariomanualk.png',
-    objectPosition: '55% 20%',
-    reviewTitle: 'Título temporário.',
-    quote:
-      'Texto temporário em desenvolvimento.',
-    highlight:
-      'Destaque temporário.',
   },
 ]
 
