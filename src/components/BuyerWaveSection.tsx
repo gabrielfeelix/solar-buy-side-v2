@@ -50,7 +50,7 @@ const testimonials = [
     role: 'Particular',
     location: 'Recife, PE',
     avatar: '/assets/Lucineide 1.png',
-    objectPosition: '55% 20%',
+    objectPosition: '55% 35%',
     reviewTitle: 'Esse Manual foi realmente um passo a passo arretado!',
     quote:
       'Morando sozinha, a variedade de empresas e tecnologias me deixava insegura. O manual foi o guia fundamental: seguindo cada etapa, aprendi a avaliar propostas e descartar o que era bom demais para ser verdade. Com total convicção, instalei meu sistema de R$ 28 mil. O passo a passo foi "arretado"! No final, fui até elogiada pelos vendedores; eles nunca tinham encontrado uma mulher com tanto conhecimento técnico 😂.',
