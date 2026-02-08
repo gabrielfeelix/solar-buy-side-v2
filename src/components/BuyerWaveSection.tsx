@@ -31,7 +31,7 @@ const testimonials = [
     role: 'Particular',
     location: 'Santana de Parnaíba, SP',
     avatar: '/assets/empresariomanualk.png',
-    objectPosition: '50% 100%',
+    objectPosition: '50% 50%',
     reviewTitle: 'Decisão segura em investimento complexo.',
     quote:
       'Resido na região de São Paulo, em uma residência de grande porte, com elevado consumo elétrico e exposta a apagões frequentes, que podem durar horas ou dias. Para reduzir a fatura e garantir conforto energético, optei pela instalação de um sistema solar híbrido com baterias. Para embasar um investimento de alta complexidade técnica e valor, utilizei com sucesso o Manual de Compra Solar Buy-Side, que orientou todo o processo de avaliação e decisão.',
