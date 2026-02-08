@@ -37,8 +37,8 @@ export const HeroSectionPotato: React.FC = () => {
       </div>
 
       <div className="relative z-10 max-w-6xl mx-auto px-6 py-12 min-h-screen flex flex-col lg:flex-row items-center justify-center lg:justify-between gap-10">
-        {/* --- LEFT COLUMN: Copy & CTAs --- */}
-        <div className="flex-1 flex flex-col items-start text-left animate-in fade-in slide-in-from-left-4 duration-700 z-20 pt-20 lg:pt-0">
+        {/* --- LEFT COLUMN: Copy --- */}
+        <div className="flex-1 flex flex-col items-start text-left animate-in fade-in slide-in-from-left-4 duration-700 z-20 pt-20 lg:pt-0 order-1">
           {/* PRODUCT IDENTITY - Tech/High-end Style */}
           <div className="flex items-center gap-3 mb-8">
             <div className="h-px w-8 sm:w-12 bg-gradient-to-r from-orange-500 to-transparent"></div>
@@ -96,8 +96,8 @@ export const HeroSectionPotato: React.FC = () => {
             </div>
           </div>
 
-          {/* CTAs */}
-          <div className="flex flex-col sm:flex-row items-center gap-3 w-full sm:w-auto mb-12 lg:mb-0">
+          {/* CTAs - Desktop only */}
+          <div className="hidden lg:flex flex-col sm:flex-row items-center gap-3 w-full sm:w-auto mb-12 lg:mb-0">
             <button
               onClick={scrollToOffer}
               type="button"
@@ -110,7 +110,7 @@ export const HeroSectionPotato: React.FC = () => {
         </div>
 
         {/* --- RIGHT COLUMN: Person Image & Bonus Card --- */}
-        <div className="flex-1 w-full relative flex flex-col items-center lg:items-end justify-center h-[50vh] lg:h-screen animate-in fade-in slide-in-from-right-8 duration-1000 delay-200">
+        <div className="flex-1 w-full relative flex flex-col items-center lg:items-end justify-center h-[50vh] lg:h-screen animate-in fade-in slide-in-from-right-8 duration-1000 delay-200 order-2">
           {/* Glow behind image */}
           <div className="absolute top-1/2 right-[10%] -translate-y-1/2 w-[400px] h-[400px] bg-gradient-to-t from-orange-500/20 to-blue-900/20 blur-[100px] rounded-full z-0 pointer-events-none" />
 
@@ -146,6 +146,18 @@ export const HeroSectionPotato: React.FC = () => {
               </p>
             </div>
           </div>
+        </div>
+
+        {/* --- CTA BUTTON: Mobile only, appears after image --- */}
+        <div className="flex lg:hidden flex-col sm:flex-row items-center gap-3 w-full sm:w-auto px-6 order-3">
+          <button
+            onClick={scrollToOffer}
+            type="button"
+            className="w-full sm:w-auto px-8 py-4 bg-[#f97316] hover:bg-[#ea580c] text-white rounded-lg font-bold text-sm shadow-[0_0_20px_-5px_rgba(249,115,22,0.3)] hover:shadow-[0_0_30px_-5px_rgba(249,115,22,0.5)] hover:-translate-y-0.5 transition-all duration-300 flex items-center justify-center gap-2"
+          >
+            <span>Quero me tornar um vendedor consultivo</span>
+            <ArrowRight className="w-4 h-4" />
+          </button>
         </div>
       </div>
 
