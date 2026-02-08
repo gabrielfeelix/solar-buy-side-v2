@@ -40,7 +40,7 @@ export const HeroSectionPotato: React.FC = () => {
         {/* --- LEFT COLUMN: Copy --- */}
         <div className="flex-1 flex flex-col items-start text-left animate-in fade-in slide-in-from-left-4 duration-700 z-20 pt-20 lg:pt-0 order-1">
           {/* Headline */}
-          <h1 className="font-['Sora'] text-3xl lg:text-[42px] font-bold text-white leading-[1.4] tracking-tight mb-4">
+          <h1 className="font-['Sora'] text-3xl lg:text-[36px] font-bold text-white leading-[1.4] tracking-tight mb-4">
             Saia da Disputa de Preço e Passe a <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-red-500">Vender Decisões</span> em Sistema Solar
           </h1>
 
