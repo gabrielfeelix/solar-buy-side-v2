@@ -219,7 +219,7 @@ export const BuyerWaveSection: React.FC = () => {
                 style={{ objectPosition: testimonials[activeTestimonial].objectPosition ?? 'center' }}
                 alt={testimonials[activeTestimonial].name}
               />
-              <div className="absolute bottom-4 left-6 right-6 md:bottom-6 md:left-8 md:right-8 backdrop-blur-xl bg-white/20 border border-white/30 p-4 md:p-6 rounded-2xl text-white shadow-2xl">
+              <div className="absolute bottom-2 left-6 right-6 md:bottom-4 md:left-8 md:right-8 backdrop-blur-xl bg-white/20 border border-white/30 px-4 py-3.5 md:px-6 md:py-3.5 rounded-2xl text-white shadow-2xl">
                 <p className="text-xl md:text-2xl font-bold tracking-tight">{testimonials[activeTestimonial].name}</p>
                 <div className="flex items-center gap-2 mt-1.5 opacity-90 text-[10px] font-bold uppercase tracking-[0.15em]">
                   <span>{testimonials[activeTestimonial].role}</span>
