@@ -235,7 +235,7 @@ export const BuyerWaveSection: React.FC = () => {
                   {testimonials[activeTestimonial].reviewTitle}
                 </h4>
 
-                <p className="text-base md:text-xl text-[#424245] leading-relaxed font-normal text-justify">
+                <p className="text-base md:text-lg text-[#424245] leading-relaxed font-normal text-justify">
                   {testimonials[activeTestimonial].quote}
                 </p>
 
