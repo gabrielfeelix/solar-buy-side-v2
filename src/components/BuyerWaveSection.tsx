@@ -211,7 +211,7 @@ export const BuyerWaveSection: React.FC = () => {
             </div>
           </div>
 
-          <div className="bg-white rounded-[3rem] overflow-hidden border border-[#E5E5E7] shadow-[0_20px_60px_rgba(0,0,0,0.03)] flex flex-col md:flex-row md:h-[420px]">
+          <div className="bg-white rounded-[3rem] overflow-hidden border border-[#E5E5E7] shadow-[0_20px_60px_rgba(0,0,0,0.03)] flex flex-col md:flex-row md:h-[380px]">
             <div className="w-full md:w-[38%] relative h-[360px] md:h-auto">
               <img
                 src={testimonials[activeTestimonial].avatar}
