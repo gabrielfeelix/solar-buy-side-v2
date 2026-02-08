@@ -15,7 +15,7 @@ const testimonials = [
     role: 'Empresário',
     location: 'São Paulo, SP',
     avatar: '/assets/Ricardo 1.png',
-    objectPosition: '55% 20%',
+    objectPosition: '50% 100%',
     reviewTitle: (
       <>
         <span className="text-[#F97316]">Errar</span> na escolha de um <span className="text-[#F97316]">fornecedor</span> pode gerar prejuízo enorme.
@@ -31,7 +31,7 @@ const testimonials = [
     role: 'Particular',
     location: 'Santana de Parnaíba, SP',
     avatar: '/assets/empresariomanualk.png',
-    objectPosition: '55% 20%',
+    objectPosition: '50% 100%',
     reviewTitle: 'Decisão segura em investimento complexo.',
     quote:
       'Resido na região de São Paulo, em uma residência de grande porte, com elevado consumo elétrico e exposta a apagões frequentes, que podem durar horas ou dias. Para reduzir a fatura e garantir conforto energético, optei pela instalação de um sistema solar híbrido com baterias. Para embasar um investimento de alta complexidade técnica e valor, utilizei com sucesso o Manual de Compra Solar Buy-Side, que orientou todo o processo de avaliação e decisão.',
@@ -43,7 +43,7 @@ const testimonials = [
     role: 'Empresário',
     location: 'Rio de Janeiro, RJ',
     avatar: '/assets/jorge of.png',
-    objectPosition: '55% 20%',
+    objectPosition: '50% 100%',
     reviewTitle: (
       <>
         O manual foi o <span className="text-[#F97316]">divisor de águas</span>.
@@ -59,6 +59,7 @@ const testimonials = [
     role: 'Particular',
     location: 'Campinas, SP',
     avatar: '/assets/Rogerio.png',
+    objectPosition: '50% 100%',
     reviewTitle: (
       <>
         O manual valeu <span className="text-[#F97316]">cada página</span>.
@@ -74,7 +75,7 @@ const testimonials = [
     role: 'Particular',
     location: 'Recife, PE',
     avatar: '/assets/Lucineide 1.png',
-    objectPosition: '55% 45%',
+    objectPosition: '50% 100%',
     reviewTitle: (
       <>
         Esse Manual foi <span className="text-[#F97316]">realmente</span> um <span className="text-[#F97316]">passo a passo</span> arretado!
@@ -90,6 +91,7 @@ const testimonials = [
     role: 'Produtor Rural',
     location: 'Sinop, MT',
     avatar: '/assets/Edivaldo.png',
+    objectPosition: '50% 100%',
     reviewTitle: (
       <>
         O Manual me deu <span className="text-[#F97316]">segurança</span> para investir <span className="text-[#F97316] whitespace-nowrap">R$ 248 mil</span>.
