@@ -107,7 +107,7 @@ export const HeroSectionPotato: React.FC = () => {
 
             <div className="relative rounded-2xl overflow-hidden border border-white/10 shadow-2xl bg-[#020617]">
               <img
-                src="/assets/GED9CF_1.PNG"
+                src="/assets/GED9CF_1_cleanup.PNG"
                 alt="Consultoria Solar Executiva"
                 className="w-full h-auto object-cover transform transition-transform duration-700 hover:scale-105"
                 style={{
