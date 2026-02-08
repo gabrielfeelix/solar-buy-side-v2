@@ -55,7 +55,10 @@ export const HeroSectionPotato: React.FC = () => {
               Consultivo
             </span>
             <br />
-            de Sistema Solar
+            de Sistema Solar e{' '}
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-red-500">
+              Venda Mais
+            </span>
           </h1>
 
           {/* Subtext */}
@@ -103,7 +106,7 @@ export const HeroSectionPotato: React.FC = () => {
               type="button"
               className="w-full sm:w-auto px-8 py-4 bg-[#f97316] hover:bg-[#ea580c] text-white rounded-lg font-bold text-sm shadow-[0_0_20px_-5px_rgba(249,115,22,0.3)] hover:shadow-[0_0_30px_-5px_rgba(249,115,22,0.5)] hover:-translate-y-0.5 transition-all duration-300 flex items-center justify-center gap-2"
             >
-              <span>Quero me tornar um vendedor consultivo</span>
+              <span>Quero me tornar um vendedor premium</span>
               <ArrowRight className="w-4 h-4" />
             </button>
           </div>
@@ -155,7 +158,7 @@ export const HeroSectionPotato: React.FC = () => {
             type="button"
             className="w-full sm:w-auto px-8 py-4 bg-[#f97316] hover:bg-[#ea580c] text-white rounded-lg font-bold text-sm shadow-[0_0_20px_-5px_rgba(249,115,22,0.3)] hover:shadow-[0_0_30px_-5px_rgba(249,115,22,0.5)] hover:-translate-y-0.5 transition-all duration-300 flex items-center justify-center gap-2"
           >
-            <span>Quero me tornar um vendedor consultivo</span>
+            <span>Quero me tornar um vendedor premium</span>
             <ArrowRight className="w-4 h-4" />
           </button>
         </div>
