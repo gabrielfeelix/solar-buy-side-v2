@@ -45,7 +45,7 @@ const testimonials = [
     name: 'Jorge Luiz',
     role: 'Empresário',
     location: 'Rio de Janeiro, RJ',
-    avatar: '/assets/empresariomanualk.png',
+    avatar: '/assets/Jorge.png',
     objectPosition: '55% 20%',
     reviewTitle: (
       <>
@@ -87,6 +87,18 @@ const testimonials = [
       'Sou produtor rural em Sinop/MT e decidi instalar energia solar devido ao alto consumo na irrigação e maquinários. Com a expansão da lavoura, a conta de luz pesava muito. O Manual Solar Buy-Side foi essencial nesse processo: me ensinou a comparar propostas tecnicamente e evitar erros caros que eu nem conhecia. O conteúdo me deu a segurança necessária para realizar um investimento de R$ 248 mil.',
     highlight:
       'Realmente é uma ferramenta indispensável para quem busca eficiência no campo e proteção do capital.',
+  },
+  {
+    name: 'Guilherme',
+    role: 'Empresário',
+    location: 'Santana de Parnaíba, SP',
+    avatar: '/assets/empresariomanualk.png',
+    objectPosition: '55% 20%',
+    reviewTitle: 'Título temporário.',
+    quote:
+      'Texto temporário em desenvolvimento.',
+    highlight:
+      'Destaque temporário.',
   },
 ]
 
