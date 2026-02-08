@@ -41,7 +41,7 @@ export const HeroSectionPotato: React.FC = () => {
         <div className="flex-1 flex flex-col items-start text-left animate-in fade-in slide-in-from-left-4 duration-700 z-20 pt-20 lg:pt-0 order-1">
           {/* Headline */}
           <h1 className="font-['Sora'] text-3xl sm:text-4xl lg:text-[44px] font-bold text-white leading-[1.3] tracking-tight mb-4">
-            Transforme-se em um Vendedor <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-red-500">Consultivo</span> de<br />Sistema Solar e Venda <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-red-500">Mais</span>
+            Transforme-se em um Vendedor <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-red-500">Consultivo</span><br />de Sistema Solar e Venda <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-red-500">Mais</span>
           </h1>
 
           {/* Subtext */}
