@@ -37,7 +37,7 @@ const testimonials = [
     name: 'Jorge Luiz',
     role: 'Empresário',
     location: 'Rio de Janeiro, RJ',
-    avatar: '/assets/Jorge.png',
+    avatar: '/assets/empresariomanualk.png',
     objectPosition: '55% 20%',
     reviewTitle: 'O manual foi o divisor de águas.',
     quote:
