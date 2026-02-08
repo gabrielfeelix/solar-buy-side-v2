@@ -41,12 +41,12 @@ export const HeroSectionPotato: React.FC = () => {
         <div className="flex-1 flex flex-col items-start text-left animate-in fade-in slide-in-from-left-4 duration-700 z-20 pt-20 lg:pt-0 order-1">
           {/* Headline */}
           <h1 className="font-['Sora'] text-3xl sm:text-4xl lg:text-[44px] font-bold text-white leading-[1.4] tracking-tight mb-4">
-            Transforme-se em um Vendedor <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-red-500">Consultivo</span><br />de Sistema Solar e Venda <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-red-500">Mais</span>
+            Saia da Disputa de Preço e Passe a <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-red-500">Vender Decisões</span> em Sistema Solar
           </h1>
 
           {/* Subtext */}
           <p className="text-slate-400 text-sm sm:text-base leading-relaxed mb-6 max-w-lg border-l-2 border-orange-500/30 pl-4">
-            O método <strong className="text-slate-200">Buy-Side</strong> ensina você a pensar como o cliente e vender decisão, não preço.
+            O método <strong className="text-slate-200">Buy-Side</strong> ensina você a pensar como o cliente e conduzir decisões de compra, não disputas de preço.
           </p>
 
           {/* NEW: Manual Solar Buy-Side Block - Premium Capsule Style */}
@@ -70,7 +70,7 @@ export const HeroSectionPotato: React.FC = () => {
                    </h2>
                 </div>
                 <p className="text-xs text-slate-400 font-medium">
-                  Metodologia de <span className="text-slate-200">Inteligência de Mercado</span>
+                  Construído a partir da observação real de como compradores decidem, na prática.
                 </p>
               </div>
 
@@ -82,15 +82,16 @@ export const HeroSectionPotato: React.FC = () => {
           </div>
 
           {/* CTAs - Desktop only */}
-          <div className="hidden lg:flex flex-col sm:flex-row items-center gap-3 w-full sm:w-auto mb-12 lg:mb-0">
+          <div className="hidden lg:flex flex-col items-start gap-3 w-full sm:w-auto mb-12 lg:mb-0">
             <button
               onClick={scrollToOffer}
               type="button"
               className="w-full sm:w-auto px-8 py-4 bg-[#f97316] hover:bg-[#ea580c] text-white rounded-lg font-bold text-sm shadow-[0_0_20px_-5px_rgba(249,115,22,0.3)] hover:shadow-[0_0_30px_-5px_rgba(249,115,22,0.5)] hover:-translate-y-0.5 transition-all duration-300 flex items-center justify-center gap-2"
             >
-              <span>Quero me tornar um vendedor premium</span>
+              <span>Quero vender decisões agora</span>
               <ArrowRight className="w-4 h-4" />
             </button>
+            <p className="text-xs text-slate-400 font-medium">Acesso imediato ao Manual Solar Buy-Side.</p>
           </div>
         </div>
 
@@ -127,22 +128,23 @@ export const HeroSectionPotato: React.FC = () => {
               </div>
               <h3 className="text-white font-bold text-base mb-1 leading-tight">O Código do Vendedor Consultivo</h3>
               <p className="text-xs text-slate-400 leading-snug">
-                Para quem não aceita mais perder vendas por preço.
+                Para quem quer conduzir decisões, não concessões.
               </p>
             </div>
           </div>
         </div>
 
         {/* --- CTA BUTTON: Mobile only, appears after image --- */}
-        <div className="flex lg:hidden flex-col sm:flex-row items-center gap-3 w-full sm:w-auto px-6 order-3">
+        <div className="flex lg:hidden flex-col items-center gap-3 w-full sm:w-auto px-6 order-3">
           <button
             onClick={scrollToOffer}
             type="button"
             className="w-full sm:w-auto px-8 py-4 bg-[#f97316] hover:bg-[#ea580c] text-white rounded-lg font-bold text-sm shadow-[0_0_20px_-5px_rgba(249,115,22,0.3)] hover:shadow-[0_0_30px_-5px_rgba(249,115,22,0.5)] hover:-translate-y-0.5 transition-all duration-300 flex items-center justify-center gap-2"
           >
-            <span>Quero me tornar um vendedor premium</span>
+            <span>Quero vender decisões agora</span>
             <ArrowRight className="w-4 h-4" />
           </button>
+          <p className="text-xs text-slate-400 font-medium text-center">Acesso imediato ao Manual Solar Buy-Side.</p>
         </div>
       </div>
 
