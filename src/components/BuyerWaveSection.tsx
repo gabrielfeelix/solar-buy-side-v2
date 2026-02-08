@@ -15,7 +15,7 @@ const testimonials = [
     role: 'Empresário',
     location: 'São Paulo, SP',
     avatar: '/assets/Ricardo 1.png',
-    objectPosition: '50% 100%',
+    objectPosition: '50% 50%',
     reviewTitle: (
       <>
         <span className="text-[#F97316]">Errar</span> na escolha de um <span className="text-[#F97316]">fornecedor</span> pode gerar prejuízo enorme.
