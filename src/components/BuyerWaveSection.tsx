@@ -16,7 +16,7 @@ const testimonials = [
     location: 'São Paulo, SP',
     avatar: '/assets/Ricardo 1.png',
     objectPosition: '55% 20%',
-    reviewTitle: 'Errar na escolha de um fornecedor pode gerar prejuízo enorme',
+    reviewTitle: 'Errar na escolha de um fornecedor pode gerar prejuízo enorme.',
     quote:
       'No mundo dos negócios, errar na escolha de um fornecedor pode gerar um prejuízo enorme. O manual foi indispensável para evitar armadilhas, ensinando-me a identificar empresas despreparadas e equipamentos duvidosos. Aprendi a buscar parceiros que garantem suporte técnico e manutenção contínua. Graças ao Solar Buy-Side, fechei negócio com a melhor empresa: meu investimento de R$ 195 mil foi muito bem aplicado.',
     highlight:
@@ -39,7 +39,7 @@ const testimonials = [
     location: 'Rio de Janeiro, RJ',
     avatar: '/assets/Jorge.png',
     objectPosition: '55% 20%',
-    reviewTitle: 'O manual foi o divisor de águas',
+    reviewTitle: 'O manual foi o divisor de águas.',
     quote:
       'Viver no Rio é aquilo: você tem que estar sempre ligado pra não cair em furada. Quando precisei cortar os custos fixos da minha metalúrgica, confesso que travei, porque de energia solar eu não entendia nada. O manual foi o divisor de águas; me deu o mapa da mina pra estudar as propostas e descartar de cara quem estava só no gogó. Investi R$ 188 mil com total segurança e o alívio já chegou no bolso.',
     highlight:
@@ -51,7 +51,7 @@ const testimonials = [
     location: 'Recife, PE',
     avatar: '/assets/Lucineide 1.png',
     objectPosition: '55% 20%',
-    reviewTitle: 'Esse Manual foi realmente um passo a passo arretado',
+    reviewTitle: 'Esse Manual foi realmente um passo a passo arretado!',
     quote:
       'Morando sozinha, a variedade de empresas e tecnologias me deixava insegura. O manual foi o guia fundamental: seguindo cada etapa, aprendi a avaliar propostas e descartar o que era bom demais para ser verdade. Com total convicção, instalei meu sistema de R$ 28 mil. O passo a passo foi "arretado"! No final, fui até elogiada pelos vendedores; eles nunca tinham encontrado uma mulher com tanto conhecimento técnico 😂.',
     highlight:
@@ -62,7 +62,7 @@ const testimonials = [
     role: 'Produtor Rural',
     location: 'Sinop, MT',
     avatar: '/assets/Edivaldo.png',
-    reviewTitle: 'O Manual me deu segurança para investir R$ 248 mil',
+    reviewTitle: 'O Manual me deu segurança para investir R$ 248 mil.',
     quote:
       'Sou produtor rural em Sinop/MT e decidi instalar energia solar devido ao alto consumo na irrigação e maquinários. Com a expansão da lavoura, a conta de luz pesava muito. O Manual Solar Buy-Side foi essencial nesse processo: me ensinou a comparar propostas tecnicamente e evitar erros caros que eu nem conhecia. O conteúdo me deu a segurança necessária para realizar um investimento de R$ 248 mil.',
     highlight:
