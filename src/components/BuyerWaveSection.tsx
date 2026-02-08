@@ -16,7 +16,11 @@ const testimonials = [
     location: 'São Paulo, SP',
     avatar: '/assets/Ricardo 1.png',
     objectPosition: '55% 20%',
-    reviewTitle: 'Errar na escolha de um fornecedor pode gerar prejuízo enorme.',
+    reviewTitle: (
+      <>
+        <span className="text-[#F97316]">Errar</span> na escolha de um fornecedor pode gerar <span className="text-[#F97316]">prejuízo enorme</span>.
+      </>
+    ),
     quote:
       'No mundo dos negócios, errar na escolha de um fornecedor pode gerar um prejuízo enorme. O manual foi indispensável para evitar armadilhas, ensinando-me a identificar empresas despreparadas e equipamentos duvidosos. Aprendi a buscar parceiros que garantem suporte técnico e manutenção contínua. Graças ao Solar Buy-Side, fechei negócio com a melhor empresa: meu investimento de R$ 195 mil foi muito bem aplicado.',
     highlight:
@@ -27,7 +31,11 @@ const testimonials = [
     role: 'Particular',
     location: 'Campinas, SP',
     avatar: '/assets/Rogerio.png',
-    reviewTitle: 'O manual valeu cada página.',
+    reviewTitle: (
+      <>
+        O manual valeu <span className="text-[#F97316]">cada página</span>.
+      </>
+    ),
     quote:
       'Eu nunca tinha tido contato com energia solar e temia tomar a decisão errada, mas o conteúdo claro e estruturado mudou tudo. As 4 fases da jornada de compra foram essenciais e o índice interativo, com mais de 160 tópicos, sanou todas as minhas dúvidas instantaneamente. No fim, escolhi a empresa certa e o sistema ideal pelo preço justo, conduzindo a negociação com total autoridade e segurança.',
     highlight:
@@ -39,7 +47,11 @@ const testimonials = [
     location: 'Rio de Janeiro, RJ',
     avatar: '/assets/empresariomanualk.png',
     objectPosition: '55% 20%',
-    reviewTitle: 'O manual foi o divisor de águas.',
+    reviewTitle: (
+      <>
+        O manual foi o <span className="text-[#F97316]">divisor de águas</span>.
+      </>
+    ),
     quote:
       'Viver no Rio é aquilo: você tem que estar sempre ligado pra não cair em furada. Quando precisei cortar os custos fixos da minha metalúrgica, confesso que travei, porque de energia solar eu não entendia nada. O manual foi o divisor de águas; me deu o mapa da mina pra estudar as propostas e descartar de cara quem estava só no gogó. Investi R$ 188 mil com total segurança e o alívio já chegou no bolso.',
     highlight:
@@ -51,7 +63,11 @@ const testimonials = [
     location: 'Recife, PE',
     avatar: '/assets/Lucineide 1.png',
     objectPosition: '55% 45%',
-    reviewTitle: 'Esse Manual foi realmente um passo a passo arretado!',
+    reviewTitle: (
+      <>
+        Esse Manual foi <span className="text-[#F97316]">realmente</span> um <span className="text-[#F97316]">passo a passo</span> arretado!
+      </>
+    ),
     quote:
       'Morando sozinha, a variedade de empresas e tecnologias me deixava insegura. O manual foi o guia fundamental: seguindo cada etapa, aprendi a avaliar propostas e descartar o que era bom demais para ser verdade. Com total convicção, instalei meu sistema de R$ 28 mil. O passo a passo foi "arretado"! No final, fui até elogiada pelos vendedores; eles nunca tinham encontrado uma mulher com tanto conhecimento técnico 😂.',
     highlight:
@@ -62,7 +78,11 @@ const testimonials = [
     role: 'Produtor Rural',
     location: 'Sinop, MT',
     avatar: '/assets/Edivaldo.png',
-    reviewTitle: 'O Manual me deu segurança para investir R$ 248 mil.',
+    reviewTitle: (
+      <>
+        O Manual me deu <span className="text-[#F97316]">segurança</span> para investir <span className="text-[#F97316] whitespace-nowrap">R$ 248 mil</span>.
+      </>
+    ),
     quote:
       'Sou produtor rural em Sinop/MT e decidi instalar energia solar devido ao alto consumo na irrigação e maquinários. Com a expansão da lavoura, a conta de luz pesava muito. O Manual Solar Buy-Side foi essencial nesse processo: me ensinou a comparar propostas tecnicamente e evitar erros caros que eu nem conhecia. O conteúdo me deu a segurança necessária para realizar um investimento de R$ 248 mil.',
     highlight:
