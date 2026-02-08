@@ -245,7 +245,7 @@ export const initialContent: SectionContent[] = [
       card2Item1: 'Analisar propostas com critérios técnicos e financeiros',
       card2Item2: 'Avaliar reputação e suporte de pós-venda com precisão',
       card2Item3: 'Tomar decisão com segurança e embasamento técnico',
-      testimonialsTitle: 'A voz de quem aprendeu',
+      testimonialsTitle: 'As vozes de quem aprendeu',
       testimonialsSubtitle: 'Relatos de compradores informados e preparados',
       ctaText1: 'Começar agora',
       ctaText2: 'Acessar Guia Estratégico',
