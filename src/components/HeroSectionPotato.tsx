@@ -1,5 +1,5 @@
 import React from 'react'
-import { ArrowRight, Sparkles, ChevronDown } from 'lucide-react'
+import { ArrowRight, Sparkles, ChevronDown, BookOpen, ChevronRight } from 'lucide-react'
 
 export const HeroSectionPotato: React.FC = () => {
   const scrollToSection = () => {
@@ -39,63 +39,45 @@ export const HeroSectionPotato: React.FC = () => {
       <div className="relative z-10 max-w-6xl mx-auto px-6 py-12 min-h-screen flex flex-col lg:flex-row items-center justify-center lg:justify-between gap-10">
         {/* --- LEFT COLUMN: Copy --- */}
         <div className="flex-1 flex flex-col items-start text-left animate-in fade-in slide-in-from-left-4 duration-700 z-20 pt-20 lg:pt-0 order-1">
-          {/* PRODUCT IDENTITY - Tech/High-end Style */}
-          <div className="flex items-center gap-3 mb-8">
-            <div className="h-px w-8 sm:w-12 bg-gradient-to-r from-orange-500 to-transparent"></div>
-            <span className="font-mono text-orange-500 text-xs sm:text-sm font-bold tracking-[0.2em] uppercase drop-shadow-[0_0_10px_rgba(249,115,22,0.5)]">
-              Manual Solar Buy-Side
-            </span>
-            <div className="h-px w-8 sm:w-12 bg-gradient-to-l from-orange-500 to-transparent"></div>
-          </div>
-
           {/* Headline */}
-          <h1 className="text-3xl sm:text-4xl lg:text-[42px] font-bold text-white leading-[1.2] tracking-tight mb-6">
-            Transforme-se em um Vendedor{' '}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-red-500">
-              Consultivo
-            </span>
-            <br />
-            de Sistema Solar e{' '}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-red-500">
-              Venda Mais
-            </span>
+          <h1 className="font-['Sora'] text-3xl sm:text-4xl lg:text-[42px] font-bold text-white leading-[1.2] tracking-tight mb-4">
+            Transforme-se em um Vendedor <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-red-500">Consultivo</span> de Sistema Solar e Venda <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-red-500">Mais</span>
           </h1>
 
           {/* Subtext */}
-          <p className="text-slate-400 text-sm sm:text-base leading-relaxed mb-8 max-w-lg border-l-2 border-orange-500/30 pl-4">
-            O método <strong className="text-slate-200">Buy-Side</strong> ensina você a pensar como o cliente e vender
-            decisão, não preço.
+          <p className="text-slate-400 text-sm sm:text-base leading-relaxed mb-6 max-w-lg border-l-2 border-orange-500/30 pl-4">
+            O método <strong className="text-slate-200">Buy-Side</strong> ensina você a pensar como o cliente e vender decisão, não preço.
           </p>
 
-          {/* Info Cards */}
-          <div className="space-y-4 mb-8 w-full">
-            {/* Fundamentação Card */}
-            <div className="bg-[#0f172a] border border-orange-500/20 rounded-2xl p-5 backdrop-blur-xl">
-              <div className="flex items-start gap-4">
-                <div className="flex-shrink-0 w-10 h-10 rounded-xl bg-orange-500/10 flex items-center justify-center text-orange-500">
-                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                  </svg>
-                </div>
-                <div>
-                  <p className="text-[10px] font-bold text-orange-500 uppercase tracking-widest mb-1">Fundamentação</p>
-                  <p className="text-sm text-white font-semibold">
-                    Método baseado em <span className="underline decoration-orange-500">Inteligência de Mercado</span>
-                  </p>
-                </div>
-              </div>
-            </div>
+          {/* NEW: Manual Solar Buy-Side Block - Premium Capsule Style */}
+          <div className="mb-12 inline-flex relative group">
+            {/* Ambient Glow */}
+            <div className="absolute inset-0 bg-orange-500/20 blur-xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
 
-            {/* Venda Mais Card */}
-            <div className="flex items-center gap-3 text-slate-300">
-              <div className="flex-shrink-0 w-10 h-10 rounded-full bg-orange-500/10 flex items-center justify-center text-orange-500">
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
-                </svg>
+            {/* Capsule Container */}
+            <div className="relative flex items-center gap-4 bg-[#0f172a]/50 backdrop-blur-sm border border-white/10 rounded-full py-2 pl-2 pr-8 hover:border-orange-500/50 hover:bg-[#0f172a]/80 transition-all duration-300 ring-1 ring-white/5">
+
+              {/* Icon Circle */}
+              <div className="flex items-center justify-center w-12 h-12 rounded-full bg-gradient-to-br from-orange-500 to-orange-700 text-white shadow-lg shadow-orange-900/50">
+                <BookOpen className="w-5 h-5" />
               </div>
-              <p className="text-sm font-medium">
-                Venda mais sistemas solares com <span className="text-orange-500 font-bold">método.</span>
-              </p>
+
+              {/* Text Content */}
+              <div className="flex flex-col">
+                <div className="flex items-center gap-2 mb-0.5">
+                   <h2 className="font-['Sora'] text-lg text-white font-bold tracking-tight">
+                     Manual Solar <span className="text-orange-400">Buy-Side</span>
+                   </h2>
+                </div>
+                <p className="text-xs text-slate-400 font-medium">
+                  Metodologia de <span className="text-slate-200">Inteligência de Mercado</span>
+                </p>
+              </div>
+
+              {/* End Arrow (Subtle indication of action/direction) */}
+              <div className="absolute right-3 top-1/2 -translate-y-1/2 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300">
+                <ChevronRight className="w-4 h-4 text-orange-500" />
+              </div>
             </div>
           </div>
 
