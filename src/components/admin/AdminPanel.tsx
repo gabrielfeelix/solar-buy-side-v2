@@ -596,6 +596,12 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({ hideHeader = false }) =>
                 />
               </div>
 
+              {viewMode === 'mobile' && hasUnsavedChanges && (
+                <p className="mb-4 text-xs text-amber-300 bg-amber-500/10 border border-amber-500/20 rounded-lg p-3">
+                  O preview mobile usa render real via iframe. Para refletir alteracoes no mobile, salve as mudancas.
+                </p>
+              )}
+
               {/* Container do Preview com escala real */}
               <div ref={previewSurfaceRef} className="bg-slate-100 rounded-xl overflow-auto shadow-2xl" style={{ maxHeight: '800px' }}>
                 <div className="mx-auto" style={{ width: `${scaledWidth}px`, minHeight: `${scaledHeight}px` }}>
