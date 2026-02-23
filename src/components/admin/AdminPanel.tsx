@@ -1,14 +1,23 @@
-import React, { useState } from 'react'
+import React, { useEffect, useMemo, useRef, useState } from 'react'
 import { LogOut, Home, Save, Upload, Monitor, Smartphone, ExternalLink, ChevronDown, ChevronUp, Image as ImageIcon, Phone, ShoppingCart } from 'lucide-react'
 import { useAuth } from '../../contexts/AuthContext'
 import { useContent } from '../../contexts/ContentContext'
 import { AdminPreview } from './AdminPreview'
 import { SECTION_EDITOR_SCHEMA } from './editorSchema'
 
-type ViewMode = 'desktop' | 'tablet' | 'mobile'
+type ViewMode = 'desktop' | 'mobile'
 
 interface AdminPanelProps {
   hideHeader?: boolean
+}
+
+const DESKTOP_VIEWPORT = { width: 1920, height: 1080 }
+const MOBILE_VIEWPORT = { width: 390, height: 844 }
+const MIN_ZOOM = 20
+const MAX_ZOOM = 120
+
+const clamp = (value: number, min: number, max: number) => {
+  return Math.max(min, Math.min(max, value))
 }
 
 export const AdminPanel: React.FC<AdminPanelProps> = ({ hideHeader = false }) => {
@@ -19,8 +28,11 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({ hideHeader = false }) =>
   const [editedImages, setEditedImages] = useState<{ [key: string]: string }>({})
   const [editedGlobalAssets, setEditedGlobalAssets] = useState<{ favicon?: string; logo?: string }>({})
   const [editedGlobalSettings, setEditedGlobalSettings] = useState<{ whatsappNumber?: string; purchaseLink?: string }>({})
-  const [viewportWidth, setViewportWidth] = useState(52.22) // Percentage - começa em 52.22% (1003px)
+  const [viewMode, setViewMode] = useState<ViewMode>('desktop')
+  const [zoomPercent, setZoomPercent] = useState(52.22)
+  const [previewSurfaceWidth, setPreviewSurfaceWidth] = useState(0)
   const [showRealPreview, setShowRealPreview] = useState(false)
+  const previewSurfaceRef = useRef<HTMLDivElement | null>(null)
 
   // Estados para controlar os accordions
   const [globalAssetsOpen, setGlobalAssetsOpen] = useState(false)
@@ -135,24 +147,44 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({ hideHeader = false }) =>
     Object.keys(editedGlobalAssets).length > 0 ||
     Object.keys(editedGlobalSettings).length > 0
 
-  const getPreviewDimensions = () => {
-    // Base em 1920x1080 para desktop real
-    const baseWidth = 1920
-    const baseHeight = 1080
-    const width = Math.round((baseWidth * viewportWidth) / 100)
-    const height = Math.round((baseHeight * viewportWidth) / 100)
-    return { width, height }
+  const viewport = useMemo(() => {
+    return viewMode === 'mobile' ? MOBILE_VIEWPORT : DESKTOP_VIEWPORT
+  }, [viewMode])
+
+  const zoomScale = zoomPercent / 100
+  const scaledWidth = Math.round(viewport.width * zoomScale)
+  const scaledHeight = Math.round(viewport.height * zoomScale)
+
+  const computeFitZoom = (containerWidth: number, viewportWidth: number) => {
+    if (!containerWidth) return 52.22
+    const availableWidth = Math.max(containerWidth - 24, 240)
+    const fit = (availableWidth / viewportWidth) * 100
+    return Number(clamp(fit, MIN_ZOOM, MAX_ZOOM).toFixed(2))
   }
 
-  const getPreviewScale = () => {
-    // Retorna a escala CSS para o preview aparecer em tamanho real
-    return viewportWidth / 100
-  }
+  useEffect(() => {
+    const previewSurface = previewSurfaceRef.current
+    if (!previewSurface) return
 
-  const setViewMode = (mode: ViewMode) => {
-    if (mode === 'desktop') setViewportWidth(100)
-    else if (mode === 'tablet') setViewportWidth(50)
-    else if (mode === 'mobile') setViewportWidth(19.53) // 375px / 1920px = 19.53%
+    const updateSurfaceWidth = () => {
+      setPreviewSurfaceWidth(previewSurface.clientWidth)
+    }
+
+    updateSurfaceWidth()
+
+    const resizeObserver = new ResizeObserver(updateSurfaceWidth)
+    resizeObserver.observe(previewSurface)
+
+    return () => resizeObserver.disconnect()
+  }, [])
+
+  useEffect(() => {
+    if (!previewSurfaceWidth) return
+    setZoomPercent(computeFitZoom(previewSurfaceWidth, viewport.width))
+  }, [previewSurfaceWidth, viewport.width, viewMode])
+
+  const handleViewModeChange = (mode: ViewMode) => {
+    setViewMode(mode)
   }
 
   const getSectionHash = () => {
@@ -182,8 +214,6 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({ hideHeader = false }) =>
   const closeRealPreview = () => {
     setShowRealPreview(false)
   }
-
-  const dimensions = getPreviewDimensions()
 
   // Classes dinâmicas baseadas no modo (inline vs standalone)
   const cardBg = hideHeader ? 'bg-white' : 'bg-white/5 backdrop-blur-xl'
@@ -512,7 +542,7 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({ hideHeader = false }) =>
                 <div className="flex items-center gap-3">
                   <h2 className="text-lg font-bold">Preview ao Vivo</h2>
                   <span className="text-xs text-slate-400 font-mono">
-                    {dimensions.width}px × {dimensions.height}px ({viewportWidth}%)
+                    {viewport.width}px x {viewport.height}px | zoom {zoomPercent.toFixed(2)}%
                   </span>
                 </div>
                 <div className="flex items-center gap-2">
@@ -526,9 +556,9 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({ hideHeader = false }) =>
                   </button>
                   <div className="w-px h-6 bg-white/10"></div>
                   <button
-                    onClick={() => setViewMode('desktop')}
+                    onClick={() => handleViewModeChange('desktop')}
                     className={`p-2 rounded-lg transition-all ${
-                      viewportWidth === 100
+                      viewMode === 'desktop'
                         ? 'bg-[#F97316] text-white'
                         : 'bg-white/5 text-slate-400 hover:bg-white/10'
                     }`}
@@ -537,51 +567,82 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({ hideHeader = false }) =>
                     <Monitor className="w-4 h-4" />
                   </button>
                   <button
-                    onClick={() => setViewMode('mobile')}
+                    onClick={() => handleViewModeChange('mobile')}
                     className={`p-2 rounded-lg transition-all ${
-                      viewportWidth < 25
+                      viewMode === 'mobile'
                         ? 'bg-[#F97316] text-white'
                         : 'bg-white/5 text-slate-400 hover:bg-white/10'
                     }`}
-                    title="Mobile (375px)"
+                    title="Mobile (390px)"
                   >
                     <Smartphone className="w-4 h-4" />
                   </button>
                 </div>
               </div>
 
-              {/* Slider de Largura */}
+              {/* Slider de Zoom */}
               <div className="mb-4">
                 <input
                   type="range"
-                  min="19.53"
-                  max="100"
+                  min={MIN_ZOOM}
+                  max={MAX_ZOOM}
                   step="0.01"
-                  value={viewportWidth}
-                  onChange={(e) => setViewportWidth(Number(e.target.value))}
+                  value={zoomPercent}
+                  onChange={(e) => setZoomPercent(Number(e.target.value))}
                   className="w-full h-2 bg-white/10 rounded-lg appearance-none cursor-pointer slider"
                   style={{
-                    background: `linear-gradient(to right, #F97316 0%, #F97316 ${viewportWidth}%, rgba(255,255,255,0.1) ${viewportWidth}%, rgba(255,255,255,0.1) 100%)`
+                    background: `linear-gradient(to right, #F97316 0%, #F97316 ${zoomPercent}%, rgba(255,255,255,0.1) ${zoomPercent}%, rgba(255,255,255,0.1) 100%)`
                   }}
                 />
               </div>
 
               {/* Container do Preview com escala real */}
-              <div className="bg-slate-100 rounded-xl overflow-auto shadow-2xl" style={{ maxHeight: '800px' }}>
-                <div
-                  className="bg-white origin-top-left"
-                  style={{
-                    width: viewportWidth < 25 ? '375px' : '1920px',
-                    transform: viewportWidth < 25 ? 'scale(1)' : `scale(${getPreviewScale()})`,
-                    transformOrigin: 'top left'
-                  }}
-                >
-                  {currentSection && (
-                    <AdminPreview
-                      sectionId={currentSection.id}
-                      texts={{ ...currentSection.texts, ...editedTexts }}
-                      images={{ ...currentSection.images, ...editedImages }}
-                    />
+              <div ref={previewSurfaceRef} className="bg-slate-100 rounded-xl overflow-auto shadow-2xl" style={{ maxHeight: '800px' }}>
+                <div className="mx-auto" style={{ width: `${scaledWidth}px`, minHeight: `${scaledHeight}px` }}>
+                  {viewMode === 'mobile' ? (
+                    <div className="overflow-hidden rounded-xl bg-white shadow-xl" style={{ width: `${scaledWidth}px`, height: `${scaledHeight}px` }}>
+                      <div
+                        style={{
+                          width: `${viewport.width}px`,
+                          height: `${viewport.height}px`,
+                          transform: `scale(${zoomScale})`,
+                          transformOrigin: 'top left',
+                        }}
+                      >
+                        <iframe
+                          key={`mobile-preview-${selectedSection}`}
+                          src={`/#${getSectionHash()}`}
+                          className="w-full h-full border-0"
+                          title="Preview Mobile Real"
+                          onLoad={(e) => {
+                            const iframe = e.target as HTMLIFrameElement
+                            try {
+                              const hash = getSectionHash()
+                              iframe.contentWindow?.postMessage({ type: 'scrollToSection', hash }, '*')
+                            } catch (err) {
+                              console.log('Cannot access iframe:', err)
+                            }
+                          }}
+                        />
+                      </div>
+                    </div>
+                  ) : (
+                    <div
+                      className="bg-white origin-top-left"
+                      style={{
+                        width: `${viewport.width}px`,
+                        transform: `scale(${zoomScale})`,
+                        transformOrigin: 'top left'
+                      }}
+                    >
+                      {currentSection && (
+                        <AdminPreview
+                          sectionId={currentSection.id}
+                          texts={{ ...currentSection.texts, ...editedTexts }}
+                          images={{ ...currentSection.images, ...editedImages }}
+                        />
+                      )}
+                    </div>
                   )}
                 </div>
               </div>
@@ -623,12 +684,20 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({ hideHeader = false }) =>
       {/* Modal de Preview Real */}
       {showRealPreview && (
         <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/80 backdrop-blur-sm">
-          <div className="relative bg-slate-900 rounded-2xl shadow-2xl flex flex-col" style={{ width: '1050px', maxHeight: '90vh' }}>
+          <div
+            className="relative bg-slate-900 rounded-2xl shadow-2xl flex flex-col"
+            style={{
+              width: `${Math.min(Math.max(scaledWidth + 48, 420), 1240)}px`,
+              maxHeight: '90vh'
+            }}
+          >
             {/* Header do Modal */}
             <div className="flex items-center justify-between bg-slate-900 text-white px-6 py-3 border-b border-white/10 shrink-0">
               <div className="flex items-center gap-3">
                 <ExternalLink className="w-5 h-5 text-[#F97316]" />
-                <h3 className="text-sm font-bold">Preview ao Vivo - 1003px × 564px (52.22%)</h3>
+                <h3 className="text-sm font-bold">
+                  Preview ao Vivo - {scaledWidth}px x {scaledHeight}px (zoom {zoomPercent.toFixed(2)}%)
+                </h3>
               </div>
               <button
                 onClick={closeRealPreview}
@@ -639,9 +708,17 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({ hideHeader = false }) =>
             </div>
 
             {/* Iframe com o site real */}
-            <div className="bg-white overflow-auto" style={{ width: '1003px', height: '564px' }}>
-              <div style={{ width: '1920px', height: '1080px', transform: 'scale(0.5222)', transformOrigin: 'top left' }}>
+            <div className="bg-white overflow-auto mx-auto" style={{ width: `${scaledWidth}px`, height: `${scaledHeight}px` }}>
+              <div
+                style={{
+                  width: `${viewport.width}px`,
+                  height: `${viewport.height}px`,
+                  transform: `scale(${zoomScale})`,
+                  transformOrigin: 'top left'
+                }}
+              >
                 <iframe
+                  key={`modal-preview-${viewMode}-${selectedSection}`}
                   src={`/#${getSectionHash()}`}
                   className="w-full h-full border-0"
                   title="Preview Real"
