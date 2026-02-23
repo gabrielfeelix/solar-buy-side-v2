@@ -37,7 +37,7 @@ export const SolarHeader: React.FC = () => {
             Panorama
           </a>
           <a href="#video-section" className="text-sm font-medium text-slate-300 hover:text-white transition-colors">
-            Video
+            Vídeo
           </a>
           <a href="#audiencia" className="text-sm font-medium text-slate-300 hover:text-white transition-colors">
             Para Quem

@@ -21,7 +21,7 @@ export const Footer: React.FC = () => {
 
         <nav className="flex flex-col sm:flex-row items-center gap-4 sm:gap-6 text-sm font-semibold text-white/70">
           <a href="/politica-de-privacidade" className="hover:text-orange-500 transition-colors">
-            Politica de Privacidade
+            Política de Privacidade
           </a>
           <a href="/termos-de-uso" className="hover:text-orange-500 transition-colors">
             Termos de Uso

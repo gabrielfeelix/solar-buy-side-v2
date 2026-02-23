@@ -29,12 +29,8 @@ export const AuthoritySection: React.FC = () => {
             {section?.texts.badge || 'Experiência Dual'}
           </div>
           <h2 className="text-4xl md:text-5xl font-bold text-white leading-tight max-w-4xl">
-            {section?.texts.title || (
-              <>
-                Este conteudo foi concebido por quem domina, as duas perspectivas da{' '}
-                <span className="text-[#F97316]">mesa de negociacao - a do comprador e a do vendedor.</span>
-              </>
-            )}
+            Este conteúdo foi concebido por quem domina, as duas perspectivas da{' '}
+            <span className="text-[#F97316]">mesa de negociação — a do comprador e a do vendedor.</span>
           </h2>
         </div>
 

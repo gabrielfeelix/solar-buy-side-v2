@@ -183,7 +183,7 @@ export const initialContent: SectionContent[] = [
       title: 'O Segredo por trás dos resultados: O Código do Vendedor Consultivo',
       subtitle: 'O sucesso do Rodrigo não foi por acaso. Além de aplicar o Manual Solar Buy-Side, ele dominou a estratégia que inverte o jogo: aprender a pensar como um comprador para dominar a venda.',
       bonusBadge: 'Oferta Especial',
-      bonusTitle: '[BÔNUS EXCLUSIVO]',
+      bonusTitle: 'BÔNUS EXCLUSIVO',
       ebookTitle: 'E-book: O Código do Vendedor Consultivo',
       ebookSubtitle: 'O método de imersão no Manual Solar Buy-Side para quem não aceita mais perder vendas por preço.',
       listHeader: 'O que você vai dominar:',
