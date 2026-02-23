@@ -24,6 +24,7 @@ interface ContentContextType {
   content: SectionContent[]
   globalAssets: GlobalAssets
   globalSettings: GlobalSettings
+  isHydrated: boolean
   updateText: (sectionId: string, key: string, value: string) => void
   updateImage: (sectionId: string, key: string, value: string) => void
   updateGlobalAsset: (key: keyof GlobalAssets, value: string) => void
@@ -363,13 +364,22 @@ export const ContentProvider: React.FC<{ children: ReactNode }> = ({ children })
   const [globalAssets, setGlobalAssets] = useState<GlobalAssets>(() => getStoredGlobalAssets())
 
   const [globalSettings, setGlobalSettings] = useState<GlobalSettings>(() => getStoredGlobalSettings())
+  const [isHydrated, setIsHydrated] = useState<boolean>(() => {
+    return !!localStorage.getItem('cms-content')
+  })
 
   // Load content from backend on mount
   useEffect(() => {
+    let mounted = true
+
     const loadContent = async () => {
       try {
-        // Load sections
-        const sectionsRes = await fetch(`${API_URL}/api/content/sections`)
+        const [sectionsRes, assetsRes, settingsRes] = await Promise.all([
+          fetch(`${API_URL}/api/content/sections`),
+          fetch(`${API_URL}/api/content/assets`),
+          fetch(`${API_URL}/api/content/settings`),
+        ])
+
         if (sectionsRes.ok) {
           const sectionsData = await sectionsRes.json()
           if (sectionsData.success) {
@@ -381,8 +391,6 @@ export const ContentProvider: React.FC<{ children: ReactNode }> = ({ children })
           console.warn(`Failed to load sections: ${sectionsRes.status}`)
         }
 
-        // Load global assets
-        const assetsRes = await fetch(`${API_URL}/api/content/assets`)
         if (assetsRes.ok) {
           const assetsData = await assetsRes.json()
           if (assetsData.success && isRecord(assetsData.data)) {
@@ -397,8 +405,6 @@ export const ContentProvider: React.FC<{ children: ReactNode }> = ({ children })
           console.warn(`Failed to load global assets: ${assetsRes.status}`)
         }
 
-        // Load global settings
-        const settingsRes = await fetch(`${API_URL}/api/content/settings`)
         if (settingsRes.ok) {
           const settingsData = await settingsRes.json()
           if (settingsData.success && isRecord(settingsData.data)) {
@@ -421,10 +427,18 @@ export const ContentProvider: React.FC<{ children: ReactNode }> = ({ children })
       } catch (error) {
         console.debug('Using cached content:', error)
         // Keep using localStorage/initialContent on error
+      } finally {
+        if (mounted) {
+          setIsHydrated(true)
+        }
       }
     }
 
     loadContent()
+
+    return () => {
+      mounted = false
+    }
   }, [])
 
   const persistSection = async (section: SectionContent): Promise<boolean> => {
@@ -609,7 +623,7 @@ export const ContentProvider: React.FC<{ children: ReactNode }> = ({ children })
   }
 
   return (
-    <ContentContext.Provider value={{ content, globalAssets, globalSettings, updateText, updateImage, updateGlobalAsset, updateGlobalSetting, saveSection, saveGlobalAsset, saveGlobalSetting, getSection }}>
+    <ContentContext.Provider value={{ content, globalAssets, globalSettings, isHydrated, updateText, updateImage, updateGlobalAsset, updateGlobalSetting, saveSection, saveGlobalAsset, saveGlobalSetting, getSection }}>
       {children}
     </ContentContext.Provider>
   )

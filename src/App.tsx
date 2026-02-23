@@ -24,11 +24,13 @@ import { antipiracySections, privacySections, termsSections } from './legal/lega
 import { AdminLogin } from './components/admin/AdminLogin'
 import { AdminTabs } from './components/admin/AdminTabs'
 import { useAuth } from './contexts/AuthContext'
+import { useContent } from './contexts/ContentContext'
 import { trackPageView, observeSection } from './utils/analytics'
 
 function App() {
   const pathname = window.location.pathname.replace(/\/$/, '') || '/'
   const { isAuthenticated } = useAuth()
+  const { isHydrated } = useContent()
 
   // Admin routes
   if (pathname === '/admin') {
@@ -37,7 +39,7 @@ function App() {
 
   const legalPages = {
     '/politica-de-privacidade': {
-      title: 'Política de Privacidade',
+      title: 'Politica de Privacidade',
       sections: privacySections,
     },
     '/termos-de-uso': {
@@ -52,7 +54,7 @@ function App() {
   const legalPage = legalPages[pathname as keyof typeof legalPages]
 
   useEffect(() => {
-    if (legalPage) {
+    if (!isHydrated || legalPage) {
       return
     }
 
@@ -123,7 +125,15 @@ function App() {
       window.removeEventListener('message', handleMessage)
       cleanupFunctions.forEach((cleanup) => cleanup())
     }
-  }, [legalPage])
+  }, [legalPage, isHydrated])
+
+  if (!isHydrated) {
+    return (
+      <div className="min-h-screen bg-[#020617] text-slate-300 flex items-center justify-center px-6">
+        <p className="text-sm md:text-base">Carregando conteudo atualizado...</p>
+      </div>
+    )
+  }
 
   if (legalPage) {
     return (

@@ -13,6 +13,7 @@ import { AuthoritySection } from '../AuthoritySection'
 import { LeadMagnetSection } from '../LeadMagnetSection'
 import { FAQSection } from '../FAQSection'
 import { ContactSection } from '../ContactSection'
+import { NewsletterSection } from '../NewsletterSection'
 
 interface AdminPreviewProps {
   sectionId: string
@@ -20,111 +21,50 @@ interface AdminPreviewProps {
   images: { [key: string]: string }
 }
 
+const LEGAL_PREVIEW_ROUTES: Record<string, { route: string; label: string }> = {
+  'privacy-policy': { route: '/politica-de-privacidade', label: 'Politica de Privacidade' },
+  'terms-of-use': { route: '/termos-de-uso', label: 'Termos de Uso' },
+  antipiracy: { route: '/medidas-antipiratarias', label: 'Medidas Antipiratarias' },
+}
+
 export const AdminPreview: React.FC<AdminPreviewProps> = ({ sectionId }) => {
-  // Renderiza o componente REAL da seção selecionada
-  if (sectionId === 'hero') {
-    return <HeroSectionPotato />
-  }
+  if (sectionId === 'hero') return <HeroSectionPotato />
+  if (sectionId === 'context') return <ContextSection />
+  if (sectionId === 'video') return <VideoSection />
+  if (sectionId === 'audience') return <AudienceSection />
+  if (sectionId === 'pricing') return <PricingSection />
+  if (sectionId === 'testimonials') return <TestimonialsSection />
+  if (sectionId === 'story-bridge') return <StoryBridgeSection />
+  if (sectionId === 'seller-code') return <SellerCodeSection />
+  if (sectionId === 'manual-strategic') return <ManualStrategicSection />
+  if (sectionId === 'buyer-wave') return <BuyerWaveSection />
+  if (sectionId === 'authority') return <AuthoritySection />
+  if (sectionId === 'lead-magnet') return <LeadMagnetSection />
+  if (sectionId === 'faq') return <FAQSection />
+  if (sectionId === 'contact') return <ContactSection />
+  if (sectionId === 'newsletter') return <NewsletterSection />
 
-  if (sectionId === 'context') {
-    return <ContextSection />
-  }
-
-  if (sectionId === 'video') {
-    return <VideoSection />
-  }
-
-  if (sectionId === 'audience') {
-    return <AudienceSection />
-  }
-
-  if (sectionId === 'pricing') {
-    return <PricingSection />
-  }
-
-  if (sectionId === 'testimonials') {
-    return <TestimonialsSection />
-  }
-
-  if (sectionId === 'story-bridge') {
-    return <StoryBridgeSection />
-  }
-
-  if (sectionId === 'seller-code') {
-    return <SellerCodeSection />
-  }
-
-  if (sectionId === 'manual-strategic') {
-    return <ManualStrategicSection />
-  }
-
-  if (sectionId === 'buyer-wave') {
-    return <BuyerWaveSection />
-  }
-
-  if (sectionId === 'authority') {
-    return <AuthoritySection />
-  }
-
-  if (sectionId === 'lead-magnet') {
-    return <LeadMagnetSection />
-  }
-
-  if (sectionId === 'faq') {
-    return <FAQSection />
-  }
-
-  if (sectionId === 'contact') {
-    return <ContactSection />
-  }
-
-  if (sectionId === 'newsletter') {
+  const legalPreview = LEGAL_PREVIEW_ROUTES[sectionId]
+  if (legalPreview) {
     return (
-      <div className="p-12 text-center bg-slate-50 rounded-lg">
-        <p className="text-slate-600 text-sm mb-2">Seção: Newsletter</p>
-        <p className="text-slate-500 text-xs">
-          Esta seção aparece no rodapé do site. Edite os textos à esquerda e salve as alterações.
-        </p>
-      </div>
-    )
-  }
-
-  if (sectionId === 'privacy-policy') {
-    return (
-      <div className="p-12 text-center bg-slate-50 rounded-lg">
-        <p className="text-slate-600 text-sm mb-2">Política de Privacidade</p>
-        <p className="text-slate-500 text-xs">
-          Esta seção aparece em /politica-de-privacidade. Edite o conteúdo à esquerda e salve as alterações.
-        </p>
-      </div>
-    )
-  }
-
-  if (sectionId === 'terms-of-use') {
-    return (
-      <div className="p-12 text-center bg-slate-50 rounded-lg">
-        <p className="text-slate-600 text-sm mb-2">Termos de Uso</p>
-        <p className="text-slate-500 text-xs">
-          Esta seção aparece em /termos-de-uso. Edite o conteúdo à esquerda e salve as alterações.
-        </p>
-      </div>
-    )
-  }
-
-  if (sectionId === 'antipiracy') {
-    return (
-      <div className="p-12 text-center bg-slate-50 rounded-lg">
-        <p className="text-slate-600 text-sm mb-2">Medidas Antipiratarias</p>
-        <p className="text-slate-500 text-xs">
-          Esta seção aparece em /medidas-antipiratarias. Edite o conteúdo à esquerda e salve as alterações.
-        </p>
+      <div className="rounded-lg overflow-hidden border border-slate-200 bg-white">
+        <div className="px-4 py-3 border-b border-slate-200 bg-slate-50">
+          <p className="text-sm font-medium text-slate-700">Preview real: {legalPreview.label}</p>
+        </div>
+        <iframe
+          key={`legal-preview-${sectionId}`}
+          src={legalPreview.route}
+          className="w-full border-0"
+          style={{ height: '900px' }}
+          title={`Preview ${legalPreview.label}`}
+        />
       </div>
     )
   }
 
   return (
     <div className="p-12 text-center">
-      <p className="text-slate-600">Preview não disponível para esta seção</p>
+      <p className="text-slate-600">Preview nao disponivel para esta secao</p>
     </div>
   )
 }
