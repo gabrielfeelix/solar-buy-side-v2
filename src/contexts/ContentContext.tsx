@@ -225,10 +225,6 @@ const applySectionAliases = (section: SectionContent): SectionContent => {
       }
     }
 
-    if (!texts.titleFirst) texts.titleFirst = 'NAO PERCA TEMPO NEM POSICAO NO MERCADO.'
-    if (!texts.titleSecond) texts.titleSecond = 'ATENCAO: O TEMPO ESTA CORRENDO E QUEM AGIR PRIMEIRO, VENDE MAIS.'
-    if (!texts.subtitleFirst) texts.subtitleFirst = 'O mercado solar nao perdoa quem fica para tras. Garanta o metodo que os grandes players usam para dominar o Buy-Side.'
-    if (!texts.subtitleSecond) texts.subtitleSecond = 'Em um mercado competitivo, sua vantagem e o conhecimento.'
     if (!texts.finalCtaButton) texts.finalCtaButton = 'DESBLOQUEAR CONTEUDO COMPLETO'
   }
 
