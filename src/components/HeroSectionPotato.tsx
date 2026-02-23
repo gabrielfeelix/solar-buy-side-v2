@@ -6,18 +6,18 @@ export const HeroSectionPotato: React.FC = () => {
   const { getSection } = useContent()
   const section = getSection('hero')
 
-  const titlePrefix = section?.texts.titlePrefix || section?.texts.title1 || 'Saia da Disputa de Preco e Passe a'
-  const titleHighlight = section?.texts.titleHighlight || section?.texts.title2 || 'Vender Decisoes'
+  const titlePrefix = section?.texts.titlePrefix || section?.texts.title1 || 'Saia da Disputa de Preço e Passe a'
+  const titleHighlight = section?.texts.titleHighlight || section?.texts.title2 || 'Vender Decisões'
   const titleSuffix = section?.texts.titleSuffix || 'em Sistema Solar'
-  const subtitle = section?.texts.subtitle || `${section?.texts.subtitle1 || 'O metodo Buy-Side ensina voce a pensar como o cliente e conduzir decisoes de compra, nao disputas de preco.'} ${section?.texts.subtitle2 || ''}`.trim()
+  const subtitle = section?.texts.subtitle || `${section?.texts.subtitle1 || 'O método Buy-Side ensina você a pensar como o cliente e conduzir decisões de compra, não disputas de preço.'} ${section?.texts.subtitle2 || ''}`.trim()
   const manualTitle = section?.texts.manualTitle || 'Manual Solar Buy-Side'
-  const manualSubtitle = section?.texts.manualSubtitle || 'Construido a partir da observacao real de como compradores decidem, na pratica.'
-  const bonusBadge = section?.texts.bonusBadge || 'Bonus Exclusivo'
-  const bonusTitle = section?.texts.bonusTitle || 'O Codigo do Vendedor Consultivo'
-  const bonusSubtitle = section?.texts.bonusSubtitle || 'Para quem quer conduzir decisoes, nao concessoes.'
-  const ctaButton = section?.texts.ctaButton || 'Quero vender decisoes agora'
+  const manualSubtitle = section?.texts.manualSubtitle || 'Construído a partir da observação real de como compradores decidem, na prática.'
+  const bonusBadge = section?.texts.bonusBadge || 'Bônus Exclusivo'
+  const bonusTitle = section?.texts.bonusTitle || 'O Código do Vendedor Consultivo'
+  const bonusSubtitle = section?.texts.bonusSubtitle || 'Para quem quer conduzir decisões, não concessões.'
+  const ctaButton = section?.texts.ctaButton || 'Quero vender decisões agora'
   const ctaSubtext = section?.texts.ctaSubtext || 'Acesso imediato ao Manual Solar Buy-Side.'
-  const scrollHint = section?.texts.scrollHint || 'Entenda a logica'
+  const scrollHint = section?.texts.scrollHint || 'Entenda a lógica'
   const heroImage = section?.images.heroImage || '/assets/GED9CF_1_cleanup.PNG'
 
   const scrollToSection = () => {

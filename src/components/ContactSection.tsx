@@ -20,7 +20,7 @@ export const ContactSection: React.FC = () => {
             )}
           </h2>
           <p className="text-slate-600 text-base md:text-lg max-w-3xl mx-auto">
-            {section?.texts.subtitle || 'Transparencia e clareza para voce entrar em contato com total confianca.'}
+            {section?.texts.subtitle || 'Transparência e clareza para você entrar em contato com total confiança.'}
           </p>
         </div>
 
@@ -30,7 +30,7 @@ export const ContactSection: React.FC = () => {
               <div className="flex items-center gap-3 mb-2">
                 <Building2 className="w-6 h-6 text-[#F97316]" />
                 <h3 className="text-2xl font-bold text-[#1D1D1F]">
-                  {section?.texts.companyName || (<><span className="text-[#F97316]">Buy-Side</span> Solucoes</>)}
+                  {section?.texts.companyName || (<><span className="text-[#F97316]">Buy-Side</span> Soluções</>)}
                 </h3>
               </div>
               <p className="text-slate-600 text-sm">
@@ -44,8 +44,8 @@ export const ContactSection: React.FC = () => {
                 <MapPin className="w-5 h-5 text-[#F97316] mt-1 flex-shrink-0" />
                 <div>
                   <p className="text-[#1D1D1F] font-semibold">{section?.texts.addressLine1 || 'Torre Norte - Av. Bento Munhoz da Rocha Neto, 632'}</p>
-                  <p className="text-slate-600">{section?.texts.addressLine2 || '19o Andar, Salas 1905 a 1908 - Zona 7,'}</p>
-                  <p className="text-slate-600">{section?.texts.addressLine3 || 'Maringa - PR, 87030-010'}</p>
+                  <p className="text-slate-600">{section?.texts.addressLine2 || '19º Andar, Salas 1905 a 1908 - Zona 7,'}</p>
+                  <p className="text-slate-600">{section?.texts.addressLine3 || 'Maringá - PR, 87030-010'}</p>
                 </div>
               </div>
             </div>

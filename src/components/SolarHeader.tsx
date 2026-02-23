@@ -82,7 +82,7 @@ export const SolarHeader: React.FC = () => {
         <div className="p-6 flex flex-col gap-4">
           {[
             { href: '#contexto', label: 'Panorama' },
-            { href: '#video-section', label: 'Video' },
+            { href: '#video-section', label: 'Vídeo' },
             { href: '#audiencia', label: 'Para Quem' },
             { href: '#autor', label: 'Mentor' },
             { href: '#faq', label: 'FAQ' },

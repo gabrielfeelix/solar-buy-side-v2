@@ -22,15 +22,7 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ id }) => {
   const { getSection, globalSettings } = useContent()
   const section = getSection('pricing')
   const isFirstSection = id === 'oferta'
-  const featuresTitle = section?.texts.featuresTitle || section?.texts.sectionTitle || 'VEJA TUDO QUE VOCÊ RECEBE:'
-  const priceFrom = section?.texts.priceFrom || section?.texts.priceOriginal || 'De R$ 997,00 por apenas:'
-  const priceValue = section?.texts.priceValue || '61'
-  const priceCents = section?.texts.priceCents || ',38'
-  const priceUpfront = section?.texts.priceUpfront || section?.texts.priceCash || 'Ou R$ 597,00 à vista no PIX'
-  const firstTitleText = section?.texts.titleFirst || ''
-  const secondTitleText = section?.texts.titleSecond || ''
-  const firstSubtitleText = section?.texts.subtitleFirst || ''
-  const secondSubtitleText = section?.texts.subtitleSecond || ''
+  const featuresTitle = section?.texts.featuresTitle || 'VEJA TUDO QUE VOCÊ RECEBE:'
 
   const features = [
     {
@@ -85,28 +77,24 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ id }) => {
             {section?.texts.title && section.texts.title.trim() !== '' ? (
               section.texts.title
             ) : isFirstSection ? (
-              firstTitleText && firstTitleText.trim() !== '' ? firstTitleText : (
-                <>
-                  NÃO PERCA TEMPO NEM <br />
-                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-blue-200 to-blue-500">
-                    POSIÇÃO NO MERCADO.
-                  </span>
-                </>
-              )
+              <>
+                NÃO PERCA TEMPO NEM <br />
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-blue-200 to-blue-500">
+                  POSIÇÃO NO MERCADO.
+                </span>
+              </>
             ) : (
-              secondTitleText && secondTitleText.trim() !== '' ? secondTitleText : (
-                <>
-                  ATENÇÃO: O TEMPO ESTÁ{' '}
-                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-blue-200 to-blue-500">
-                    CORRENDO
-                  </span>{' '}
-                  <br />
-                  E QUEM AGIR PRIMEIRO,{' '}
-                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-blue-200 to-blue-500">
-                    VENDE MAIS.
-                  </span>
-                </>
-              )
+              <>
+                ATENÇÃO: O TEMPO ESTÁ{' '}
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-blue-200 to-blue-500">
+                  CORRENDO
+                </span>{' '}
+                <br />
+                E QUEM AGIR PRIMEIRO,{' '}
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-blue-200 to-blue-500">
+                  VENDE MAIS.
+                </span>
+              </>
             )}
           </h2>
 
@@ -114,8 +102,8 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ id }) => {
             {section?.texts.subtitle && section.texts.subtitle.trim() !== ''
               ? section.texts.subtitle
               : isFirstSection
-                ? (firstSubtitleText || 'O mercado solar não perdoa quem fica para trás. Garanta o método que os grandes players usam para dominar o Buy-Side.')
-                : (secondSubtitleText || 'Em um mercado competitivo, sua vantagem é o conhecimento.')}
+                ? 'O mercado solar não perdoa quem fica para trás. Garanta o método que os grandes players usam para dominar o Buy-Side.'
+                : 'Em um mercado competitivo, sua vantagem é o conhecimento.'}
           </p>
         </div>
 
@@ -182,18 +170,18 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ id }) => {
                 </div>
                 <div className="mb-10">
                   <div className="space-y-1">
-                    <p className="text-slate-400 text-base font-bold line-through">{priceFrom}</p>
+                    <p className="text-slate-400 text-base font-bold line-through">{section?.texts.priceFrom || 'De R$ 997,00 por apenas:'}</p>
                     <div className="flex flex-col">
                       <div className="flex items-start">
                         <span className="text-xl font-bold mt-2 mr-1">12x de</span>
                         <div className="flex items-start">
                           <span className="text-2xl font-black mt-2">R$</span>
-                          <span className="text-8xl font-black tracking-tighter leading-none">{priceValue}</span>
-                          <span className="text-2xl font-black mt-2">{priceCents}</span>
+                          <span className="text-8xl font-black tracking-tighter leading-none">{section?.texts.priceValue || '61'}</span>
+                          <span className="text-2xl font-black mt-2">{section?.texts.priceCents || ',38'}</span>
                         </div>
                       </div>
                       <p className="text-slate-500 text-base font-medium mt-2">
-                        {priceUpfront}
+                        {section?.texts.priceUpfront || 'Ou R$ 597,00 à vista no PIX'}
                       </p>
                     </div>
                   </div>
@@ -209,7 +197,7 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ id }) => {
                   >
                     <div className="relative z-10 flex items-center gap-3">
                       <span className="text-base md:text-lg uppercase tracking-tight text-center leading-tight">
-                        {id === 'oferta-final' ? (section?.texts.finalCtaButton || 'DESBLOQUEAR CONTEÚDO COMPLETO') : (section?.texts.ctaButton || 'ACESSAR O MANUAL AGORA')}
+                        {id === 'oferta-final' ? 'DESBLOQUEAR CONTEÚDO COMPLETO' : (section?.texts.ctaButton || 'ACESSAR O MANUAL AGORA')}
                       </span>
                       <ArrowRight size={22} className="group-hover:translate-x-1 transition-transform flex-shrink-0" />
                     </div>
@@ -235,22 +223,22 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ id }) => {
                 <div className="mt-10 pt-8 border-t border-slate-100 space-y-6">
                   <div className="flex items-center justify-center gap-6">
                     <img
-                      src={section?.images.guarantee || '/assets/Garantia.png'}
+                      src="/assets/Garantia.png"
                       alt="7 dias de garantia"
                       className="w-full max-w-[96px] h-auto"
                     />
                   </div>
 
                   <div className="flex items-center justify-center gap-4">
-                    <img src={section?.images.visa || '/assets/Visa.png'} alt="Visa" className="h-8 w-auto object-contain" />
-                    <img src={section?.images.mastercard || '/assets/Mastercard.png'} alt="Mastercard" className="h-8 w-auto object-contain" />
-                    <img src={section?.images.pix || '/assets/Pix.png'} alt="PIX" className="h-8 w-auto object-contain" />
-                    <img src={section?.images.boleto || '/assets/Boleto.png'} alt="Boleto" className="h-8 w-auto object-contain" />
+                    <img src="/assets/Visa.png" alt="Visa" className="h-8 w-auto object-contain" />
+                    <img src="/assets/Mastercard.png" alt="Mastercard" className="h-8 w-auto object-contain" />
+                    <img src="/assets/Pix.png" alt="PIX" className="h-8 w-auto object-contain" />
+                    <img src="/assets/Boleto.png" alt="Boleto" className="h-8 w-auto object-contain" />
                   </div>
 
                   <div className="pt-4">
                     <img
-                      src={section?.images.securePurchase || '/assets/Compra segura.png'}
+                      src="/assets/Compra segura.png"
                       alt="Compra Segura"
                       className="w-full h-auto object-contain"
                     />

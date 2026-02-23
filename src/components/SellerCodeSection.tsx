@@ -132,9 +132,9 @@ export const SellerCodeSection: React.FC = () => {
                 </div>
               </div>
 
-              <h3 className="text-3xl font-bold mb-4 tracking-tight">{section?.texts.bonusTitle || 'BONUS EXCLUSIVO'}</h3>
+              <h3 className="text-3xl font-bold mb-4 tracking-tight">{section?.texts.bonusTitle || 'BÔNUS EXCLUSIVO'}</h3>
               <p className="text-xl md:text-2xl text-slate-500 font-medium leading-tight italic">
-                {section?.texts.bonusSubtitle || 'O metodo de imersao no Manual Solar Buy-Side para quem nao aceita mais perder vendas por preco.'}
+                {section?.texts.bonusSubtitle || 'O método de imersão no Manual Solar Buy-Side para quem não aceita mais perder vendas por preço.'}
               </p>
             </div>
 
@@ -147,7 +147,7 @@ export const SellerCodeSection: React.FC = () => {
                 {/* O Livro */}
                 <img
                   src={section?.images.bookImage || section?.images.book || '/assets/MOCKUP_3 (1).PNG'}
-                  alt="O Codigo Oficial"
+                  alt="O Código Oficial"
                   className="w-full h-auto"
                 />
               </div>
@@ -157,7 +157,7 @@ export const SellerCodeSection: React.FC = () => {
             <div>
               <div className="space-y-0" onMouseLeave={() => setHoveredIndex(null)}>
                 <h4 className="text-xs font-bold text-slate-500 uppercase tracking-widest mb-6 pb-2 border-b border-slate-100">
-                  {section?.texts.listTitle || section?.texts.listHeader || 'O que voce vai dominar:'}
+                  {section?.texts.listTitle || section?.texts.listHeader || 'O que você vai dominar:'}
                 </h4>
 
                 {contentItems.map((item, idx) => (
@@ -209,7 +209,7 @@ export const SellerCodeSection: React.FC = () => {
               {/* O Livro */}
               <img
                 src={section?.images.bookImage || section?.images.book || '/assets/MOCKUP_3 (1).PNG'}
-                alt="O Codigo Oficial"
+                alt="O Código Oficial"
                 className="w-[440px] max-w-full h-auto"
               />
 

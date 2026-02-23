@@ -158,7 +158,7 @@ export const BuyerWaveSection: React.FC = () => {
             )}
           </h2>
           <p className="text-xl text-[#86868B] max-w-2xl mx-auto leading-relaxed">
-            {section?.texts.subtitle || 'Compradores estao evoluindo. Veja o que eles estarao aprendendo em breve.'}
+            {section?.texts.subtitle || 'Compradores estão evoluindo. Veja o que eles estarão aprendendo em breve.'}
           </p>
         </div>
 
@@ -172,9 +172,9 @@ export const BuyerWaveSection: React.FC = () => {
             </h3>
             <ul className="space-y-6 flex-grow">
               {[
-                section?.texts.card1Item1 || 'Conceitos essenciais para uma compra tecnica e segura',
-                section?.texts.card1Item2 || 'Reconhecimento de marcas e distribuidores de alta confianca',
-                section?.texts.card1Item3 || 'Criterios para selecionar empresas serias e competentes',
+                section?.texts.card1Item1 || 'Conceitos essenciais para uma compra técnica e segura',
+                section?.texts.card1Item2 || 'Reconhecimento de marcas e distribuidores de alta confiança',
+                section?.texts.card1Item3 || 'Critérios para selecionar empresas sérias e competentes',
               ].map((item) => (
                 <li key={item} className="flex flex-col text-[#424245]">
                   <div className="flex gap-4 items-start">
@@ -195,9 +195,9 @@ export const BuyerWaveSection: React.FC = () => {
             </h3>
             <ul className="space-y-6 flex-grow">
               {[
-                section?.texts.card2Item1 || 'Analisar propostas com criterios tecnicos e financeiros',
-                section?.texts.card2Item2 || 'Avaliar reputacao e suporte de pos-venda com precisao',
-                section?.texts.card2Item3 || 'Tomar decisao com seguranca e embasamento tecnico',
+                section?.texts.card2Item1 || 'Analisar propostas com critérios técnicos e financeiros',
+                section?.texts.card2Item2 || 'Avaliar reputação e suporte de pós-venda com precisão',
+                section?.texts.card2Item3 || 'Tomar decisão com segurança e embasamento técnico',
               ].map((item) => (
                 <li key={item} className="flex flex-col text-[#424245]">
                   <div className="flex gap-4 items-start">

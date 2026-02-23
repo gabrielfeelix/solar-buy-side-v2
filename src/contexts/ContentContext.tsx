@@ -53,51 +53,51 @@ const DEFAULT_GLOBAL_SETTINGS: GlobalSettings = {
 const DEFAULT_BUYER_TESTIMONIALS = [
   {
     name: 'Ricardo',
-    role: 'Empresario',
-    location: 'Sao Paulo, SP',
+    role: 'Empresário',
+    location: 'São Paulo, SP',
     avatar: '/assets/Ricardo 1.png',
     objectPosition: '50% 50%',
-    reviewTitle: 'Errar na escolha de um fornecedor pode gerar prejuizo enorme.',
+    reviewTitle: 'Errar na escolha de um fornecedor pode gerar prejuízo enorme.',
     quote:
-      'No mundo dos negocios, errar na escolha de um fornecedor pode gerar um prejuizo enorme. O manual foi indispensavel para evitar armadilhas, ensinando-me a identificar empresas despreparadas e equipamentos duvidosos. Aprendi a buscar parceiros que garantem suporte tecnico e manutencao continua. Gracas ao Solar Buy-Side, fechei negocio com a melhor empresa: meu investimento de R$ 195 mil foi muito bem aplicado.',
+      'No mundo dos negócios, errar na escolha de um fornecedor pode gerar um prejuízo enorme. O manual foi indispensável para evitar armadilhas, ensinando-me a identificar empresas despreparadas e equipamentos duvidosos. Aprendi a buscar parceiros que garantem suporte técnico e manutenção contínua. Graças ao Solar Buy-Side, fechei negócio com a melhor empresa: meu investimento de R$ 195 mil foi muito bem aplicado.',
     highlight:
-      'Mais que um guia, o Manual e o seguro que todo empresario precisa para investir com risco controlado.',
+      'Mais que um guia, o Manual é o seguro que todo empresário precisa para investir com risco controlado.',
   },
   {
     name: 'Guilherme',
     role: 'Particular',
-    location: 'Santana de Parnaiba, SP',
+    location: 'Santana de Parnaíba, SP',
     avatar: '/assets/empresariomanualk.png',
     objectPosition: '50% 50%',
-    reviewTitle: 'Decisao segura em investimento complexo.',
+    reviewTitle: 'Decisão segura em investimento complexo.',
     quote:
-      'Resido na regiao de Sao Paulo, em uma residencia de grande porte, com elevado consumo eletrico e exposta a apagoes frequentes, que podem durar horas ou dias. Para reduzir a fatura e garantir conforto energetico, optei pela instalacao de um sistema solar hibrido com baterias. Para embasar um investimento de alta complexidade tecnica e valor, utilizei com sucesso o Manual de Compra Solar Buy-Side, que orientou todo o processo de avaliacao e decisao.',
+      'Resido na região de São Paulo, em uma residência de grande porte, com elevado consumo elétrico e exposta a apagões frequentes, que podem durar horas ou dias. Para reduzir a fatura e garantir conforto energético, optei pela instalação de um sistema solar híbrido com baterias. Para embasar um investimento de alta complexidade técnica e valor, utilizei com sucesso o Manual de Compra Solar Buy-Side, que orientou todo o processo de avaliação e decisão.',
     highlight:
-      'Para quem busca seguranca e ganho de tempo, recomendo com total confianca.',
+      'Para quem busca segurança e ganho de tempo, recomendo com total confiança.',
   },
   {
     name: 'Jorge Luiz',
-    role: 'Empresario',
+    role: 'Empresário',
     location: 'Rio de Janeiro, RJ',
     avatar: '/assets/jorge of_cleanup.png',
     objectPosition: '50% 100%',
-    reviewTitle: 'O manual foi o divisor de aguas.',
+    reviewTitle: 'O manual foi o divisor de águas.',
     quote:
-      'Viver no Rio e aquilo: voce tem que estar sempre ligado pra nao cair em furada. Quando precisei cortar os custos fixos da minha metalurgica, confesso que travei, porque de energia solar eu nao entendia nada. O manual foi o divisor de aguas; me deu o mapa da mina pra estudar as propostas e descartar de cara quem estava so no gogo. Investi R$ 188 mil com total seguranca e o alivio ja chegou no bolso.',
+      'Viver no Rio é aquilo: você tem que estar sempre ligado pra não cair em furada. Quando precisei cortar os custos fixos da minha metalúrgica, confesso que travei, porque de energia solar eu não entendia nada. O manual foi o divisor de águas; me deu o mapa da mina pra estudar as propostas e descartar de cara quem estava só no gogó. Investi R$ 188 mil com total segurança e o alívio já chegou no bolso.',
     highlight:
       'O Manual valeu demais! Recomendo mesmo!',
   },
   {
-    name: 'Rogerio',
+    name: 'Rogério',
     role: 'Particular',
     location: 'Campinas, SP',
     avatar: '/assets/Rogerio_cleanup.png',
     objectPosition: '50% 100%',
-    reviewTitle: 'O manual valeu cada pagina.',
+    reviewTitle: 'O manual valeu cada página.',
     quote:
-      'Eu nunca tinha tido contato com energia solar e temia tomar a decisao errada, mas o conteudo claro e estruturado mudou tudo. As 4 fases da jornada de compra foram essenciais e o indice interativo, com mais de 160 topicos, sanou todas as minhas duvidas instantaneamente. No fim, escolhi a empresa certa e o sistema ideal pelo preco justo, conduzindo a negociacao com total autoridade e seguranca.',
+      'Eu nunca tinha tido contato com energia solar e temia tomar a decisão errada, mas o conteúdo claro e estruturado mudou tudo. As 4 fases da jornada de compra foram essenciais e o índice interativo, com mais de 160 tópicos, sanou todas as minhas dúvidas instantaneamente. No fim, escolhi a empresa certa e o sistema ideal pelo preço justo, conduzindo a negociação com total autoridade e segurança.',
     highlight:
-      'Sem exagero: o Manual Solar Buy-Side valeu cada pagina.',
+      'Sem exagero: o Manual Solar Buy-Side valeu cada página.',
   },
   {
     name: 'Lucineide',
@@ -107,9 +107,9 @@ const DEFAULT_BUYER_TESTIMONIALS = [
     objectPosition: '50% 100%',
     reviewTitle: 'Esse Manual foi realmente um passo a passo arretado!',
     quote:
-      'Morando sozinha, a variedade de empresas e tecnologias me deixava insegura. O manual foi o guia fundamental: seguindo cada etapa, aprendi a avaliar propostas e descartar o que era bom demais para ser verdade. Com total conviccao, instalei meu sistema de R$ 28 mil. O passo a passo foi arretado! No final, fui ate elogiada pelos vendedores; eles nunca tinham encontrado uma mulher com tanto conhecimento tecnico.',
+      'Morando sozinha, a variedade de empresas e tecnologias me deixava insegura. O manual foi o guia fundamental: seguindo cada etapa, aprendi a avaliar propostas e descartar o que era bom demais para ser verdade. Com total convicção, instalei meu sistema de R$ 28 mil. O passo a passo foi arretado! No final, fui até elogiada pelos vendedores; eles nunca tinham encontrado uma mulher com tanto conhecimento técnico.',
     highlight:
-      'O Solar Buy-Side me deu a seguranca para decidir sem arrependimentos.',
+      'O Solar Buy-Side me deu a segurança para decidir sem arrependimentos.',
   },
   {
     name: 'Edivaldo',
@@ -117,11 +117,11 @@ const DEFAULT_BUYER_TESTIMONIALS = [
     location: 'Sinop, MT',
     avatar: '/assets/Edivaldo.png',
     objectPosition: '50% 100%',
-    reviewTitle: 'O Manual me deu seguranca para investir R$ 248 mil.',
+    reviewTitle: 'O Manual me deu segurança para investir R$ 248 mil.',
     quote:
-      'Sou produtor rural em Sinop/MT e decidi instalar energia solar devido ao alto consumo na irrigacao e maquinarios. Com a expansao da lavoura, a conta de luz pesava muito. O Manual Solar Buy-Side foi essencial nesse processo: me ensinou a comparar propostas tecnicamente e evitar erros caros que eu nem conhecia. O conteudo me deu a seguranca necessaria para realizar um investimento de R$ 248 mil.',
+      'Sou produtor rural em Sinop/MT e decidi instalar energia solar devido ao alto consumo na irrigação e maquinários. Com a expansão da lavoura, a conta de luz pesava muito. O Manual Solar Buy-Side foi essencial nesse processo: me ensinou a comparar propostas tecnicamente e evitar erros caros que eu nem conhecia. O conteúdo me deu a segurança necessária para realizar um investimento de R$ 248 mil.',
     highlight:
-      'Realmente e uma ferramenta indispensavel para quem busca eficiencia no campo e protecao do capital.',
+      'Realmente é uma ferramenta indispensável para quem busca eficiência no campo e proteção do capital.',
   },
 ]
 
@@ -169,18 +169,18 @@ const applySectionAliases = (section: SectionContent): SectionContent => {
     if (!texts.subtitle && (texts.subtitle1 || texts.subtitle2)) {
       texts.subtitle = `${texts.subtitle1 || ''} ${texts.subtitle2 || ''}`.trim()
     }
-    if (!texts.titlePrefix) texts.titlePrefix = 'Saia da Disputa de Preco e Passe a'
-    if (!texts.titleHighlight) texts.titleHighlight = 'Vender Decisoes'
+    if (!texts.titlePrefix) texts.titlePrefix = 'Saia da Disputa de Preço e Passe a'
+    if (!texts.titleHighlight) texts.titleHighlight = 'Vender Decisões'
     if (!texts.titleSuffix) texts.titleSuffix = 'em Sistema Solar'
-    if (!texts.subtitle) texts.subtitle = 'O metodo Buy-Side ensina voce a pensar como o cliente e conduzir decisoes de compra, nao disputas de preco.'
+    if (!texts.subtitle) texts.subtitle = 'O método Buy-Side ensina você a pensar como o cliente e conduzir decisões de compra, não disputas de preço.'
     if (!texts.manualTitle) texts.manualTitle = 'Manual Solar Buy-Side'
-    if (!texts.manualSubtitle) texts.manualSubtitle = 'Construido a partir da observacao real de como compradores decidem, na pratica.'
-    if (!texts.bonusBadge) texts.bonusBadge = 'Bonus Exclusivo'
-    if (!texts.bonusTitle) texts.bonusTitle = 'O Codigo do Vendedor Consultivo'
-    if (!texts.bonusSubtitle) texts.bonusSubtitle = 'Para quem quer conduzir decisoes, nao concessoes.'
-    if (!texts.ctaButton) texts.ctaButton = 'Quero vender decisoes agora'
+    if (!texts.manualSubtitle) texts.manualSubtitle = 'Construído a partir da observação real de como compradores decidem, na prática.'
+    if (!texts.bonusBadge) texts.bonusBadge = 'Bônus Exclusivo'
+    if (!texts.bonusTitle) texts.bonusTitle = 'O Código do Vendedor Consultivo'
+    if (!texts.bonusSubtitle) texts.bonusSubtitle = 'Para quem quer conduzir decisões, não concessões.'
+    if (!texts.ctaButton) texts.ctaButton = 'Quero vender decisões agora'
     if (!texts.ctaSubtext) texts.ctaSubtext = 'Acesso imediato ao Manual Solar Buy-Side.'
-    if (!texts.scrollHint) texts.scrollHint = 'Entenda a logica'
+    if (!texts.scrollHint) texts.scrollHint = 'Entenda a lógica'
     if (!images.heroImage) images.heroImage = '/assets/GED9CF_1_cleanup.PNG'
   }
 
@@ -225,7 +225,7 @@ const applySectionAliases = (section: SectionContent): SectionContent => {
       }
     }
 
-    if (!texts.finalCtaButton) texts.finalCtaButton = 'DESBLOQUEAR CONTEUDO COMPLETO'
+    if (!texts.finalCtaButton) texts.finalCtaButton = 'DESBLOQUEAR CONTEÚDO COMPLETO'
   }
 
   if (section.id === 'manual-strategic') {
@@ -237,7 +237,7 @@ const applySectionAliases = (section: SectionContent): SectionContent => {
   }
 
   if (section.id === 'buyer-wave') {
-    if (!texts.ctaButton) texts.ctaButton = 'ACESSAR GUIA ESTRATEGICO AGORA'
+    if (!texts.ctaButton) texts.ctaButton = 'ACESSAR GUIA ESTRATÉGICO AGORA'
 
     DEFAULT_BUYER_TESTIMONIALS.forEach((defaultItem, index) => {
       const i = index + 1
