@@ -1,29 +1,62 @@
 const db = require('../config/database');
 
+let sectionIdColumnCache = null;
+
+const parseJsonField = (value) => {
+  if (value === null || value === undefined) return {};
+  if (typeof value === 'object') return value;
+  if (typeof value !== 'string') return {};
+
+  try {
+    return JSON.parse(value);
+  } catch (error) {
+    console.warn('WARN: invalid JSON field in content_sections:', error.message);
+    return {};
+  }
+};
+
+const getSectionIdColumn = async () => {
+  if (sectionIdColumnCache) {
+    return sectionIdColumnCache;
+  }
+
+  const [rows] = await db.query(`
+    SELECT COLUMN_NAME
+    FROM INFORMATION_SCHEMA.COLUMNS
+    WHERE TABLE_SCHEMA = DATABASE()
+      AND TABLE_NAME = 'content_sections'
+      AND COLUMN_NAME = 'section_id'
+    LIMIT 1
+  `);
+
+  sectionIdColumnCache = rows.length > 0 ? 'section_id' : 'id';
+  return sectionIdColumnCache;
+};
+
+const normalizeSection = (row) => ({
+  id: row.section_id,
+  name: row.section_name,
+  texts: parseJsonField(row.texts),
+  images: parseJsonField(row.images)
+});
+
 // Get all content sections
 exports.getAllSections = async (req, res) => {
   try {
+    const sectionIdColumn = await getSectionIdColumn();
     const [sections] = await db.query(
-      'SELECT section_id, section_name, texts, images FROM content_sections'
+      `SELECT ${sectionIdColumn} AS section_id, section_name, texts, images FROM content_sections`
     );
-
-    // Parse JSON fields
-    const parsedSections = sections.map(section => ({
-      id: section.section_id,
-      name: section.section_name,
-      texts: typeof section.texts === 'string' ? JSON.parse(section.texts) : section.texts,
-      images: typeof section.images === 'string' ? JSON.parse(section.images) : section.images
-    }));
 
     res.status(200).json({
       success: true,
-      data: parsedSections
+      data: sections.map(normalizeSection)
     });
   } catch (error) {
-    console.error('Erro ao buscar seções:', error);
+    console.error('Erro ao buscar secoes:', error);
     res.status(500).json({
       success: false,
-      message: 'Erro ao buscar seções'
+      message: 'Erro ao buscar secoes'
     });
   }
 };
@@ -32,35 +65,31 @@ exports.getAllSections = async (req, res) => {
 exports.getSection = async (req, res) => {
   try {
     const { sectionId } = req.params;
+    const sectionIdColumn = await getSectionIdColumn();
 
     const [sections] = await db.query(
-      'SELECT section_id, section_name, texts, images FROM content_sections WHERE section_id = ?',
+      `SELECT ${sectionIdColumn} AS section_id, section_name, texts, images
+       FROM content_sections
+       WHERE ${sectionIdColumn} = ?`,
       [sectionId]
     );
 
     if (sections.length === 0) {
       return res.status(404).json({
         success: false,
-        message: 'Seção não encontrada'
+        message: 'Secao nao encontrada'
       });
     }
 
-    const section = sections[0];
-
     res.status(200).json({
       success: true,
-      data: {
-        id: section.section_id,
-        name: section.section_name,
-        texts: typeof section.texts === 'string' ? JSON.parse(section.texts) : section.texts,
-        images: typeof section.images === 'string' ? JSON.parse(section.images) : section.images
-      }
+      data: normalizeSection(sections[0])
     });
   } catch (error) {
-    console.error('Erro ao buscar seção:', error);
+    console.error('Erro ao buscar secao:', error);
     res.status(500).json({
       success: false,
-      message: 'Erro ao buscar seção'
+      message: 'Erro ao buscar secao'
     });
   }
 };
@@ -70,36 +99,42 @@ exports.updateSection = async (req, res) => {
   try {
     const { sectionId } = req.params;
     const { section_name, texts, images } = req.body;
+    const sectionIdColumn = await getSectionIdColumn();
 
     // Check if section exists
     const [existing] = await db.query(
-      'SELECT section_id FROM content_sections WHERE section_id = ?',
+      `SELECT ${sectionIdColumn} AS section_id
+       FROM content_sections
+       WHERE ${sectionIdColumn} = ?`,
       [sectionId]
     );
 
     if (existing.length === 0) {
       // Insert new section
       await db.query(
-        'INSERT INTO content_sections (section_id, section_name, texts, images) VALUES (?, ?, ?, ?)',
-        [sectionId, section_name, JSON.stringify(texts), JSON.stringify(images)]
+        `INSERT INTO content_sections (${sectionIdColumn}, section_name, texts, images)
+         VALUES (?, ?, ?, ?)`,
+        [sectionId, section_name, JSON.stringify(texts || {}), JSON.stringify(images || {})]
       );
     } else {
       // Update existing section
       await db.query(
-        'UPDATE content_sections SET section_name = ?, texts = ?, images = ? WHERE section_id = ?',
-        [section_name, JSON.stringify(texts), JSON.stringify(images), sectionId]
+        `UPDATE content_sections
+         SET section_name = ?, texts = ?, images = ?
+         WHERE ${sectionIdColumn} = ?`,
+        [section_name, JSON.stringify(texts || {}), JSON.stringify(images || {}), sectionId]
       );
     }
 
     res.status(200).json({
       success: true,
-      message: 'Seção atualizada com sucesso'
+      message: 'Secao atualizada com sucesso'
     });
   } catch (error) {
-    console.error('Erro ao atualizar seção:', error);
+    console.error('Erro ao atualizar secao:', error);
     res.status(500).json({
       success: false,
-      message: 'Erro ao atualizar seção'
+      message: 'Erro ao atualizar secao'
     });
   }
 };
@@ -135,7 +170,7 @@ exports.updateGlobalAsset = async (req, res) => {
     if (!key || !value) {
       return res.status(400).json({
         success: false,
-        message: 'Key e value são obrigatórios'
+        message: 'Key e value sao obrigatorios'
       });
     }
 
@@ -188,7 +223,7 @@ exports.updateGlobalSetting = async (req, res) => {
     if (!key || !value) {
       return res.status(400).json({
         success: false,
-        message: 'Key e value são obrigatórios'
+        message: 'Key e value sao obrigatorios'
       });
     }
 

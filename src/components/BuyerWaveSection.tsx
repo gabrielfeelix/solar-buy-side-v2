@@ -1,4 +1,4 @@
-﻿import React, { useState } from 'react'
+import React, { useState } from 'react'
 import {
   ArrowRight,
   Award,
@@ -9,70 +9,65 @@ import {
 } from 'lucide-react'
 import { useContent } from '../contexts/ContentContext'
 
-const testimonials = [
+type BuyerTestimonial = {
+  name: string
+  role: string
+  location: string
+  avatar: string
+  objectPosition: string
+  reviewTitle: string
+  quote: string
+  highlight: string
+}
+
+const DEFAULT_TESTIMONIALS: BuyerTestimonial[] = [
   {
     name: 'Ricardo',
-    role: 'Empresário',
-    location: 'São Paulo, SP',
+    role: 'Empresario',
+    location: 'Sao Paulo, SP',
     avatar: '/assets/Ricardo 1.png',
     objectPosition: '50% 50%',
-    reviewTitle: (
-      <>
-        <span className="text-[#F97316]">Errar</span> na escolha de um <span className="text-[#F97316]">fornecedor</span> pode gerar prejuízo enorme.
-      </>
-    ),
+    reviewTitle: 'Errar na escolha de um fornecedor pode gerar prejuizo enorme.',
     quote:
-      'No mundo dos negócios, errar na escolha de um fornecedor pode gerar um prejuízo enorme. O manual foi indispensável para evitar armadilhas, ensinando-me a identificar empresas despreparadas e equipamentos duvidosos. Aprendi a buscar parceiros que garantem suporte técnico e manutenção contínua. Graças ao Solar Buy-Side, fechei negócio com a melhor empresa: meu investimento de R$ 195 mil foi muito bem aplicado.',
+      'No mundo dos negocios, errar na escolha de um fornecedor pode gerar um prejuizo enorme. O manual foi indispensavel para evitar armadilhas, ensinando-me a identificar empresas despreparadas e equipamentos duvidosos. Aprendi a buscar parceiros que garantem suporte tecnico e manutencao continua. Gracas ao Solar Buy-Side, fechei negocio com a melhor empresa: meu investimento de R$ 195 mil foi muito bem aplicado.',
     highlight:
-      'Mais que um guia, o Manual é o seguro que todo empresário precisa para investir com risco controlado.',
+      'Mais que um guia, o Manual e o seguro que todo empresario precisa para investir com risco controlado.',
   },
   {
     name: 'Guilherme',
     role: 'Particular',
-    location: 'Santana de Parnaíba, SP',
+    location: 'Santana de Parnaiba, SP',
     avatar: '/assets/empresariomanualk.png',
     objectPosition: '50% 50%',
-    reviewTitle: (
-      <>
-        Decisão <span className="text-[#F97316]">segura</span> em investimento <span className="text-[#F97316]">complexo</span>.
-      </>
-    ),
+    reviewTitle: 'Decisao segura em investimento complexo.',
     quote:
-      'Resido na região de São Paulo, em uma residência de grande porte, com elevado consumo elétrico e exposta a apagões frequentes, que podem durar horas ou dias. Para reduzir a fatura e garantir conforto energético, optei pela instalação de um sistema solar híbrido com baterias. Para embasar um investimento de alta complexidade técnica e valor, utilizei com sucesso o Manual de Compra Solar Buy-Side, que orientou todo o processo de avaliação e decisão.',
+      'Resido na regiao de Sao Paulo, em uma residencia de grande porte, com elevado consumo eletrico e exposta a apagoes frequentes, que podem durar horas ou dias. Para reduzir a fatura e garantir conforto energetico, optei pela instalacao de um sistema solar hibrido com baterias. Para embasar um investimento de alta complexidade tecnica e valor, utilizei com sucesso o Manual de Compra Solar Buy-Side, que orientou todo o processo de avaliacao e decisao.',
     highlight:
-      'Para quem busca segurança e ganho de tempo, recomendo com total confiança.',
+      'Para quem busca seguranca e ganho de tempo, recomendo com total confianca.',
   },
   {
     name: 'Jorge Luiz',
-    role: 'Empresário',
+    role: 'Empresario',
     location: 'Rio de Janeiro, RJ',
     avatar: '/assets/jorge of_cleanup.png',
     objectPosition: '50% 100%',
-    reviewTitle: (
-      <>
-        O manual foi o <span className="text-[#F97316]">divisor de águas</span>.
-      </>
-    ),
+    reviewTitle: 'O manual foi o divisor de aguas.',
     quote:
-      'Viver no Rio é aquilo: você tem que estar sempre ligado pra não cair em furada. Quando precisei cortar os custos fixos da minha metalúrgica, confesso que travei, porque de energia solar eu não entendia nada. O manual foi o divisor de águas; me deu o mapa da mina pra estudar as propostas e descartar de cara quem estava só no gogó. Investi R$ 188 mil com total segurança e o alívio já chegou no bolso.',
+      'Viver no Rio e aquilo: voce tem que estar sempre ligado pra nao cair em furada. Quando precisei cortar os custos fixos da minha metalurgica, confesso que travei, porque de energia solar eu nao entendia nada. O manual foi o divisor de aguas; me deu o mapa da mina pra estudar as propostas e descartar de cara quem estava so no gogo. Investi R$ 188 mil com total seguranca e o alivio ja chegou no bolso.',
     highlight:
       'O Manual valeu demais! Recomendo mesmo!',
   },
   {
-    name: 'Rogério',
+    name: 'Rogerio',
     role: 'Particular',
     location: 'Campinas, SP',
     avatar: '/assets/Rogerio_cleanup.png',
     objectPosition: '50% 100%',
-    reviewTitle: (
-      <>
-        O manual valeu <span className="text-[#F97316]">cada página</span>.
-      </>
-    ),
+    reviewTitle: 'O manual valeu cada pagina.',
     quote:
-      'Eu nunca tinha tido contato com energia solar e temia tomar a decisão errada, mas o conteúdo claro e estruturado mudou tudo. As 4 fases da jornada de compra foram essenciais e o índice interativo, com mais de 160 tópicos, sanou todas as minhas dúvidas instantaneamente. No fim, escolhi a empresa certa e o sistema ideal pelo preço justo, conduzindo a negociação com total autoridade e segurança.',
+      'Eu nunca tinha tido contato com energia solar e temia tomar a decisao errada, mas o conteudo claro e estruturado mudou tudo. As 4 fases da jornada de compra foram essenciais e o indice interativo, com mais de 160 topicos, sanou todas as minhas duvidas instantaneamente. No fim, escolhi a empresa certa e o sistema ideal pelo preco justo, conduzindo a negociacao com total autoridade e seguranca.',
     highlight:
-      'Sem exagero: o Manual Solar Buy-Side valeu cada página.',
+      'Sem exagero: o Manual Solar Buy-Side valeu cada pagina.',
   },
   {
     name: 'Lucineide',
@@ -80,15 +75,11 @@ const testimonials = [
     location: 'Recife, PE',
     avatar: '/assets/Lucineide 1.png',
     objectPosition: '50% 100%',
-    reviewTitle: (
-      <>
-        Esse Manual foi <span className="text-[#F97316]">realmente</span> um <span className="text-[#F97316]">passo a passo</span> arretado!
-      </>
-    ),
+    reviewTitle: 'Esse Manual foi realmente um passo a passo arretado!',
     quote:
-      'Morando sozinha, a variedade de empresas e tecnologias me deixava insegura. O manual foi o guia fundamental: seguindo cada etapa, aprendi a avaliar propostas e descartar o que era bom demais para ser verdade. Com total convicção, instalei meu sistema de R$ 28 mil. O passo a passo foi "arretado"! No final, fui até elogiada pelos vendedores; eles nunca tinham encontrado uma mulher com tanto conhecimento técnico 😂.',
+      'Morando sozinha, a variedade de empresas e tecnologias me deixava insegura. O manual foi o guia fundamental: seguindo cada etapa, aprendi a avaliar propostas e descartar o que era bom demais para ser verdade. Com total conviccao, instalei meu sistema de R$ 28 mil. O passo a passo foi arretado! No final, fui ate elogiada pelos vendedores; eles nunca tinham encontrado uma mulher com tanto conhecimento tecnico.',
     highlight:
-      'O Solar Buy-Side me deu a segurança para decidir sem arrependimentos.',
+      'O Solar Buy-Side me deu a seguranca para decidir sem arrependimentos.',
   },
   {
     name: 'Edivaldo',
@@ -96,15 +87,11 @@ const testimonials = [
     location: 'Sinop, MT',
     avatar: '/assets/Edivaldo.png',
     objectPosition: '50% 100%',
-    reviewTitle: (
-      <>
-        O Manual me deu <span className="text-[#F97316]">segurança</span> para investir <span className="text-[#F97316] whitespace-nowrap">R$ 248 mil</span>.
-      </>
-    ),
+    reviewTitle: 'O Manual me deu seguranca para investir R$ 248 mil.',
     quote:
-      'Sou produtor rural em Sinop/MT e decidi instalar energia solar devido ao alto consumo na irrigação e maquinários. Com a expansão da lavoura, a conta de luz pesava muito. O Manual Solar Buy-Side foi essencial nesse processo: me ensinou a comparar propostas tecnicamente e evitar erros caros que eu nem conhecia. O conteúdo me deu a segurança necessária para realizar um investimento de R$ 248 mil.',
+      'Sou produtor rural em Sinop/MT e decidi instalar energia solar devido ao alto consumo na irrigacao e maquinarios. Com a expansao da lavoura, a conta de luz pesava muito. O Manual Solar Buy-Side foi essencial nesse processo: me ensinou a comparar propostas tecnicamente e evitar erros caros que eu nem conhecia. O conteudo me deu a seguranca necessaria para realizar um investimento de R$ 248 mil.',
     highlight:
-      'Realmente é uma ferramenta indispensável para quem busca eficiência no campo e proteção do capital.',
+      'Realmente e uma ferramenta indispensavel para quem busca eficiencia no campo e protecao do capital.',
   },
 ]
 
@@ -112,6 +99,20 @@ export const BuyerWaveSection: React.FC = () => {
   const { getSection } = useContent()
   const section = getSection('buyer-wave')
   const [activeTestimonial, setActiveTestimonial] = useState(0)
+
+  const testimonials: BuyerTestimonial[] = DEFAULT_TESTIMONIALS.map((item, index) => {
+    const itemIndex = index + 1
+    return {
+      name: section?.texts[`testimonial${itemIndex}Name`] || item.name,
+      role: section?.texts[`testimonial${itemIndex}Role`] || item.role,
+      location: section?.texts[`testimonial${itemIndex}Location`] || item.location,
+      avatar: section?.images[`testimonial${itemIndex}Avatar`] || item.avatar,
+      objectPosition: section?.texts[`testimonial${itemIndex}ObjectPosition`] || item.objectPosition,
+      reviewTitle: section?.texts[`testimonial${itemIndex}ReviewTitle`] || item.reviewTitle,
+      quote: section?.texts[`testimonial${itemIndex}Quote`] || item.quote,
+      highlight: section?.texts[`testimonial${itemIndex}Highlight`] || item.highlight,
+    }
+  })
 
   const next = () => setActiveTestimonial((prev) => (prev + 1) % testimonials.length)
   const prev = () => setActiveTestimonial((prev) => (prev - 1 + testimonials.length) % testimonials.length)
@@ -133,7 +134,7 @@ export const BuyerWaveSection: React.FC = () => {
             )}
           </h2>
           <p className="text-xl text-[#86868B] max-w-2xl mx-auto leading-relaxed">
-            {section?.texts.subtitle || 'Compradores estão evoluindo. Veja o que eles estarão aprendendo em breve.'}
+            {section?.texts.subtitle || 'Compradores estao evoluindo. Veja o que eles estarao aprendendo em breve.'}
           </p>
         </div>
 
@@ -147,9 +148,9 @@ export const BuyerWaveSection: React.FC = () => {
             </h3>
             <ul className="space-y-6 flex-grow">
               {[
-                section?.texts.card1Item1 || 'Conceitos essenciais para uma compra técnica e segura',
-                section?.texts.card1Item2 || 'Reconhecimento de marcas e distribuidores de alta confiança',
-                section?.texts.card1Item3 || 'Critérios para selecionar empresas sérias e competentes',
+                section?.texts.card1Item1 || 'Conceitos essenciais para uma compra tecnica e segura',
+                section?.texts.card1Item2 || 'Reconhecimento de marcas e distribuidores de alta confianca',
+                section?.texts.card1Item3 || 'Criterios para selecionar empresas serias e competentes',
               ].map((item) => (
                 <li key={item} className="flex flex-col text-[#424245]">
                   <div className="flex gap-4 items-start">
@@ -170,9 +171,9 @@ export const BuyerWaveSection: React.FC = () => {
             </h3>
             <ul className="space-y-6 flex-grow">
               {[
-                section?.texts.card2Item1 || 'Analisar propostas com critérios técnicos e financeiros',
-                section?.texts.card2Item2 || 'Avaliar reputação e suporte de pós-venda com precisão',
-                section?.texts.card2Item3 || 'Tomar decisão com segurança e embasamento técnico',
+                section?.texts.card2Item1 || 'Analisar propostas com criterios tecnicos e financeiros',
+                section?.texts.card2Item2 || 'Avaliar reputacao e suporte de pos-venda com precisao',
+                section?.texts.card2Item3 || 'Tomar decisao com seguranca e embasamento tecnico',
               ].map((item) => (
                 <li key={item} className="flex flex-col text-[#424245]">
                   <div className="flex gap-4 items-start">
@@ -216,7 +217,7 @@ export const BuyerWaveSection: React.FC = () => {
               <img
                 src={testimonials[activeTestimonial].avatar}
                 className="absolute inset-0 w-full h-full object-cover"
-                style={{ objectPosition: testimonials[activeTestimonial].objectPosition ?? 'center' }}
+                style={{ objectPosition: testimonials[activeTestimonial].objectPosition || 'center' }}
                 alt={testimonials[activeTestimonial].name}
               />
               <div className="absolute bottom-1 left-6 right-6 md:bottom-2 md:left-8 md:right-8 backdrop-blur-xl bg-white/20 border border-white/30 px-4 py-2 md:px-6 md:py-2 rounded-2xl text-white shadow-2xl">
@@ -254,7 +255,7 @@ export const BuyerWaveSection: React.FC = () => {
               onClick={() => document.getElementById('oferta')?.scrollIntoView({ behavior: 'smooth' })}
               type="button"
             >
-              <span className="text-xl font-bold tracking-tight uppercase">ACESSAR GUIA ESTRATÉGICO AGORA</span>
+              <span className="text-xl font-bold tracking-tight uppercase">{section?.texts.ctaButton || 'ACESSAR GUIA ESTRATEGICO AGORA'}</span>
               <div className="w-14 h-14 bg-white/20 rounded-full flex items-center justify-center group-hover:translate-x-1 transition-transform">
                 <ArrowRight size={28} />
               </div>

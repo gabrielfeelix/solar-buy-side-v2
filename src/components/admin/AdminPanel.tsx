@@ -3,6 +3,7 @@ import { LogOut, Home, Save, Upload, Monitor, Smartphone, ExternalLink, ChevronD
 import { useAuth } from '../../contexts/AuthContext'
 import { useContent } from '../../contexts/ContentContext'
 import { AdminPreview } from './AdminPreview'
+import { SECTION_EDITOR_SCHEMA } from './editorSchema'
 
 type ViewMode = 'desktop' | 'tablet' | 'mobile'
 
@@ -12,7 +13,7 @@ interface AdminPanelProps {
 
 export const AdminPanel: React.FC<AdminPanelProps> = ({ hideHeader = false }) => {
   const { logout } = useAuth()
-  const { content, globalAssets, globalSettings, updateText, updateImage, updateGlobalAsset, updateGlobalSetting } = useContent()
+  const { content, globalAssets, globalSettings, saveSection, saveGlobalAsset, saveGlobalSetting } = useContent()
   const [selectedSection, setSelectedSection] = useState(content[0]?.id || 'hero')
   const [editedTexts, setEditedTexts] = useState<{ [key: string]: string }>({})
   const [editedImages, setEditedImages] = useState<{ [key: string]: string }>({})
@@ -30,6 +31,22 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({ hideHeader = false }) =>
   const [imagesOpen, setImagesOpen] = useState(false)
 
   const currentSection = content.find((s) => s.id === selectedSection)
+  const sectionSchema = currentSection ? SECTION_EDITOR_SCHEMA[currentSection.id] : undefined
+  const editableTextKeys = currentSection
+    ? (sectionSchema?.textKeys ?? Object.keys(currentSection.texts))
+    : []
+  const editableImageKeys = currentSection
+    ? (sectionSchema?.imageKeys ?? Object.keys(currentSection.images))
+    : []
+  const sectionSchemaNote = sectionSchema?.note
+
+  const formatFieldLabel = (key: string) => {
+    return key
+      .replace(/([A-Z])/g, ' $1')
+      .replace(/[_-]/g, ' ')
+      .trim()
+      .replace(/^./, (char) => char.toUpperCase())
+  }
 
   const handleTextChange = (key: string, value: string) => {
     setEditedTexts((prev) => ({ ...prev, [key]: value }))
@@ -53,32 +70,39 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({ hideHeader = false }) =>
     reader.readAsDataURL(file)
   }
 
-  const handleSaveAll = () => {
-    // Salvar textos
-    Object.entries(editedTexts).forEach(([key, value]) => {
-      updateText(selectedSection, key, value)
-    })
+  const handleSaveAll = async () => {
+    const results: boolean[] = []
+    const hasSectionChanges = Object.keys(editedTexts).length > 0 || Object.keys(editedImages).length > 0
 
-    // Salvar imagens
-    Object.entries(editedImages).forEach(([key, value]) => {
-      updateImage(selectedSection, key, value)
-    })
+    if (hasSectionChanges) {
+      const sectionSaved = await saveSection(selectedSection, {
+        texts: editedTexts,
+        images: editedImages,
+      })
+      results.push(sectionSaved)
+    }
 
-    // Salvar assets globais
-    Object.entries(editedGlobalAssets).forEach(([key, value]) => {
-      updateGlobalAsset(key as 'favicon' | 'logo', value)
-    })
+    for (const [key, value] of Object.entries(editedGlobalAssets)) {
+      const saved = await saveGlobalAsset(key as 'favicon' | 'logo', value)
+      results.push(saved)
+    }
 
-    // Salvar settings globais
-    Object.entries(editedGlobalSettings).forEach(([key, value]) => {
-      updateGlobalSetting(key as 'whatsappNumber' | 'purchaseLink', value)
-    })
+    for (const [key, value] of Object.entries(editedGlobalSettings)) {
+      const saved = await saveGlobalSetting(key as 'whatsappNumber' | 'purchaseLink', value)
+      results.push(saved)
+    }
+
+    const hasFailures = results.some((saved) => !saved)
+    if (hasFailures) {
+      alert('Nao foi possivel salvar tudo no backend. As alteracoes locais foram mantidas para voce tentar novamente.')
+      return
+    }
 
     setEditedTexts({})
     setEditedImages({})
     setEditedGlobalAssets({})
     setEditedGlobalSettings({})
-    alert('Alterações salvas com sucesso!')
+    alert('Alteracoes salvas com sucesso!')
   }
 
   const handleGlobalSettingChange = (key: 'whatsappNumber' | 'purchaseLink', value: string) => {
@@ -146,6 +170,7 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({ hideHeader = false }) =>
       'authority': 'authority',
       'lead-magnet': 'lead-magnet',
       'faq': 'faq',
+      'contact': 'contact',
     }
     return sectionMap[selectedSection] || selectedSection
   }
@@ -399,28 +424,40 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({ hideHeader = false }) =>
 
                 {textsOpen && (
                   <div className="px-6 pb-6">
-                    <div className="space-y-4 max-h-[400px] overflow-y-auto pr-2">
-                      {Object.entries(currentSection.texts).map(([key]) => (
-                        <div key={key}>
-                          <label className="block text-sm font-medium text-slate-300 mb-2 capitalize">
-                            {key.replace(/([A-Z])/g, ' $1').trim()}
-                          </label>
-                          <textarea
-                            value={getTextValue(key)}
-                            onChange={(e) => handleTextChange(key, e.target.value)}
-                            className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-2 text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-[#F97316] focus:border-transparent resize-none"
-                            rows={3}
-                          />
-                        </div>
-                      ))}
-                    </div>
+                    {sectionSchemaNote && (
+                      <p className="mb-4 text-xs text-amber-500 bg-amber-500/10 border border-amber-500/20 rounded-lg p-3">
+                        {sectionSchemaNote}
+                      </p>
+                    )}
+
+                    {editableTextKeys.length === 0 ? (
+                      <p className="text-sm text-slate-400">
+                        Esta secao nao possui campos de texto editaveis via CMS no codigo atual.
+                      </p>
+                    ) : (
+                      <div className="space-y-4 max-h-[400px] overflow-y-auto pr-2">
+                        {editableTextKeys.map((key) => (
+                          <div key={key}>
+                            <label className="block text-sm font-medium text-slate-300 mb-2 capitalize">
+                              {formatFieldLabel(key)}
+                            </label>
+                            <textarea
+                              value={getTextValue(key)}
+                              onChange={(e) => handleTextChange(key, e.target.value)}
+                              className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-2 text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-[#F97316] focus:border-transparent resize-none"
+                              rows={3}
+                            />
+                          </div>
+                        ))}
+                      </div>
+                    )}
                   </div>
                 )}
               </div>
             )}
 
             {/* Editar Imagens - Com Accordion */}
-            {currentSection && Object.keys(currentSection.images).length > 0 && (
+            {currentSection && editableImageKeys.length > 0 && (
               <div className={`${cardBg} border ${cardBorder} rounded-2xl overflow-hidden shadow-sm`}>
                 <button
                   onClick={() => setImagesOpen(!imagesOpen)}
@@ -433,10 +470,10 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({ hideHeader = false }) =>
                 {imagesOpen && (
                   <div className="px-6 pb-6">
                     <div className="space-y-4">
-                      {Object.entries(currentSection.images).map(([key]) => (
+                      {editableImageKeys.map((key) => (
                         <div key={key}>
                           <label className="block text-sm font-medium text-slate-300 mb-2 capitalize">
-                            {key.replace(/([A-Z])/g, ' $1').trim()}
+                            {formatFieldLabel(key)}
                           </label>
                           {getImageValue(key) && (
                             <img

@@ -94,6 +94,7 @@ function App() {
       'lead-magnet',
       'newsletter',
       'faq',
+      'contact',
     ]
 
     sections.forEach((sectionId) => {

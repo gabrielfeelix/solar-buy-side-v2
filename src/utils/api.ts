@@ -4,6 +4,11 @@
  * - In development: uses VITE_API_URL env variable or localhost:5000
  */
 export const getApiUrl = (): string => {
+  // Explicit env var always wins (useful for production overrides)
+  if (import.meta.env.VITE_API_URL) {
+    return import.meta.env.VITE_API_URL
+  }
+
   // In production (deployed site), use Render backend
   if (
     window.location.hostname === 'solarbuyside.com.br' ||
@@ -12,8 +17,8 @@ export const getApiUrl = (): string => {
     return 'https://solar-buy-side-v2.onrender.com'
   }
 
-  // In development, use env variable or localhost
-  return import.meta.env.VITE_API_URL || 'http://localhost:5000'
+  // In development, fallback to localhost
+  return 'http://localhost:5000'
 }
 
 export const API_URL = getApiUrl()

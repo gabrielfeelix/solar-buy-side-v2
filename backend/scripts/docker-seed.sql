@@ -69,7 +69,7 @@ CREATE TABLE IF NOT EXISTS analytics_events (
 
 -- Create content_sections table
 CREATE TABLE IF NOT EXISTS content_sections (
-  id VARCHAR(50) PRIMARY KEY,
+  section_id VARCHAR(50) PRIMARY KEY,
   section_name VARCHAR(100) NOT NULL,
   texts JSON,
   images JSON,

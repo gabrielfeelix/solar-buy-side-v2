@@ -32,6 +32,11 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
         localStorage.setItem('admin-token', data.data.token)
         return true
       }
+
+      if (!response.ok) {
+        console.error(`Login failed: HTTP ${response.status}`, data?.message || data)
+      }
+
       return false
     } catch (error) {
       console.error('Login error:', error)

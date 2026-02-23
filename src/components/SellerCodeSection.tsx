@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react'
+﻿import React, { useEffect, useRef, useState } from 'react'
 import { ShieldCheck, Target, UserCheck, Settings2, Sparkles, ArrowRight } from 'lucide-react'
 import { useContent } from '../contexts/ContentContext'
 
@@ -11,23 +11,23 @@ export const SellerCodeSection: React.FC = () => {
 
   const contentItems = [
     {
-      title: section?.texts.item1Title || 'Índice de Confiabilidade',
-      desc: section?.texts.item1Desc || 'Aprenda a medir e provar a segurança da sua proposta de forma estruturada e profissional.',
+      title: section?.texts.item1Title || 'Ãndice de Confiabilidade',
+      desc: section?.texts.item1Desc || 'Aprenda a medir e provar a seguranÃ§a da sua proposta de forma estruturada e profissional.',
       icon: <ShieldCheck size={20} />,
     },
     {
-      title: section?.texts.item2Title || 'Ajuste de Precisão com Checklist',
+      title: section?.texts.item2Title || 'Ajuste de PrecisÃ£o com Checklist',
       desc: section?.texts.item2Desc || 'Refine seus materiais de vendas com base no que compradores realmente avaliam (e o que eles descartam).',
       icon: <Settings2 size={20} />,
     },
     {
-      title: section?.texts.item3Title || 'Estratégia Anti-Leilão',
-      desc: section?.texts.item3Desc || 'Saiba exatamente como agir com clientes focados apenas em preço e recupere sua margem de lucro.',
+      title: section?.texts.item3Title || 'EstratÃ©gia Anti-LeilÃ£o',
+      desc: section?.texts.item3Desc || 'Saiba exatamente como agir com clientes focados apenas em preÃ§o e recupere sua margem de lucro.',
       icon: <Target size={20} />,
     },
     {
       title: section?.texts.item4Title || 'Postura Consultiva de Elite',
-      desc: section?.texts.item4Desc || 'Não dispute por preço, dispute por valor. Ajude o cliente a decidir com segurança e fortaleça uma relação de longo prazo.',
+      desc: section?.texts.item4Desc || 'NÃ£o dispute por preÃ§o, dispute por valor. Ajude o cliente a decidir com seguranÃ§a e fortaleÃ§a uma relaÃ§Ã£o de longo prazo.',
       icon: <UserCheck size={20} />,
     },
   ]
@@ -105,17 +105,21 @@ export const SellerCodeSection: React.FC = () => {
             {/* Header Narrativo */}
             <div className="space-y-8">
               <h2 className="text-4xl md:text-[50px] font-medium tracking-tight leading-[1.05] text-slate-900">
-                O Segredo por trás dos resultados: <span className="text-[#F97316] tracking-wide">O Código do Vendedor Consultivo</span>
+                {section?.texts.title || (
+                  <>
+                    O Segredo por tras dos resultados: <span className="text-[#F97316] tracking-wide">O Codigo do Vendedor Consultivo</span>
+                  </>
+                )}
               </h2>
 
               <div className="pl-6 border-l-2 border-slate-100">
                 <p className="text-lg md:text-xl text-slate-500 font-normal leading-relaxed">
-                  {section?.texts.subtitle || 'O sucesso do Rodrigo não foi por acaso. Além de aplicar o Manual Solar Buy-Side, ele dominou a estratégia que inverte o jogo: aprender a pensar como um comprador para dominar a venda.'}
+                  {section?.texts.subtitle || 'O sucesso do Rodrigo nÃ£o foi por acaso. AlÃ©m de aplicar o Manual Solar Buy-Side, ele dominou a estratÃ©gia que inverte o jogo: aprender a pensar como um comprador para dominar a venda.'}
                 </p>
               </div>
             </div>
 
-            {/* O BÔNUS (Header) */}
+            {/* O BÃ”NUS (Header) */}
             <div>
               <div className="flex items-center gap-3 mb-8">
                 <div className="flex items-center justify-center w-8 h-8 rounded-full bg-orange-50 text-[#F97316]">
@@ -131,13 +135,13 @@ export const SellerCodeSection: React.FC = () => {
                 </div>
               </div>
 
-              <h3 className="text-3xl font-bold mb-4 tracking-tight">BÔNUS EXCLUSIVO</h3>
+              <h3 className="text-3xl font-bold mb-4 tracking-tight">{section?.texts.bonusTitle || 'BONUS EXCLUSIVO'}</h3>
               <p className="text-xl md:text-2xl text-slate-500 font-medium leading-tight italic">
-                O método de imersão no Manual Solar Buy-Side para quem não aceita mais perder vendas por preço.
+                {section?.texts.bonusSubtitle || 'O metodo de imersao no Manual Solar Buy-Side para quem nao aceita mais perder vendas por preco.'}
               </p>
             </div>
 
-            {/* O LIVRO NO MOBILE - aparece aqui após o bônus */}
+            {/* O LIVRO NO MOBILE - aparece aqui apÃ³s o bÃ´nus */}
             <div className="lg:hidden flex justify-center py-8">
               <div className="relative group w-full max-w-[350px]" style={{ perspective: '2000px' }}>
                 {/* Efeito de Sombra Colorida (Aura) */}
@@ -145,7 +149,7 @@ export const SellerCodeSection: React.FC = () => {
 
                 {/* O Livro */}
                 <img
-                  src={section?.images.bookImage || '/assets/MOCKUP_3 (1).PNG'}
+                  src={section?.images.bookImage || section?.images.book || '/assets/MOCKUP_3 (1).PNG'}
                   alt="O Codigo Oficial"
                   className="w-full h-auto"
                 />
@@ -156,7 +160,7 @@ export const SellerCodeSection: React.FC = () => {
             <div>
               <div className="space-y-0" onMouseLeave={() => setHoveredIndex(null)}>
                 <h4 className="text-xs font-bold text-slate-500 uppercase tracking-widest mb-6 pb-2 border-b border-slate-100">
-                  {section?.texts.listTitle || 'O que você vai dominar:'}
+                  {section?.texts.listTitle || section?.texts.listHeader || 'O que voce vai dominar:'}
                 </h4>
 
                 {contentItems.map((item, idx) => (
@@ -207,7 +211,7 @@ export const SellerCodeSection: React.FC = () => {
 
               {/* O Livro */}
               <img
-                src={section?.images.bookImage || '/assets/MOCKUP_3 (1).PNG'}
+                src={section?.images.bookImage || section?.images.book || '/assets/MOCKUP_3 (1).PNG'}
                 alt="O Codigo Oficial"
                 className="w-[440px] max-w-full h-auto"
               />
@@ -231,3 +235,4 @@ export const SellerCodeSection: React.FC = () => {
     </section>
   )
 }
+

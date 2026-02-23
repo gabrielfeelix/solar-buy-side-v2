@@ -12,6 +12,7 @@ import { BuyerWaveSection } from '../BuyerWaveSection'
 import { AuthoritySection } from '../AuthoritySection'
 import { LeadMagnetSection } from '../LeadMagnetSection'
 import { FAQSection } from '../FAQSection'
+import { ContactSection } from '../ContactSection'
 
 interface AdminPreviewProps {
   sectionId: string
@@ -71,6 +72,10 @@ export const AdminPreview: React.FC<AdminPreviewProps> = ({ sectionId }) => {
 
   if (sectionId === 'faq') {
     return <FAQSection />
+  }
+
+  if (sectionId === 'contact') {
+    return <ContactSection />
   }
 
   if (sectionId === 'newsletter') {

@@ -17,7 +17,7 @@ export const AdminLogin: React.FC = () => {
     if (success) {
       window.location.reload()
     } else {
-      setError('Email ou senha incorretos')
+      setError('Nao foi possivel autenticar. Verifique email/senha ou conexao com o backend.')
     }
   }
 

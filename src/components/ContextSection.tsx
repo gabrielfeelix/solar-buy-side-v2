@@ -46,7 +46,7 @@ export const ContextSection: React.FC = () => {
             <Layout className="w-3 h-3" /> {section?.texts.badge || 'Vision 2026'}
           </div>
           <h2 className="text-4xl md:text-[50px] font-black tracking-tight text-slate-900 mb-6">
-            Panorama <span className="text-[#cbd5e1]">2026</span>
+            {section?.texts.title || 'Panorama'} <span className="text-[#cbd5e1]">{section?.texts.titleHighlight || '2026'}</span>
           </h2>
           <p className="text-xl md:text-2xl text-slate-500 font-medium leading-tight italic">
             {section?.texts.subtitle || 'Pode parecer exagero, mas em breve cada vez mais compradores de sistema fotovoltaico estarão informados.'}
