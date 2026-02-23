@@ -9,7 +9,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "seed:content": "node scripts/seed_content_sections.js",
     "seed:content:defaults": "node scripts/seed_content_sections.js --with-defaults",
-    "seed:content:force": "node scripts/seed_content_sections.js --force --with-defaults"
+    "seed:content:force": "node scripts/seed_content_sections.js --force --with-defaults",
+    "migrate:content:section-id": "node scripts/migrate_content_sections_section_id.js"
   },
   "keywords": [
     "api",

@@ -4,6 +4,7 @@ import { useAuth } from '../../contexts/AuthContext'
 import { useContent } from '../../contexts/ContentContext'
 import { AdminPreview } from './AdminPreview'
 import { SECTION_EDITOR_SCHEMA } from './editorSchema'
+import { LEGAL_PREVIEW_CONFIG } from './legalPreviewConfig'
 
 type ViewMode = 'desktop' | 'mobile'
 
@@ -15,11 +16,6 @@ const DESKTOP_VIEWPORT = { width: 1920, height: 1080 }
 const MOBILE_VIEWPORT = { width: 390, height: 844 }
 const MIN_ZOOM = 20
 const MAX_ZOOM = 120
-const LEGAL_PREVIEW_ROUTES: Record<string, string> = {
-  'privacy-policy': '/politica-de-privacidade',
-  'terms-of-use': '/termos-de-uso',
-  antipiracy: '/medidas-antipiratarias',
-}
 
 const clamp = (value: number, min: number, max: number) => {
   return Math.max(min, Math.min(max, value))
@@ -213,13 +209,13 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({ hideHeader = false }) =>
   }
 
   const getPreviewUrl = () => {
-    const legalRoute = LEGAL_PREVIEW_ROUTES[selectedSection]
-    if (legalRoute) return legalRoute
+    const legalConfig = LEGAL_PREVIEW_CONFIG[selectedSection]
+    if (legalConfig) return legalConfig.route
     return `/#${getSectionHash()}`
   }
 
   const shouldScrollByHash = () => {
-    return !LEGAL_PREVIEW_ROUTES[selectedSection]
+    return !LEGAL_PREVIEW_CONFIG[selectedSection]
   }
 
   const openRealPreview = () => {

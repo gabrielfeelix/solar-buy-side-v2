@@ -14,17 +14,12 @@ import { LeadMagnetSection } from '../LeadMagnetSection'
 import { FAQSection } from '../FAQSection'
 import { ContactSection } from '../ContactSection'
 import { NewsletterSection } from '../NewsletterSection'
+import { LEGAL_PREVIEW_CONFIG } from './legalPreviewConfig'
 
 interface AdminPreviewProps {
   sectionId: string
   texts: { [key: string]: string }
   images: { [key: string]: string }
-}
-
-const LEGAL_PREVIEW_ROUTES: Record<string, { route: string; label: string }> = {
-  'privacy-policy': { route: '/politica-de-privacidade', label: 'Politica de Privacidade' },
-  'terms-of-use': { route: '/termos-de-uso', label: 'Termos de Uso' },
-  antipiracy: { route: '/medidas-antipiratarias', label: 'Medidas Antipiratarias' },
 }
 
 export const AdminPreview: React.FC<AdminPreviewProps> = ({ sectionId }) => {
@@ -44,7 +39,7 @@ export const AdminPreview: React.FC<AdminPreviewProps> = ({ sectionId }) => {
   if (sectionId === 'contact') return <ContactSection />
   if (sectionId === 'newsletter') return <NewsletterSection />
 
-  const legalPreview = LEGAL_PREVIEW_ROUTES[sectionId]
+  const legalPreview = LEGAL_PREVIEW_CONFIG[sectionId]
   if (legalPreview) {
     return (
       <div className="rounded-lg overflow-hidden border border-slate-200 bg-white">

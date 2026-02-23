@@ -24,7 +24,6 @@ interface ContentContextType {
   content: SectionContent[]
   globalAssets: GlobalAssets
   globalSettings: GlobalSettings
-  isHydrated: boolean
   updateText: (sectionId: string, key: string, value: string) => void
   updateImage: (sectionId: string, key: string, value: string) => void
   updateGlobalAsset: (key: keyof GlobalAssets, value: string) => void
@@ -364,14 +363,9 @@ export const ContentProvider: React.FC<{ children: ReactNode }> = ({ children })
   const [globalAssets, setGlobalAssets] = useState<GlobalAssets>(() => getStoredGlobalAssets())
 
   const [globalSettings, setGlobalSettings] = useState<GlobalSettings>(() => getStoredGlobalSettings())
-  const [isHydrated, setIsHydrated] = useState<boolean>(() => {
-    return !!localStorage.getItem('cms-content')
-  })
 
   // Load content from backend on mount
   useEffect(() => {
-    let mounted = true
-
     const loadContent = async () => {
       try {
         const [sectionsRes, assetsRes, settingsRes] = await Promise.all([
@@ -427,18 +421,10 @@ export const ContentProvider: React.FC<{ children: ReactNode }> = ({ children })
       } catch (error) {
         console.debug('Using cached content:', error)
         // Keep using localStorage/initialContent on error
-      } finally {
-        if (mounted) {
-          setIsHydrated(true)
-        }
       }
     }
 
     loadContent()
-
-    return () => {
-      mounted = false
-    }
   }, [])
 
   const persistSection = async (section: SectionContent): Promise<boolean> => {
@@ -623,7 +609,7 @@ export const ContentProvider: React.FC<{ children: ReactNode }> = ({ children })
   }
 
   return (
-    <ContentContext.Provider value={{ content, globalAssets, globalSettings, isHydrated, updateText, updateImage, updateGlobalAsset, updateGlobalSetting, saveSection, saveGlobalAsset, saveGlobalSetting, getSection }}>
+    <ContentContext.Provider value={{ content, globalAssets, globalSettings, updateText, updateImage, updateGlobalAsset, updateGlobalSetting, saveSection, saveGlobalAsset, saveGlobalSetting, getSection }}>
       {children}
     </ContentContext.Provider>
   )
