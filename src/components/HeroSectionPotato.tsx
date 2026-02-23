@@ -73,9 +73,9 @@ export const HeroSectionPotato: React.FC = () => {
 
               <div className="flex flex-col">
                 <div className="flex items-center gap-2 mb-0.5">
-                  <h2 className="font-['Sora'] text-lg text-white font-bold tracking-tight">
-                    {manualTitle}
-                  </h2>
+                   <h2 className="font-['Sora'] text-lg text-white font-bold tracking-tight">
+                     {manualTitle}
+                   </h2>
                 </div>
                 <p className="text-[14px] text-slate-400 font-medium">
                   {manualSubtitle}

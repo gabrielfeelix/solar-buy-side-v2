@@ -1,5 +1,9 @@
 ﻿import type { SectionContent } from './ContentContext'
 
+// Bump this version whenever ContentData defaults change.
+// It invalidates stale localStorage caches so users see updated text.
+export const CONTENT_VERSION = 2
+
 export const initialContent: SectionContent[] = [
     {
     id: 'hero',

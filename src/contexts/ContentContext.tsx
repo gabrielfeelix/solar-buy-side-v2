@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useState, useEffect } from 'react'
 import type { ReactNode } from 'react'
-import { initialContent } from './ContentData'
+import { initialContent, CONTENT_VERSION } from './ContentData'
 import { API_URL } from '../utils/api'
 
 export interface SectionContent {
@@ -308,8 +308,16 @@ const mergeSections = (baseSections: SectionContent[], incomingRaw: unknown): Se
 }
 
 const getStoredSections = (): SectionContent[] => {
+  const storedVersion = localStorage.getItem('cms-content-version')
+  if (storedVersion !== String(CONTENT_VERSION)) {
+    // Content defaults changed — clear stale cache
+    localStorage.removeItem('cms-content')
+    localStorage.setItem('cms-content-version', String(CONTENT_VERSION))
+    return applyAliases(initialContent)
+  }
+
   const saved = localStorage.getItem('cms-content')
-  if (!saved) return initialContent
+  if (!saved) return applyAliases(initialContent)
 
   try {
     const parsed = JSON.parse(saved)
@@ -376,6 +384,7 @@ export const ContentProvider: React.FC<{ children: ReactNode }> = ({ children })
             const mergedSections = mergeSections(initialContent, sectionsData.data)
             setContent(mergedSections)
             localStorage.setItem('cms-content', JSON.stringify(mergedSections))
+            localStorage.setItem('cms-content-version', String(CONTENT_VERSION))
           }
         } else {
           console.warn(`Failed to load sections: ${sectionsRes.status}`)
