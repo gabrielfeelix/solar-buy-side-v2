@@ -309,6 +309,7 @@ export const SECTION_EDITOR_SCHEMA: Record<string, SectionEditorSchema> = {
       'feature4',
       'badge',
       'title',
+      'titleHighlight',
       'subtitle',
       'ctaButton',
       'ctaSubtext',

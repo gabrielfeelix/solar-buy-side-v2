@@ -60,7 +60,7 @@ export const HeroSectionPotato: React.FC = () => {
           </h1>
 
           <p className="text-slate-400 text-sm sm:text-base leading-relaxed mb-6 max-w-lg border-l-2 border-orange-500/30 pl-4">
-            {subtitle}
+            {subtitle && !subtitle.startsWith('O método Buy-Side') ? subtitle : (<>O método <strong className="text-slate-200">Buy-Side</strong> ensina você a pensar como o cliente e conduzir decisões de compra, não disputas de preço.</>)}
           </p>
 
           <div className="mb-12 inline-flex relative group">
@@ -74,7 +74,7 @@ export const HeroSectionPotato: React.FC = () => {
               <div className="flex flex-col">
                 <div className="flex items-center gap-2 mb-0.5">
                    <h2 className="font-['Sora'] text-lg text-white font-bold tracking-tight">
-                     {manualTitle}
+                     {manualTitle && manualTitle !== 'Manual Solar Buy-Side' ? manualTitle : (<>Manual Solar <span className="text-orange-400">Buy-Side</span></>)}
                    </h2>
                 </div>
                 <p className="text-[14px] text-slate-400 font-medium">

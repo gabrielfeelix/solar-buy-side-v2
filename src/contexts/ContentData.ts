@@ -2,7 +2,7 @@
 
 // Bump this version whenever ContentData defaults change.
 // It invalidates stale localStorage caches so users see updated text.
-export const CONTENT_VERSION = 3
+export const CONTENT_VERSION = 4
 
 export const initialContent: SectionContent[] = [
     {
@@ -318,7 +318,8 @@ export const initialContent: SectionContent[] = [
     name: 'Lead Magnet',
     texts: {
       badge: 'Conteúdo Exclusivo',
-      title: 'Ainda tem dúvidas sobre o impacto do Manual Buy-Side?',
+      title: 'Ainda tem dúvidas sobre o impacto do',
+      titleHighlight: 'Manual Buy-Side?',
       subtitle: 'Garanta agora seu e-book grátis e entenda por que a imersão Solar Buy-Side faz vendedores venderem mais e melhor.',
       feature1: 'Os 3 riscos na compra de sistemas solares',
       feature2: 'As 4 fases que seu cliente seguirá antes de comprar',
