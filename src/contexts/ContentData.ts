@@ -2,7 +2,7 @@
 
 // Bump this version whenever ContentData defaults change.
 // It invalidates stale localStorage caches so users see updated text.
-export const CONTENT_VERSION = 7
+export const CONTENT_VERSION = 8
 
 export const initialContent: SectionContent[] = [
     {
@@ -139,7 +139,7 @@ export const initialContent: SectionContent[] = [
       focusCard3Desc: 'Argumente com precisão e preserve sua comissão sem perder vendas.',
     },
     images: {
-      manual: '/assets/manual.jpg.png',
+      manualImage: '/assets/Capa-manual-buy-side-definitiva.png',
     },
   },
   {
@@ -190,7 +190,7 @@ export const initialContent: SectionContent[] = [
       feature4Desc: 'Anexos técnicos que auxiliam na tomada de decisão.',
     },
     images: {
-      manual: '/assets/manualdecompra1.png',
+      manualImage: '/assets/Manual de Compra -OF.png',
     },
   },
   {
@@ -286,8 +286,7 @@ export const initialContent: SectionContent[] = [
       card2Item3: 'Tomar decisão com segurança e embasamento técnico',
       testimonialsTitle: 'As vozes de quem aprendeu',
       testimonialsSubtitle: 'Relatos de compradores informados e preparados',
-      ctaText1: 'Começar agora',
-      ctaText2: 'Acessar Guia Estratégico',
+      ctaButton: 'ACESSAR GUIA ESTRATÉGICO AGORA',
     },
     images: {},
   },

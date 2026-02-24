@@ -132,7 +132,9 @@ export const BuyerWaveSection: React.FC = () => {
       location: section?.texts[`testimonial${itemIndex}Location`] || item.location,
       avatar: section?.images[`testimonial${itemIndex}Avatar`] || item.avatar,
       objectPosition: section?.texts[`testimonial${itemIndex}ObjectPosition`] || item.objectPosition,
-      reviewTitle: item.reviewTitle,
+      reviewTitle: section?.texts[`testimonial${itemIndex}ReviewTitle`]
+        ? section.texts[`testimonial${itemIndex}ReviewTitle`]
+        : item.reviewTitle,
       quote: section?.texts[`testimonial${itemIndex}Quote`] || item.quote,
       highlight: section?.texts[`testimonial${itemIndex}Highlight`] || item.highlight,
     }

@@ -197,7 +197,7 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ id }) => {
                   >
                     <div className="relative z-10 flex items-center gap-3">
                       <span className="text-base md:text-lg uppercase tracking-tight text-center leading-tight">
-                        {id === 'oferta-final' ? 'DESBLOQUEAR CONTEÚDO COMPLETO' : (section?.texts.ctaButton || 'ACESSAR O MANUAL AGORA')}
+                        {id === 'oferta-final' ? (section?.texts.finalCtaButton || 'DESBLOQUEAR CONTEÚDO COMPLETO') : (section?.texts.ctaButton || 'ACESSAR O MANUAL AGORA')}
                       </span>
                       <ArrowRight size={22} className="group-hover:translate-x-1 transition-transform flex-shrink-0" />
                     </div>
@@ -223,22 +223,22 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ id }) => {
                 <div className="mt-10 pt-8 border-t border-slate-100 space-y-6">
                   <div className="flex items-center justify-center gap-6">
                     <img
-                      src="/assets/Garantia.png"
+                      src={section?.images.guarantee || '/assets/Garantia.png'}
                       alt="7 dias de garantia"
                       className="w-full max-w-[96px] h-auto"
                     />
                   </div>
 
                   <div className="flex items-center justify-center gap-4">
-                    <img src="/assets/Visa.png" alt="Visa" className="h-8 w-auto object-contain" />
-                    <img src="/assets/Mastercard.png" alt="Mastercard" className="h-8 w-auto object-contain" />
-                    <img src="/assets/Pix.png" alt="PIX" className="h-8 w-auto object-contain" />
-                    <img src="/assets/Boleto.png" alt="Boleto" className="h-8 w-auto object-contain" />
+                    <img src={section?.images.visa || '/assets/Visa.png'} alt="Visa" className="h-8 w-auto object-contain" />
+                    <img src={section?.images.mastercard || '/assets/Mastercard.png'} alt="Mastercard" className="h-8 w-auto object-contain" />
+                    <img src={section?.images.pix || '/assets/Pix.png'} alt="PIX" className="h-8 w-auto object-contain" />
+                    <img src={section?.images.boleto || '/assets/Boleto.png'} alt="Boleto" className="h-8 w-auto object-contain" />
                   </div>
 
                   <div className="pt-4">
                     <img
-                      src="/assets/Compra segura.png"
+                      src={section?.images.securePurchase || '/assets/Compra segura.png'}
                       alt="Compra Segura"
                       className="w-full h-auto object-contain"
                     />
