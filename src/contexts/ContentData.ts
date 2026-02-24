@@ -2,7 +2,7 @@
 
 // Bump this version whenever ContentData defaults change.
 // It invalidates stale localStorage caches so users see updated text.
-export const CONTENT_VERSION = 2
+export const CONTENT_VERSION = 3
 
 export const initialContent: SectionContent[] = [
     {
@@ -81,6 +81,7 @@ export const initialContent: SectionContent[] = [
       videoBadge: 'Conteúdo Exclusivo',
       videoTitle: 'A Nova Realidade Solar',
       videoDuration: '03:54',
+      ctaButton: 'Quero sair na frente e vender mais',
     },
     images: {},
   },
@@ -145,8 +146,20 @@ export const initialContent: SectionContent[] = [
     id: 'testimonials',
     name: 'Depoimentos',
     texts: {
-      quote: '"Em um mês fechei 5 sistemas novos"',
+      title: '"Em um mês fechei 5 sistemas novos"',
       subtitle: 'Os benefícios são claros, e a prática comprova.',
+      intro: 'Veja a experiência de Rodrigo, Integrador de São Paulo',
+      quote1: '"Eu sofria com a concorrência acirrada e a baixa conversão. O Manual Solar Buy-Side me mostrou como entender a perspectiva do cliente, e isso mudou o jogo."',
+      quote2: '"Em um mês, fechei 5 sistemas novos. O mais gratificante, porém, foi a conexão. Deixei de ser apenas um vendedor e me tornei um verdadeiro parceiro para meus clientes."',
+      ctaTitle: 'Faça como ele',
+      ctaText: 'Imersão no Manual de Compra Solar Buy-Side: pense como seu cliente e torne-se um Vendedor de Alta Performance!',
+      ctaButton: 'Quero fechar mais projetos solares',
+      authorName: 'Rodrigo',
+      authorRole: 'Integrador Solar, SP',
+      statLabel: 'Crescimento',
+      statValue: '+5 Sistemas',
+      statSubtext: 'Fechados em 30 dias',
+      quote: '"Em um mês fechei 5 sistemas novos"',
       label: 'Veja a experiência de Rodrigo, Integrador de São Paulo',
       text1: '"Eu sofria com a concorrência acirrada e a baixa conversão. O Manual Solar Buy-Side me mostrou como entender a perspectiva do cliente, e isso mudou o jogo."',
       text2: '"Em um mês, fechei 5 sistemas novos. O mais gratificante, porém, foi a conexão. Deixei de ser apenas um vendedor e me tornei um verdadeiro parceiro para meus clientes."',
@@ -184,12 +197,17 @@ export const initialContent: SectionContent[] = [
     id: 'seller-code',
     name: 'Código do Vendedor',
     texts: {
-      title: 'O Segredo por trás dos resultados: O Código do Vendedor Consultivo',
+      title: 'O Segredo por trás dos resultados:',
+      titleHighlight: 'O Código do Vendedor Consultivo',
       subtitle: 'O sucesso do Rodrigo não foi por acaso. Além de aplicar o Manual Solar Buy-Side, ele dominou a estratégia que inverte o jogo: aprender a pensar como um comprador para dominar a venda.',
+      badge: 'Oferta Especial',
+      badgeHighlight: '',
       bonusBadge: 'Oferta Especial',
       bonusTitle: 'BÔNUS EXCLUSIVO',
+      bonusSubtitle: 'O método de imersão no Manual Solar Buy-Side para quem não aceita mais perder vendas por preço.',
       ebookTitle: 'E-book: O Código do Vendedor Consultivo',
       ebookSubtitle: 'O método de imersão no Manual Solar Buy-Side para quem não aceita mais perder vendas por preço.',
+      listTitle: 'O que você vai dominar:',
       listHeader: 'O que você vai dominar:',
       item1Title: 'Índice de Confiabilidade',
       item1Desc: 'Aprenda a medir e provar a segurança da sua proposta de forma estruturada e profissional.',
@@ -275,7 +293,8 @@ export const initialContent: SectionContent[] = [
     name: 'Autoridade',
     texts: {
       badge: 'Experiência Dual',
-      title: 'Este conteúdo foi concebido por quem domina as duas perspectivas da mesa de negociação: a do comprador e a do vendedor.',
+      title: 'Este conteúdo foi concebido por quem domina, as duas perspectivas da',
+      titleHighlight: 'mesa de negociação — a do comprador e a do vendedor.',
       person1Badge: 'Especialista',
       person1Name: 'Francis Poloni',
       person1Desc: 'Atua desde 2018 no setor de integração fotovoltaica e consultoria onde assessorou tanto no lado do comprador (Buy-Side) quanto no lado do vendedor (Sell-Side), ajudando na tomada de decisões inteligentes e seguras.',

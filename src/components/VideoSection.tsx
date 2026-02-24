@@ -50,7 +50,13 @@ export const VideoSection: React.FC = () => {
       <div className="relative max-w-5xl mx-auto px-6 py-32">
         <div className="mb-24">
           <h2 className="text-4xl md:text-[50px] font-black tracking-tight mb-6 leading-tight">
-            Descubra o que o <span className="text-[#F97316] tracking-wide">Manual</span> ensina aos compradores e entenda as <span className="text-[#F97316] tracking-wide">novas regras do jogo.</span>
+            {section?.texts.title && section.texts.title.trim() !== '' ? (
+              section.texts.title
+            ) : (
+              <>
+                Descubra o que o <span className="text-[#F97316] tracking-wide">Manual</span> ensina aos compradores e entenda as <span className="text-[#F97316] tracking-wide">novas regras do jogo.</span>
+              </>
+            )}
           </h2>
         </div>
 
@@ -207,7 +213,7 @@ export const VideoSection: React.FC = () => {
             href="#oferta"
             className="inline-flex items-center justify-center gap-3 px-10 py-5 bg-[#F97316] hover:bg-[#EA580C] text-white text-xl font-bold rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 min-h-[44px]"
           >
-            Quero sair na frente e vender mais
+            {section?.texts.ctaButton || 'Quero sair na frente e vender mais'}
             <ArrowRight className="w-6 h-6" />
           </a>
         </div>

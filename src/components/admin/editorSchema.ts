@@ -24,6 +24,8 @@ export const SECTION_EDITOR_SCHEMA: Record<string, SectionEditorSchema> = {
   },
   context: {
     textKeys: [
+      'title',
+      'titleHighlight',
       'card1Title',
       'card1Desc',
       'card2Title',
@@ -47,6 +49,7 @@ export const SECTION_EDITOR_SCHEMA: Record<string, SectionEditorSchema> = {
   },
   video: {
     textKeys: [
+      'title',
       'card1Title',
       'card1Desc',
       'card1Tag',
@@ -62,6 +65,7 @@ export const SECTION_EDITOR_SCHEMA: Record<string, SectionEditorSchema> = {
       'videoBadge',
       'videoTitle',
       'videoDuration',
+      'ctaButton',
     ],
     imageKeys: [],
   },
@@ -130,6 +134,7 @@ export const SECTION_EDITOR_SCHEMA: Record<string, SectionEditorSchema> = {
       'quote2',
       'ctaTitle',
       'ctaText',
+      'ctaButton',
     ],
     imageKeys: ['testimonialImage'],
   },
@@ -150,6 +155,8 @@ export const SECTION_EDITOR_SCHEMA: Record<string, SectionEditorSchema> = {
   },
   'seller-code': {
     textKeys: [
+      'title',
+      'titleHighlight',
       'item1Title',
       'item1Desc',
       'item2Title',
@@ -161,6 +168,8 @@ export const SECTION_EDITOR_SCHEMA: Record<string, SectionEditorSchema> = {
       'subtitle',
       'badge',
       'badgeHighlight',
+      'bonusTitle',
+      'bonusSubtitle',
       'listTitle',
     ],
     imageKeys: ['bookImage'],
@@ -275,6 +284,8 @@ export const SECTION_EDITOR_SCHEMA: Record<string, SectionEditorSchema> = {
   authority: {
     textKeys: [
       'badge',
+      'title',
+      'titleHighlight',
       'person1Experience',
       'person1ExperienceLabel',
       'person1Badge',
@@ -287,7 +298,6 @@ export const SECTION_EDITOR_SCHEMA: Record<string, SectionEditorSchema> = {
       'person2Name',
       'person2Desc',
       'person2Tag',
-      'title',
     ],
     imageKeys: ['francis', 'ovidio'],
   },
