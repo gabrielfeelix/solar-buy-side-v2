@@ -2,7 +2,7 @@
 
 // Bump this version whenever ContentData defaults change.
 // It invalidates stale localStorage caches so users see updated text.
-export const CONTENT_VERSION = 4
+export const CONTENT_VERSION = 5
 
 export const initialContent: SectionContent[] = [
     {
