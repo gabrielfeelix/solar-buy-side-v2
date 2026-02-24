@@ -62,7 +62,7 @@ export const initialContent: SectionContent[] = [
     id: 'video',
     name: 'Vídeo',
     texts: {
-      title: 'Descubra o que o Manual ensina aos compradores e entenda as novas regras do jogo.',
+      title: '',
       card1Id: '01',
       card1Tag: 'Proteção',
       card1Title: 'Os 3 grandes RISCOS',
