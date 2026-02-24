@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useRef, useState } from 'react'
+import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { LogOut, Home, Save, Upload, Monitor, Smartphone, ExternalLink, ChevronDown, ChevronUp, Image as ImageIcon, Phone, ShoppingCart } from 'lucide-react'
 import { useAuth } from '../../contexts/AuthContext'
 import { useContent } from '../../contexts/ContentContext'
@@ -121,6 +121,29 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({ hideHeader = false }) =>
   const handleGlobalSettingChange = (key: 'whatsappNumber' | 'purchaseLink', value: string) => {
     setEditedGlobalSettings((prev) => ({ ...prev, [key]: value }))
   }
+
+  const textareaRefs = useRef<{ [key: string]: HTMLTextAreaElement | null }>({})
+
+  const insertMarkup = useCallback((key: string, openTag: string, closeTag: string) => {
+    const textarea = textareaRefs.current[key]
+    if (!textarea) return
+    const start = textarea.selectionStart
+    const end = textarea.selectionEnd
+    const currentValue = editedTexts[key] !== undefined ? editedTexts[key] : (currentSection?.texts[key] || '')
+    const selected = currentValue.substring(start, end)
+    const newValue =
+      currentValue.substring(0, start) +
+      openTag +
+      selected +
+      closeTag +
+      currentValue.substring(end)
+    setEditedTexts((prev) => ({ ...prev, [key]: newValue }))
+    setTimeout(() => {
+      textarea.focus()
+      const newPos = end + openTag.length + closeTag.length
+      textarea.setSelectionRange(newPos, newPos)
+    }, 0)
+  }, [currentSection, editedTexts])
 
   const getTextValue = (key: string) => {
     if (editedTexts[key] !== undefined) return editedTexts[key]
@@ -482,7 +505,34 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({ hideHeader = false }) =>
                             <label className="block text-sm font-medium text-slate-300 mb-2 capitalize">
                               {formatFieldLabel(key)}
                             </label>
+                            <div className="flex gap-1 mb-1.5 flex-wrap">
+                              <button
+                                type="button"
+                                onMouseDown={(e) => { e.preventDefault(); insertMarkup(key, '<span class="cms-orange">', '</span>') }}
+                                className="text-[10px] px-2 py-1 bg-orange-500 text-white rounded font-black hover:bg-orange-400 transition-colors leading-none"
+                                title="Envolver seleção em laranja"
+                              >
+                                LARANJA
+                              </button>
+                              <button
+                                type="button"
+                                onMouseDown={(e) => { e.preventDefault(); insertMarkup(key, '<span class="cms-gradient-blue">', '</span>') }}
+                                className="text-[10px] px-2 py-1 bg-blue-500 text-white rounded font-black hover:bg-blue-400 transition-colors leading-none"
+                                title="Envolver seleção em azul gradiente"
+                              >
+                                AZUL
+                              </button>
+                              <button
+                                type="button"
+                                onMouseDown={(e) => { e.preventDefault(); insertMarkup(key, '<span class="cms-bold">', '</span>') }}
+                                className="text-[10px] px-2 py-1 bg-slate-600 text-white rounded font-black hover:bg-slate-500 transition-colors leading-none"
+                                title="Envolver seleção em negrito"
+                              >
+                                NEGRITO
+                              </button>
+                            </div>
                             <textarea
+                              ref={(el) => { textareaRefs.current[key] = el }}
                               value={getTextValue(key)}
                               onChange={(e) => handleTextChange(key, e.target.value)}
                               className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-2 text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-[#F97316] focus:border-transparent resize-none"

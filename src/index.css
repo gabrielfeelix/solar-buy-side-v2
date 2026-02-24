@@ -179,6 +179,36 @@ button, a[role="button"], [role="button"] {
   }
 }
 
+/* ─── CMS Rich-Text Inline Classes ─────────────────────────────────────────── */
+/* Used by CMSText component. Admin wraps selected words with these spans.      */
+.cms-orange {
+  color: #F97316;
+}
+
+.cms-blue {
+  color: #60a5fa;
+}
+
+.cms-gradient-blue {
+  background: linear-gradient(to right, #60a5fa, #bfdbfe, #3b82f6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+}
+
+.cms-gradient-orange {
+  background: linear-gradient(to right, #ea580c, #fb923c);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+}
+
+.cms-bold {
+  font-weight: bold;
+}
+
 /* Animações de fade-in para componentes */
 @keyframes fadeInUp {
   from {

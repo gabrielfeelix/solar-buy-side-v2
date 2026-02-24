@@ -8,6 +8,7 @@ import {
   Target,
 } from 'lucide-react'
 import { useContent } from '../contexts/ContentContext'
+import { CMSText } from './CMSText'
 
 type BuyerTestimonial = {
   name: string
@@ -151,13 +152,11 @@ export const BuyerWaveSection: React.FC = () => {
             {section?.texts.badge || 'Guia do Comprador'}
           </span>
           <h2 className="text-3xl md:text-5xl font-bold tracking-tight mb-6">
-            {section?.texts.title && section.texts.title.trim() !== '' ? (
-              section.texts.title
-            ) : (
-              <>
-                Descubra o que o manual ensina aos <span className="text-[#F97316]">compradores</span> e entenda as <span className="text-[#F97316]">novas regras</span> do jogo
-              </>
-            )}
+            <CMSText value={
+              section?.texts.title?.trim()
+                ? section.texts.title
+                : 'Descubra o que o manual ensina aos <span class="cms-orange">compradores</span> e entenda as <span class="cms-orange">novas regras</span> do jogo'
+            } />
           </h2>
           <p className="text-xl text-[#86868B] max-w-2xl mx-auto leading-relaxed">
             {section?.texts.subtitle || 'Compradores estão evoluindo. Veja o que eles estarão aprendendo em breve.'}

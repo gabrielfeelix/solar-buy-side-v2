@@ -13,6 +13,7 @@ import {
 } from 'lucide-react'
 import { useContent } from '../contexts/ContentContext'
 import { trackBuyClick } from '../utils/analytics'
+import { CMSText } from './CMSText'
 
 type PricingSectionProps = {
   id?: string
@@ -74,36 +75,21 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ id }) => {
           </div>
 
           <h2 className="text-5xl md:text-[50px] font-black tracking-tighter leading-tight">
-            {section?.texts.title && section.texts.title.trim() !== '' ? (
-              section.texts.title
-            ) : isFirstSection ? (
-              <>
-                NÃO PERCA TEMPO NEM <br />
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-blue-200 to-blue-500">
-                  POSIÇÃO NO MERCADO.
-                </span>
-              </>
-            ) : (
-              <>
-                ATENÇÃO: O TEMPO ESTÁ{' '}
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-blue-200 to-blue-500">
-                  CORRENDO
-                </span>{' '}
-                <br />
-                E QUEM AGIR PRIMEIRO,{' '}
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-blue-200 to-blue-500">
-                  VENDE MAIS.
-                </span>
-              </>
-            )}
+            <CMSText value={
+              section?.texts.title?.trim()
+                ? section.texts.title
+                : isFirstSection
+                  ? (section?.texts.titleFirst?.trim() || 'NÃO PERCA TEMPO NEM <br/><span class="cms-gradient-blue">POSIÇÃO NO MERCADO.</span>')
+                  : (section?.texts.titleSecond?.trim() || 'ATENÇÃO: O TEMPO ESTÁ <span class="cms-gradient-blue">CORRENDO</span><br/>E QUEM AGIR PRIMEIRO, <span class="cms-gradient-blue">VENDE MAIS.</span>')
+            } />
           </h2>
 
           <p className="text-xl text-slate-400 max-w-2xl mx-auto font-medium">
-            {section?.texts.subtitle && section.texts.subtitle.trim() !== ''
+            {section?.texts.subtitle?.trim()
               ? section.texts.subtitle
               : isFirstSection
-                ? 'O mercado solar não perdoa quem fica para trás. Garanta o método que os grandes players usam para dominar o Buy-Side.'
-                : 'Em um mercado competitivo, sua vantagem é o conhecimento.'}
+                ? (section?.texts.subtitleFirst || 'O mercado solar não perdoa quem fica para trás. Garanta o método que os grandes players usam para dominar o Buy-Side.')
+                : (section?.texts.subtitleSecond || 'Em um mercado competitivo, sua vantagem é o conhecimento.')}
           </p>
         </div>
 

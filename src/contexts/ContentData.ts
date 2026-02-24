@@ -2,7 +2,7 @@
 
 // Bump this version whenever ContentData defaults change.
 // It invalidates stale localStorage caches so users see updated text.
-export const CONTENT_VERSION = 8
+export const CONTENT_VERSION = 9
 
 export const initialContent: SectionContent[] = [
     {
@@ -254,7 +254,12 @@ export const initialContent: SectionContent[] = [
       priceValue: '61',
       priceCents: ',38',
       priceUpfront: 'Ou R$ 897,00 à vista no PIX',
+      titleFirst: 'NÃO PERCA TEMPO NEM <br/><span class="cms-gradient-blue">POSIÇÃO NO MERCADO.</span>',
+      titleSecond: 'ATENÇÃO: O TEMPO ESTÁ <span class="cms-gradient-blue">CORRENDO</span><br/>E QUEM AGIR PRIMEIRO, <span class="cms-gradient-blue">VENDE MAIS.</span>',
+      subtitleFirst: 'O mercado solar não perdoa quem fica para trás. Garanta o método que os grandes players usam para dominar o Buy-Side.',
+      subtitleSecond: 'Em um mercado competitivo, sua vantagem é o conhecimento.',
       ctaButton: 'ACESSAR O MANUAL AGORA',
+      finalCtaButton: 'DESBLOQUEAR CONTEÚDO COMPLETO',
       benefit1: 'Liberação imediata no seu e-mail',
       benefit2: 'Checkout 100% criptografado',
       benefit3: 'Acesso Imediato',

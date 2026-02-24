@@ -10,6 +10,7 @@ import {
 } from 'lucide-react'
 import { ButtonPrimary } from './ManualAtoms'
 import { useContent } from '../contexts/ContentContext'
+import { CMSText } from './CMSText'
 
 type CardProps = {
   Icon: React.ComponentType<{ size?: number }>
@@ -112,13 +113,11 @@ export const ManualStrategicSection: React.FC = () => {
 
         <div className="relative mt-16 max-w-4xl">
           <h2 className="text-4xl md:text-[50px] font-black text-white leading-snug tracking-tight mb-8">
-            {section?.texts.section2Title && section.texts.section2Title.trim() !== '' ? (
-              section.texts.section2Title
-            ) : (
-              <>
-                Veja os resultados <span className="text-[#F97316] tracking-wide">concretos</span> que você pode alcançar ao aplicar o <span className="text-[#F97316] tracking-wide">Manual Solar Buy-Side</span> no seu processo de venda.
-              </>
-            )}
+            <CMSText value={
+              section?.texts.section2Title?.trim()
+                ? section.texts.section2Title
+                : 'Veja os resultados <span class="cms-orange">concretos</span> que você pode alcançar ao aplicar o <span class="cms-orange">Manual Solar Buy-Side</span> no seu processo de venda.'
+            } />
           </h2>
           {section?.texts.section2Subtitle && (
             <p className="text-xl md:text-2xl text-slate-400 font-medium">

@@ -1,6 +1,7 @@
 ﻿import React, { useEffect, useState } from 'react'
 import { AlertCircle, ArrowRight, Map as MapIcon, Monitor, Play, Search, ShieldAlert } from 'lucide-react'
 import { useContent } from '../contexts/ContentContext'
+import { CMSText } from './CMSText'
 
 export const VideoSection: React.FC = () => {
   const { getSection } = useContent()
@@ -50,13 +51,11 @@ export const VideoSection: React.FC = () => {
       <div className="relative max-w-5xl mx-auto px-6 py-32">
         <div className="mb-24">
           <h2 className="text-4xl md:text-[50px] font-black tracking-tight mb-6 leading-tight">
-            {section?.texts.title && section.texts.title.trim() !== '' ? (
-              section.texts.title
-            ) : (
-              <>
-                Descubra o que o <span className="text-[#F97316] tracking-wide">Manual</span> ensina aos compradores e entenda as <span className="text-[#F97316] tracking-wide">novas regras do jogo.</span>
-              </>
-            )}
+            <CMSText value={
+              section?.texts.title?.trim()
+                ? section.texts.title
+                : 'Descubra o que o <span class="cms-orange">Manual</span> ensina aos compradores e entenda as <span class="cms-orange">novas regras do jogo.</span>'
+            } />
           </h2>
         </div>
 
