@@ -202,6 +202,7 @@ export const SECTION_EDITOR_SCHEMA: Record<string, SectionEditorSchema> = {
       'planBadge',
       'planTitle',
       'priceFrom',
+      'priceInstallments',
       'priceValue',
       'priceCents',
       'priceUpfront',

@@ -2,7 +2,7 @@
 
 // Bump this version whenever ContentData defaults change.
 // It invalidates stale localStorage caches so users see updated text.
-export const CONTENT_VERSION = 6
+export const CONTENT_VERSION = 7
 
 export const initialContent: SectionContent[] = [
     {
@@ -249,9 +249,11 @@ export const initialContent: SectionContent[] = [
       bonusSubtitle: 'Você vendendo decisão, não preço',
       planBadge: 'Plano de Acesso',
       planTitle: 'Oferta Especial',
-      priceOriginal: 'De R$ 997,00 por apenas:',
-      priceInstallments: '12x de R$ 61,38',
-      priceCash: 'Ou R$ 597,00 à vista no PIX',
+      priceFrom: 'De R$ 997,00 por apenas:',
+      priceInstallments: '12x de',
+      priceValue: '61',
+      priceCents: ',38',
+      priceUpfront: 'Ou R$ 897,00 à vista no PIX',
       ctaButton: 'ACESSAR O MANUAL AGORA',
       benefit1: 'Liberação imediata no seu e-mail',
       benefit2: 'Checkout 100% criptografado',
