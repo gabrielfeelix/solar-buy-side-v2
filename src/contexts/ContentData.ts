@@ -2,7 +2,7 @@
 
 // Bump this version whenever ContentData defaults change.
 // It invalidates stale localStorage caches so users see updated text.
-export const CONTENT_VERSION = 5
+export const CONTENT_VERSION = 6
 
 export const initialContent: SectionContent[] = [
     {
@@ -219,8 +219,8 @@ export const initialContent: SectionContent[] = [
       item4Desc: 'Prepare-se para fechar contratos com clientes técnicos e criteriosos que costumam ignorar vendedores comuns.',
     },
     images: {
-      bookImage: '/assets/o-codigo-oficial-4.png',
-      book: '/assets/o-codigo-oficial-4.png',
+      bookImage: '/assets/MOCKUP_3 (1).PNG',
+      book: '/assets/MOCKUP_3 (1).PNG',
     },
   },
   {
