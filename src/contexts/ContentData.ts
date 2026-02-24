@@ -219,6 +219,7 @@ export const initialContent: SectionContent[] = [
       item4Desc: 'Prepare-se para fechar contratos com clientes técnicos e criteriosos que costumam ignorar vendedores comuns.',
     },
     images: {
+      bookImage: '/assets/o-codigo-oficial-4.png',
       book: '/assets/o-codigo-oficial-4.png',
     },
   },
